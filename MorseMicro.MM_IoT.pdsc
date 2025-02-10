@@ -1,0 +1,1324 @@
+<?xml version="1.0" ?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.7.7" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.7/schema/PACK.xsd">
+  <vendor>MorseMicro</vendor>
+  <name>MM_IoT</name>
+  <description>MorseMicro IoT Software Package</description>
+  <url/>
+  <supportContact/>
+  <license>Docs/license.txt</license>
+  <releases>
+    <release version="1.5.0" date="2025-01-31">
+        -Add SDIO project.
+        -Updated sslclient example certificates and fixed issues.
+    </release>
+    <release version="1.4.0" date="2025-01-21">
+        -Updating the integrated MM-IoT-SDK version to 2.6.4.
+        -EKH05-Demo example: can save the camera photo to the serial flash on the board.
+    </release>
+    <release version="1.3.4" date="2024-12-11">
+        -Remove unused content that were blocking STM32CubeIDE to import this pack.
+    </release>
+    <release version="1.3.3" date="2024-11-15">
+        -Update RegDB to match the new BCFs.
+    </release>
+    <release version="1.3.2" date="2024-11-14">
+        -Update BCFs
+    </release>
+    <release version="1.3.1" date="2024-10-30">
+        -Fix power waste through ADC
+        -Add wnm_sleep_duration_ms to default configurations
+    </release>
+    <release version="1.3.0" date="2024-10-24">
+        -Add ping capability to Demo example UI
+        -Show IP info in a BLE attribute
+        -Remove  BCF disabled channels from regdb
+        -Fix CAM_PWDN default value
+        -Fix red LED for EKH05 v3
+        -Fix broken link to MorseMicro.com on the EKH05-Demo page
+    </release>
+    <release version="1.2.1" date="2024-10-04">
+        -Fix broken pack 1.2.0
+    </release>
+    <release version="1.2.0" date="2024-10-04">
+        -Auto select BCF based on VFEM
+        -Auto detect Accelerometer sensor address
+        -using correct version for each non-morse component
+    </release>
+    <release version="1.1.0" date="2024-09-27">
+        -Selecting BCF based on VFEM voltage
+        -Auto detect IIS328DQ address
+    </release>
+    <release version="1.0.0" date="2024-09-20">
+        Initial version
+    </release>
+  </releases>
+  <conditions>
+    <condition id="Cortex-M33 condition">
+      <description>CortexM33 core</description>
+      <require Dcore="Cortex-M33"/>
+    </condition>
+    <condition id="Cortex-M4 condition">
+      <description>CortexM4 core</description>
+      <require Dcore="Cortex-M4"/>
+    </condition>
+    <condition id="Cortex-M7 condition">
+      <description>CortexM7 core</description>
+      <require Dcore="Cortex-M7"/>
+    </condition>
+    <condition id="Little-endian condition">
+      <description>Mandating Little-endianness</description>
+      <require Dendian="Little-endian"/>
+    </condition>
+    <condition id="MorseLib source files condition">
+      <description>CMSIS Core and heap_4 with RTOS2 for Cortex-M33 processor</description>
+      <accept Tcompiler="GCC"/>
+      <accept Tcompiler="ARMCC"/>
+      <require Cclass="CMSIS" Cgroup="RTOS2" Csub="Core"/>
+      <require Cclass="CMSIS" Cgroup="RTOS2" Csub="Heap" Cvariant="Heap_4"/>
+      <require Cclass="MM_IoT" Cgroup="BSP-EKH05" Csub="MM6108"/>
+    </condition>
+    <condition id="MM_IoT mm_app_common conditions">
+      <description>mm_app_common dependencies.</description>
+      <require Cclass="MM_IoT" Cgroup="mmipal"/>
+      <require Cclass="MM_IoT" Cgroup="mmconfig"/>
+      <require Cclass="MM_IoT" Cgroup="morselib"/>
+    </condition>
+    <condition id="MM_IoT mmconfig conditions">
+      <description>mmconfig dependencies.</description>
+      <require Cclass="MM_IoT" Cgroup="mmipal"/>
+      <require Cclass="MM_IoT" Cgroup="morselib"/>
+    </condition>
+    <condition id="MM_IoT mmipal conditions">
+      <description>mmipal dependencies.</description>
+      <accept Cclass="FreeRTOS-Libs" Cgroup="FreeRTOS-Plus-TCP"/>
+      <accept Cclass="MM_IoT" Cgroup="mmLwIP"/>
+      <require Cclass="MM_IoT" Cgroup="mmutils"/>
+      <require Cclass="MM_IoT" Cgroup="morselib"/>
+      <require Cclass="MM_IoT" Cgroup="mmpktmem"/>
+    </condition>
+    <condition id="MM_IoT mmiperf conditions">
+      <description>mmiperf dependencies.</description>
+      <accept Cclass="FreeRTOS-Libs" Cgroup="FreeRTOS-Plus-TCP"/>
+      <accept Cclass="MM_IoT" Cgroup="mmLwIP"/>
+      <require Cclass="MM_IoT" Cgroup="morselib"/>
+    </condition>
+    <condition id="MM_IoT mmpktmem conditions">
+      <description>mmpktmem dependencies.</description>
+      <require Cclass="MM_IoT" Cgroup="morselib"/>
+    </condition>
+    <condition id="MM_IoT mmutils conditions">
+      <description>mmutils dependencies.</description>
+      <require Cclass="MM_IoT" Cgroup="morselib"/>
+    </condition>
+    <condition id="MM_IoT mmping conditions">
+      <description>mmping dependencies.</description>
+      <accept Cclass="FreeRTOS-Libs" Cgroup="FreeRTOS-Plus-TCP"/>
+      <accept Cclass="MM_IoT" Cgroup="mmLwIP"/>
+    </condition>
+    <condition id="MM6108-SPI Low Level Driver conditions">
+      <description>MM6108-SPI Low Level Driver conditions.</description>
+      <require Cclass="MM_IoT" Cgroup="mmutils"/>
+      <require Cclass="MM_IoT" Cgroup="morselib"/>
+    </condition>
+    <condition id="MM6108-SDIO Low Level Driver conditions">
+      <description>MM6108-SDIO Low Level Driver conditions.</description>
+      <require Cclass="MM_IoT" Cgroup="mmutils"/>
+      <require Cclass="MM_IoT" Cgroup="morselib"/>
+    </condition>
+    <condition id="MM_IoT mmLwIP conditions">
+      <description>mmLwIP dependencies.</description>
+      <require Cclass="MM_IoT" Cgroup="mmutils"/>
+      <require Cclass="MM_IoT" Cgroup="morselib"/>
+      <deny Cclass="FreeRTOS-Libs" Cgroup="FreeRTOS-Plus-TCP"/>
+    </condition>
+    <condition id="FreeRTOS-Libs FreeRTOS-Plus-TCP conditions">
+      <description>FreeRTOS-Plus-TCP dependencies.</description>
+      <deny Cclass="MM_IoT" Cgroup="mmLwIP"/>
+    </condition>
+    <condition id="MM_IoT IP_STACK condition">
+      <description>Need one of MM_IoT's IP stacks.</description>
+      <accept Cclass="FreeRTOS-Libs" Cgroup="FreeRTOS-Plus-TCP"/>
+      <accept Cclass="MM_IoT" Cgroup="mmLwIP"/>
+    </condition>
+    <condition id="require FreeRTOS-Libs FreeRTOS-Plus-TCP condition">
+      <description>Mandating FreeRTOS-Libs FreeRTOS-Plus-TCP</description>
+      <accept Cclass="FreeRTOS-Libs" Cgroup="FreeRTOS-Plus-TCP"/>
+    </condition>
+    <condition id="require MM_IoT mmLwIP condition">
+      <description>Mandating MM_IoT mmLwIP</description>
+      <accept Cclass="MM_IoT" Cgroup="mmLwIP"/>
+    </condition>
+    <condition id="require FreeRTOS-Libs coreSNTP condition">
+      <description>Mandating FreeRTOS-Libs coreSNTP</description>
+      <require Cclass="FreeRTOS-Libs" Cgroup="coreSNTP"/>
+    </condition>
+    <condition id="require FreeRTOS-Libs FreeRTOS-Plus-TCP and coreSNTP condition">
+      <description>Mandating FreeRTOS-Libs FreeRTOS-Plus-TCP and coreSNTP</description>
+      <accept Cclass="FreeRTOS-Libs" Cgroup="FreeRTOS-Plus-TCP"/>
+      <require Cclass="FreeRTOS-Libs" Cgroup="coreSNTP"/>
+    </condition>
+    <condition id="require MM_IoT mmLwIP and FreeRTOS-Libs coreSNTP condition">
+      <description>Mandating MM_IoT mmLwIP and FreeRTOS-Libs coreSNTP</description>
+      <accept Cclass="MM_IoT" Cgroup="mmLwIP"/>
+      <require Cclass="FreeRTOS-Libs" Cgroup="coreSNTP"/>
+    </condition>
+    <condition id="MM_IoT iperf example conditions">
+      <description>MM_IoT iperf example conditions.</description>
+      <require Cclass="MM_IoT" Cgroup="mmiperf"/>
+      <require Cclass="MM_IoT" Cgroup="mm_app_common"/>
+      <require Cclass="MM_IoT" Cgroup="morselib"/>
+    </condition>
+    <condition id="MM_IoT ping example conditions">
+      <description>MM_IoT ping example conditions.</description>
+      <require Cclass="MM_IoT" Cgroup="mmping"/>
+      <require Cclass="MM_IoT" Cgroup="mm_app_common"/>
+      <require Cclass="MM_IoT" Cgroup="morselib"/>
+    </condition>
+    <condition id="MM_IoT wnm_sleep example conditions">
+      <description>MM_IoT wnm_sleep example conditions.</description>
+      <require Cclass="MM_IoT" Cgroup="mmping"/>
+      <require Cclass="MM_IoT" Cgroup="mm_app_common"/>
+      <require Cclass="MM_IoT" Cgroup="morselib"/>
+    </condition>
+    <condition id="MM_IoT SHT4x conditions">
+      <description>MM_IoT SHT4x conditions.</description>
+      <require Cclass="MM_IoT" Cgroup="BSP-EKH05" Csub="BSP"/>
+    </condition>
+    <condition id="MM_IoT W25Q16JV conditions">
+      <description>MM_IoT W25Q16JV conditions.</description>
+      <require Cclass="MM_IoT" Cgroup="BSP-EKH05" Csub="BSP"/>
+    </condition>
+    <condition id="MM_IoT IIS328DQ conditions">
+      <description>MM_IoT IIS328DQ conditions.</description>
+      <require Cclass="MM_IoT" Cgroup="BSP-EKH05" Csub="BSP"/>
+    </condition>
+    <condition id="MM_IoT OV5640 conditions">
+      <description>MM_IoT OV5640 conditions.</description>
+      <require Cclass="MM_IoT" Cgroup="BSP-EKH05" Csub="BSP"/>
+    </condition>
+    <condition id="MM_IoT EKH05 Demo example conditions">
+      <description>MM_IoT EKH05 Demo example conditions.</description>
+      <require Cclass="MM_IoT" Cgroup="mmLwIP"/>
+      <require Cclass="MM_IoT" Cgroup="mmping"/>
+      <require Cclass="MM_IoT" Cgroup="mm_app_common"/>
+      <require Cclass="MM_IoT" Cgroup="morselib"/>
+    </condition>
+    <condition id="MM_IoT aws_iot example conditions">
+      <description>MM_IoT aws_iot example conditions.</description>
+      <require Cclass="MM_IoT" Cgroup="mbedtls"/>
+      <require Cclass="MM_IoT" Cgroup="mm-tinycbor"/>
+      <require Cclass="FreeRTOS-Libs" Cgroup="backoffAlgorithm"/>
+      <require Cclass="FreeRTOS-Libs" Cgroup="freertos-libs-common"/>
+      <require Cclass="FreeRTOS-Libs" Cgroup="coreJSON"/>
+      <require Cclass="FreeRTOS-Libs" Cgroup="coreMQTT"/>
+      <require Cclass="FreeRTOS-Libs" Cgroup="coreMQTT-Agent"/>
+      <require Cclass="FreeRTOS-Libs" Cgroup="coreSNTP"/>
+      <require Cclass="AWS" Cgroup="AWS-Shadow"/>
+      <require Cclass="AWS" Cgroup="AWS-Fleet-Provisioning"/>
+      <require Cclass="AWS" Cgroup="AWS-common"/>
+      <require Cclass="MM_IoT" Cgroup="mm_app_common"/>
+      <require Cclass="MM_IoT" Cgroup="morselib"/>
+    </condition>
+    <condition id="MM_IoT mqttdemo example conditions">
+      <description>MM_IoT MQTT Demo example conditions.</description>
+      <require Cclass="MM_IoT" Cgroup="mbedtls"/>
+      <require Cclass="FreeRTOS-Libs" Cgroup="freertos-libs-common"/>
+      <require Cclass="FreeRTOS-Libs" Cgroup="coreMQTT"/>
+    </condition>
+    <condition id="MM_IoT sslclient example conditions">
+      <description>MM_IoT SSL Client example conditions.</description>
+      <require Cclass="MM_IoT" Cgroup="mbedtls"/>
+      <require Cclass="MM_IoT" Cgroup="mm_app_common"/>
+      <require Cclass="MM_IoT" Cgroup="morselib"/>
+    </condition>
+    <condition id="MM_IoT rftest application conditions">
+      <description>MM_IoT rf-test application conditions.</description>
+      <require Cclass="MM_IoT" Cgroup="slip"/>
+    </condition>
+    <condition id="MM_IoT porting assistant example conditions">
+      <description>MM_IoT porting assistant example conditions.</description>
+      <require Cclass="MM_IoT" Cgroup="mmutils"/>
+      <require Cclass="MM_IoT" Cgroup="mm_app_common"/>
+      <require Cclass="MM_IoT" Cgroup="morselib"/>
+    </condition>
+  </conditions>
+  <taxonomy>
+    <description Cclass="Board Support">Board Support</description>
+    <description Cclass="MM_IoT">MorseMicro IoT Software Package</description>
+  </taxonomy>
+  <keywords>
+    <keyword>MorseMicro</keyword>
+  </keywords>
+  <examples>
+    <example name="HaLow_example_EKH05_SPI" doc="Abstract.txt" folder="HaLow_example_spi">
+      <description>A HaLow Example Running on EKH05 dev kit.</description>
+      <board name="EKH05" vendor="MorseMicro"/>
+      <project>
+        <environment name="cube" load="HaLow_example_spi.ioc"/>
+      </project>
+      <attributes>
+        <component Cclass="MM_IoT" Cgroup="mm_app_common"/>
+        <component Cclass="MM_IoT" Cgroup="mmconfig"/>
+        <component Cclass="MM_IoT" Cgroup="mmipal"/>
+        <component Cclass="MM_IoT" Cgroup="mmiperf"/>
+        <component Cclass="MM_IoT" Cgroup="Example" Cvariant="iperf"/>
+        <component Cclass="MM_IoT" Cgroup="mmutils"/>
+        <component Cclass="MM_IoT" Cgroup="morselib"/>
+        <component Cclass="MM_IoT" Cgroup="mmLwIP"/>
+        <component Cclass="Board Support" Cgroup="EKH05" Cvariant="SPI"/>
+      </attributes>
+    </example>
+    <example name="HaLow_example_EKH05_SDIO" doc="Abstract.txt" folder="HaLow_example_sdio">
+      <description>A HaLow Example Running on EKH05 dev kit.</description>
+      <board name="EKH05" vendor="MorseMicro"/>
+      <project>
+        <environment name="cube" load="HaLow_example_sdio.ioc"/>
+      </project>
+      <attributes>
+        <component Cclass="MM_IoT" Cgroup="mm_app_common"/>
+        <component Cclass="MM_IoT" Cgroup="mmconfig"/>
+        <component Cclass="MM_IoT" Cgroup="mmipal"/>
+        <component Cclass="MM_IoT" Cgroup="mmiperf"/>
+        <component Cclass="MM_IoT" Cgroup="Example" Cvariant="iperf"/>
+        <component Cclass="MM_IoT" Cgroup="mmutils"/>
+        <component Cclass="MM_IoT" Cgroup="morselib"/>
+        <component Cclass="MM_IoT" Cgroup="mmLwIP"/>
+        <component Cclass="Board Support" Cgroup="EKH05" Cvariant="SPI"/>
+      </attributes>
+    </example>
+  </examples>
+  <components>
+    <bundle Cbundle="MM_IoT" Cclass="MM_IoT" Cversion="2.6.4">
+      <description>Morse Micro Software Components</description>
+      <doc>https://www.morsemicro.com</doc>
+      <component Cgroup="morselib" condition="MorseLib source files condition">
+        <description>This component provides Morse Micro driver with wpa_supplicant integrated, BCF files and some system interfacing source files.</description>
+        <files>
+          <file category="source" name="morselib/with_wpa_supplicant/src/bcf_mf03120.c"/>
+          <file category="source" name="morselib/with_wpa_supplicant/src/bcf_mf08251.c"/>
+          <file category="source" name="morselib/with_wpa_supplicant/src/bcf_mf08551.c"/>
+          <file category="source" name="morselib/with_wpa_supplicant/src/bcf_mf08651_us.c"/>
+          <file category="source" name="morselib/with_wpa_supplicant/src/bcf_aw_hm593_4v3.c"/>
+          <file category="source" name="morselib/with_wpa_supplicant/src/bcf_aw_hm593.c"/>
+          <file category="source" name="morselib/with_wpa_supplicant/src/fw_mm6108.c"/>
+          <file category="source" name="morselib/with_wpa_supplicant/src/shim_freertos/mmosal_shim_freertos.c"/>
+          <file category="source" name="morselib/with_wpa_supplicant/src/shim_freertos/hooks.c"/>
+          <file category="source" name="morselib/with_wpa_supplicant/src/shim_freertos/realloc.c"/>
+          <file category="source" name="morselib/with_wpa_supplicant/src/shim_freertos/gettimeofday.c"/>
+          <file category="source" name="morselib/with_wpa_supplicant/src/shim_freertos/mmhal_wlan_binaries.c"/>
+          <file category="library" name="morselib/with_wpa_supplicant/lib/arm-cortex-m33f/libmorse.a" condition="Cortex-M33 condition"/>
+          <file category="header" name="morselib/with_wpa_supplicant/include/mm_mbedtls_config.h"/>
+          <file category="header" name="morselib/with_wpa_supplicant/include/mmhal.h"/>
+          <file category="header" name="morselib/with_wpa_supplicant/include/mmhal_flash.h"/>
+          <file category="header" name="morselib/with_wpa_supplicant/include/mmhal_uart.h"/>
+          <file category="header" name="morselib/with_wpa_supplicant/include/mmhal_wlan.h"/>
+          <file category="header" name="morselib/with_wpa_supplicant/include/mbin.h"/>
+          <file category="header" name="morselib/with_wpa_supplicant/include/mmlog.h"/>
+          <file category="header" name="morselib/with_wpa_supplicant/include/mmosal.h"/>
+          <file category="header" name="morselib/with_wpa_supplicant/include/mmpkt.h"/>
+          <file category="header" name="morselib/with_wpa_supplicant/include/mmpkt_list.h"/>
+          <file category="header" name="morselib/with_wpa_supplicant/include/mmwlan.h"/>
+          <file category="header" name="morselib/with_wpa_supplicant/include/emmet.h"/>
+          <file category="header" name="morselib/with_wpa_supplicant/include/endian.h" condition="Little-endian condition"/>
+          <file category="header" name="morselib/with_wpa_supplicant/include/mmport.h"/>
+          <file category="header" name="morselib/with_wpa_supplicant/include/mmwlan_regdb.h"/>
+        </files>
+      </component>
+      <component Cgroup="mmconfig" condition="MM_IoT mmconfig conditions">
+        <description>This component defines the API and provides a volatile implementation for configuring the examples in this pack.</description>
+        <files>
+          <file category="source" name="mmconfig/configs.c" attr="template"/>
+          <file category="source" name="mmconfig/mmconfig.c"/>
+          <file category="header" name="mmconfig/mmconfig.h"/>
+        </files>
+      </component>
+      <component Cgroup="mm_app_common" condition="MM_IoT mm_app_common conditions">
+        <description>This component contains application helper routines for loading configurations as well as initializing/de-initializing the Wireless LAN interface and IP configuration.</description>
+        <files>
+          <file category="source" name="mm_app_common/mm_app_common.c"/>
+          <file category="header" name="mm_app_common/mm_app_common.h"/>
+          <file category="source" name="mm_app_common/mm_app_loadconfig.c"/>
+          <file category="header" name="mm_app_common/mm_app_loadconfig.h"/>
+        </files>
+      </component>
+      <component Cgroup="mmipal" condition="MM_IoT mmipal conditions">
+        <description>This API provides a layer of abstraction from the underlying IP stack for common operations such as configuring the link and getting link status.</description>
+        <files>
+          <file category="header" name="mmipal/mmipal.h"/>
+          <file category="source" name="mmipal/freertosplustcp/mmipal_freertosplustcp.c" condition="require FreeRTOS-Libs FreeRTOS-Plus-TCP condition"/>
+          <file category="source" name="mmipal/lwip/mmipal_lwip.c" condition="require MM_IoT mmLwIP condition"/>
+          <file category="source" name="mmipal/lwip/mmnetif.c" condition="require MM_IoT mmLwIP condition"/>
+          <file category="header" name="mmipal/lwip/mmnetif.h" condition="require MM_IoT mmLwIP condition"/>
+        </files>
+      </component>
+      <component Cgroup="mmutils" condition="MM_IoT mmutils conditions">
+        <description>This component provides general purpose macros and functions.</description>
+        <files>
+          <file category="header" name="mmutils/mmutils.h"/>
+          <file category="source" name="mmutils/mmutils_wlan.c"/>
+          <file category="header" name="mmutils/mmbuf.h"/>
+          <file category="source" name="mmutils/mmbuf.c"/>
+          <file category="header" name="mmutils/mmcrc.h"/>
+          <file category="source" name="mmutils/mmcrc.c"/>
+        </files>
+      </component>
+      <component Cgroup="mmLwIP" condition="MM_IoT mmLwIP conditions" Cversion="2.2.0">
+        <description>LwIP is a small independent implementation of the TCP/IP protocol suite.</description>
+        <files>
+          <file category="other" name="mmLwIP/CHANGELOG"/>
+          <file category="other" name="mmLwIP/COPYING"/>
+          <file category="other" name="mmLwIP/FEATURES"/>
+          <file category="other" name="mmLwIP/README"/>
+          <file category="other" name="mmLwIP/UPGRADING"/>
+          <file category="source" name="mmLwIP/port/lwip_mmwlan.c"/>
+          <file category="header" name="mmLwIP/port/lwipopts.h" attr="template"/>
+          <file category="header" name="mmLwIP/port/lwip_mmwlan.h"/>
+          <file category="source" name="mmLwIP/port/arch/sys_arch.c"/>
+          <file category="header" name="mmLwIP/port/arch/cc.h"/>
+          <file category="header" name="mmLwIP/port/arch/sys_arch.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip4_frag.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip6.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/tcpip.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/if_api.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/icmp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/altcp_tcp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/memp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/sio.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/stats.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/pbuf.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/sockets.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip4.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/mld6.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/errno.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/arch.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/netif.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/mem.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ethip6.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/timeouts.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/inet.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/netdb.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/debug.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/def.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip_addr.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/altcp_tls.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip6_addr.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/tcpbase.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/altcp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/err.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/netifapi.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/opt.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/igmp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip6_zone.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip4_addr.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/inet_chksum.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/etharp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/udp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/icmp6.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/dhcp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/init.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/autoip.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/nd6.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/dns.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/sys.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/tcp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip6_frag.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/netbuf.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/raw.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/acd.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/api.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/dhcp6.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/snmp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmpv3.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_mib2.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/netbiosns_opts.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/altcp_tls_mbedtls_opts.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/sntp_opts.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/smtp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_opts.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/http_client.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_threadsync.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/mdns.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/mqtt_priv.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/lwiperf.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_table.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/mqtt_opts.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_scalar.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/mqtt.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_snmpv2_usm.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/netbiosns.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/smtp_opts.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/altcp_proxyconnect.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/sntp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/fs.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/tftp_common.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/tftp_opts.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/tftp_server.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/httpd_opts.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/httpd.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/mdns_domain.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/mdns_priv.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/mdns_opts.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/mdns_out.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_core.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_snmpv2_framework.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/mem_priv.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/raw_priv.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/tcpip_priv.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/altcp_priv.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/tcp_priv.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/memp_std.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/nd6_priv.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/memp_priv.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/sockets_priv.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/api_msg.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/acd.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/ip6.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/icmp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/ip.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/iana.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/ip4.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/mld6.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/ieee.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/igmp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/etharp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/udp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/icmp6.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/dhcp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/autoip.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/nd6.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/dns.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/tcp.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/ethernet.h"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/dhcp6.h"/>
+          <file category="header" name="mmLwIP/src/include/netif/lowpan6_common.h"/>
+          <file category="header" name="mmLwIP/src/include/netif/zepif.h"/>
+          <file category="header" name="mmLwIP/src/include/netif/lowpan6.h"/>
+          <file category="header" name="mmLwIP/src/include/netif/bridgeif_opts.h"/>
+          <file category="header" name="mmLwIP/src/include/netif/lowpan6_opts.h"/>
+          <file category="header" name="mmLwIP/src/include/netif/lowpan6_ble.h"/>
+          <file category="header" name="mmLwIP/src/include/netif/bridgeif.h"/>
+          <file category="header" name="mmLwIP/src/include/netif/etharp.h"/>
+          <file category="header" name="mmLwIP/src/include/netif/ethernet.h"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/ppp_opts.h"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/ppp_impl.h"/>
+          <file category="header" name="mmLwIP/src/include/compat/stdc/errno.h"/>
+          <file category="header" name="mmLwIP/src/include/compat/posix/netdb.h"/>
+          <file category="header" name="mmLwIP/src/include/compat/posix/sys/socket.h"/>
+          <file category="header" name="mmLwIP/src/include/compat/posix/net/if.h"/>
+          <file category="header" name="mmLwIP/src/include/compat/posix/arpa/inet.h"/>
+          <file category="source" name="mmLwIP/src/netif/ethernet.c"/>
+          <file category="source" name="mmLwIP/src/api/api_lib.c"/>
+          <file category="source" name="mmLwIP/src/api/api_msg.c"/>
+          <file category="source" name="mmLwIP/src/api/err.c"/>
+          <file category="source" name="mmLwIP/src/api/if_api.c"/>
+          <file category="source" name="mmLwIP/src/api/netbuf.c"/>
+          <file category="source" name="mmLwIP/src/api/netdb.c"/>
+          <file category="source" name="mmLwIP/src/api/netifapi.c"/>
+          <file category="source" name="mmLwIP/src/api/sockets.c"/>
+          <file category="source" name="mmLwIP/src/api/tcpip.c"/>
+          <file category="source" name="mmLwIP/src/core/altcp.c"/>
+          <file category="source" name="mmLwIP/src/core/altcp_alloc.c"/>
+          <file category="source" name="mmLwIP/src/core/altcp_tcp.c"/>
+          <file category="source" name="mmLwIP/src/core/def.c"/>
+          <file category="source" name="mmLwIP/src/core/dns.c"/>
+          <file category="source" name="mmLwIP/src/core/inet_chksum.c"/>
+          <file category="source" name="mmLwIP/src/core/init.c"/>
+          <file category="source" name="mmLwIP/src/core/ip.c"/>
+          <file category="source" name="mmLwIP/src/core/mem.c"/>
+          <file category="source" name="mmLwIP/src/core/memp.c"/>
+          <file category="source" name="mmLwIP/src/core/netif.c"/>
+          <file category="source" name="mmLwIP/src/core/pbuf.c"/>
+          <file category="source" name="mmLwIP/src/core/raw.c"/>
+          <file category="source" name="mmLwIP/src/core/stats.c"/>
+          <file category="source" name="mmLwIP/src/core/sys.c"/>
+          <file category="source" name="mmLwIP/src/core/tcp.c"/>
+          <file category="source" name="mmLwIP/src/core/tcp_in.c"/>
+          <file category="source" name="mmLwIP/src/core/tcp_out.c"/>
+          <file category="source" name="mmLwIP/src/core/timeouts.c"/>
+          <file category="source" name="mmLwIP/src/core/udp.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/acd.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/autoip.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/dhcp.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/etharp.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/icmp.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/igmp.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/ip4.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/ip4_addr.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/ip4_frag.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv6/dhcp6.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv6/ethip6.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv6/icmp6.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv6/inet6.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv6/ip6.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv6/ip6_addr.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv6/ip6_frag.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv6/mld6.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv6/nd6.c"/>
+          <file category="include" name="mmLwIP/src/include/"/>
+        </files>
+      </component>
+      <component Cgroup="mmping" condition="MM_IoT mmping conditions">
+        <description>This component provides the ICMP echo (ping) request implementation.</description>
+        <files>
+          <file category="source" name="mmping/mmping_lwip.c" condition="require MM_IoT mmLwIP condition"/>
+          <file category="source" name="mmping/mmping_freertosplustcp.c" condition="require FreeRTOS-Libs FreeRTOS-Plus-TCP condition"/>
+          <file category="header" name="mmping/mmping.h"/>
+        </files>
+      </component>
+      <component Cgroup="slip">
+        <description>Serial Line Internet Protocol (SLIP) implementation. SLIP was originally designed as an encapsulation for IP over serial ports, but can be used for framing of any packet-based data for transmission over a serial port.</description>
+        <files>
+          <file category="source" name="slip/slip.c"/>
+          <file category="header" name="slip/slip.h"/>
+        </files>
+      </component>
+      <component Cgroup="mmiperf" condition="MM_IoT mmiperf conditions">
+        <description>This provides an iperf implementation that supports both TCP and UDP.</description>
+        <files>
+          <file category="header" name="mmiperf/mmiperf.h"/>
+          <file category="source" name="mmiperf/common/mmiperf_common.c"/>
+          <file category="source" name="mmiperf/common/mmiperf_data.c"/>
+          <file category="source" name="mmiperf/common/mmiperf_list.c"/>
+          <file category="header" name="mmiperf/common/mmiperf_private.h"/>
+          <file category="source" name="mmiperf/freertosplustcp/mmiperf_tcp.c" condition="require FreeRTOS-Libs FreeRTOS-Plus-TCP condition"/>
+          <file category="source" name="mmiperf/freertosplustcp/mmiperf_udp.c" condition="require FreeRTOS-Libs FreeRTOS-Plus-TCP condition"/>
+          <file category="source" name="mmiperf/freertosplustcp/mmiperf_freertosplustcp_common.c" condition="require FreeRTOS-Libs FreeRTOS-Plus-TCP condition"/>
+          <file category="header" name="mmiperf/freertosplustcp/mmiperf_freertosplustcp.h" condition="require FreeRTOS-Libs FreeRTOS-Plus-TCP condition"/>
+          <file category="source" name="mmiperf/lwip/mmiperf_tcp.c" condition="require MM_IoT mmLwIP condition"/>
+          <file category="source" name="mmiperf/lwip/mmiperf_udp.c" condition="require MM_IoT mmLwIP condition"/>
+          <file category="header" name="mmiperf/lwip/mmiperf_lwip.h" condition="require MM_IoT mmLwIP condition"/>
+        </files>
+      </component>
+      <component Cgroup="mmpktmem" condition="MM_IoT mmpktmem conditions" Cvariant="heap">
+        <description>This component provides memory pools for TX data, TX command and RX data queues of packets, and provide functions to manage them. Heap allocation allows the same heap memory to be used for crypto (during the association phase) and for packet memory. This is useful for resource constrained devices like STM32WB55 where we can’t afford to allocate the packet memory separately and the heap memory separately.</description>
+        <files>
+          <file category="source" name="mmpktmem/heap/mmpktmem_heap.c"/>
+        </files>
+      </component>
+      <component Cgroup="mmpktmem" condition="MM_IoT mmpktmem conditions" Cvariant="static">
+        <description>This component provides memory pools for TX data, TX command and RX data queues of packets, and provide functions to manage them. Static allocation uses more RAM because you need to have heap memory for things like WPA crypto, but at the same time you have statically allocated packet memory. This is more robust because your packet memory will not exhaust your heap and allocation/free should be more efficient.</description>
+        <files>
+          <file category="source" name="mmpktmem/static/mmpktmem_static.c"/>
+        </files>
+      </component>
+      <component Cgroup="mbedtls" Cversion="3.6.0">
+        <description>A C library that implements cryptographic primitives.</description>
+        <files>
+          <file category="other" name="mbedtls/LICENSE"/>
+          <file category="other" name="mbedtls/README.md"/>
+          <file category="other" name="mbedtls/include/CMakeLists.txt"/>
+          <file category="header" name="mbedtls/include/threading_alt.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/aes.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/aria.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/asn1.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/asn1write.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/base64.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/bignum.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/block_cipher.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/build_info.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/camellia.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/ccm.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/chacha20.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/chachapoly.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/check_config.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/cipher.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/cmac.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/compat-2.x.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/config_adjust_legacy_crypto.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/config_adjust_legacy_from_psa.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/config_adjust_psa_from_legacy.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/config_adjust_psa_superset_legacy.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/config_adjust_ssl.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/config_adjust_x509.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/config_psa.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/constant_time.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/ctr_drbg.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/debug.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/des.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/dhm.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/ecdh.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/ecdsa.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/ecjpake.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/ecp.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/entropy.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/error.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/gcm.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/hkdf.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/hmac_drbg.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/lms.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/mbedtls_config.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/md.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/md5.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/memory_buffer_alloc.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/net_sockets.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/nist_kw.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/oid.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/pem.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/pk.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/pkcs12.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/pkcs5.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/pkcs7.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/platform.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/platform_time.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/platform_util.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/poly1305.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/private_access.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/psa_util.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/ripemd160.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/rsa.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/sha1.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/sha256.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/sha3.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/sha512.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/ssl.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/ssl_cache.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/ssl_ciphersuites.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/ssl_cookie.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/ssl_ticket.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/threading.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/timing.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/version.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/x509.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/x509_crl.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/x509_crt.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/x509_csr.h"/>
+          <file category="header" name="mbedtls/include/mbedtls/net.h"/>
+          <file category="header" name="mbedtls/include/psa/build_info.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_adjust_auto_enabled.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_adjust_config_key_pair_types.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_adjust_config_synonyms.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_builtin_composites.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_builtin_key_derivation.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_builtin_primitives.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_compat.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_config.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_driver_common.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_driver_contexts_composites.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_driver_contexts_key_derivation.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_driver_contexts_primitives.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_extra.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_legacy.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_platform.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_se_driver.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_sizes.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_struct.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_types.h"/>
+          <file category="header" name="mbedtls/include/psa/crypto_values.h"/>
+          <file category="other" name="mbedtls/library/CMakeLists.txt"/>
+          <file category="other" name="mbedtls/library/Makefile"/>
+          <file category="source" name="mbedtls/library/aes.c"/>
+          <file category="source" name="mbedtls/library/aesce.c"/>
+          <file category="header" name="mbedtls/library/aesce.h"/>
+          <file category="source" name="mbedtls/library/aesni.c"/>
+          <file category="header" name="mbedtls/library/aesni.h"/>
+          <file category="header" name="mbedtls/library/alignment.h"/>
+          <file category="source" name="mbedtls/library/aria.c"/>
+          <file category="source" name="mbedtls/library/asn1parse.c"/>
+          <file category="source" name="mbedtls/library/asn1write.c"/>
+          <file category="source" name="mbedtls/library/base64.c"/>
+          <file category="header" name="mbedtls/library/base64_internal.h"/>
+          <file category="source" name="mbedtls/library/bignum.c"/>
+          <file category="source" name="mbedtls/library/bignum_core.c"/>
+          <file category="header" name="mbedtls/library/bignum_core.h"/>
+          <file category="source" name="mbedtls/library/bignum_mod.c"/>
+          <file category="header" name="mbedtls/library/bignum_mod.h"/>
+          <file category="source" name="mbedtls/library/bignum_mod_raw.c"/>
+          <file category="header" name="mbedtls/library/bignum_mod_raw.h"/>
+          <file category="header" name="mbedtls/library/bignum_mod_raw_invasive.h"/>
+          <file category="source" name="mbedtls/library/block_cipher.c"/>
+          <file category="header" name="mbedtls/library/block_cipher_internal.h"/>
+          <file category="header" name="mbedtls/library/bn_mul.h"/>
+          <file category="source" name="mbedtls/library/camellia.c"/>
+          <file category="source" name="mbedtls/library/ccm.c"/>
+          <file category="source" name="mbedtls/library/chacha20.c"/>
+          <file category="source" name="mbedtls/library/chachapoly.c"/>
+          <file category="header" name="mbedtls/library/check_crypto_config.h"/>
+          <file category="source" name="mbedtls/library/cipher.c"/>
+          <file category="source" name="mbedtls/library/cipher_wrap.c"/>
+          <file category="header" name="mbedtls/library/cipher_wrap.h"/>
+          <file category="source" name="mbedtls/library/cmac.c"/>
+          <file category="header" name="mbedtls/library/common.h"/>
+          <file category="source" name="mbedtls/library/constant_time.c"/>
+          <file category="header" name="mbedtls/library/constant_time_impl.h"/>
+          <file category="header" name="mbedtls/library/constant_time_internal.h"/>
+          <file category="header" name="mbedtls/library/ctr.h"/>
+          <file category="source" name="mbedtls/library/ctr_drbg.c"/>
+          <file category="source" name="mbedtls/library/debug.c"/>
+          <file category="header" name="mbedtls/library/debug_internal.h"/>
+          <file category="source" name="mbedtls/library/des.c"/>
+          <file category="source" name="mbedtls/library/dhm.c"/>
+          <file category="source" name="mbedtls/library/ecdh.c"/>
+          <file category="source" name="mbedtls/library/ecdsa.c"/>
+          <file category="source" name="mbedtls/library/ecjpake.c"/>
+          <file category="source" name="mbedtls/library/ecp.c"/>
+          <file category="source" name="mbedtls/library/ecp_curves.c"/>
+          <file category="source" name="mbedtls/library/ecp_curves_new.c"/>
+          <file category="header" name="mbedtls/library/ecp_internal_alt.h"/>
+          <file category="header" name="mbedtls/library/ecp_invasive.h"/>
+          <file category="source" name="mbedtls/library/entropy.c"/>
+          <file category="source" name="mbedtls/library/entropy_poll.c"/>
+          <file category="header" name="mbedtls/library/entropy_poll.h"/>
+          <file category="source" name="mbedtls/library/error.c"/>
+          <file category="source" name="mbedtls/library/gcm.c"/>
+          <file category="source" name="mbedtls/library/hkdf.c"/>
+          <file category="source" name="mbedtls/library/hmac_drbg.c"/>
+          <file category="source" name="mbedtls/library/lmots.c"/>
+          <file category="header" name="mbedtls/library/lmots.h"/>
+          <file category="source" name="mbedtls/library/lms.c"/>
+          <file category="source" name="mbedtls/library/md.c"/>
+          <file category="source" name="mbedtls/library/md5.c"/>
+          <file category="header" name="mbedtls/library/md_psa.h"/>
+          <file category="header" name="mbedtls/library/md_wrap.h"/>
+          <file category="source" name="mbedtls/library/memory_buffer_alloc.c"/>
+          <file category="header" name="mbedtls/library/mps_common.h"/>
+          <file category="header" name="mbedtls/library/mps_error.h"/>
+          <file category="source" name="mbedtls/library/mps_reader.c"/>
+          <file category="header" name="mbedtls/library/mps_reader.h"/>
+          <file category="source" name="mbedtls/library/mps_trace.c"/>
+          <file category="header" name="mbedtls/library/mps_trace.h"/>
+          <file category="source" name="mbedtls/library/nist_kw.c"/>
+          <file category="source" name="mbedtls/library/oid.c"/>
+          <file category="source" name="mbedtls/library/padlock.c"/>
+          <file category="header" name="mbedtls/library/padlock.h"/>
+          <file category="source" name="mbedtls/library/pem.c"/>
+          <file category="source" name="mbedtls/library/pk.c"/>
+          <file category="source" name="mbedtls/library/pk_ecc.c"/>
+          <file category="header" name="mbedtls/library/pk_internal.h"/>
+          <file category="source" name="mbedtls/library/pk_wrap.c"/>
+          <file category="header" name="mbedtls/library/pk_wrap.h"/>
+          <file category="source" name="mbedtls/library/pkcs12.c"/>
+          <file category="source" name="mbedtls/library/pkcs5.c"/>
+          <file category="source" name="mbedtls/library/pkcs7.c"/>
+          <file category="source" name="mbedtls/library/pkparse.c"/>
+          <file category="source" name="mbedtls/library/pkwrite.c"/>
+          <file category="header" name="mbedtls/library/pkwrite.h"/>
+          <file category="source" name="mbedtls/library/platform.c"/>
+          <file category="source" name="mbedtls/library/platform_util.c"/>
+          <file category="source" name="mbedtls/library/poly1305.c"/>
+          <file category="source" name="mbedtls/library/psa_crypto.c"/>
+          <file category="source" name="mbedtls/library/psa_crypto_aead.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_aead.h"/>
+          <file category="source" name="mbedtls/library/psa_crypto_cipher.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_cipher.h"/>
+          <file category="source" name="mbedtls/library/psa_crypto_client.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_core.h"/>
+          <file category="header" name="mbedtls/library/psa_crypto_core_common.h"/>
+          <file category="header" name="mbedtls/library/psa_crypto_driver_wrappers.h"/>
+          <file category="source" name="mbedtls/library/psa_crypto_driver_wrappers_no_static.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_driver_wrappers_no_static.h"/>
+          <file category="source" name="mbedtls/library/psa_crypto_ecp.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_ecp.h"/>
+          <file category="source" name="mbedtls/library/psa_crypto_ffdh.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_ffdh.h"/>
+          <file category="source" name="mbedtls/library/psa_crypto_hash.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_hash.h"/>
+          <file category="header" name="mbedtls/library/psa_crypto_invasive.h"/>
+          <file category="header" name="mbedtls/library/psa_crypto_its.h"/>
+          <file category="source" name="mbedtls/library/psa_crypto_mac.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_mac.h"/>
+          <file category="source" name="mbedtls/library/psa_crypto_pake.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_pake.h"/>
+          <file category="header" name="mbedtls/library/psa_crypto_random_impl.h"/>
+          <file category="source" name="mbedtls/library/psa_crypto_rsa.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_rsa.h"/>
+          <file category="source" name="mbedtls/library/psa_crypto_se.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_se.h"/>
+          <file category="source" name="mbedtls/library/psa_crypto_slot_management.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_slot_management.h"/>
+          <file category="source" name="mbedtls/library/psa_crypto_storage.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_storage.h"/>
+          <file category="source" name="mbedtls/library/psa_its_file.c"/>
+          <file category="source" name="mbedtls/library/psa_util.c"/>
+          <file category="header" name="mbedtls/library/psa_util_internal.h"/>
+          <file category="source" name="mbedtls/library/ripemd160.c"/>
+          <file category="source" name="mbedtls/library/rsa.c"/>
+          <file category="source" name="mbedtls/library/rsa_alt_helpers.c"/>
+          <file category="header" name="mbedtls/library/rsa_alt_helpers.h"/>
+          <file category="header" name="mbedtls/library/rsa_internal.h"/>
+          <file category="source" name="mbedtls/library/sha1.c"/>
+          <file category="source" name="mbedtls/library/sha256.c"/>
+          <file category="source" name="mbedtls/library/sha3.c"/>
+          <file category="source" name="mbedtls/library/sha512.c"/>
+          <file category="source" name="mbedtls/library/ssl_cache.c"/>
+          <file category="source" name="mbedtls/library/ssl_ciphersuites.c"/>
+          <file category="header" name="mbedtls/library/ssl_ciphersuites_internal.h"/>
+          <file category="source" name="mbedtls/library/ssl_client.c"/>
+          <file category="header" name="mbedtls/library/ssl_client.h"/>
+          <file category="source" name="mbedtls/library/ssl_cookie.c"/>
+          <file category="header" name="mbedtls/library/ssl_debug_helpers.h"/>
+          <file category="source" name="mbedtls/library/ssl_debug_helpers_generated.c"/>
+          <file category="header" name="mbedtls/library/ssl_misc.h"/>
+          <file category="source" name="mbedtls/library/ssl_msg.c"/>
+          <file category="source" name="mbedtls/library/ssl_ticket.c"/>
+          <file category="source" name="mbedtls/library/ssl_tls.c"/>
+          <file category="source" name="mbedtls/library/ssl_tls12_client.c"/>
+          <file category="source" name="mbedtls/library/ssl_tls12_server.c"/>
+          <file category="source" name="mbedtls/library/ssl_tls13_client.c"/>
+          <file category="source" name="mbedtls/library/ssl_tls13_generic.c"/>
+          <file category="header" name="mbedtls/library/ssl_tls13_invasive.h"/>
+          <file category="source" name="mbedtls/library/ssl_tls13_keys.c"/>
+          <file category="header" name="mbedtls/library/ssl_tls13_keys.h"/>
+          <file category="source" name="mbedtls/library/ssl_tls13_server.c"/>
+          <file category="source" name="mbedtls/library/threading.c"/>
+          <file category="source" name="mbedtls/library/version.c"/>
+          <file category="source" name="mbedtls/library/version_features.c"/>
+          <file category="source" name="mbedtls/library/x509.c"/>
+          <file category="source" name="mbedtls/library/x509_create.c"/>
+          <file category="source" name="mbedtls/library/x509_crl.c"/>
+          <file category="source" name="mbedtls/library/x509_crt.c"/>
+          <file category="source" name="mbedtls/library/x509_csr.c"/>
+          <file category="header" name="mbedtls/library/x509_internal.h"/>
+          <file category="source" name="mbedtls/library/x509write.c"/>
+          <file category="source" name="mbedtls/library/x509write_crt.c"/>
+          <file category="source" name="mbedtls/library/x509write_csr.c"/>
+          <file category="source" name="mbedtls/library/net_lwip.c" condition="require MM_IoT mmLwIP condition"/>
+          <file category="source" name="mbedtls/library/net_freertosplustcp.c" condition="require FreeRTOS-Libs FreeRTOS-Plus-TCP condition"/>
+          <file category="source" name="mbedtls/library/mbedtls_platform.c"/>
+          <file category="include" name="mbedtls/include"/>
+        </files>
+      </component>
+      <component Cgroup="mm-tinycbor" Cversion="0.6.0">
+        <description>Concise Binary Object Representation (CBOR) Library</description>
+        <files>
+          <file category="other" name="mm-tinycbor/LICENSE"/>
+          <file category="other" name="mm-tinycbor/README"/>
+          <file category="other" name="mm-tinycbor/src/cbor.dox"/>
+          <file category="header" name="mm-tinycbor/src/cbor.h"/>
+          <file category="source" name="mm-tinycbor/src/cborencoder.c"/>
+          <file category="source" name="mm-tinycbor/src/cborencoder_close_container_checked.c"/>
+          <file category="source" name="mm-tinycbor/src/cborencoder_float.c"/>
+          <file category="source" name="mm-tinycbor/src/cborerrorstrings.c"/>
+          <file category="header" name="mm-tinycbor/src/cborinternal_p.h"/>
+          <file category="header" name="mm-tinycbor/src/cborjson.h"/>
+          <file category="source" name="mm-tinycbor/src/cborparser.c"/>
+          <file category="source" name="mm-tinycbor/src/cborparser_dup_string.c"/>
+          <file category="source" name="mm-tinycbor/src/cborparser_float.c"/>
+          <file category="source" name="mm-tinycbor/src/cborpretty.c"/>
+          <file category="source" name="mm-tinycbor/src/cborpretty_stdio.c"/>
+          <file category="source" name="mm-tinycbor/src/cbortojson.c"/>
+          <file category="source" name="mm-tinycbor/src/cborvalidation.c"/>
+          <file category="header" name="mm-tinycbor/src/compilersupport_p.h"/>
+          <file category="other" name="mm-tinycbor/src/parsetags.pl"/>
+          <file category="other" name="mm-tinycbor/src/src.pri"/>
+          <file category="other" name="mm-tinycbor/src/tags.txt"/>
+          <file category="header" name="mm-tinycbor/src/tinycbor-version.h"/>
+          <file category="other" name="mm-tinycbor/src/tinycbor.pro"/>
+          <file category="header" name="mm-tinycbor/src/utf8_p.h"/>
+        </files>
+      </component>
+      <component Cgroup="BSP-EKH05" Csub="BSP" Cversion="1.5.0">
+        <description>EKH05 BSP interface.</description>
+        <files>
+          <file category="header" name="BSP-EKH05/bsp/Inc/ekh05_bus.h"/>
+          <file category="header" name="BSP-EKH05/bsp/Inc/ekh05_camera.h"/>
+          <file category="header" name="BSP-EKH05/bsp/Inc/ekh05_errno.h"/>
+          <file category="source" name="BSP-EKH05/bsp/Src/ekh05_bus.c"/>
+          <file category="source" name="BSP-EKH05/bsp/Src/ekh05_camera.c"/>
+          <file category="header" name="BSP-EKH05/bsp/common/camera.h"/>
+        </files>
+      </component>
+      <component Cgroup="BSP-EKH05" Csub="SHT4x" condition="MM_IoT SHT4x conditions" Cversion="1.1.0">
+        <description>Sensirion SHT4x Temprature and Humidity sensor driver.</description>
+        <files>
+          <file category="other" name="BSP-EKH05/components/sht4x/CHANGELOG.md"/>
+          <file category="other" name="BSP-EKH05/components/sht4x/LICENSE"/>
+          <file category="other" name="BSP-EKH05/components/sht4x/README.md"/>
+          <file category="source" name="BSP-EKH05/components/sht4x/sensirion_common.c"/>
+          <file category="header" name="BSP-EKH05/components/sht4x/sensirion_common.h"/>
+          <file category="header" name="BSP-EKH05/components/sht4x/sensirion_config.h"/>
+          <file category="source" name="BSP-EKH05/components/sht4x/sensirion_i2c.c"/>
+          <file category="header" name="BSP-EKH05/components/sht4x/sensirion_i2c.h"/>
+          <file category="source" name="BSP-EKH05/components/sht4x/sensirion_i2c_hal.c"/>
+          <file category="header" name="BSP-EKH05/components/sht4x/sensirion_i2c_hal.h"/>
+          <file category="source" name="BSP-EKH05/components/sht4x/sht4x_i2c.c"/>
+          <file category="header" name="BSP-EKH05/components/sht4x/sht4x_i2c.h"/>
+          <file category="other" name="BSP-EKH05/components/sht4x/images/SHT40_pinout.png"/>
+          <file category="other" name="BSP-EKH05/components/sht4x/images/SHT4x.png"/>
+        </files>
+      </component>
+      <component Cgroup="BSP-EKH05" Csub="W25Q16JV" condition="MM_IoT W25Q16JV conditions" Cversion="1.1.0">
+        <description>W25Q16JV Quad SPI flash memory driver.</description>
+        <files>
+          <file category="source" name="BSP-EKH05/components/w25q16jv/w25q16jv.c"/>
+          <file category="header" name="BSP-EKH05/components/w25q16jv/w25q16jv.h"/>
+        </files>
+      </component>
+      <component Cgroup="BSP-EKH05" Csub="IIS328DQ" condition="MM_IoT IIS328DQ conditions" Cversion="2.0.0">
+        <description>ST IIS328DQ accelerometer sensor driver.</description>
+        <files>
+          <file category="other" name="BSP-EKH05/components/iis328dq/LICENSE"/>
+          <file category="other" name="BSP-EKH05/components/iis328dq/README.md"/>
+          <file category="other" name="BSP-EKH05/components/iis328dq/Release_Notes.md"/>
+          <file category="source" name="BSP-EKH05/components/iis328dq/iis328dq_reg.c"/>
+          <file category="header" name="BSP-EKH05/components/iis328dq/iis328dq_reg.h"/>
+        </files>
+      </component>
+      <component Cgroup="BSP-EKH05" Csub="OV5640" condition="MM_IoT OV5640 conditions" Cversion="4.0.2">
+        <description>Omnivision OV5640 camera driver.</description>
+        <files>
+          <file category="other" name="BSP-EKH05/components/ov5640/LICENSE.md"/>
+          <file category="other" name="BSP-EKH05/components/ov5640/LICENSE.txt"/>
+          <file category="other" name="BSP-EKH05/components/ov5640/Release_Notes.html"/>
+          <file category="source" name="BSP-EKH05/components/ov5640/ov5640.c"/>
+          <file category="header" name="BSP-EKH05/components/ov5640/ov5640.h"/>
+          <file category="source" name="BSP-EKH05/components/ov5640/ov5640_reg.c"/>
+          <file category="header" name="BSP-EKH05/components/ov5640/ov5640_reg.h"/>
+          <file category="other" name="BSP-EKH05/components/ov5640/_htmresc/Add_button.svg"/>
+          <file category="other" name="BSP-EKH05/components/ov5640/_htmresc/Update.svg"/>
+          <file category="other" name="BSP-EKH05/components/ov5640/_htmresc/favicon.png"/>
+          <file category="other" name="BSP-EKH05/components/ov5640/_htmresc/mini-st_2020.css"/>
+          <file category="other" name="BSP-EKH05/components/ov5640/_htmresc/st_logo.png"/>
+          <file category="other" name="BSP-EKH05/components/ov5640/_htmresc/st_logo_2020.png"/>
+        </files>
+      </component>
+      <component Cgroup="BSP-EKH05" Csub="MM6108" Cvariant="SPI" condition="MM6108-SPI Low Level Driver conditions">
+        <description>MM6108-SPI low level driver for EKH05</description>
+        <files>
+          <file category="header" name="BSP-EKH05/components/mm6108/spi/mmekh05_hal_common.h"/>
+          <file category="source" name="BSP-EKH05/components/mm6108/spi/mmhal.c"/>
+          <file category="source" name="BSP-EKH05/components/mm6108/spi/mmhal_uart.c"/>
+          <file category="source" name="BSP-EKH05/components/mm6108/spi/wlan_hal.c"/>
+          <file category="source" name="BSP-EKH05/components/mm6108/spi/mm_logging.c"/>
+        </files>
+      </component>
+      <component Cgroup="BSP-EKH05" Csub="MM6108" Cvariant="SDIO" condition="MM6108-SDIO Low Level Driver conditions">
+        <description>MM6108-SDIO low level driver for EKH05.</description>
+        <files>
+          <file category="header" name="BSP-EKH05/components/mm6108/sdio/mmekh05_hal_common.h"/>
+          <file category="source" name="BSP-EKH05/components/mm6108/sdio/mmhal.c"/>
+          <file category="source" name="BSP-EKH05/components/mm6108/sdio/mmhal_uart.c"/>
+          <file category="source" name="BSP-EKH05/components/mm6108/sdio/wlan_hal.c"/>
+          <file category="source" name="BSP-EKH05/components/mm6108/sdio/mm_logging.c"/>
+        </files>
+      </component>
+    </bundle>
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="iperf" condition="MM_IoT iperf example conditions" Cversion="2.6.4">
+      <description>This example demonstrates how to run iperf using the Morse Micro WLAN API to measure throughput.</description>
+      <files>
+        <file category="source" name="Example/iperf/iperf.c" attr="template"/>
+        <file category="header" name="Example/iperf/prj_mbedtls_config.h" attr="template"/>
+      </files>
+    </component>
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="ping" condition="MM_IoT ping example conditions" Cversion="2.6.4">
+      <description>This example demonstrates how to ping a target using the Morse Micro WLAN API.</description>
+      <files>
+        <file category="source" name="Example/ping/ping.c" attr="template"/>
+        <file category="header" name="Example/ping/prj_mbedtls_config.h" attr="template"/>
+      </files>
+    </component>
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="porting_assistant" condition="MM_IoT porting assistant example conditions" Cversion="2.6.4">
+      <description>Porting assistant self test tool to validate hardware and HALs.</description>
+      <files>
+        <file category="header" name="Example/porting_assistant/config.h" attr="template"/>
+        <file category="header" name="Example/porting_assistant/log.h" attr="template"/>
+        <file category="header" name="Example/porting_assistant/mm6108_reg.h" attr="template"/>
+        <file category="source" name="Example/porting_assistant/porting_assistant.c" attr="template"/>
+        <file category="header" name="Example/porting_assistant/porting_assistant.h" attr="template"/>
+        <file category="source" name="Example/porting_assistant/sdio_spi.c" attr="template"/>
+        <file category="header" name="Example/porting_assistant/sdio_spi.h" attr="template"/>
+        <file category="source" name="Example/porting_assistant/test_hal.c" attr="template"/>
+        <file category="source" name="Example/porting_assistant/test_os.c" attr="template"/>
+        <file category="source" name="Example/porting_assistant/test_wlan_fw_bcf.c" attr="template"/>
+        <file category="source" name="Example/porting_assistant/test_wlan_io.c" attr="template"/>
+        <file category="header" name="Example/porting_assistant/prj_mbedtls_config.h" attr="template"/>
+      </files>
+    </component>
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="scan" Cversion="2.6.4">
+      <description>This example demonstrates using the MMWLAN scan API.</description>
+      <files>
+        <file category="source" name="Example/scan/scan.c" attr="template"/>
+        <file category="header" name="Example/scan/prj_mbedtls_config.h" attr="template"/>
+      </files>
+    </component>
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="wnm_sleep" condition="MM_IoT wnm_sleep example conditions" Cversion="2.6.4">
+      <description>This example demonstrates utilizing WNM sleep to conserve power in between periodic transmissions.</description>
+      <files>
+        <file category="source" name="Example/wnm_sleep/wnm_sleep.c" attr="template"/>
+        <file category="header" name="Example/wnm_sleep/prj_mbedtls_config.h" attr="template"/>
+      </files>
+    </component>
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="aws_iot" condition="MM_IoT aws_iot example conditions" Cversion="2.6.4">
+      <description>This example implements AWS Shadow service connectivity and demonstrate a simple light bulb example.</description>
+      <files>
+        <file category="source" name="Example/aws_iot/aws_iot.c" attr="template"/>
+        <file category="header" name="Example/aws_iot/aws_iot_config.h" attr="template"/>
+        <file category="header" name="Example/aws_iot/version.h" attr="template"/>
+        <file category="header" name="Example/aws_iot/prj_mbedtls_config.h" attr="template"/>
+      </files>
+    </component>
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="MQTT Demo" condition="MM_IoT mqttdemo example conditions" Cversion="2.6.4">
+      <description>This example demonstrates connecting to an MQTT broker, subscribing to a topic and publishing to a topic.</description>
+      <files>
+        <file category="source" name="Example/mqttdemo/mqttdemo.c" attr="template"/>
+        <file category="header" name="Example/mqttdemo/prj_mbedtls_config.h" attr="template"/>
+        <file category="header" name="Example/mqttdemo/core_mqtt_config.h" attr="template"/>
+      </files>
+    </component>
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="SSL client" condition="MM_IoT sslclient example conditions" Cversion="2.6.4">
+      <description>This example demonstrates demonstrates connecting to a HTTPS server, TLS handshake and retrieve data.</description>
+      <files>
+        <file category="source" name="Example/sslclient/sslclient.c" attr="template"/>
+        <file category="header" name="Example/sslclient/prj_mbedtls_config.h" attr="template"/>
+        <file category="header" name="Example/sslclient/default_certs.h" attr="template"/>
+      </files>
+    </component>
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="rf-test" condition="MM_IoT rftest application conditions" Cversion="2.6.4">
+      <description>RF test application, alpha release. This application is not intended for general use and requires additional tools. Please contact Morse support for more information.</description>
+      <files>
+        <file category="source" name="Example/rf-test/rf-test.c" attr="template"/>
+        <file category="header" name="Example/rf-test/prj_mbedtls_config.h" attr="template"/>
+      </files>
+    </component>
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="EKH05-Demo" condition="MM_IoT EKH05 Demo example conditions" Cversion="1.5.0">
+      <description>This example demonstrates utilizing all the external peripherals on the EKH05 board.</description>
+      <files>
+        <file category="source" name="Example/EKH05-Demo/demo_accelerometer.c" attr="template"/>
+        <file category="header" name="Example/EKH05-Demo/demo_accelerometer.h" attr="template"/>
+        <file category="source" name="Example/EKH05-Demo/demo_ping.c" attr="template"/>
+        <file category="header" name="Example/EKH05-Demo/demo_ping.h" attr="template"/>
+        <file category="source" name="Example/EKH05-Demo/demo_temperature.c" attr="template"/>
+        <file category="header" name="Example/EKH05-Demo/demo_temperature.h" attr="template"/>
+        <file category="source" name="Example/EKH05-Demo/http.c" attr="template"/>
+        <file category="source" name="Example/EKH05-Demo/peripherals.c" attr="template"/>
+        <file category="header" name="Example/EKH05-Demo/peripherals.h" attr="template"/>
+        <file category="source" name="Example/EKH05-Demo/restfs.c" attr="template"/>
+        <file category="header" name="Example/EKH05-Demo/restfs.h" attr="template"/>
+        <file category="source" name="Example/EKH05-Demo/shared_buffer.c" attr="template"/>
+        <file category="header" name="Example/EKH05-Demo/shared_buffer.h" attr="template"/>
+        <file category="header" name="Example/EKH05-Demo/prj_mbedtls_config.h" attr="template"/>
+        <file category="header" name="Example/EKH05-Demo/fsdata.h" attr="template"/>
+        <file category="source" name="Example/EKH05-Demo/bluenrg_app/app_bluenrg_2.c" attr="template"/>
+        <file category="header" name="Example/EKH05-Demo/bluenrg_app/app_bluenrg_2.h" attr="template"/>
+        <file category="source" name="Example/EKH05-Demo/bluenrg_app/ble_sensor.c" attr="template"/>
+        <file category="header" name="Example/EKH05-Demo/bluenrg_app/ble_sensor.h" attr="template"/>
+        <file category="source" name="Example/EKH05-Demo/bluenrg_app/gatt_db.c" attr="template"/>
+        <file category="header" name="Example/EKH05-Demo/bluenrg_app/gatt_db.h" attr="template"/>
+        <file category="source" name="Example/EKH05-Demo/lwip_httpd/fs.c" attr="template"/>
+        <file category="source" name="Example/EKH05-Demo/lwip_httpd/httpd.c" attr="template"/>
+        <file category="header" name="Example/EKH05-Demo/lwip_httpd/httpd_structs.h" attr="template"/>
+      </files>
+    </component>
+    <bundle Cbundle="AWS-libraries" Cclass="AWS" Cversion="2.6.4">
+      <description>AWS IoT support libraries</description>
+      <doc>https://www.morsemicro.com</doc>
+      <component Cgroup="AWS-Shadow" Cversion="1.3.0">
+        <description>To store and retrieve the current state (the “shadow”) of every registered device.</description>
+        <files>
+          <file category="other" name="AWS-Shadow/LICENSE"/>
+          <file category="other" name="AWS-Shadow/README.md"/>
+          <file category="source" name="AWS-Shadow/source/shadow.c"/>
+          <file category="header" name="AWS-Shadow/source/include/shadow.h"/>
+          <file category="header" name="AWS-Shadow/source/include/shadow_config_defaults.h"/>
+        </files>
+      </component>
+      <component Cgroup="AWS-Fleet-Provisioning" Cversion="1.1.0">
+        <description>To provision IoT devices without device certificates using the Fleet Provisioning feature of AWS IoT Core.</description>
+        <files>
+          <file category="other" name="AWS-Fleet-Provisioning/LICENSE"/>
+          <file category="other" name="AWS-Fleet-Provisioning/README.md"/>
+          <file category="source" name="AWS-Fleet-Provisioning/source/fleet_provisioning.c"/>
+          <file category="header" name="AWS-Fleet-Provisioning/source/include/fleet_provisioning.h"/>
+          <file category="header" name="AWS-Fleet-Provisioning/source/include/fleet_provisioning_config_defaults.h"/>
+        </files>
+      </component>
+      <component Cgroup="AWS-common">
+        <description>application common files for using AWS libraries</description>
+        <files>
+          <file category="source" name="AWS-common/command_pool.c"/>
+          <file category="source" name="AWS-common/fleet_provisioning_serializer.c"/>
+          <file category="source" name="AWS-common/fleet_provisioning_task.c"/>
+          <file category="source" name="AWS-common/mqtt_agent_task.c"/>
+          <file category="source" name="AWS-common/shadow_device_task.c"/>
+          <file category="header" name="AWS-common/include/command_pool.h"/>
+          <file category="header" name="AWS-common/include/core_mqtt_agent_config.h"/>
+          <file category="header" name="AWS-common/include/core_mqtt_config.h"/>
+          <file category="header" name="AWS-common/include/core_sntp_config.h"/>
+          <file category="header" name="AWS-common/include/fleet_provisioning_config.h"/>
+          <file category="header" name="AWS-common/include/fleet_provisioning_serializer.h"/>
+          <file category="header" name="AWS-common/include/fleet_provisioning_task.h"/>
+          <file category="header" name="AWS-common/include/mqtt_agent_task.h"/>
+          <file category="header" name="AWS-common/include/shadow_config.h"/>
+          <file category="header" name="AWS-common/include/shadow_device_task.h"/>
+          <file category="header" name="AWS-common/include/subscription_manager.h"/>
+        </files>
+      </component>
+    </bundle>
+    <bundle Cbundle="FreeRTOS-libraries" Cclass="FreeRTOS-Libs" Cversion="2.6.4">
+      <description>FreeRTOS libraries</description>
+      <doc>https://www.morsemicro.com</doc>
+      <component Cgroup="backoffAlgorithm" Cversion="1.3.0">
+        <description>A utility library to calculate backoff period using an exponential backoff.</description>
+        <files>
+          <file category="other" name="backoffAlgorithm/LICENSE"/>
+          <file category="other" name="backoffAlgorithm/README.md"/>
+          <file category="source" name="backoffAlgorithm/source/backoff_algorithm.c"/>
+          <file category="header" name="backoffAlgorithm/source/include/backoff_algorithm.h"/>
+          <file category="other" name="backoffAlgorithm/source/include/stdint.readme"/>
+        </files>
+      </component>
+      <component Cgroup="freertos-libs-common">
+        <description>Application common source files to use FreeRTOS libs.</description>
+        <files>
+          <file category="source" name="freertos-libs-common/sntp_client-freertosplustcp.c" condition="require FreeRTOS-Libs FreeRTOS-Plus-TCP and coreSNTP condition"/>
+          <file category="source" name="freertos-libs-common/sntp_client-lwip.c" condition="require MM_IoT mmLwIP and FreeRTOS-Libs coreSNTP condition"/>
+          <file category="source" name="freertos-libs-common/transport_interface.c"/>
+          <file category="header" name="freertos-libs-common/include/sntp_client.h" condition="require FreeRTOS-Libs coreSNTP condition"/>
+          <file category="header" name="freertos-libs-common/include/transport_interface.h"/>
+        </files>
+      </component>
+      <component Cgroup="coreJSON" Cversion="3.2.0">
+        <description>A parser that strictly enforces the ECMA-404 JSON standard and is suitable for low memory footprint embedded devices.</description>
+        <files>
+          <file category="other" name="coreJSON/LICENSE"/>
+          <file category="other" name="coreJSON/README.md"/>
+          <file category="source" name="coreJSON/source/core_json.c"/>
+          <file category="header" name="coreJSON/source/include/core_json.h"/>
+          <file category="other" name="coreJSON/source/include/stdbool.readme"/>
+          <file category="other" name="coreJSON/source/include/stdint.readme"/>
+        </files>
+      </component>
+      <component Cgroup="coreMQTT" Cversion="2.1.0">
+        <description>The coreMQTT library that has been optimized for a low memory footprint.</description>
+        <files>
+          <file category="other" name="coreMQTT/LICENSE"/>
+          <file category="other" name="coreMQTT/README.md"/>
+          <file category="source" name="coreMQTT/source/core_mqtt.c"/>
+          <file category="source" name="coreMQTT/source/core_mqtt_serializer.c"/>
+          <file category="source" name="coreMQTT/source/core_mqtt_state.c"/>
+          <file category="header" name="coreMQTT/source/include/core_mqtt.h"/>
+          <file category="header" name="coreMQTT/source/include/core_mqtt_config_defaults.h"/>
+          <file category="header" name="coreMQTT/source/include/core_mqtt_default_logging.h"/>
+          <file category="header" name="coreMQTT/source/include/core_mqtt_serializer.h"/>
+          <file category="header" name="coreMQTT/source/include/core_mqtt_state.h"/>
+          <file category="other" name="coreMQTT/source/include/stdbool.readme"/>
+          <file category="other" name="coreMQTT/source/include/stdint.readme"/>
+          <file category="header" name="coreMQTT/source/interface/transport_interface.h"/>
+        </files>
+      </component>
+      <component Cgroup="coreMQTT-Agent" Cversion="1.2.0">
+        <description>A high level API that adds thread safety to the coreMQTT library.</description>
+        <files>
+          <file category="other" name="coreMQTT-Agent/LICENSE"/>
+          <file category="other" name="coreMQTT-Agent/README.md"/>
+          <file category="source" name="coreMQTT-Agent/source/core_mqtt_agent.c"/>
+          <file category="source" name="coreMQTT-Agent/source/core_mqtt_agent_command_functions.c"/>
+          <file category="header" name="coreMQTT-Agent/source/include/core_mqtt_agent.h"/>
+          <file category="header" name="coreMQTT-Agent/source/include/core_mqtt_agent_command_functions.h"/>
+          <file category="header" name="coreMQTT-Agent/source/include/core_mqtt_agent_config_defaults.h"/>
+          <file category="header" name="coreMQTT-Agent/source/include/core_mqtt_agent_default_logging.h"/>
+          <file category="header" name="coreMQTT-Agent/source/include/core_mqtt_agent_message_interface.h"/>
+        </files>
+      </component>
+      <component Cgroup="coreSNTP" Cversion="1.2.0">
+        <description>A client library to use Simple Network Time Protocol (SNTP) to synchronize device clocks with internet time.</description>
+        <files>
+          <file category="other" name="coreSNTP/LICENSE"/>
+          <file category="other" name="coreSNTP/README.md"/>
+          <file category="source" name="coreSNTP/source/core_sntp_client.c"/>
+          <file category="source" name="coreSNTP/source/core_sntp_serializer.c"/>
+          <file category="header" name="coreSNTP/source/include/core_sntp_client.h"/>
+          <file category="header" name="coreSNTP/source/include/core_sntp_config_defaults.h"/>
+          <file category="header" name="coreSNTP/source/include/core_sntp_serializer.h"/>
+        </files>
+      </component>
+      <component Cgroup="FreeRTOS-Plus-TCP" condition="FreeRTOS-Libs FreeRTOS-Plus-TCP conditions" Cversion="4.1.0">
+        <description>Lightweight TCP/IP stack for FreeRTOS.</description>
+        <files>
+          <file category="other" name="FreeRTOS-Plus-TCP/History.txt"/>
+          <file category="other" name="FreeRTOS-Plus-TCP/LICENSE.md"/>
+          <file category="other" name="FreeRTOS-Plus-TCP/README.md"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/FreeRTOSIPConfig.h"/>
+          <file category="other" name="FreeRTOS-Plus-TCP/source/CMakeLists.txt"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_ARP.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_BitConfig.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_DHCP.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_DHCPv6.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_DNS.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_DNS_Cache.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_DNS_Callback.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_DNS_Networking.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_DNS_Parser.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_ICMP.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_IP.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_IP_Timers.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_IP_Utils.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_IPv4.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_IPv4_Sockets.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_IPv4_Utils.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_IPv6.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_IPv6_Sockets.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_IPv6_Utils.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_ND.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_RA.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_Routing.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_Sockets.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_Stream_Buffer.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_TCP_IP.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_TCP_IP_IPv4.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_TCP_IP_IPv6.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_TCP_Reception.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_TCP_State_Handling.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_TCP_State_Handling_IPv4.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_TCP_State_Handling_IPv6.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_TCP_Transmission.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_TCP_Transmission_IPv4.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_TCP_Transmission_IPv6.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_TCP_Utils.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_TCP_Utils_IPv4.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_TCP_Utils_IPv6.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_TCP_WIN.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_Tiny_TCP.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_UDP_IP.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_UDP_IPv4.c"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/FreeRTOS_UDP_IPv6.c"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOSIPConfigDefaults.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOSIPDeprecatedDefinitions.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_ARP.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_BitConfig.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_DHCP.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_DHCPv6.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_DNS.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_DNS_Cache.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_DNS_Callback.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_DNS_Globals.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_DNS_Networking.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_DNS_Parser.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_ICMP.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_IP.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_IP_Common.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_IP_Private.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_IP_Timers.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_IP_Utils.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_IPv4.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_IPv4_Private.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_IPv4_Sockets.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_IPv4_Utils.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_IPv6.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_IPv6_Private.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_IPv6_Sockets.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_IPv6_Utils.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_ND.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_Routing.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_Sockets.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_Stream_Buffer.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_TCP_IP.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_TCP_Reception.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_TCP_State_Handling.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_TCP_Transmission.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_TCP_Utils.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_TCP_WIN.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/FreeRTOS_UDP_IP.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/IPTraceMacroDefaults.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/NetworkBufferManagement.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/include/NetworkInterface.h"/>
+          <file category="source" name="FreeRTOS-Plus-TCP/source/portable/BufferManagement/BufferAllocation_2.c"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/portable/Compiler/GCC/pack_struct_end.h"/>
+          <file category="header" name="FreeRTOS-Plus-TCP/source/portable/Compiler/GCC/pack_struct_start.h"/>
+        </files>
+      </component>
+    </bundle>
+  </components>
+</package>
