@@ -25,7 +25,6 @@
 #include "mmosal.h"
 #include "mmutils.h"
 #include "mmwlan.h"
-#include "mmwlan_regdb.h"
 #include "mm_app_common.h"
 #include "slip.h"
 
@@ -222,6 +221,10 @@ void app_init(void)
     printf("\n\nRF Test Application (Built "__DATE__ " " __TIME__ ")\n\n");
 
     app_wlan_init();
+
+    /* Explicitly prevent the Morse Micro chip from entering it's power save state during rf-test
+     * operations. */
+    mmwlan_set_power_save_mode(MMWLAN_PS_DISABLED);
 
     mmhal_uart_init(uart_rx_handler, &rx_slip_state);
 }

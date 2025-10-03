@@ -46,5 +46,6 @@ void Attribute_Modified_Request_CB(uint16_t Connection_Handle, uint16_t attr_han
 tBleStatus Environmental_Update(th_value_t th);
 tBleStatus Acc_Update(accelerometer_value_t x_axes);
 void update_ble_ip_gw(const char *ip, const char *gw);
+void update_ble_country(const char *country_code);
 
 #endif /* GATT_DB_H */

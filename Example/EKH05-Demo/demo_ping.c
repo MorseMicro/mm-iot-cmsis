@@ -1,14 +1,11 @@
 /*
  * Copyright 2024 Morse Micro
  *
- * This file is licensed under terms that can be found in the LICENSE.md file in
- * the root directory of the Morse Micro IoT SDK software package.
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 #include "demo_ping.h"
-#include <stdarg.h>
-
-#define TEMP_BUFFER_SIZE 128
+#include "shared_buffer.h"
 
 #define PING_TARGET "192.168.1.1"
 #define PING_COUNT 10
@@ -22,32 +19,16 @@
 #define PING_INTERVAL_MS 1000
 #endif
 
-
-/* http_terminal_buffer is a shared buffer to hold the output of ping task, so http can read it
- * from.*/
-SharedBuffer http_terminal_buffer;
+extern SharedBuffer http_terminal_buffer;
 
 static bool break_ping = false;
 static bool ping_in_progress = false;
 
 static struct mmping_args args = MMPING_ARGS_DEFAULT;
-static char local_output_str[TEMP_BUFFER_SIZE];
 
 static struct mmosal_semb *ping_task_start = NULL;
 static struct mmosal_task *ping_task_p;
 
-/* dual_print prints into uart and http console. return false if the http console buffer can't take
- * more data.*/
-bool dual_print(const char *format, ...)
-{
-    va_list args;
-    va_start(args, format);
-    vsnprintf(local_output_str, TEMP_BUFFER_SIZE, format, args);
-    va_end(args);
-    /* Print on uart console and to http console.*/
-    printf("%s", local_output_str);
-    return shared_buffer_append(&http_terminal_buffer, local_output_str);
-}
 
 /* ping_routine is the actual ping routine that pings a target.*/
 void ping_routine(void)
@@ -62,7 +43,7 @@ void ping_routine(void)
     }
 
     mmping_start(&args);
-    shared_buffer_ok &= dual_print("\nPing %s %lu(%lu) bytes of data.\n", args.ping_target,
+    shared_buffer_ok &= dual_print(&http_terminal_buffer, "\nPing %s %lu(%lu) bytes of data.\n", args.ping_target,
                                   args.ping_size, (MMPING_ICMP_ECHO_HDR_LEN + args.ping_size));
     mmosal_task_sleep(args.ping_interval_ms);
 
@@ -79,6 +60,7 @@ void ping_routine(void)
             stats.ping_recv_count != last_ping_recv_count)
         {
             shared_buffer_ok &= dual_print(
+                &http_terminal_buffer,
                 "transmitted/received = %lu/%lu, round-trip min/avg/max = %lu/%lu/%lu ms\n",
                 stats.ping_total_count, stats.ping_recv_count, stats.ping_min_time_ms,
                 stats.ping_avg_time_ms, stats.ping_max_time_ms);
@@ -97,7 +79,7 @@ void ping_routine(void)
 
     if (break_ping)
     {
-        dual_print("Terminated by user.");
+        dual_print(&http_terminal_buffer, "Terminated by user.");
     }
 
     uint32_t loss = 0;
@@ -111,16 +93,16 @@ void ping_routine(void)
                 stats.ping_total_count);
     }
 
-    dual_print("\n--- %s ping statistics ---\n%lu packets transmitted, %lu packets received, ",
+    dual_print(&http_terminal_buffer, "\n--- %s ping statistics ---\n%lu packets transmitted, %lu packets received, ",
                stats.ping_receiver, stats.ping_total_count, stats.ping_recv_count);
 
-    dual_print("%lu.%03lu%% packet loss round-trip min/avg/max = %lu/%lu/%lu ms\n", loss / 1000,
+    dual_print(&http_terminal_buffer, "%lu.%03lu%% packet loss round-trip min/avg/max = %lu/%lu/%lu ms\n", loss / 1000,
                loss % 1000, stats.ping_min_time_ms, stats.ping_avg_time_ms, stats.ping_max_time_ms);
 
     break_ping = false;
 }
 
-void demo_ping_task(void *arg)
+static void demo_ping_task(void *arg)
 {
     MM_UNUSED(arg);
     while (1)

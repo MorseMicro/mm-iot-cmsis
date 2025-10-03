@@ -1,5 +1,5 @@
 /*
- * FreeRTOS+TCP <DEVELOPMENT BRANCH>
+ * FreeRTOS+TCP V4.3.1
  * Copyright (C) 2022 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * SPDX-License-Identifier: MIT
@@ -52,7 +52,6 @@
 #include "FreeRTOS_IP_Private.h"
 #include "NetworkInterface.h"
 #include "NetworkBufferManagement.h"
-#include "FreeRTOS_ARP.h"
 #include "FreeRTOSIPConfigDefaults.h"
 
 #include "FreeRTOS_TCP_IP.h"
@@ -64,11 +63,14 @@
 /* Just make sure the contents doesn't get compiled if TCP is not enabled. */
 #if ipconfigUSE_TCP == 1
 
-/*
- * Let ARP look-up the MAC-address of the peer and initialise the first SYN
- * packet.
- */
+    static BaseType_t prvTCPMakeSurePrepared( FreeRTOS_Socket_t * pxSocket );
+
+/* Resolve the MAC-address of the peer and initialise the first SYN packet. */
     static BaseType_t prvTCPPrepareConnect( FreeRTOS_Socket_t * pxSocket );
+
+    #if ipconfigIS_ENABLED( ipconfigUSE_TCP_WIN )
+        static uint8_t prvWinScaleFactor( const FreeRTOS_Socket_t * pxSocket );
+    #endif
 
 /*------------------------------------------------------------------------*/
 
@@ -86,7 +88,7 @@
         {
             if( prvTCPPrepareConnect( pxSocket ) != pdTRUE )
             {
-                /* The preparation of a connection ( ARP resolution ) is not yet ready. */
+                /* The preparation of a connection ( resolution ) is not yet ready. */
                 xReturn = pdFALSE;
             }
         }
@@ -446,8 +448,9 @@
  *       (in FreeRTOS_TCP_WIN.c) needs to know them, along with the Maximum Segment
  *       Size (MSS).
  */
-    void prvTCPCreateWindow( FreeRTOS_Socket_t * pxSocket )
+    BaseType_t prvTCPCreateWindow( FreeRTOS_Socket_t * pxSocket )
     {
+        BaseType_t xReturn;
         uint32_t ulRxWindowSize = ( uint32_t ) pxSocket->u.xTCP.uxRxWinSize;
         uint32_t ulTxWindowSize = ( uint32_t ) pxSocket->u.xTCP.uxTxWinSize;
 
@@ -460,19 +463,20 @@
                                      ( unsigned ) pxSocket->u.xTCP.uxRxStreamSize ) );
         }
 
-        vTCPWindowCreate(
+        xReturn = xTCPWindowCreate(
             &pxSocket->u.xTCP.xTCPWindow,
             ulRxWindowSize * ipconfigTCP_MSS,
             ulTxWindowSize * ipconfigTCP_MSS,
             pxSocket->u.xTCP.xTCPWindow.rx.ulCurrentSequenceNumber,
             pxSocket->u.xTCP.xTCPWindow.ulOurSequenceNumber,
             ( uint32_t ) pxSocket->u.xTCP.usMSS );
+
+        return xReturn;
     }
     /*-----------------------------------------------------------*/
 
 /**
- * @brief Let ARP look-up the MAC-address of the peer and initialise the first SYN
- *        packet.
+ * @brief Resolve the MAC-address of the peer and initialise the first SYN packet.
  *
  * @param[in] pxSocket The socket owning the TCP connection. The first packet shall
  *               be created in this socket.
@@ -481,9 +485,9 @@
  *         Else pdFALSE.
  *
  * @note Connecting sockets have a special state: eCONNECT_SYN. In this phase,
- *       the Ethernet address of the target will be found using ARP. In case the
- *       target IP address is not within the netmask, the hardware address of the
- *       gateway will be used.
+ *       the Ethernet address of the target will be found through address resolution.
+ *       In case the target IP address is not within the netmask, the hardware address
+ *       of the gateway will be used.
  */
     static BaseType_t prvTCPPrepareConnect( FreeRTOS_Socket_t * pxSocket )
     {
@@ -750,7 +754,7 @@
                         /* More details at: https://github.com/FreeRTOS/FreeRTOS-Plus-TCP/blob/main/MISRA.md#rule-113 */
                         /* coverity[misra_c_2012_rule_11_3_violation] */
                         pxIPHeader = ( ( IPHeader_t * ) &( pxNetworkBuffer->pucEthernetBuffer[ ipSIZE_OF_ETH_HEADER ] ) );
-                        pxNetworkBuffer->pxEndPoint = FreeRTOS_FindEndPointOnNetMask( pxIPHeader->ulDestinationIPAddress, 8 );
+                        pxNetworkBuffer->pxEndPoint = FreeRTOS_FindEndPointOnNetMask( pxIPHeader->ulDestinationIPAddress );
 
                         if( pxNetworkBuffer->pxEndPoint == NULL )
                         {

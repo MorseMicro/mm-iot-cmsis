@@ -1,19 +1,22 @@
 /*
  * Copyright 2024 Morse Micro
  *
- * This file is licensed under terms that can be found in the LICENSE.md file in
- * the root directory of the Morse Micro IoT SDK software package.
+ * SPDX-License-Identifier: Apache-2.0
  */
 #include "demo_accelerometer.h"
 #include "demo_temperature.h"
 #include "mmutils.h"
 #include "mmosal.h"
 #include "mmhal.h"
+#include "mm_app_regdb.h"
+#include "mmconfig.h"
 #include <string.h>
+#include <ctype.h>
 #include "main.h"
 #include "app_bluenrg_2.h"
 #include "ekh05_camera.h"
 #include "gatt_db.h"
+#include "bluenrg1_gap_aci.h"
 #include "w25q16jv.h"
 
 static struct mmosal_semb *JPEG_buffer_lock = NULL;
@@ -26,6 +29,7 @@ uint8_t JPEG_buffer[JPEG_BUFFER_SIZE];
 
 extern TIM_HandleTypeDef htim4;
 extern OSPI_HandleTypeDef hospi1;
+extern __IO uint16_t connection_handle;
 
 #define SAVED_IMAGE_DATA_SIZE *(uint32_t*)OCTOSPI1_BASE
 #define ERASE_IMAGE_BOTTUN_WAIT_SECONDS(x) (x * 2)
@@ -126,7 +130,7 @@ static void erase_image(void)
         printf("periphs_qspi_flash_lock failed.\n");
         return;
     }
-    /*Turn on the LED white*/
+    /*Turn the RGB LED blue*/
     htim4.Instance->CCR1 = 0;
     htim4.Instance->CCR2 = 0;
     htim4.Instance->CCR3 = 1000;
@@ -183,7 +187,7 @@ static void save_image(void)
         periphs_jpeg_buffer_unlock();
         return;
     }
-    /*Turn on the LED white*/
+    /*Turn the RGB LED white*/
     htim4.Instance->CCR1 = 1000;
     htim4.Instance->CCR2 = 1000;
     htim4.Instance->CCR3 = 1000;
@@ -350,6 +354,93 @@ static void periphs_task(void *arg)
     }
 }
 
+static void update_ble_country_report(void)
+{
+    char strval[16];
+
+    mmosal_safer_strcpy(strval, "??", sizeof(strval));
+    mmconfig_read_string("wlan.country_code", strval, sizeof(strval));
+    update_ble_country(strval);
+}
+
+/* Currently we don't have a way to parse mbin content of the bcf to see which regdoms
+ * are included in the bcf. So, for now, we keep the regdoms of bcf files for aw_hm593
+ * (MM6108) and mf15457 (MM8108) here.*/
+static bool is_in_bcf_regdoms(const char *county_code)
+{
+#if (MM_CHIP == MM6108)
+    const char bcf_regdoms[][3] = {"AU", "CA", "US"};
+#elif (MM_CHIP == MM8108)
+    const char bcf_regdoms[][3] = {"AU", "CA", "EU", "GB", "IN", "JP", "KR", "NZ", "SG", "US"};
+#else
+#error "Invalid MM_CHIP selection. Available options are MM6108 and MM8108"
+#endif
+
+    for (int i = 0; i < sizeof(bcf_regdoms) / 3; i++)
+    {
+        if (strncmp(county_code, bcf_regdoms[i], 2) == 0)
+        {
+            return true;
+        }
+    }
+    printf("Country code %c%c wasn't found in BCF regdoms.\n", county_code[0], county_code[1]);
+    return false;
+}
+
+static bool is_in_regdb_regdoms(const char *county_code)
+{
+    const struct mmwlan_regulatory_db *reg_db = get_regulatory_db();
+    for (int i = 0; i < reg_db->num_domains; i++)
+    {
+        char *domain_country_code = (char *)(reg_db->domains[i]->country_code);
+        if (strncmp(county_code, domain_country_code, 2) == 0)
+        {
+            return true;
+        }
+    }
+    printf("Country code %c%c wasn't found in regDB regdoms.\n", county_code[0], county_code[1]);
+    return false;
+}
+
+void periphs_set_country_code(const char *country_code)
+{
+    char buff[3], current_country_code[3];
+
+    buff[0] = toupper(country_code[0]);
+    buff[1] = toupper(country_code[1]);
+    buff[2] = 0;
+
+    mmconfig_read_string("wlan.country_code", current_country_code, sizeof(current_country_code));
+    if (strncmp(buff, current_country_code, 2) == 0)
+    {
+        printf("New country code is same as the current. Ignoring.\n");
+        return;
+    }
+
+    if (is_in_regdb_regdoms(buff) && is_in_bcf_regdoms(buff))
+    {
+        printf("Setting country code to %s\n", buff);
+        mmconfig_write_string("wlan.country_code", buff);
+        update_ble_country_report();
+        aci_gap_terminate(connection_handle, 0x15);
+        mmhal_reset();
+        return;
+    }
+
+    /*If the user is enterring ??, it means clearing country code.*/
+    if (strncmp(buff, "??", 2) == 0)
+    {
+        printf("Clearing country code.\n");
+        mmconfig_write_string("wlan.country_code", buff);
+        update_ble_country_report();
+        aci_gap_terminate(connection_handle, 0x15);
+        mmhal_reset();
+        return;
+    }
+    printf("Country code %s doesn't match to any country in region DB or BCF.\n", buff);
+    update_ble_country_report();
+}
+
 void periphs_start(void)
 {
     /* We don't want the host to sleep. If it does the RGB will flicker*/
@@ -381,6 +472,7 @@ void periphs_start(void)
     temperature_init();
     MX_BlueNRG_2_Init();
     /*At the start set BLE reported IP and GW to NOT-CONNECTED*/
+    update_ble_country_report();
     update_ble_ip_gw("NOT-CONNECTED", "NOT-CONNECTED");
     if (BSP_CAMERA_Init(0, CAMERA_R320x240, CAMERA_PF_JPEG, JPEG_BUFFER_SIZE) != BSP_ERROR_NONE)
     {

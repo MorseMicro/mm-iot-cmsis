@@ -1,8 +1,7 @@
 /*
  * Copyright 2022-2023 Morse Micro
  *
- * This file is licensed under terms that can be found in the LICENSE.md file in the root
- * directory of the Morse Micro IoT SDK software package.
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -61,36 +60,53 @@
 #include "demo_ping.h"
 #include "gatt_db.h"
 #include "peripherals.h"
+#include "demo_iperf.h"
+#include "demo_mdns.h"
+#include "mm_app_regdb.h"
+#include "main.h"
 
-static char cgi_buffer[128] = {0};
+static char cgi_buffer[256] = {0};
 
-void update_ble_ip_report()
+/* http_terminal_buffer is a shared buffer to hold the output of ping or iperf task, so http can
+ * read it from.*/
+SharedBuffer http_terminal_buffer;
+
+static struct netif *get_mmnetif()
 {
-    char ip[51], gw[48]; /* 3 more chars for IP to show netmask: /xx at the end. */
-    uint8_t mask_counter = 0;
-    char *res;
     struct netif *netif;
     /* Search through all the interfaces and find the Morse netif*/
     for (netif = netif_list; netif != NULL; netif = netif->next)
     {
         if (netif->name[0] == 'M' && netif->name[1] == 'M')
         {
-            res = ipaddr_ntoa_r(&netif->ip_addr, ip, sizeof(ip));
-            LWIP_ASSERT("IP buf too short", res != NULL);
-
-            res = ipaddr_ntoa_r(&netif->gw, gw, sizeof(gw));
-            LWIP_ASSERT("IP buf too short", res != NULL);
-            /* get CIDR notation of the netmask and add it to the IP*/
-            for (int i = 0; i < 32; i++)
-            {
-                if (netif->netmask.u_addr.ip4.addr & (1 << i))
-                {
-                    mask_counter++;
-                }
-            }
-            sprintf(ip + strlen(ip), "/%d", mask_counter);
-            update_ble_ip_gw(ip, gw);
+            return netif;
         }
+    }
+    return NULL;
+}
+
+static void update_ble_ip_report(struct netif *netif)
+{
+    char ip[51], gw[48]; /* 3 more chars for IP to show netmask: /xx at the end. */
+    uint8_t mask_counter = 0;
+    char *res;
+    if (netif)
+    {
+        res = ipaddr_ntoa_r(&netif->ip_addr, ip, sizeof(ip));
+        LWIP_ASSERT("IP buf too short", res != NULL);
+
+        res = ipaddr_ntoa_r(&netif->gw, gw, sizeof(gw));
+        LWIP_ASSERT("IP buf too short", res != NULL);
+        /* get CIDR notation of the netmask and add it to the IP*/
+        for (int i = 0; i < 32; i++)
+        {
+            if (netif->netmask.u_addr.ip4.addr & (1 << i))
+            {
+                mask_counter++;
+            }
+        }
+        sprintf(ip + strlen(ip), "/%d", mask_counter);
+        update_ble_ip_gw(ip, gw);
     }
 }
 
@@ -141,19 +157,41 @@ static void rest_ep_toggle_leds(struct restfs_file *fil)
 }
 
 /**
+ * returns true or false string based on input.
+ */
+static const char *b2s(bool b)
+{
+    if (b)
+        return "true";
+    else
+        return "false";
+}
+
+/**
  * Get the sensors values in a json string.
  *
  * @param fil   File to write to.
  */
-static void rest_ep_get_sensors(struct restfs_file* fil)
+static void rest_ep_get_status(struct restfs_file* fil)
 {
     restfs_alloc_buffer(fil, sizeof(cgi_buffer));
     accelerometer_value_t xyz = get_accelerometer_values();
     th_value_t th = get_th_values();
     sprintf(cgi_buffer,
-            "{\"x\":\"%d\",\"y\":\"%d\",\"z\":\"%d\",\"T\":\"%ld\",\"H\":\"%ld\",\"ping_running\":%s}",
+            "{"
+            "\"x\":\"%d\","
+            "\"y\":\"%d\","
+            "\"z\":\"%d\","
+            "\"T\":\"%ld\","
+            "\"H\":\"%ld\","
+            "\"ping_running\":%s,"
+            "\"iperf_client_running\":%s,"
+            "\"iperf_serv_t\":%s,"
+            "\"iperf_serv_u\":%s"
+            "}",
             xyz.x, xyz.y, xyz.z, th.temperature_milli_degC, th.humidity_milli_RH,
-            ping_get_in_progress() ? "true" : "false");
+            b2s(ping_get_in_progress()), b2s(iperf_is_client_in_progress()),
+            b2s(iperf_is_tcp_server_up()), b2s(iperf_is_udp_server_up()));
     restfs_write(fil, (const uint8_t *)cgi_buffer, strlen(cgi_buffer));
 }
 static void rest_ep_get_configs(struct restfs_file* fil)
@@ -210,6 +248,59 @@ static void rest_ep_get_saved_image(struct restfs_file *fil)
 }
 
 /**
+ * Searching through the parameters to find the index of the one of interest.
+ *
+ * @param nparams       Number of elements in @p params.
+ * @param params        Parameter names.
+ * @param target        Target parameter name.
+ * @returns Index of the of the target parameter, -1 if not found.
+ *
+ */
+static int get_parameter_index(int nparams, char *params[], const char* target)
+{
+    int i;
+    int target_len=strlen(target);
+    for (i = 0; i < nparams; i++)
+    {
+        if (!strncmp(params[i], target, target_len))
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+/**
+ * Searching through the parameters to find the indexes of all the ones of interest.
+ *
+ * @param params                   Parameter names to search in.
+ * @param params_of_interest       Name of the parameters that are going to be searched.
+ * @param indexes                  The array that the found parameter indexes are going to be stored in.
+ * @param nparams                  Number of elements in @p params_of_interest.
+ * @returns 0 if all the parameters of interrest are found, -1 otherwise.
+ *
+ */
+static int find_param_indexes(char * params[], const char *const params_of_interest[],
+                              uint8_t *indexes, uint8_t nparams)
+{
+    int idx;
+    for (int i = 0; i < nparams; i++)
+    {
+        idx = get_parameter_index(nparams, params, params_of_interest[i]);
+        if (idx < 0)
+        {
+            printf("ERROR: parameter not found: %s\n", params_of_interest[i]);
+            return -1;
+        }
+        else
+        {
+            indexes[i] = (uint8_t)idx;
+        }
+    }
+    return 0;
+}
+
+/**
  * CGI handler to set a global variable based on query parameters.
  *
  * @param index         The index of the endpoint in the CGI handlers table.
@@ -227,28 +318,121 @@ static const char *cgi_set_ping_start(int index, int nparams, char *params[], ch
 {
     printf("Ping starting ... \n");
 
-    int i;
-    uint32_t u32_value=0;
+    uint32_t count=0;
 
     (void)index;
 
-    for (i = 0; i < nparams; i++)
+    const char *const params_of_interest[] = {"ip", "count"};
+    uint8_t indexes[2];
+    if (find_param_indexes(params, params_of_interest, indexes, sizeof(indexes)))
     {
-        if (!strncmp(params[i], "ip", sizeof("ip")))
-        {
-            ping_set_IP(values[i]);
-            printf("setting ping target to: %s",values[i]);
-        }
-
-        if (!strncmp(params[i], "count", sizeof("count")))
-        {
-            u32_value = (uint32_t)strtoul(values[i], NULL, 10);
-            ping_set_count(u32_value);
-            printf("setting ping count to: %ld",u32_value);
-        }
+        return "failed.html";
     }
+
+    count = (uint32_t)strtoul(values[indexes[1]], NULL, 10);
+
+    ping_set_IP(values[indexes[0]]);
+    printf("setting ping target to: %s", values[0]);
+    ping_set_count(count);
+    printf("setting ping count to: %ld",count);
     ping_start();
 
+    return "success.html";
+}
+
+static const char *cgi_start_iperf_server_udp(int index, int nparams, char *params[], char *values[])
+{
+    int i;
+    iperf_cmd_args_t iperf_cmd_args;
+    (void)index;
+
+    i = get_parameter_index(nparams, params, "port");
+    if (i < 0)
+    {
+        printf("ERROR: parameter not found: port\n");
+        return "failed.html";
+    }
+    iperf_cmd_args.port = (uint16_t)strtoul(values[i], NULL, 10);
+    if(!iperf_cmd_args.port)
+    {
+        return "failed.html";
+    }
+    iperf_cmd_args.mode = IPERF_MODE_UDP_SERVER;
+    if( !iperf_push_cmd(iperf_cmd_args))
+    {
+        return "failed.html";
+    }
+    return "success.html";
+}
+
+static const char *cgi_start_iperf_server_tcp(int index, int nparams, char *params[], char *values[])
+{
+    int i;
+    iperf_cmd_args_t iperf_cmd_args;
+    (void)index;
+
+    i = get_parameter_index(nparams, params, "port");
+    if (i < 0)
+    {
+        printf("ERROR: parameter not found: port\n");
+        return "failed.html";
+    }
+    iperf_cmd_args.port = (uint16_t)strtoul(values[i], NULL, 10);
+    if(!iperf_cmd_args.port)
+    {
+        return "failed.html";
+    }
+    iperf_cmd_args.mode = IPERF_MODE_TCP_SERVER;
+    if( !iperf_push_cmd(iperf_cmd_args))
+    {
+        return "failed.html";
+    }
+    return "success.html";
+}
+
+static const char *cgi_start_iperf_client(int index, int nparams, char *params[], char *values[])
+{
+    iperf_cmd_args_t iperf_cmd_args;
+    (void)index;
+
+    const char * const params_of_interest[] = {"proto", "port", "ip", "len"};
+    uint8_t indexes[4];
+    if (find_param_indexes(params, params_of_interest, indexes, sizeof(indexes)))
+    {
+        return "failed.html";
+    }
+
+    if (!strcmp(values[indexes[0]], "UDP"))
+    {
+        iperf_cmd_args.mode = IPERF_MODE_UDP_CLIENT;
+    }
+    else if (!strcmp(values[indexes[0]], "TCP"))
+    {
+        iperf_cmd_args.mode = IPERF_MODE_TCP_CLIENT;
+    }
+    else
+    {
+        printf("invalid proto\n");
+        return "failed.html";
+    }
+
+    iperf_cmd_args.port = (uint16_t)strtoul(values[indexes[1]], NULL, 10);
+    if(!iperf_cmd_args.port)
+    {
+        return "failed.html";
+    }
+
+    strncpy(iperf_cmd_args.target_ip,values[indexes[2]],sizeof(iperf_cmd_args.target_ip));
+    iperf_cmd_args.amount = (int)strtol(values[indexes[3]], NULL, 10) * -100; //minus to make it time, and the unit is 10ms
+    if(!iperf_cmd_args.amount)
+    {
+        return "failed.html";
+    }
+
+    if( !iperf_push_cmd(iperf_cmd_args))
+    {
+        return "failed.html";
+    }
     return "success.html";
 }
 
@@ -280,13 +464,13 @@ static void rest_ep_stop_operation(struct restfs_file *fil)
 static const struct rest_endpoint rest_endpoints[] = {
     {"success.html", rest_ep_success},
     {"failed.html", rest_ep_failed},
-    {"/rest/get_image", rest_ep_get_image},
-    {"/rest/get_saved_image", rest_ep_get_saved_image},
-    {"/rest/get_sensors", rest_ep_get_sensors},
-    {"/rest/get_configs", rest_ep_get_configs},
-    {"/rest/toggle_leds", rest_ep_toggle_leds},
-    {"/rest/get_terminal", rest_ep_get_terminal},
-    {"/rest/stop_operation", rest_ep_stop_operation},
+    {"/api/get_image", rest_ep_get_image},
+    {"/api/get_saved_image", rest_ep_get_saved_image},
+    {"/api/get_status", rest_ep_get_status},
+    {"/api/get_configs", rest_ep_get_configs},
+    {"/api/toggle_leds", rest_ep_toggle_leds},
+    {"/api/get_terminal", rest_ep_get_terminal},
+    {"/api/ping_stop", rest_ep_stop_operation},
 };
 
 /**
@@ -297,7 +481,10 @@ static const struct rest_endpoint rest_endpoints[] = {
  */
 
 static const tCGI cgi_endpoints[] = {
-    {"/rest/trigger_ping", cgi_set_ping_start},
+    {"/api/ping_start", cgi_set_ping_start},
+    {"/api/iperf_server_udp", cgi_start_iperf_server_udp},
+    {"/api/iperf_server_tcp", cgi_start_iperf_server_tcp},
+    {"/api/iperf_client", cgi_start_iperf_client},
 };
 
 /**
@@ -306,24 +493,48 @@ static const tCGI cgi_endpoints[] = {
  */
 void app_init(void)
 {
+    struct netif *mmnetif;
+    char strval[8];
+    const struct mmwlan_s1g_channel_list *channel_list;
+
     printf("\n\nEKH05 Demo Example(Built " __DATE__ " " __TIME__ ")\n\n");
     periphs_start();
 
     ping_init();
+    iperf_init();
     shared_buffer_init(&http_terminal_buffer);
-
+#ifndef LIMITED_DEMO_EXAMPLE
+    /* Check if the country code is set correctly by checking the channel list.
+     * and don't call wlan start and init function if not. (This is pretty much
+     * same as load_channel_list() but without assertion.)*/
+    (void)mmosal_safer_strcpy(strval, "??", sizeof(strval));
+    (void)mmconfig_read_string("wlan.country_code", strval, sizeof(strval));
+    channel_list = mmwlan_lookup_regulatory_domain(get_regulatory_db(), strval);
+    if (channel_list == NULL)
+    {
+        printf("Could not find specified regulatory domain matching country code %s\n", strval);
+        printf("Please set the configuration key wlan.country_code to the correct country code.\n");
+        return;
+    }
     /* Initialize and connect to WiFi, blocks till connected */
     app_wlan_init();
     app_wlan_start();
+    mmnetif = get_mmnetif();
 
     /* Update BLE reported IP and Gateway*/
-    update_ble_ip_report();
+    update_ble_ip_report(mmnetif);
 
     LOCK_TCPIP_CORE();
+    /* Start mdns*/
+    mdns_init(mmnetif);
+
+    /* Setup HTTP server. */
     rest_init_endpoints(rest_endpoints, LWIP_ARRAYSIZE(rest_endpoints));
     http_set_cgi_handlers(cgi_endpoints, LWIP_ARRAYSIZE(cgi_endpoints));
     httpd_init();
     UNLOCK_TCPIP_CORE();
-
+#else
+    LL_GPIO_ResetOutputPin(RESET_N_GPIO_Port, RESET_N_Pin);
+#endif
     /* We idle till we get a connection */
 }

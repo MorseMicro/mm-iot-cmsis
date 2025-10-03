@@ -1,5 +1,5 @@
 /*
- * FreeRTOS+TCP <DEVELOPMENT BRANCH>
+ * FreeRTOS+TCP V4.3.1
  * Copyright (C) 2022 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * SPDX-License-Identifier: MIT
@@ -172,6 +172,7 @@
     {
         DNSMessage_t * pxDNSMessageHeader; /**< A pointer to the UDP payload buffer where the DNS message is stored. */
         uint16_t usQuestions;              /**< The number of DNS questions that were asked. */
+        uint16_t usAnswers;                /**< The number of DNS answers that were given. */
         uint8_t * pucUDPPayloadBuffer;     /**< A pointer to the original UDP load buffer. */
         uint8_t * pucByte;                 /**< A pointer that is used while parsing. */
         size_t uxBufferLength;             /**< The total number of bytes received in the UDP payload. */
@@ -188,7 +189,8 @@
             uint16_t usClass;              /**< Only the value 'dnsCLASS_IN' is recognised, which stands for "Internet". */
             char * pcRequestedName;        /**< A pointer to the full name of the host being looked up. */
         #endif
-        #if ( ipconfigUSE_DNS_CACHE == 1 ) || ( ipconfigDNS_USE_CALLBACKS == 1 ) || ( ipconfigUSE_MDNS == 1 )
+
+        #if ( ( ipconfigUSE_DNS_CACHE != 0 ) || ( ipconfigDNS_USE_CALLBACKS != 0 ) || ( ipconfigUSE_MDNS != 0 ) || ( ipconfigUSE_LLMNR != 0 ) )
             BaseType_t xDoStore;                          /**< Becomes true when a DNS reply was requested by this device,
                                                            *   i.e. it has a matching request ID. */
             char pcName[ ipconfigDNS_CACHE_NAME_LENGTH ]; /**< A copy of the name that is mentioned in the questions. */

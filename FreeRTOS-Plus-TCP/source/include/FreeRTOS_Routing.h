@@ -1,5 +1,5 @@
 /*
- * FreeRTOS+TCP V2.3.1
+ * FreeRTOS+TCP V4.3.1
  * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -28,6 +28,7 @@
 
     #include "FreeRTOS.h"
     #include "FreeRTOS_IP.h"
+    #include "FreeRTOS_Sockets.h"
 
     #if ( ipconfigUSE_DHCP != 0 )
         #include "FreeRTOS_DHCP.h"
@@ -54,6 +55,10 @@
 /* Return true as long as the LinkStatus on the PHY is present. */
     typedef BaseType_t ( * GetPhyLinkStatusFunction_t ) ( struct xNetworkInterface * pxDescriptor );
 
+/* Functions that manipulate what MAC addresses are received by this interface */
+    typedef void ( * NetworkInterfaceMACFilterFunction_t ) ( struct xNetworkInterface * pxInterface,
+                                                             const uint8_t * pucMacAddressBytes );
+
 /** @brief These NetworkInterface access functions are collected in a struct: */
     typedef struct xNetworkInterface
     {
@@ -62,6 +67,42 @@
         NetworkInterfaceInitialiseFunction_t pfInitialise; /**< This function will be called upon initialisation and repeated until it returns pdPASS. */
         NetworkInterfaceOutputFunction_t pfOutput;         /**< This function is supposed to send out a packet. */
         GetPhyLinkStatusFunction_t pfGetPhyLinkStatus;     /**< This function will return pdTRUE as long as the PHY Link Status is high. */
+
+        /*
+         * pfAddAllowedMAC and pfRemoveAllowedMAC form the network driver's address filtering API.
+         * The network stack uses these functions to alter which MAC addresses will be received.
+         * The MAC addresses passed to the functions can be unicast or multicast. It is important
+         * to note that the stack may call these functions multiple times for the the same MAC address.
+         * For example, if two sockets subscribe to the same multicast group, pfAddAllowedMAC()
+         * will be called twice with the same MAC address. The network driver is responsible for
+         * keeping track of these calls. The network driver should continue receiving that
+         * particular MAC address until pfRemoveAllowedMAC() is called the same number of times.
+         *
+         * Most EMAC hardware nowadays can filter frames based on both specific MAC address matching
+         * and hash matching. Specific address matching is ideal because as the name suggests,
+         * only frames with the exact MAC address are received. Usually however, the number of
+         * specific MAC addresses is limited ( to 4 in many cases ) and is sometimes not enough for
+         * all the MAC addresses that the network stack needs to receive.
+         * Hash matching is usually based around a 64-bit hash table. For every incoming frame,
+         * the EMAC calculates a hash value (mod 64) of the destination MAC address.
+         * The hash value is looked up in the 64-bit hash table and if that bit is set, the frame is
+         * received. If the bit is clear, the frame is dropped. With hash matching, multiple
+         * MAC addresses are represented by a single bit. It is the responsibility of the network
+         * driver to manage both the hash address matching and specific address matching capabilities
+         * of the EMAC hardware.
+         * A quick and dirty implementation option is to receive all MAC addresses and set both
+         * pfAddAllowedMAC and pfRemoveAllowedMAC to NULL. This results in an interface running
+         * in promiscuous mode and the entire burden of MAC filtering falls on the network stack.
+         * For a more realistic implementation, check out
+         * "portable/NetworkInterface/DriverSAM/NetworkInterface.c" It demonstrates the use of both
+         * specific and hash address matching as well as keeping count of how many time the
+         * individual registers/bits have been used. That implementation's init functions also
+         * demonstrates the use of prvAddAllowedMACAddress() function to register all end-point's
+         * MAC addresses whether the endpoints used the same or different MAC addresses.
+         */
+        NetworkInterfaceMACFilterFunction_t pfAddAllowedMAC;
+        NetworkInterfaceMACFilterFunction_t pfRemoveAllowedMAC;
+
         struct
         {
             uint32_t
@@ -224,8 +265,7 @@
 /*
  * Find the end-point with given IP-address.
  */
-    NetworkEndPoint_t * FreeRTOS_FindEndPointOnIP_IPv4( uint32_t ulIPAddress,
-                                                        uint32_t ulWhere );
+    NetworkEndPoint_t * FreeRTOS_FindEndPointOnIP_IPv4( uint32_t ulIPAddress );
 
     #if ( ipconfigUSE_IPv6 != 0 )
         /* Find the end-point with given IP-address. */
@@ -242,18 +282,14 @@
 /*
  * Find the best fitting end-point to reach a given IP-address.
  * Find an end-point whose IP-address is in the same network as the IP-address provided.
- * 'ulWhere' is temporary and or debugging only.
  */
-    NetworkEndPoint_t * FreeRTOS_FindEndPointOnNetMask( uint32_t ulIPAddress,
-                                                        uint32_t ulWhere );
+    NetworkEndPoint_t * FreeRTOS_FindEndPointOnNetMask( uint32_t ulIPAddress );
 
 /*
  * Find the best fitting IPv4 end-point to reach a given IP-address on a given interface
- * 'ulWhere' is temporary and or debugging only.
  */
     NetworkEndPoint_t * FreeRTOS_InterfaceEndPointOnNetMask( const NetworkInterface_t * pxInterface,
-                                                             uint32_t ulIPAddress,
-                                                             uint32_t ulWhere );
+                                                             uint32_t ulIPAddress );
 
 /*
  * Finds an endpoint on the given interface which is in the same subnet as the
@@ -304,21 +340,6 @@
                                          const uint8_t ucMACAddress[ ipMAC_ADDRESS_LENGTH_BYTES ] );
     #endif
 
-    #if ( ipconfigHAS_ROUTING_STATISTICS == 1 )
-/** @brief Some simple network statistics. */
-        typedef struct xRoutingStats
-        {
-            UBaseType_t ulOnIp;             /**< The number of times 'FreeRTOS_FindEndPointOnIP_IPv4()' has been called. */
-            UBaseType_t ulOnMAC;            /**< The number of times 'FreeRTOS_FindEndPointOnMAC()' has been called. */
-            UBaseType_t ulOnNetMask;        /**< The number of times 'FreeRTOS_InterfaceEndPointOnNetMask()' has been called. */
-            UBaseType_t ulMatching;         /**< The number of times 'FreeRTOS_MatchingEndpoint()' has been called. */
-            UBaseType_t ulLocations[ 14 ];  /**< The number of times 'FreeRTOS_InterfaceEndPointOnNetMask()' has been called from a particular location. */
-            UBaseType_t ulLocationsIP[ 8 ]; /**< The number of times 'FreeRTOS_FindEndPointOnIP_IPv4()' has been called from a particular location. */
-        } RoutingStats_t;
-
-        extern RoutingStats_t xRoutingStatistics;
-    #endif /* ( ipconfigHAS_ROUTING_STATISTICS == 1 ) */
-
     NetworkEndPoint_t * pxGetSocketEndpoint( ConstSocket_t xSocket );
     void vSetSocketEndpoint( Socket_t xSocket,
                              NetworkEndPoint_t * pxEndPoint );
@@ -349,6 +370,15 @@
  */
         IPv6_Type_t xIPv6_GetIPType( const IPv6_Address_t * pxAddress );
     #endif
+
+    BaseType_t xCheckRequiresResolution( const NetworkBufferDescriptor_t * pxNetworkBuffer );
+
+    typedef enum
+    {
+        eResolutionCacheMiss = 0, /* 0 A cache lookup did not find a valid entry. */
+        eResolutionCacheHit,      /* 1 A cache lookup found a valid entry. */
+        eResolutionFailed         /* 2 There is no IP address, or a resolution is still in progress, so the packet cannot be sent. */
+    } eResolutionLookupResult_t;
 
     #ifdef __cplusplus
 }     /* extern "C" */

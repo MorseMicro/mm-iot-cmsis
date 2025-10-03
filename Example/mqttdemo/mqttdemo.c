@@ -69,6 +69,28 @@
  *
  * See @ref APP_COMMON_API for details of WLAN and IP stack configuration. Additional
  * configuration options for this application can be found in the config.hjson file.
+ *
+ * # Troubleshooting
+ *
+ * ## Connecting to server socket failed with code 7
+ *
+ * The most common cause of this issue is AP configuration problems.
+ * Check if your device has access to the internet via your HaLow AP.
+ *
+ * Another possible cause is a tcp socket timeout, which can occur due to issues on
+ * the broker side. If this occurs when using FreeRTOS+TCP as your
+ * IP stack, try increasing the @c ipconfigSOCK_DEFAULT_RECEIVE_BLOCK_TIME to allow
+ * the socket more time to receive a response.
+ *
+ * If this error keeps occurring, try setting up a local MQTT broker
+ * and changing @ref MQTT_BROKER_ENDPOINT to your computer's IP address.
+ *
+ * ## Creating MQTT connection with broker failed with code 7
+ *
+ * The main cause of this issue is issues with the Mosquitto test server, which can sometimes
+ * fail to respond before @ref CONNACK_RECV_TIMEOUT_MS. Try increasing the timeout, or if
+ * the problem persists, try setting up a local MQTT broker and changing @ref MQTT_BROKER_ENDPOINT
+ * to your computer's IP address.
 */
 
 #include <string.h>
@@ -109,7 +131,14 @@
 /** @brief Keep alive Delay */
 #define KEEP_ALIVE_TIMEOUT_SECONDS      60
 /** @brief Receive timeout */
-#define CONNACK_RECV_TIMEOUT_MS         1000
+#define CONNACK_RECV_TIMEOUT_MS         10000
+
+/** @brief Override the default FreeRTOS + TCP receive socket timeouts,
+ *  as the test server can be slow to respond.
+ */
+#ifdef ipconfigSOCK_DEFAULT_RECEIVE_BLOCK_TIME
+    #define ipconfigSOCK_DEFAULT_RECEIVE_BLOCK_TIME    (10000)
+#endif
 
 /**
  * @brief Delay in ms between publishes
@@ -470,16 +499,16 @@ void app_init(void)
     snprintf(topic, sizeof(topic), TOPIC_FORMAT, client_id);
 
     /* Read from config store */
-    mmconfig_read_string("mqtt.clientid", client_id, sizeof(client_id));
-    mmconfig_read_string("mqtt.topic", topic, sizeof(topic));
-    mmconfig_read_uint32("mqtt.port", &port);
-    mmconfig_read_uint32("mqtt.publish_delay", &publish_delay);
+    (void)mmconfig_read_string("mqtt.clientid", client_id, sizeof(client_id));
+    (void)mmconfig_read_string("mqtt.topic", topic, sizeof(topic));
+    (void)mmconfig_read_uint32("mqtt.port", &port);
+    (void)mmconfig_read_uint32("mqtt.publish_delay", &publish_delay);
 
     strncpy(server, MQTT_BROKER_ENDPOINT, sizeof(server));
-    mmconfig_read_string("mqtt.server", server, sizeof(server));
+    (void)mmconfig_read_string("mqtt.server", server, sizeof(server));
 
     strncpy(message, EXAMPLE_MESSAGE, sizeof(message));
-    mmconfig_read_string("mqtt.message", message, sizeof(message));
+    (void)mmconfig_read_string("mqtt.message", message, sizeof(message));
 
     /*************************** Connect. *********************************/
 

@@ -1,5 +1,5 @@
 /*
- * FreeRTOS+TCP <DEVELOPMENT BRANCH>
+ * FreeRTOS+TCP V4.3.1
  * Copyright (C) 2022 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * SPDX-License-Identifier: MIT
@@ -52,7 +52,6 @@
 #include "FreeRTOS_IP_Private.h"
 #include "NetworkInterface.h"
 #include "NetworkBufferManagement.h"
-#include "FreeRTOS_ARP.h"
 #include "FreeRTOSIPConfigDefaults.h"
 #include "FreeRTOS_ND.h"
 
@@ -147,19 +146,20 @@ void prvTCPReturnPacket_IPV6( FreeRTOS_Socket_t * pxSocket,
         }
         #endif /* ipconfigZERO_COPY_TX_DRIVER */
 
-        configASSERT( pxNetworkBuffer->pucEthernetBuffer != NULL );
-
-        /* MISRA Ref 11.3.1 [Misaligned access] */
-        /* More details at: https://github.com/FreeRTOS/FreeRTOS-Plus-TCP/blob/main/MISRA.md#rule-113 */
-        /* coverity[misra_c_2012_rule_11_3_violation] */
-        pxIPHeader = ( ( IPHeader_IPv6_t * ) &( pxNetworkBuffer->pucEthernetBuffer[ ipSIZE_OF_ETH_HEADER ] ) );
-
         #ifndef __COVERITY__
             if( pxNetworkBuffer != NULL ) /* LCOV_EXCL_BR_LINE the 2nd branch will never be reached */
         #endif
         {
-            eARPLookupResult_t eResult;
+            eResolutionLookupResult_t eResult;
             NetworkInterface_t * pxInterface;
+
+            configASSERT( pxNetworkBuffer->pucEthernetBuffer != NULL );
+
+            /* MISRA Ref 11.3.1 [Misaligned access] */
+            /* More details at: https://github.com/FreeRTOS/FreeRTOS-Plus-TCP/blob/main/MISRA.md#rule-113 */
+            /* coverity[misra_c_2012_rule_11_3_violation] */
+            pxIPHeader = ( ( IPHeader_IPv6_t * ) &( pxNetworkBuffer->pucEthernetBuffer[ ipSIZE_OF_ETH_HEADER ] ) );
+
             /* Map the Ethernet buffer onto a TCPPacket_t struct for easy access to the fields. */
 
             /* MISRA Ref 11.3.1 [Misaligned access] */
@@ -235,7 +235,7 @@ void prvTCPReturnPacket_IPV6( FreeRTOS_Socket_t * pxSocket,
 
             eResult = eNDGetCacheEntry( &xDestinationIPAddress, &xMACAddress, &( pxNetworkBuffer->pxEndPoint ) );
 
-            if( eResult == eARPCacheHit )
+            if( eResult == eResolutionCacheHit )
             {
                 pvCopySource = &xMACAddress;
             }
@@ -253,7 +253,6 @@ void prvTCPReturnPacket_IPV6( FreeRTOS_Socket_t * pxSocket,
              * compliant with MISRA Rule 21.15.  These should be
              * optimized away.
              */
-            /* The source MAC addresses is fixed to 'ipLOCAL_MAC_ADDRESS'. */
             pvCopySource = pxNetworkBuffer->pxEndPoint->xMACAddress.ucBytes;
             pvCopyDest = &pxEthernetHeader->xSourceAddress;
             ( void ) memcpy( pvCopyDest, pvCopySource, ( size_t ) ipMAC_ADDRESS_LENGTH_BYTES );
@@ -301,7 +300,7 @@ void prvTCPReturnPacket_IPV6( FreeRTOS_Socket_t * pxSocket,
 /*-----------------------------------------------------------*/
 
 /**
- * @brief Let ARP look-up the MAC-address of the peer and initialise the first SYN
+ * @brief Let ND look-up the MAC-address of the peer and initialise the first SYN
  *        packet.
  *
  * @param[in] pxSocket The socket owning the TCP connection. The first packet shall
@@ -311,7 +310,7 @@ void prvTCPReturnPacket_IPV6( FreeRTOS_Socket_t * pxSocket,
  *         Else pdFALSE.
  *
  * @note Connecting sockets have a special state: eCONNECT_SYN. In this phase,
- *       the Ethernet address of the target will be found using ARP. In case the
+ *       the Ethernet address of the target will be found using ND. In case the
  *       target IP address is not within the netmask, the hardware address of the
  *       gateway will be used.
  */
@@ -319,7 +318,7 @@ BaseType_t prvTCPPrepareConnect_IPV6( FreeRTOS_Socket_t * pxSocket )
 {
     TCPPacket_IPv6_t * pxTCPPacket = NULL;
     IPHeader_IPv6_t * pxIPHeader = NULL;
-    eARPLookupResult_t eReturned;
+    eResolutionLookupResult_t eReturned;
     IP_Address_t xRemoteIP;
     MACAddress_t xEthAddress;
     BaseType_t xReturn = pdTRUE;
@@ -352,13 +351,13 @@ BaseType_t prvTCPPrepareConnect_IPV6( FreeRTOS_Socket_t * pxSocket )
 
     switch( eReturned )
     {
-        case eARPCacheHit:    /* An ARP table lookup found a valid entry. */
-            break;            /* We can now prepare the SYN packet. */
+        case eResolutionCacheHit:  /* An ND table lookup found a valid entry. */
+            break;                 /* We can now prepare the SYN packet. */
 
-        case eARPCacheMiss:   /* An ARP table lookup did not find a valid entry. */
-        case eCantSendPacket: /* There is no IP address, or an ARP is still in progress. */
+        case eResolutionCacheMiss: /* An ND table lookup did not find a valid entry. */
+        case eResolutionFailed:    /* There is no IP address, or an ND is still in progress. */
         default:
-            /* Count the number of times it could not find the ARP address. */
+            /* Count the number of times it could not find the ND address. */
             pxSocket->u.xTCP.ucRepCount++;
 
             FreeRTOS_printf( ( "Looking up %pip with%s end-point\n", ( void * ) xRemoteIP.xIP_IPv6.ucBytes, ( pxEndPoint != NULL ) ? "" : "out" ) );
@@ -468,7 +467,10 @@ BaseType_t prvTCPPrepareConnect_IPV6( FreeRTOS_Socket_t * pxSocket )
         /* The initial sequence numbers at our side are known.  Later
          * vTCPWindowInit() will be called to fill in the peer's sequence numbers, but
          * first wait for a SYN+ACK reply. */
-        prvTCPCreateWindow( pxSocket );
+        if( prvTCPCreateWindow( pxSocket ) != pdTRUE )
+        {
+            xReturn = pdFAIL;
+        }
     }
     else
     {

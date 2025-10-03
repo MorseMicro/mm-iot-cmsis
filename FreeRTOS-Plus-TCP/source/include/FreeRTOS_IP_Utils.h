@@ -1,5 +1,5 @@
 /*
- * FreeRTOS+TCP <DEVELOPMENT BRANCH>
+ * FreeRTOS+TCP V4.3.1
  * Copyright (C) 2022 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * SPDX-License-Identifier: MIT
@@ -47,7 +47,6 @@
 /* FreeRTOS+TCP includes. */
 #include "FreeRTOS_IP.h"
 #include "FreeRTOS_Sockets.h"
-#include "FreeRTOS_Routing.h"
 #include "FreeRTOS_IP_Private.h"
 #include "FreeRTOS_UDP_IP.h"
 #include "FreeRTOS_DHCP.h"
@@ -66,6 +65,7 @@
 
 /* Forward declaration. */
 struct xNetworkInterface;
+struct xNetworkEndPoint;
 
 #if ( ( ipconfigUSE_DHCPv6 == 1 ) || ( ipconfigUSE_DHCP == 1 ) || ( ipconfigUSE_RA == 1 ) )
 
@@ -108,6 +108,7 @@ void vPreCheckConfigs( void );
  *        started, or when the network connection is lost.
  */
 void prvProcessNetworkDownEvent( struct xNetworkInterface * pxInterface );
+
 
 /* *INDENT-OFF* */
 #ifdef __cplusplus

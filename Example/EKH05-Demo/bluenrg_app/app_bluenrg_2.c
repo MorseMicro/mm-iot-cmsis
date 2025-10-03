@@ -28,6 +28,7 @@
 #include "hci_tl.h"
 #include "gatt_db.h"
 #include "bluenrg_utils.h"
+#include "main.h"
 
 /* USER CODE BEGIN Includes */
 
@@ -140,9 +141,19 @@ uint8_t Sensor_DeviceInit(void)
   /* Sw reset of the device */
   hci_reset();
   /**
-   *  To support both the BlueNRG-2 and the BlueNRG-2N a minimum delay of 2000ms is required at device boot
+   *  To support both the BlueNRG-2 and the BlueNRG-2N a minimum delay of 2000ms is required at device boot.
+   *  In the meanwhile, blink the leds to show application is starting.
    */
-  HAL_Delay(2000);
+  HAL_GPIO_WritePin(GPIO_LED_BLUE_GPIO_Port, GPIO_LED_BLUE_Pin, GPIO_PIN_SET);
+  HAL_Delay(200);
+  HAL_GPIO_WritePin(GPIO_LED_BLUE_GPIO_Port, GPIO_LED_BLUE_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIO_LED_GREEN_GPIO_Port, GPIO_LED_GREEN_Pin, GPIO_PIN_SET);
+  HAL_Delay(200);
+  HAL_GPIO_WritePin(GPIO_LED_GREEN_GPIO_Port, GPIO_LED_GREEN_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIO_LED_RED_GPIO_Port, GPIO_LED_RED_Pin, GPIO_PIN_SET);
+  HAL_Delay(200);
+  HAL_GPIO_WritePin(GPIO_LED_RED_GPIO_Port, GPIO_LED_RED_Pin, GPIO_PIN_RESET);
+  HAL_Delay(1400);
 
   /* get the BlueNRG HW and FW versions */
   getBlueNRGVersion(&hwVersion, &fwVersion);

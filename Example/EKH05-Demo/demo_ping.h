@@ -1,8 +1,7 @@
 /*
  * Copyright 2024 Morse Micro
  *
- * This file is licensed under terms that can be found in the LICENSE.md file in
- * the root directory of the Morse Micro IoT SDK software package.
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 #ifndef __DEMO_PING__H__
@@ -16,10 +15,6 @@
 #include "mmconfig.h"
 #include "mmping.h"
 #include "mmipal.h"
-#include "shared_buffer.h"
-
-
-extern SharedBuffer http_terminal_buffer;
 
 void ping_start(void);
 void ping_stop(void);

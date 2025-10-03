@@ -1,11 +1,15 @@
 /*
  * Copyright 2024 Morse Micro
  *
- * This file is licensed under terms that can be found in the LICENSE.md file in
- * the root directory of the Morse Micro IoT SDK software package.
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 #include "shared_buffer.h"
+#include <stdarg.h>
+
+#define TEMP_BUFFER_SIZE 256
+static char local_output_str[TEMP_BUFFER_SIZE];
+
 
 bool shared_buffer_lock(SharedBuffer *buf)
 {
@@ -78,3 +82,16 @@ bool shared_buffer_append(SharedBuffer *buf, const char *new_data)
 }
 
 const char *shared_buffer_get(SharedBuffer *buf) { return buf->buffer; }
+
+/* dual_print prints into uart and http console. return false if the http console buffer can't take
+ * more data.*/
+bool dual_print(SharedBuffer *sb, const char *format, ...)
+{
+    va_list args;
+    va_start(args, format);
+    vsnprintf(local_output_str, TEMP_BUFFER_SIZE, format, args);
+    va_end(args);
+    /* Print on uart console and to http console.*/
+    printf("%s", local_output_str);
+    return shared_buffer_append(sb, local_output_str);
+}

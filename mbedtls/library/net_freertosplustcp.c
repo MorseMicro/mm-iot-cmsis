@@ -30,17 +30,21 @@
 #include "FreeRTOS_Sockets.h"
 #include "FreeRTOS_DNS.h"
 
+#define FREERTOS_IPV4_SOCKADDR_LEN 12
+#define FREERTOS_IPV6_SOCKADDR_LEN 24
+#define FREERTOS_SOCKADDR_LEN(ip_type) (((ip_type) == FREERTOS_AF_INET6) \
+                                        ? FREERTOS_IPV6_SOCKADDR_LEN : FREERTOS_IPV4_SOCKADDR_LEN)
+
 /*
  * Initialize a context
  */
 void mbedtls_net_init(mbedtls_net_context *ctx)
 {
     memset(ctx, 0, sizeof(*ctx));
+    ctx->freertos.socket_set = FreeRTOS_CreateSocketSet();
 }
 
-
 typedef int (*dns_success_callback_t)(mbedtls_net_context *ctx, struct freertos_addrinfo *addr);
-
 
 static int dns_lookup(mbedtls_net_context *ctx, dns_success_callback_t callback,
                       const char *host, const char *port, int proto, int family)
@@ -50,14 +54,37 @@ static int dns_lookup(mbedtls_net_context *ctx, dns_success_callback_t callback,
     char *port_tail = NULL;
     int port_num = strtol(port, &port_tail, 10);
 
+    int socktype = proto == MBEDTLS_NET_PROTO_UDP ? FREERTOS_SOCK_DGRAM : FREERTOS_SOCK_STREAM;
+    int protocol = proto == MBEDTLS_NET_PROTO_UDP ? FREERTOS_IPPROTO_UDP : FREERTOS_IPPROTO_TCP;
+
     if (port_tail == NULL || *port_tail != '\0')
     {
         return MBEDTLS_ERR_NET_BAD_INPUT_DATA;
     }
 
+    ctx->freertos.type = socktype;
+
+    if (host == NULL)
+    {
+        struct freertos_addrinfo addr_info = {
+            .ai_addr = &addr_info.xPrivateStorage.sockaddr,
+            .ai_addrlen = ipSIZE_OF_IPv4_ADDRESS,
+            .ai_family = family,
+            .ai_protocol = protocol,
+            .xPrivateStorage = {
+                .sockaddr = {
+                    .sin_len = FREERTOS_SOCKADDR_LEN(family),
+                    .sin_family = family,
+                    .sin_port = htobe16(port_num),
+                }
+            }
+        };
+        ret = callback(ctx, &addr_info);
+        return ret;
+    }
+
     memset(&hints, 0, sizeof(hints));
     hints.ai_family = family;
-    ctx->freertos.type = proto == MBEDTLS_NET_PROTO_UDP ? FREERTOS_SOCK_DGRAM : FREERTOS_SOCK_STREAM;
 
     if (FreeRTOS_getaddrinfo(host, port, &hints, &addr_list) != 0)
     {
@@ -66,7 +93,7 @@ static int dns_lookup(mbedtls_net_context *ctx, dns_success_callback_t callback,
 
     /* Try the sockaddrs until a connection succeeds */
     ret = MBEDTLS_ERR_NET_UNKNOWN_HOST;
-    for(cur = addr_list; cur != NULL; cur = cur->ai_next)
+    for (cur = addr_list; cur != NULL; cur = cur->ai_next)
     {
         cur->ai_addr->sin_port = htobe16(port_num);
         cur->ai_addr->sin_family = cur->ai_family;
@@ -85,7 +112,8 @@ static int dns_lookup(mbedtls_net_context *ctx, dns_success_callback_t callback,
 static int net_connect_dns_callback(mbedtls_net_context *ctx, struct freertos_addrinfo *addr)
 {
     int ret;
-    int proto = (ctx->freertos.type == FREERTOS_SOCK_DGRAM) ? FREERTOS_IPPROTO_UDP : FREERTOS_IPPROTO_TCP;
+    int proto = (ctx->freertos.type ==
+                 FREERTOS_SOCK_DGRAM) ? FREERTOS_IPPROTO_UDP : FREERTOS_IPPROTO_TCP;
     ctx->socket = FreeRTOS_socket(addr->ai_family, ctx->freertos.type, proto);
     if (ctx->socket == NULL)
     {
@@ -123,6 +151,23 @@ int mbedtls_net_connect(mbedtls_net_context *ctx, const char *host,
 
 static int net_bind_dns_callback(mbedtls_net_context *ctx, struct freertos_addrinfo *addr)
 {
+    ctx->socket = FreeRTOS_socket(addr->ai_family, ctx->freertos.type, addr->ai_protocol);
+    if (ctx->socket == NULL)
+    {
+        return MBEDTLS_ERR_NET_SOCKET_FAILED;
+    }
+
+    /* Set receive timeout to a high value, by default this is 0 */
+    struct timeval t;
+    t.tv_sec = INT32_MAX / 1000;
+    t.tv_usec = 0;
+    if (FreeRTOS_setsockopt(ctx->socket, 0, FREERTOS_SO_RCVTIMEO, &t, sizeof(t)) != 0)
+    {
+        FreeRTOS_closesocket(ctx->socket);
+        return MBEDTLS_ERR_NET_SOCKET_FAILED;
+    }
+
+    /* Allow listening sockets to be reused */
     if (FreeRTOS_bind(ctx->socket, addr->ai_addr, addr->ai_addrlen) != 0)
     {
         FreeRTOS_closesocket(ctx->socket);
@@ -130,9 +175,9 @@ static int net_bind_dns_callback(mbedtls_net_context *ctx, struct freertos_addri
     }
 
     /* Listen only makes sense for TCP */
-    if (addr->ai_protocol == MBEDTLS_NET_PROTO_TCP)
+    if (ctx->freertos.type == FREERTOS_SOCK_STREAM)
     {
-        if(FreeRTOS_listen(ctx->socket, MBEDTLS_NET_LISTEN_BACKLOG) != 0)
+        if (FreeRTOS_listen(ctx->socket, MBEDTLS_NET_LISTEN_BACKLOG) != 0)
         {
             FreeRTOS_closesocket(ctx->socket);
             return MBEDTLS_ERR_NET_LISTEN_FAILED;
@@ -141,7 +186,6 @@ static int net_bind_dns_callback(mbedtls_net_context *ctx, struct freertos_addri
 
     return 0;
 }
-
 
 /*
  * Create a listening socket on bind_ip:port
@@ -258,12 +302,18 @@ int mbedtls_net_poll(mbedtls_net_context *ctx, uint32_t rw, uint32_t timeout)
 
     event_bits = FreeRTOS_select(ctx->freertos.socket_set, pdMS_TO_TICKS(timeout));
 
+    if (event_bits & eSELECT_EXCEPT)
+    {
+        return MBEDTLS_ERR_NET_CONN_RESET;
+    }
+
     ret = 0;
 
     if (event_bits & eSELECT_READ)
     {
         ret |= MBEDTLS_NET_POLL_READ;
     }
+
     if (event_bits & eSELECT_WRITE)
     {
         ret |= MBEDTLS_NET_POLL_WRITE;
@@ -334,7 +384,8 @@ int mbedtls_net_recv_timeout(void *vctx, unsigned char *buf,
     }
 
     ret = mbedtls_net_poll(ctx, MBEDTLS_NET_POLL_READ, timeout);
-    if (ret <= 0)
+
+    if (ret < 0)
     {
         return ret;
     }

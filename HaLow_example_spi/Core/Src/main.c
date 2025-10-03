@@ -72,8 +72,12 @@ static void MX_RTC_Init(void);
 static void MX_ADC1_Init(void);
 /* USER CODE BEGIN PFP */
 void app_init(void);
+#ifndef LIMITED_DEMO_EXAMPLE
+#if (MM_CHIP == MM6108)
 void select_bcf_3v3(void);
 void select_bcf_4v3(void);
+#endif
+#endif
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -122,7 +126,8 @@ int main(void)
   MX_RTC_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
-
+#ifndef LIMITED_DEMO_EXAMPLE
+#if (MM_CHIP == MM6108)
   HAL_GPIO_WritePin(VFEM_SHUNT_TOGGLE_GPIO_Port, VFEM_SHUNT_TOGGLE_Pin,GPIO_PIN_RESET);
   HAL_Delay(100);
   HAL_ADC_Start(&hadc1);
@@ -143,6 +148,8 @@ int main(void)
       select_bcf_4v3();
     }
   }
+#endif
+#endif
   /*Disable ADC and the shunt resistor, as we don't need them anymore.*/
   HAL_GPIO_DeInit(VFEM_SHUNT_TOGGLE_GPIO_Port, VFEM_SHUNT_TOGGLE_Pin);
   HAL_ADC_DeInit(&hadc1);

@@ -1,5 +1,5 @@
 /*
- * FreeRTOS+TCP <DEVELOPMENT BRANCH>
+ * FreeRTOS+TCP V4.3.1
  * Copyright (C) 2022 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * SPDX-License-Identifier: MIT
@@ -99,7 +99,7 @@ void prvTCPReturnPacket_IPV4( FreeRTOS_Socket_t * pxSocket,
     void * pvCopyDest = NULL;
     const size_t uxIPHeaderSize = ipSIZE_OF_IPv4_HEADER;
     uint32_t ulDestinationIPAddress;
-    eARPLookupResult_t eResult;
+    eResolutionLookupResult_t eResult;
     NetworkEndPoint_t * pxEndPoint = NULL;
 
     do
@@ -141,16 +141,16 @@ void prvTCPReturnPacket_IPV4( FreeRTOS_Socket_t * pxSocket,
         }
         #endif /* ipconfigZERO_COPY_TX_DRIVER */
 
-        /* MISRA Ref 11.3.1 [Misaligned access] */
-        /* More details at: https://github.com/FreeRTOS/FreeRTOS-Plus-TCP/blob/main/MISRA.md#rule-113 */
-        /* coverity[misra_c_2012_rule_11_3_violation] */
-        pxIPHeader = ( ( IPHeader_t * ) &( pxNetworkBuffer->pucEthernetBuffer[ ipSIZE_OF_ETH_HEADER ] ) );
-
         #ifndef __COVERITY__
             if( pxNetworkBuffer != NULL ) /* LCOV_EXCL_BR_LINE the 2nd branch will never be reached */
         #endif
         {
             NetworkInterface_t * pxInterface;
+
+            /* MISRA Ref 11.3.1 [Misaligned access] */
+            /* More details at: https://github.com/FreeRTOS/FreeRTOS-Plus-TCP/blob/main/MISRA.md#rule-113 */
+            /* coverity[misra_c_2012_rule_11_3_violation] */
+            pxIPHeader = ( ( IPHeader_t * ) &( pxNetworkBuffer->pucEthernetBuffer[ ipSIZE_OF_ETH_HEADER ] ) );
 
             /* Map the Ethernet buffer onto a TCPPacket_t struct for easy access to the fields. */
 
@@ -235,7 +235,7 @@ void prvTCPReturnPacket_IPV4( FreeRTOS_Socket_t * pxSocket,
 
             eResult = eARPGetCacheEntry( &ulDestinationIPAddress, &xMACAddress, &pxEndPoint );
 
-            if( eResult == eARPCacheHit )
+            if( eResult == eResolutionCacheHit )
             {
                 pvCopySource = &xMACAddress;
                 pxNetworkBuffer->pxEndPoint = pxEndPoint;
@@ -259,7 +259,6 @@ void prvTCPReturnPacket_IPV4( FreeRTOS_Socket_t * pxSocket,
              * compliant with MISRA Rule 21.15.  These should be
              * optimized away.
              */
-            /* The source MAC addresses is fixed to 'ipLOCAL_MAC_ADDRESS'. */
             pvCopySource = pxNetworkBuffer->pxEndPoint->xMACAddress.ucBytes;
             pvCopyDest = &pxEthernetHeader->xSourceAddress;
             ( void ) memcpy( pvCopyDest, pvCopySource, ( size_t ) ipMAC_ADDRESS_LENGTH_BYTES );
@@ -333,7 +332,7 @@ BaseType_t prvTCPPrepareConnect_IPV4( FreeRTOS_Socket_t * pxSocket )
 {
     TCPPacket_t * pxTCPPacket;
     IPHeader_t * pxIPHeader;
-    eARPLookupResult_t eReturned;
+    eResolutionLookupResult_t eReturned;
     uint32_t ulRemoteIP;
     MACAddress_t xEthAddress;
     BaseType_t xReturn = pdTRUE;
@@ -352,11 +351,11 @@ BaseType_t prvTCPPrepareConnect_IPV4( FreeRTOS_Socket_t * pxSocket )
 
     switch( eReturned )
     {
-        case eARPCacheHit:    /* An ARP table lookup found a valid entry. */
-            break;            /* We can now prepare the SYN packet. */
+        case eResolutionCacheHit:  /* An ARP table lookup found a valid entry. */
+            break;                 /* We can now prepare the SYN packet. */
 
-        case eARPCacheMiss:   /* An ARP table lookup did not find a valid entry. */
-        case eCantSendPacket: /* There is no IP address, or an ARP is still in progress. */
+        case eResolutionCacheMiss: /* An ARP table lookup did not find a valid entry. */
+        case eResolutionFailed:    /* There is no IP address, or an ARP is still in progress. */
         default:
             /* Count the number of times it could not find the ARP address. */
             pxSocket->u.xTCP.ucRepCount++;
@@ -458,7 +457,10 @@ BaseType_t prvTCPPrepareConnect_IPV4( FreeRTOS_Socket_t * pxSocket )
         /* The initial sequence numbers at our side are known.  Later
          * vTCPWindowInit() will be called to fill in the peer's sequence numbers, but
          * first wait for a SYN+ACK reply. */
-        prvTCPCreateWindow( pxSocket );
+        if( prvTCPCreateWindow( pxSocket ) != pdTRUE )
+        {
+            xReturn = pdFALSE;
+        }
     }
 
     return xReturn;

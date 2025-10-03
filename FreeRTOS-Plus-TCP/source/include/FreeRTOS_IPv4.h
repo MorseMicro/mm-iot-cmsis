@@ -1,5 +1,5 @@
 /*
- * FreeRTOS+TCP <DEVELOPMENT BRANCH>
+ * FreeRTOS+TCP V4.3.1
  * Copyright (C) 2022 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * SPDX-License-Identifier: MIT
@@ -58,9 +58,13 @@ struct xIP_PACKET;
 #define ipIPV4_VERSION_HEADER_LENGTH_MIN    0x45U /**< Minimum IPv4 header length. */
 #define ipIPV4_VERSION_HEADER_LENGTH_MAX    0x4FU /**< Maximum IPv4 header length. */
 
+/* IPv4 multicast MAC address starts with 01-00-5E. */
+#define ipMULTICAST_MAC_ADDRESS_IPv4_0      0x01U
+#define ipMULTICAST_MAC_ADDRESS_IPv4_1      0x00U
+#define ipMULTICAST_MAC_ADDRESS_IPv4_2      0x5EU
+
 /*
  *  These functions come from the IPv4-only library.
- *  TODO : They should get an extra parameter, the end-point
  *  void FreeRTOS_SetIPAddress( uint32_t ulIPAddress );
  *  void FreeRTOS_SetNetmask( uint32_t ulNetmask );
  *  void FreeRTOS_SetGatewayAddress( uint32_t ulGatewayAddress );
@@ -76,12 +80,6 @@ uint32_t FreeRTOS_GetGatewayAddress( void );
 uint32_t FreeRTOS_GetDNSServerAddress( void );
 uint32_t FreeRTOS_GetNetmask( void );
 uint32_t FreeRTOS_GetIPAddress( void );
-
-/* Show all valid ARP entries
- */
-#if ( ipconfigHAS_PRINTF != 0 ) || ( ipconfigHAS_DEBUG_PRINTF != 0 )
-    void FreeRTOS_PrintARPCache( void );
-#endif
 
 /* Return pdTRUE if the IPv4 address is a multicast address. */
 BaseType_t xIsIPv4Multicast( uint32_t ulIPAddress );

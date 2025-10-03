@@ -24,6 +24,7 @@
 #include "bluenrg1_hci_le.h"
 #include "bluenrg1_gatt_aci.h"
 #include "app_bluenrg_2.h"
+#include "peripherals.h"
 
 /* Private macros ------------------------------------------------------------*/
 /** @brief Macro that stores Value into a buffer in Little Endian Format (2 bytes)*/
@@ -45,13 +46,14 @@ do {\
 }while(0)
 
 /* Hardware Characteristics Service */
-#define COPY_HW_SENS_W2ST_SERVICE_UUID(uuid_struct)    COPY_UUID_128(uuid_struct,0x00,0x00,0x00,0x00,0x00,0x01,0x11,0xe1,0x9a,0xb4,0x00,0x02,0xa5,0xd5,0xc5,0x1b)
-#define COPY_ENVIRONMENTAL_W2ST_CHAR_UUID(uuid_struct) COPY_UUID_128(uuid_struct,0x00,0x00,0x00,0x00,0x00,0x01,0x11,0xe1,0xac,0x36,0x00,0x02,0xa5,0xd5,0xc5,0x1b)
-#define COPY_ACC_W2ST_CHAR_UUID(uuid_struct)           COPY_UUID_128(uuid_struct,0x00,0xE0,0x00,0x00,0x00,0x01,0x11,0xe1,0xac,0x36,0x00,0x02,0xa5,0xd5,0xc5,0x1b)
-#define COPY_IP_W2ST_CHAR_UUID(uuid_struct)            COPY_UUID_128(uuid_struct,0x00,0xE0,0x00,0x00,0x00,0x01,0x11,0xe1,0xac,0xa2,0x00,0x02,0xa5,0xd5,0xc5,0x1b)
+#define COPY_HW_SENS_W2ST_SERVICE_UUID(uuid_struct)    COPY_UUID_128(uuid_struct,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x01)
+#define COPY_ENVIRONMENTAL_W2ST_CHAR_UUID(uuid_struct) COPY_UUID_128(uuid_struct,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x02)
+#define COPY_ACC_W2ST_CHAR_UUID(uuid_struct)           COPY_UUID_128(uuid_struct,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x03)
+#define COPY_IP_W2ST_CHAR_UUID(uuid_struct)            COPY_UUID_128(uuid_struct,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x04)
+#define COPY_REGION_W2ST_CHAR_UUID(uuid_struct)        COPY_UUID_128(uuid_struct,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x05)
 
 /* Private variables ---------------------------------------------------------*/
-uint16_t HWServW2STHandle, EnvironmentalCharHandle, AccCharHandle, IpCharHandle;
+uint16_t HWServW2STHandle, EnvironmentalCharHandle, AccCharHandle, IpCharHandle, RegionCharHandle;
 
 /* UUIDS */
 Service_UUID_t service_uuid;
@@ -105,14 +107,15 @@ tBleStatus Add_HWServW2ST_Service(void)
   BLUENRG_memcpy(&char_uuid.Char_UUID_128, uuid, 16);
   ret =  aci_gatt_add_char(HWServW2STHandle, UUID_TYPE_128, &char_uuid,
                            64,
-                           CHAR_PROP_NOTIFY,
+                           CHAR_PROP_NOTIFY | CHAR_PROP_READ,
                            ATTR_PERMISSION_NONE,
                            GATT_NOTIFY_READ_REQ_AND_WAIT_FOR_APPL_RESP,
                            16, 0, &AccCharHandle);
   if (ret != BLE_STATUS_SUCCESS)
     return BLE_STATUS_ERROR;
 
-  /* Fill the AccGyroMag BLE Characteristc */
+#ifndef LIMITED_DEMO_EXAMPLE
+  /* Fill the IP value Characteristc */
   COPY_IP_W2ST_CHAR_UUID(uuid);
   BLUENRG_memcpy(&char_uuid.Char_UUID_128, uuid, 16);
   ret = aci_gatt_add_char(HWServW2STHandle, UUID_TYPE_128, &char_uuid, 64, CHAR_PROP_READ,
@@ -120,6 +123,19 @@ tBleStatus Add_HWServW2ST_Service(void)
                           &IpCharHandle);
   if (ret != BLE_STATUS_SUCCESS)
       return BLE_STATUS_ERROR;
+
+  /* Fill the Region value Characteristc */
+  COPY_REGION_W2ST_CHAR_UUID(uuid);
+  BLUENRG_memcpy(&char_uuid.Char_UUID_128, uuid, 16);
+  ret = aci_gatt_add_char(HWServW2STHandle, UUID_TYPE_128, &char_uuid, 2,
+                          CHAR_PROP_WRITE_WITHOUT_RESP | CHAR_PROP_WRITE | CHAR_PROP_READ,
+                          ATTR_PERMISSION_NONE,
+                          GATT_NOTIFY_ATTRIBUTE_WRITE | GATT_NOTIFY_READ_REQ_AND_WAIT_FOR_APPL_RESP,
+                          16, 0,
+                          &RegionCharHandle);
+  if (ret != BLE_STATUS_SUCCESS)
+      return BLE_STATUS_ERROR;
+#endif
 
   return BLE_STATUS_SUCCESS;
 }
@@ -232,6 +248,24 @@ void update_ble_ip_gw(const char *ip, const char *gw)
     ble_IP_Update(ip, gw);
 }
 
+
+void update_ble_country(const char *country_code)
+{
+    tBleStatus ret;
+    char buff[3];
+
+    memcpy(buff, country_code, 2);
+    buff[2] = 0;
+
+    ret = aci_gatt_update_char_value(HWServW2STHandle, RegionCharHandle, 0, 2,
+                                     (uint8_t *)buff);
+    if (ret != BLE_STATUS_SUCCESS)
+    {
+        PRINT_DBG("Error while updating region characteristic: 0x%04X\r\n", ret);
+    }
+
+}
+
 /**
  * @brief  Update the sensor value
  *
@@ -286,5 +320,9 @@ void Attribute_Modified_Request_CB(uint16_t Connection_Handle, uint16_t attr_han
     } else if (att_data[0] == 0){
       send_mot = FALSE;
     }
+  }
+  else if (attr_handle == RegionCharHandle + 1)
+  {
+    periphs_set_country_code((char*)att_data);
   }
 }

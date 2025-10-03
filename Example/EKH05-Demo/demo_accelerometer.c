@@ -1,8 +1,7 @@
 /*
  * Copyright 2024 Morse Micro
  *
- * This file is licensed under terms that can be found in the LICENSE.md file in
- * the root directory of the Morse Micro IoT SDK software package.
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 #include "demo_accelerometer.h"
@@ -95,24 +94,24 @@ void accelerometer_process(void)
     {
         /* Read acceleration data */
         iis328dq_acceleration_raw_get(&dev_ctx, data_raw_acceleration);
-        if (data_raw_acceleration[1] > 0)
+        if (data_raw_acceleration[0] > 0)
         {
-            left = data_raw_acceleration[1] / 16;
+            left = data_raw_acceleration[0] / 16;
             right = 0;
         }
         else
         {
-            right = 0 - data_raw_acceleration[1] / 16;
+            right = 0 - data_raw_acceleration[0] / 16;
             left = 0;
         }
 
-        if (data_raw_acceleration[0] > 0)
+        if (data_raw_acceleration[1] > 0)
         {
-            down = 0;
+            down = data_raw_acceleration[1] / 16;
         }
         else
         {
-            down = 0 - data_raw_acceleration[0] / 16;
+            down = 0;
         }
         htim4.Instance->CCR1 = transform_func(down);
         htim4.Instance->CCR2 = transform_func(left);

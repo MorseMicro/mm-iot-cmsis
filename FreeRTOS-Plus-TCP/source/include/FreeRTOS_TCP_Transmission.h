@@ -1,5 +1,5 @@
 /*
- * FreeRTOS+TCP <DEVELOPMENT BRANCH>
+ * FreeRTOS+TCP V4.3.1
  * Copyright (C) 2022 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * SPDX-License-Identifier: MIT
@@ -97,7 +97,7 @@ void prvTCPReturn_SetEndPoint( const FreeRTOS_Socket_t * pxSocket,
 BaseType_t prvTCPPrepareConnect_IPV4( FreeRTOS_Socket_t * pxSocket );
 
 /*
- * Let ARP look-up the MAC-address of the peer and initialise the first SYN
+ * Let ND look-up the MAC-address of the peer and initialise the first SYN
  * packet.
  */
 BaseType_t prvTCPPrepareConnect_IPV6( FreeRTOS_Socket_t * pxSocket );
@@ -105,7 +105,7 @@ BaseType_t prvTCPPrepareConnect_IPV6( FreeRTOS_Socket_t * pxSocket );
 /*
  * Initialise the data structures which keep track of the TCP windowing system.
  */
-void prvTCPCreateWindow( FreeRTOS_Socket_t * pxSocket );
+BaseType_t prvTCPCreateWindow( FreeRTOS_Socket_t * pxSocket );
 
 /*
  * Set the initial properties in the options fields, like the preferred

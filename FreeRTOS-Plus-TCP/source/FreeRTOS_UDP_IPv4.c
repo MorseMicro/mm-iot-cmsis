@@ -1,5 +1,5 @@
 /*
- * FreeRTOS+TCP <DEVELOPMENT BRANCH>
+ * FreeRTOS+TCP V4.3.1
  * Copyright (C) 2022 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * SPDX-License-Identifier: MIT
@@ -64,9 +64,6 @@
     #if( ipconfigUSE_IPv4 != 0 )
 /* *INDENT-ON* */
 
-/** @brief The expected IP version and header length coded into the IP header itself. */
-#define ipIP_VERSION_AND_HEADER_LENGTH_BYTE    ( ( uint8_t ) 0x45 )
-
 /*-----------------------------------------------------------*/
 
 /**
@@ -79,7 +76,7 @@ void vProcessGeneratedUDPPacket_IPv4( NetworkBufferDescriptor_t * const pxNetwor
 {
     UDPPacket_t * pxUDPPacket;
     IPHeader_t * pxIPHeader;
-    eARPLookupResult_t eReturned;
+    eResolutionLookupResult_t eReturned;
     uint32_t ulIPAddress = pxNetworkBuffer->xIPAddress.ulIP_IPv4;
     NetworkEndPoint_t * pxEndPoint = pxNetworkBuffer->pxEndPoint;
     size_t uxPayloadSize;
@@ -113,10 +110,28 @@ void vProcessGeneratedUDPPacket_IPv4( NetworkBufferDescriptor_t * const pxNetwor
         pxNetworkBuffer->pxEndPoint = pxEndPoint;
     }
 
-    if( eReturned != eCantSendPacket )
+    if( eReturned != eResolutionFailed )
     {
-        if( eReturned == eARPCacheHit )
+        if( eReturned == eResolutionCacheHit )
         {
+            /* Part of the Ethernet and IP headers are always constant when sending an IPv4
+             * UDP packet.  This array defines the constant parts, allowing this part of the
+             * packet to be filled in using a simple memcpy() instead of individual writes. */
+            static const uint8_t ucDefaultPartUDPPacketHeader[] =
+            {
+                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, /* Ethernet source MAC address. */
+                0x08, 0x00,                         /* Ethernet frame type. */
+                ipIPV4_VERSION_HEADER_LENGTH_MIN,   /* ucVersionHeaderLength. */
+                0x00,                               /* ucDifferentiatedServicesCode. */
+                0x00, 0x00,                         /* usLength. */
+                0x00, 0x00,                         /* usIdentification. */
+                0x00, 0x00,                         /* usFragmentOffset. */
+                ipconfigUDP_TIME_TO_LIVE,           /* ucTimeToLive */
+                ipPROTOCOL_UDP,                     /* ucProtocol. */
+                0x00, 0x00,                         /* usHeaderChecksum. */
+                0x00, 0x00, 0x00, 0x00              /* Source IP address. */
+            };
+
             #if ( ipconfigDRIVER_INCLUDED_TX_IP_CHECKSUM == 0 )
                 uint8_t ucSocketOptions;
             #endif
@@ -175,10 +190,10 @@ void vProcessGeneratedUDPPacket_IPv4( NetworkBufferDescriptor_t * const pxNetwor
              * compliant with MISRA Rule 21.15.  These should be
              * optimized away.
              */
-            pvCopySource = xDefaultPartUDPPacketHeader.ucBytes;
+            pvCopySource = ucDefaultPartUDPPacketHeader;
             /* The Ethernet source address is at offset 6. */
             pvCopyDest = &pxNetworkBuffer->pucEthernetBuffer[ sizeof( MACAddress_t ) ];
-            ( void ) memcpy( pvCopyDest, pvCopySource, sizeof( xDefaultPartUDPPacketHeader ) );
+            ( void ) memcpy( pvCopyDest, pvCopySource, sizeof( ucDefaultPartUDPPacketHeader ) );
 
             #if ipconfigSUPPORT_OUTGOING_PINGS == 1
                 if( pxNetworkBuffer->usPort == ( uint16_t ) ipPACKET_CONTAINS_ICMP_DATA )
@@ -246,7 +261,7 @@ void vProcessGeneratedUDPPacket_IPv4( NetworkBufferDescriptor_t * const pxNetwor
             }
             #endif /* if ( ipconfigDRIVER_INCLUDED_TX_IP_CHECKSUM == 0 ) */
         }
-        else if( eReturned == eARPCacheMiss )
+        else if( eReturned == eResolutionCacheMiss )
         {
             /* Add an entry to the ARP table with a null hardware address.
              * This allows the ARP timer to know that an ARP reply is
@@ -259,11 +274,11 @@ void vProcessGeneratedUDPPacket_IPv4( NetworkBufferDescriptor_t * const pxNetwor
             /* 'ulIPAddress' might have become the address of the Gateway.
              * Find the route again. */
 
-            pxNetworkBuffer->pxEndPoint = FreeRTOS_FindEndPointOnNetMask( pxNetworkBuffer->xIPAddress.ulIP_IPv4, 11 );
+            pxNetworkBuffer->pxEndPoint = FreeRTOS_FindEndPointOnNetMask( pxNetworkBuffer->xIPAddress.ulIP_IPv4 );
 
             if( pxNetworkBuffer->pxEndPoint == NULL )
             {
-                eReturned = eCantSendPacket;
+                eReturned = eResolutionFailed;
             }
             else
             {
@@ -275,11 +290,11 @@ void vProcessGeneratedUDPPacket_IPv4( NetworkBufferDescriptor_t * const pxNetwor
         {
             /* The lookup indicated that an ARP request has already been
              * sent out for the queried IP address. */
-            eReturned = eCantSendPacket;
+            eReturned = eResolutionFailed;
         }
     }
 
-    if( eReturned != eCantSendPacket )
+    if( eReturned != eResolutionFailed )
     {
         /* The network driver is responsible for freeing the network buffer
          * after the packet has been sent. */

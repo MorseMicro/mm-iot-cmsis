@@ -80,11 +80,29 @@ extern "C" {
 #define LOG_USART_IRQ           (LPUART1_IRQn)
 #define LOG_USART_IRQ_HANDLER   LPUART1_IRQHandler
 
+/* ONE_SHOT is USART RX GPIO */
+#define ONE_SHOT_IRQn           (EXTI0_IRQn)
+#define ONE_SHOT_IRQ_LINE       (LL_EXTI_LINE_0)
+#define ONE_SHOT_IRQ_HANDLER    EXTI0_IRQHandler
+#define ONE_SHOT_EXTI_Port      (LL_EXTI_EXTI_PORTC)
+#define ONE_SHOT_EXTI_Line      (LL_EXTI_EXTI_LINE0)
+
+#define MM6108 1
+#define MM8108 2
+#define MM_CHIP MM6108
+
+#if (MM_CHIP == MM6108)
 #define BCF_VFEM_THRESHOLD  9500
 #define BCF_DATA_3V3        bcf_aw_hm593
 #define BCF_DATA_3V3_LEN    bcf_aw_hm593_len
 #define BCF_DATA_4V3        bcf_aw_hm593_4v3
 #define BCF_DATA_4V3_LEN    bcf_aw_hm593_4v3_len
+#elif (MM_CHIP == MM8108)
+#define BCF_DATA            bcf_mf15457
+#define BCF_DATA_LEN        bcf_mf15457_len
+#else
+#error "Invalid MM_CHIP selection. Available options are MM6108 and MM8108"
+#endif
 /* USER CODE END EM */
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);

@@ -1,8 +1,7 @@
 /*
  * Copyright 2024 Morse Micro
  *
- * This file is licensed under terms that can be found in the LICENSE.md file in
- * the root directory of the Morse Micro IoT SDK software package.
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 #ifndef __SHARED_BUFFER__H__
@@ -31,5 +30,6 @@ void shared_buffer_reset(SharedBuffer *buf);
 void shared_buffer_init(SharedBuffer *buf);
 bool shared_buffer_append(SharedBuffer *buf, const char *new_data);
 const char *shared_buffer_get(SharedBuffer *buf);
+bool dual_print(SharedBuffer *sb, const char *format, ...);
 
 #endif

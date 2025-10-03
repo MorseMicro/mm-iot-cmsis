@@ -7,8 +7,8 @@
 
 #include "mmconfig.h"
 
-config_entry_t mm_configs[]={
-         /* tcp_client */
+const struct mmconfig_literal_config mm_litral_configs[]={
+        /* udp_server */
         {"iperf.mode", "udp_server"},
         /* IP address of server to connect to when in client mode */
         {"iperf.server", "192.168.1.1"},
@@ -23,7 +23,7 @@ config_entry_t mm_configs[]={
         {"ping.count", "10"},
         {"ping.interval", "1000"},
         {"ping.size", "56"},
-        {"ping.post_ping_delay_ms", "60"},
+        {"ping.post_ping_delay_ms", "60000"},
 
         /* The following setting is required only for the wnm_sleep example */
         {"wlan.wnm_sleep_duration_ms", "20000"},
