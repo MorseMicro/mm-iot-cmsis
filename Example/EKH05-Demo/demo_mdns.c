@@ -29,6 +29,9 @@
 
 #include "demo_mdns.h"
 #include "lwip/apps/mdns.h"
+#include "lwip/tcpip.h"
+
+static bool mdns_initialized = false;
 
 #if LWIP_MDNS_RESPONDER
 static void srv_txt(struct mdns_service *service, void *txt_userdata)
@@ -57,5 +60,23 @@ void mdns_init(struct netif *mmnetif)
     mdns_resp_add_netif(mmnetif, ekh05_domain);
     mdns_resp_add_service(mmnetif, ekh05_domain, "_http", DNSSD_PROTO_TCP, 80, srv_txt, NULL);
     mdns_resp_announce(mmnetif);
+#endif
+}
+
+
+void mdns_link_update(struct netif *mmnetif)
+{
+#if LWIP_MDNS_RESPONDER
+    LOCK_TCPIP_CORE();
+    if (!mdns_initialized)
+    {
+        mdns_initialized = true;
+        mdns_init(mmnetif);
+    }
+    else
+    {
+        mdns_resp_announce(mmnetif);
+    }
+    UNLOCK_TCPIP_CORE();
 #endif
 }

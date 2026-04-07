@@ -8,7 +8,7 @@
 #include "mmutils.h"
 #include "mmosal.h"
 #include "mmhal.h"
-#include "mm_app_regdb.h"
+#include "mmregdb.h"
 #include "mmconfig.h"
 #include <string.h>
 #include <ctype.h>

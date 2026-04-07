@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Morse Micro
+ * Copyright 2025-2026 Morse Micro
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -94,7 +94,7 @@ static void iperf_report_handler(const struct mmiperf_report *report, void *arg,
     if ((report->report_type == MMIPERF_UDP_DONE_SERVER) ||
         (report->report_type == MMIPERF_TCP_DONE_SERVER))
     {
-        printf("Waiting for client to connect...\n");
+        dual_print(&http_terminal_buffer, "Waiting for client to connect...\n");
     }
     else if (report->report_type == MMIPERF_UDP_DONE_CLIENT)
     {
@@ -106,37 +106,76 @@ static void iperf_report_handler(const struct mmiperf_report *report, void *arg,
     }
 }
 
-static void iperf_start_udp_server(uint16_t port)
-{
-    struct mmiperf_server_args args = MMIPERF_SERVER_ARGS_DEFAULT;
-    if (is_udp_server_up)
-        return;
-    args.local_port = port;
-    args.report_fn  = iperf_report_handler;
-    mmiperf_handle_t iperf_handle = mmiperf_start_udp_server(&args);
-    if (iperf_handle == NULL)
-    {
-        printf("Failed to get local address\n");
-        return;
-    }
-    is_udp_server_up = true;
-    printf("Started Iperf UDP Server\n");
+static void iperf_start_udp_server(uint16_t port) {
+	struct mmiperf_server_args args = MMIPERF_SERVER_ARGS_DEFAULT;
+	if (is_udp_server_up)
+		return;
+	args.local_port = port;
+	args.report_fn = iperf_report_handler;
+	mmiperf_handle_t iperf_handle = mmiperf_start_udp_server(&args);
+
+	if (iperf_handle == NULL) {
+		dual_print(&http_terminal_buffer,
+				"Iperf UDP Server - Failed to get local address\n");
+		return;
+	}
+	is_udp_server_up = true;
+
+
+	dual_print(&http_terminal_buffer, "Started Iperf UDP Server - Execute cmd on AP:\n");
+
+	struct mmipal_ip_config ip_config;
+	enum mmipal_status ip_status = mmipal_get_ip_config(&ip_config);
+	if (ip_status == MMIPAL_SUCCESS) {
+		dual_print(&http_terminal_buffer,
+				"IPv4: iperf -c %s -p %u -i 1 -u -b 20M\n",
+				ip_config.ip_addr, args.local_port);
+	}
+
+	// TODO - Reinstate IPv6 prompt once it is working
+	//	struct mmipal_ip6_config ip6_config;
+	//	enum mmipal_status ip6_status = mmipal_get_ip6_config(&ip6_config);
+	//	if (ip6_status == MMIPAL_SUCCESS) {
+	//		dual_print(&http_terminal_buffer,
+	//				"IPv6: iperf -c %s%wlan0 -p %u -i 1 -V -u -b 20M\n",
+	//				ip6_config.ip6_addr[0], args.local_port);
+	//	}
+	dual_print(&http_terminal_buffer, "waiting for client to connect...\n");
 }
-static void iperf_start_tcp_server(uint16_t port)
-{
-    struct mmiperf_server_args args = MMIPERF_SERVER_ARGS_DEFAULT;
-    if (is_tcp_server_up)
-        return;
-    args.local_port = port;
-    args.report_fn  = iperf_report_handler;
-    mmiperf_handle_t iperf_handle = mmiperf_start_tcp_server(&args);
-    if (iperf_handle == NULL)
-    {
-        printf("Failed to get local address\n");
-        return;
-    }
-    is_tcp_server_up = true;
-    printf("Started Iperf TCP Server\n");
+
+static void iperf_start_tcp_server(uint16_t port) {
+	struct mmiperf_server_args args = MMIPERF_SERVER_ARGS_DEFAULT;
+	if (is_tcp_server_up)
+		return;
+	args.local_port = port;
+	args.report_fn = iperf_report_handler;
+	mmiperf_handle_t iperf_handle = mmiperf_start_tcp_server(&args);
+	if (iperf_handle == NULL) {
+		dual_print(&http_terminal_buffer,
+				"Iperf TCP Server - Failed to get local address\n");
+		return;
+	}
+	is_tcp_server_up = true;
+
+
+	dual_print(&http_terminal_buffer, "Started Iperf TCP Server - Execute cmd on AP:\n");
+	struct mmipal_ip_config ip_config;
+	enum mmipal_status ip_status = mmipal_get_ip_config(&ip_config);
+	if (ip_status == MMIPAL_SUCCESS) {
+		dual_print(&http_terminal_buffer,
+				"IPv4: iperf -c %s -p %u -i 1\n",
+				ip_config.ip_addr, args.local_port);
+	}
+
+	// TODO - Reinstate IPv6 prompt once it is working
+	//	struct mmipal_ip6_config ip6_config;
+	//	enum mmipal_status ip6_status = mmipal_get_ip6_config(&ip6_config);
+	//	if (ip6_status == MMIPAL_SUCCESS) {
+	//		dual_print(&http_terminal_buffer,
+	//				"IPv6: iperf -c %s%%wlan0 -p %u -i 1 -V\n",
+	//				ip6_config.ip6_addr[0], args.local_port);
+	//	}
+	dual_print(&http_terminal_buffer, "waiting for client to connect...\n");
 }
 
 static void iperf_start_udp_client(const char *target_ip, uint16_t port, int amount)
@@ -150,7 +189,7 @@ static void iperf_start_udp_client(const char *target_ip, uint16_t port, int amo
     args.report_fn = iperf_report_handler;
     mmiperf_start_udp_client(&args);
     is_udp_client_running = true;
-    printf("Started Iperf UDP client\n");
+    dual_print(&http_terminal_buffer, "Started Iperf UDP client\n");
 }
 
 static void iperf_start_tcp_client(const char *target_ip, uint16_t port, uint32_t amount)
@@ -164,7 +203,7 @@ static void iperf_start_tcp_client(const char *target_ip, uint16_t port, uint32_
     args.report_fn   = iperf_report_handler;
     mmiperf_start_tcp_client(&args);
     is_tcp_client_running = true;
-    printf("Started Iperf TCP client\n");
+    dual_print(&http_terminal_buffer, "Started Iperf TCP client\n");
 }
 
 bool iperf_is_client_in_progress(void) { return is_tcp_client_running || is_udp_client_running; }

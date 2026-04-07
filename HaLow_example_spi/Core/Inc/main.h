@@ -44,9 +44,11 @@ extern "C" {
 #include "stm32u5xx_ll_pwr.h"
 
 #include "hci_tl_interface.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "RTE_Components.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -76,12 +78,12 @@ extern "C" {
 #define BUSY_IRQ_LINE       (LL_EXTI_LINE_5)
 #define BUSY_IRQ_HANDLER    EXTI5_IRQHandler
 
-/* ONE_SHOT is USART RX GPIO */
-#define ONE_SHOT_IRQn           (EXTI0_IRQn)
-#define ONE_SHOT_IRQ_LINE       (LL_EXTI_LINE_0)
-#define ONE_SHOT_IRQ_HANDLER    EXTI0_IRQHandler
-#define ONE_SHOT_EXTI_Port      (LL_EXTI_EXTI_PORTC)
-#define ONE_SHOT_EXTI_Line      (LL_EXTI_EXTI_LINE0)
+/* LOG_USART_RX GPIO is used as deep sleep one-shot interrupt */
+#define LOG_USART_RX_IRQn           (EXTI0_IRQn)
+#define LOG_USART_RX_IRQ_LINE       (LL_EXTI_LINE_0)
+#define LOG_USART_RX_IRQ_HANDLER    EXTI0_IRQHandler
+#define LOG_USART_RX_EXTI_Port      (LL_EXTI_EXTI_PORTC)
+#define LOG_USART_RX_EXTI_Line      (LL_EXTI_EXTI_LINE0)
 
 #define LOG_USART               (LPUART1)
 #define LOG_USART_IRQ           (LPUART1_IRQn)
@@ -89,6 +91,11 @@ extern "C" {
 
 #define MM6108 1
 #define MM8108 2
+
+/* Define MM_CHIP as either:
+ * #define MM_CHIP MM6108
+ * #define MM_CHIP MM8108
+ **/
 #define MM_CHIP MM6108
 
 #if (MM_CHIP == MM6108)
@@ -97,11 +104,15 @@ extern "C" {
 #define BCF_DATA_3V3_LEN    bcf_aw_hm593_len
 #define BCF_DATA_4V3        bcf_aw_hm593_4v3
 #define BCF_DATA_4V3_LEN    bcf_aw_hm593_4v3_len
+#define MMHAL_CHIP_TYPE     mmhal_mm6108
+#define MM_CHIP_NAME        "MM6108"
 #elif (MM_CHIP == MM8108)
 #define BCF_DATA            bcf_mf15457
 #define BCF_DATA_LEN        bcf_mf15457_len
+#define MMHAL_CHIP_TYPE     mmhal_mm8108
+#define MM_CHIP_NAME        "MM8108"
 #else
-#error "Invalid MM_CHIP selection. Available options are MM6108 and MM8108"
+#error "Invalid MM_CHIP selection. Available options are MM6108 and MM8108. Ensure define in main.h."
 #endif
 /* USER CODE END EM */
 

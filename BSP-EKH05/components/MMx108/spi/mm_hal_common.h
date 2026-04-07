@@ -7,13 +7,12 @@
 
 #pragma once
 
-#include "mmhal.h"
-#include "mmosal.h"
-#include "main.h"
+#include "mmhal_core.h"
 
 /** Example hardware version string used for @c mmhal_get_hardware_version() */
 #ifndef MMHAL_HARDWARE_VERSION
-#define MMHAL_HARDWARE_VERSION "MM-MM6108-EKH05"
+#include "main.h"
+#define MMHAL_HARDWARE_VERSION "MM-" MM_CHIP_NAME "-EKH05"
 #endif
 
 /**
@@ -25,3 +24,15 @@ enum mmhal_deep_sleep_veto_id
     /** UART HAL deep sleep veto. */
     MMHAL_VETO_ID_HAL_UART = MMHAL_VETO_ID_HAL_MIN,
 };
+
+/**
+ * Retrieve the current active deep sleep vetoes.
+ *
+ * @returns The current active deep sleep vetoes.
+ */
+uint32_t mmhal_get_deep_sleep_veto(void);
+
+/**
+ * Initialize mmhal resources for random number generator
+ */
+void mmhal_random_init(void);

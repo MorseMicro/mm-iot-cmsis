@@ -9,6 +9,6 @@
 
 #include "lwip/netif.h"
 
-void mdns_init(struct netif *mmnetif);
+void mdns_link_update(struct netif *mmnetif);
 
 #endif

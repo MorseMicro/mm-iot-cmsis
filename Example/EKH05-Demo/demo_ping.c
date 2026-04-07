@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Morse Micro
+ * Copyright 2024, 2026 Morse Micro
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -39,7 +39,7 @@ void ping_routine(void)
     enum mmipal_status status = mmipal_get_local_addr(args.ping_src, args.ping_target);
     if (status != MMIPAL_SUCCESS)
     {
-        printf("Failed to get local address for PING\n");
+        dual_print(&http_terminal_buffer, "Failed to get local address for PING\n");
     }
 
     mmping_start(&args);
