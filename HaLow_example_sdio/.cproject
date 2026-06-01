@@ -23,7 +23,7 @@
 							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu.639789285" name="Floating-point unit" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu.value.fpv5-sp-d16" valueType="enumerated"/>
 							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi.412181632" name="Floating-point ABI" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi.value.hard" valueType="enumerated"/>
 							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board.1678863750" name="Board" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board" useByScannerDiscovery="false" value="genericBoard" valueType="string"/>
-							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults.1741455392" name="Defaults" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults" useByScannerDiscovery="false" value="com.st.stm32cube.ide.common.services.build.inputs.revA.1.0.6 || Debug || true || Executable || com.st.stm32cube.ide.mcu.gnu.managedbuild.option.toolchain.value.workspace || STM32U585VITxQ || 0 || 0 || arm-none-eabi- || ${gnu_tools_for_stm32_compiler_path} || ../Core/Inc | ../Drivers/STM32U5xx_HAL_Driver/Inc | ../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy | ../Drivers/CMSIS/Device/ST/STM32U5xx/Include | ../Drivers/CMSIS/Include | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmipal | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmipal/lwip | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmutils | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mm_app_common | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/netif | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/netif/ppp | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip/priv | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip/apps | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip/prot | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/stdc | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix/arpa | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix/sys | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix/net | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/port | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/port/arch | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmconfig | ../Middlewares/Third_Party/FreeRTOS/Source/include/ | ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/ | ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/ | ../Middlewares/Third_Party/CMSIS/RTOS2/Include/ | ../Drivers/BSP/MorseMicro_board/EKH05/SPI | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmiperf | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmiperf/lwip ||  ||  || USE_FULL_LL_DRIVER | USE_HAL_DRIVER | STM32U585xx ||  || MM_IoT | Drivers | RTOS2 | Core/Startup | Middlewares | Core ||  || ../Middlewares/Third_Party/MorseMicro_MM_IoT/morselib/lib/arm-cortex-m33f/libmorse.a | ../Middlewares/Third_Party/MorseMicro_MM_IoT/morselib/with_wpa_supplicant/lib/arm-cortex-m33f/libmorse.a || ${workspace_loc:/${ProjName}/STM32U585VITXQ_FLASH.ld} || true || NonSecure ||  || secure_nsclib.o ||  || None ||  ||  || " valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults.1741455392" name="Defaults" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults" useByScannerDiscovery="false" value="com.st.stm32cube.ide.common.services.build.inputs.revA.1.0.6 || Debug || true || Executable || com.st.stm32cube.ide.mcu.gnu.managedbuild.option.toolchain.value.workspace || STM32U585VITxQ || 0 || 0 || arm-none-eabi- || ${gnu_tools_for_stm32_compiler_path} || ../Core/Inc | ../Drivers/STM32U5xx_HAL_Driver/Inc | ../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy | ../Drivers/CMSIS/Device/ST/STM32U5xx/Include | ../Drivers/CMSIS/Include | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmipal | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmipal/lwip | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmutils | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mm_app_common | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/netif | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/netif/ppp | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip/priv | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip/apps | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip/prot | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/stdc | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix/arpa | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix/sys | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix/net | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/port | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/port/arch | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmconfig | ../Middlewares/Third_Party/FreeRTOS/Source/include/ | ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/ | ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/ | ../Middlewares/Third_Party/CMSIS/RTOS2/Include/ | ../Drivers/BSP/MorseMicro_board/EKH05/SPI | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmiperf | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmiperf/lwip | ../Middlewares/Third_Party/MorseMicro_MM_IoT ||  ||  || USE_FULL_LL_DRIVER | USE_HAL_DRIVER | STM32U585xx ||  || MM_IoT | Drivers | RTOS2 | Core/Startup | Middlewares | Core ||  || ${workspace_loc:/${ProjName}/STM32U585VITXQ_FLASH.ld} || true || NonSecure ||  || secure_nsclib.o ||  || None ||  ||  || " valueType="string"/>
 							<option id="com.st.stm32cube.ide.mcu.debug.option.cpuclock.1576813" superClass="com.st.stm32cube.ide.mcu.debug.option.cpuclock" useByScannerDiscovery="false" value="160" valueType="string"/>
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.targetplatform.670830622" isAbstract="false" osList="all" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.targetplatform"/>
 							<builder buildPath="${workspace_loc:/HaLow_example_sdio}/Debug" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.builder.124827527" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" parallelBuildOn="true" parallelizationNumber="optimal" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.builder"/>
@@ -39,7 +39,8 @@
 								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.optimization.level.1831609679" name="Optimization level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.optimization.level" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.optimization.level.value.og" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.definedsymbols.1633764349" name="Define symbols (-D)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.definedsymbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG"/>
-									<listOptionValue builtIn="false" value="APPLICATION_VERSION=&quot;1.8.4&quot;"/>
+									<!-- Do not edit this version number manually. This is managed by the `bump-my-version` tool. -->
+									<listOptionValue builtIn="false" value="APPLICATION_VERSION=&quot;1.9.0&quot;"/>
 									<listOptionValue builtIn="false" value="ENABLE_MMAGIC_DATALINK_UART=1"/>
 									<listOptionValue builtIn="false" value="MQTT_AGENT_DO_NOT_USE_CUSTOM_CONFIG"/>
 									<listOptionValue builtIn="false" value="MQTT_AGENT_NETWORK_BUFFER_SIZE=1024"/>
@@ -62,6 +63,41 @@
 									<listOptionValue builtIn="false" value="MEMP_NUM_TCP_PCB=64"/>
 									<listOptionValue builtIn="false" value="LWIP_HTTPD_CUSTOM_FILES"/>
 									<listOptionValue builtIn="false" value="STM32U585xx"/>
+									<listOptionValue builtIn="false" value="IEEE8021X_EAPOL=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_SME=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_SAE=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_OWE=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_ECC=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_SHA256=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_SHA512=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_SHA384=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_FIPS=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_NO_ACCOUNTING=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_NO_BSS_TRANS_MGMT=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_NO_CONFIG_BLOBS=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_NO_RADIUS=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_NO_RANDOM_POOL=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_NO_RC4=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_NO_ROBUST_AV=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_NO_RRM=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_NO_VLAN=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_WNM=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_IEEE80211AH=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_DRIVER_NL80211_MORSE=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_NO_CONFIG_WRITE=1"/>
+									<listOptionValue builtIn="false" value="OS_NO_C_LIB_DEFINES=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_BGSCAN=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_BGSCAN_SIMPLE=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_AUTOSCAN=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_AUTOSCAN_EXPONENTIAL=1"/>
+									<listOptionValue builtIn="false" value="CONFIG_S1G_TWT=1"/>
+									<listOptionValue builtIn="false" value="MAX_NUM_MLD_LINKS=1"/>
+									<listOptionValue builtIn="false" value="MAX_NUM_MLO_LINKS=1"/>
+									<listOptionValue builtIn="false" value="WPA_SUPPLICANT_CLEANUP_INTERVAL=120"/>
+									<listOptionValue builtIn="false" value="MM_IOT"/>
+									<listOptionValue builtIn="false" value="CONFIG_OPENSSL_INTERNAL_AES_WRAP=1"/>
+									<listOptionValue builtIn="false" value="MM_IOT_DPP_HEADER"/>
+									<listOptionValue builtIn="false" value="CONFIG_NO_STDOUT_DEBUG"/>
 								</option>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths.1312817364" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="../Core/Inc"/>
@@ -73,7 +109,7 @@
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/mmipal/lwip"/>
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/mmutils"/>
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/mm_app_common"/>
-									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include"/>
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/netif"/>
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/netif/ppp"/>
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip"/>
@@ -95,6 +131,16 @@
 									<listOptionValue builtIn="false" value="../Drivers/BSP/MorseMicro_board/EKH05/SPI"/>
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/mmiperf"/>
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/mmiperf/lwip"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/src/include/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/port"/>
+								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.otherflags.88513559" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.otherflags" valueType="stringList">
+									<listOptionValue builtIn="false" value="-Wno-unused-parameter"/>
+									<listOptionValue builtIn="false" value="-Wno-format"/>
+									<listOptionValue builtIn="false" value="-Wno-unused-but-set-variable"/>
+									<listOptionValue builtIn="false" value="-Wno-unused-function"/>
+									<listOptionValue builtIn="false" value="-Wno-unused-variable"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1612708882" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
@@ -106,9 +152,6 @@
 								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.script.56255540" name="Linker Script (-T)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.script" value="${workspace_loc:/${ProjName}/STM32U585VITXQ_FLASH.ld}" valueType="string"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.directories.180358842" name="Library search path (-L)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.directories" valueType="libPaths">
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/morselib/lib/arm-cortex-m33f"/>
-								</option>
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.libraries.23240572" name="Libraries (-l)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.libraries" valueType="libs">
-									<listOptionValue builtIn="false" value=":libmorse.a"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.input.898841578" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -159,7 +202,7 @@
 							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu.568344703" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu.value.fpv5-sp-d16" valueType="enumerated"/>
 							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi.627674457" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi.value.hard" valueType="enumerated"/>
 							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board.2076707653" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board" useByScannerDiscovery="false" value="genericBoard" valueType="string"/>
-							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults.1919231999" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults" useByScannerDiscovery="false" value="com.st.stm32cube.ide.common.services.build.inputs.revA.1.0.6 || Release || false || Executable || com.st.stm32cube.ide.mcu.gnu.managedbuild.option.toolchain.value.workspace || STM32U585VITxQ || 0 || 0 || arm-none-eabi- || ${gnu_tools_for_stm32_compiler_path} || ../Core/Inc | ../Drivers/STM32U5xx_HAL_Driver/Inc | ../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy | ../Drivers/CMSIS/Device/ST/STM32U5xx/Include | ../Drivers/CMSIS/Include | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmipal | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmipal/lwip | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmutils | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mm_app_common | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/netif | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/netif/ppp | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip/priv | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip/apps | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip/prot | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/stdc | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix/arpa | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix/sys | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix/net | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/port | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/port/arch | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmconfig | ../Middlewares/Third_Party/FreeRTOS/Source/include/ | ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/ | ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/ | ../Middlewares/Third_Party/CMSIS/RTOS2/Include/ | ../Drivers/BSP/MorseMicro_board/EKH05/SPI | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmiperf | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmiperf/lwip ||  ||  || USE_FULL_LL_DRIVER | USE_HAL_DRIVER | STM32U585xx ||  || MM_IoT | Drivers | RTOS2 | Core/Startup | Middlewares | Core ||  || ../Middlewares/Third_Party/MorseMicro_MM_IoT/morselib/lib/arm-cortex-m33f/libmorse.a | ../Middlewares/Third_Party/MorseMicro_MM_IoT/morselib/with_wpa_supplicant/lib/arm-cortex-m33f/libmorse.a || ${workspace_loc:/${ProjName}/STM32U585VITXQ_FLASH.ld} || true || NonSecure ||  || secure_nsclib.o ||  || None ||  ||  || " valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults.1919231999" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults" useByScannerDiscovery="false" value="com.st.stm32cube.ide.common.services.build.inputs.revA.1.0.6 || Release || false || Executable || com.st.stm32cube.ide.mcu.gnu.managedbuild.option.toolchain.value.workspace || STM32U585VITxQ || 0 || 0 || arm-none-eabi- || ${gnu_tools_for_stm32_compiler_path} || ../Core/Inc | ../Drivers/STM32U5xx_HAL_Driver/Inc | ../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy | ../Drivers/CMSIS/Device/ST/STM32U5xx/Include | ../Drivers/CMSIS/Include | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmipal | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmipal/lwip | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmutils | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mm_app_common | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/netif | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/netif/ppp | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip/priv | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip/apps | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip/prot | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/stdc | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix/arpa | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix/sys | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix/net | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/port | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/port/arch | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmconfig | ../Middlewares/Third_Party/FreeRTOS/Source/include/ | ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/ | ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/ | ../Middlewares/Third_Party/CMSIS/RTOS2/Include/ | ../Drivers/BSP/MorseMicro_board/EKH05/SPI | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmiperf | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmiperf/lwip | ../Middlewares/Third_Party/MorseMicro_MM_IoT ||  ||  || USE_FULL_LL_DRIVER | USE_HAL_DRIVER | STM32U585xx ||  || MM_IoT | Drivers | RTOS2 | Core/Startup | Middlewares | Core ||  || ${workspace_loc:/${ProjName}/STM32U585VITXQ_FLASH.ld} || true || NonSecure ||  || secure_nsclib.o ||  || None ||  ||  || " valueType="string"/>
 							<option id="com.st.stm32cube.ide.mcu.debug.option.cpuclock.200272620" superClass="com.st.stm32cube.ide.mcu.debug.option.cpuclock" useByScannerDiscovery="false" value="160" valueType="string"/>
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.targetplatform.1941230994" isAbstract="false" osList="all" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.targetplatform"/>
 							<builder buildPath="${workspace_loc:/HaLow_example_sdio}/Release" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.builder.369340028" managedBuildOn="true" name="Gnu Make Builder.Release" parallelBuildOn="true" parallelizationNumber="optimal" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.builder"/>
@@ -202,10 +245,13 @@
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/mmconfig"/>
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/mmiperf"/>
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/mmiperf/lwip"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT"/>
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/FreeRTOS/Source/include/"/>
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/"/>
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/"/>
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/CMSIS/RTOS2/Include/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/src/include/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/port"/>
 									<listOptionValue builtIn="false" value="../Drivers/BSP/MorseMicro_board/EKH05/SPI"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1653556994" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
@@ -218,9 +264,6 @@
 								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.script.208366305" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.script" value="${workspace_loc:/${ProjName}/STM32U585VITXQ_FLASH.ld}" valueType="string"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.directories.1410650824" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.directories" valueType="libPaths">
 									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/morselib/lib/arm-cortex-m33f"/>
-								</option>
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.libraries.855215115" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.libraries" valueType="libs">
-									<listOptionValue builtIn="false" value=":libmorse.a"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.input.436019563" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
