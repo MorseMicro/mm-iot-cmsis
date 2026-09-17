@@ -6,16 +6,16 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/sha1.h"
-#include "crypto/tls.h"
-#include "crypto/random.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/sha1.h"
+#include "hostap/src/crypto/tls.h"
+#include "hostap/src/crypto/random.h"
 #include "eap_i.h"
 #include "eap_tls_common.h"
-#include "eap_common/eap_tlv_common.h"
-#include "eap_common/eap_peap_common.h"
+#include "hostap/src/eap_common/eap_tlv_common.h"
+#include "hostap/src/eap_common/eap_peap_common.h"
 #include "tncs.h"
 
 

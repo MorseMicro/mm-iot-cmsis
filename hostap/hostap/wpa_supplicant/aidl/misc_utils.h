@@ -14,7 +14,7 @@
 
 extern "C"
 {
-#include "wpabuf.h"
+#include "hostap/src/utils/wpabuf.h"
 }
 
 namespace {

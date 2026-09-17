@@ -7,26 +7,26 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #ifndef CONFIG_NATIVE_WINDOWS
 #include <grp.h>
 #endif /* CONFIG_NATIVE_WINDOWS */
 
-#include "utils/common.h"
-#include "utils/uuid.h"
-#include "utils/crc32.h"
-#include "common/ieee802_11_defs.h"
-#include "common/sae.h"
-#include "crypto/sha256.h"
-#include "crypto/tls.h"
-#include "drivers/driver.h"
-#include "eap_server/eap.h"
-#include "radius/radius_client.h"
-#include "ap/wpa_auth.h"
-#include "ap/ap_config.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/uuid.h"
+#include "hostap/src/utils/crc32.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/sae.h"
+#include "hostap/src/crypto/sha256.h"
+#include "hostap/src/crypto/tls.h"
+#include "hostap/src/drivers/driver.h"
+#include "hostap/src/eap_server/eap.h"
+#include "hostap/src/radius/radius_client.h"
+#include "hostap/src/ap/wpa_auth.h"
+#include "hostap/src/ap/ap_config.h"
 #include "config_file.h"
 
-#include "utils/morse.h"
+#include "hostap/src/utils/morse.h"
 
 
 #ifndef CONFIG_NO_VLAN

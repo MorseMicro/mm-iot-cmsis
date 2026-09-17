@@ -6,13 +6,13 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #include <net/ethernet.h>
-#include <netinet/ip.h>
-#include <netinet/udp.h>
+#include <hostap/netinet/ip.h>
+#include <hostap/netinet/udp.h>
 
-#include "utils/common.h"
-#include "radius/radius.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/radius/radius.h"
 #include "wlantest.h"
 
 

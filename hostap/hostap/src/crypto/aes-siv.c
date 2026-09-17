@@ -6,9 +6,9 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "aes.h"
 #include "aes_wrap.h"
 #include "aes_siv.h"

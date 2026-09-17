@@ -7,14 +7,14 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "common/ieee802_11_defs.h"
-#include "common/sae.h"
-#include "common/hw_features_common.h"
-#include "eapol_auth/eapol_auth_sm.h"
-#include "fst/fst_ctrl_iface.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/sae.h"
+#include "hostap/src/common/hw_features_common.h"
+#include "hostap/src/eapol_auth/eapol_auth_sm.h"
+#include "hostap/src/fst/fst_ctrl_iface.h"
 #include "hostapd.h"
 #include "ieee802_1x.h"
 #include "wpa_auth.h"
@@ -27,7 +27,7 @@
 #include "mbo_ap.h"
 #include "taxonomy.h"
 #include "wnm_ap.h"
-#include "morse.h"
+#include "hostap/src/utils/morse.h"
 
 
 static size_t hostapd_write_ht_mcs_bitmask(char *buf, size_t buflen,

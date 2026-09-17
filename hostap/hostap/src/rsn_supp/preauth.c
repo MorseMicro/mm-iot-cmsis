@@ -6,13 +6,13 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "wpa.h"
-#include "eloop.h"
-#include "l2_packet/l2_packet.h"
-#include "eapol_supp/eapol_supp_sm.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/l2_packet/l2_packet.h"
+#include "hostap/src/eapol_supp/eapol_supp_sm.h"
 #include "preauth.h"
 #include "pmksa_cache.h"
 #include "wpa_i.h"

@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/ms_funcs.h"
-#include "crypto/crypto.h"
-#include "crypto/random.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/ms_funcs.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/random.h"
 #include "eap_i.h"
 
 #define LEAP_VERSION 1

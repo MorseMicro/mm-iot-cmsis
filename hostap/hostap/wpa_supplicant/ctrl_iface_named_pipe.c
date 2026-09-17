@@ -6,15 +6,15 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "eloop.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
 #include "config.h"
-#include "eapol_supp/eapol_supp_sm.h"
+#include "hostap/src/eapol_supp/eapol_supp_sm.h"
 #include "wpa_supplicant_i.h"
 #include "ctrl_iface.h"
-#include "common/wpa_ctrl.h"
+#include "hostap/src/common/wpa_ctrl.h"
 
 #ifdef __MINGW32_VERSION
 /* mingw-w32api v3.1 does not yet include sddl.h, so define needed parts here

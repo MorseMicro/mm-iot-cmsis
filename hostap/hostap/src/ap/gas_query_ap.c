@@ -8,14 +8,14 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "utils/eloop.h"
-#include "utils/list.h"
-#include "common/ieee802_11_defs.h"
-#include "common/gas.h"
-#include "common/wpa_ctrl.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/list.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/gas.h"
+#include "hostap/src/common/wpa_ctrl.h"
 #include "hostapd.h"
 #include "sta_info.h"
 #include "ap_drv_ops.h"

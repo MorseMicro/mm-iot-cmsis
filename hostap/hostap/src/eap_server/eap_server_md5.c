@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/random.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/random.h"
 #include "eap_i.h"
-#include "eap_common/chap.h"
+#include "hostap/src/eap_common/chap.h"
 
 
 #define CHALLENGE_LEN 16

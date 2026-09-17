@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "crypto/crypto.h"
-#include "crypto/sha256.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/sha256.h"
 #include "ieee802_11_defs.h"
 #include "nan.h"
 #include "nan_de.h"

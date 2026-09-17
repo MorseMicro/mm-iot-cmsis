@@ -6,7 +6,7 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <sys/ioctl.h>
 
 #include <net/if.h>
@@ -14,7 +14,7 @@
 #include <net80211/ieee80211_crypto.h>
 #include <net80211/ieee80211_ioctl.h>
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "driver.h"
 
 struct openbsd_driver_data {

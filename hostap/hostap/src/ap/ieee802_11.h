@@ -9,7 +9,7 @@
 #ifndef IEEE802_11_H
 #define IEEE802_11_H
 
-#include "utils/list.h"
+#include "hostap/src/utils/list.h"
 
 struct hostapd_iface;
 struct hostapd_data;

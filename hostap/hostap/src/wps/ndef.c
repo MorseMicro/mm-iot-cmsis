@@ -7,9 +7,9 @@
  * See README for more details.
  */
 
-#include "includes.h"
-#include "common.h"
-#include "wps/wps.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/wps/wps.h"
 
 #define FLAG_MESSAGE_BEGIN (1 << 7)
 #define FLAG_MESSAGE_END (1 << 6)

@@ -7,20 +7,20 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "utils/eloop.h"
-#include "utils/ext_password.h"
-#include "common/ieee802_11_defs.h"
-#include "common/ieee802_11_common.h"
-#include "common/ocv.h"
-#include "eapol_supp/eapol_supp_sm.h"
-#include "common/wpa_common.h"
-#include "common/sae.h"
-#include "common/dpp.h"
-#include "rsn_supp/wpa.h"
-#include "rsn_supp/pmksa_cache.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/ext_password.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/common/ocv.h"
+#include "hostap/src/eapol_supp/eapol_supp_sm.h"
+#include "hostap/src/common/wpa_common.h"
+#include "hostap/src/common/sae.h"
+#include "hostap/src/common/dpp.h"
+#include "hostap/src/rsn_supp/wpa.h"
+#include "hostap/src/rsn_supp/pmksa_cache.h"
 #include "config.h"
 #include "wpa_supplicant_i.h"
 #include "driver_i.h"
@@ -33,7 +33,7 @@
 #include "scan.h"
 #include "sme.h"
 #include "hs20_supplicant.h"
-#include "morse.h"
+#include "hostap/src/utils/morse.h"
 
 #define SME_AUTH_TIMEOUT 5
 #define SME_ASSOC_TIMEOUT 5

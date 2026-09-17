@@ -9,7 +9,7 @@
 #include <Python.h>
 #include <structmember.h>
 
-#include "wpa_ctrl.h"
+#include "hostap/src/common/wpa_ctrl.h"
 
 
 struct wpaspy_obj {

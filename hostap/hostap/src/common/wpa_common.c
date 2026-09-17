@@ -6,16 +6,16 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/md5.h"
-#include "crypto/sha1.h"
-#include "crypto/sha256.h"
-#include "crypto/sha384.h"
-#include "crypto/sha512.h"
-#include "crypto/aes_wrap.h"
-#include "crypto/crypto.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/md5.h"
+#include "hostap/src/crypto/sha1.h"
+#include "hostap/src/crypto/sha256.h"
+#include "hostap/src/crypto/sha384.h"
+#include "hostap/src/crypto/sha512.h"
+#include "hostap/src/crypto/aes_wrap.h"
+#include "hostap/src/crypto/crypto.h"
 #include "ieee802_11_defs.h"
 #include "ieee802_11_common.h"
 #include "defs.h"

@@ -6,13 +6,13 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "eapol_supp/eapol_supp_sm.h"
-#include "rsn_supp/wpa.h"
-#include "rsn_supp/wpa_i.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/eapol_supp/eapol_supp_sm.h"
+#include "hostap/src/rsn_supp/wpa.h"
+#include "hostap/src/rsn_supp/wpa_i.h"
 #include "../fuzzer-common.h"
 
 

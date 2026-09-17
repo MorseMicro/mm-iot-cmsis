@@ -6,9 +6,9 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
-#include "utils/common.h"
-#include "utils/json.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/json.h"
 #include "../fuzzer-common.h"
 
 

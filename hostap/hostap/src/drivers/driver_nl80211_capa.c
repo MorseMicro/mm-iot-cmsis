@@ -9,17 +9,17 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <netlink/genl/genl.h>
 
-#include "utils/common.h"
-#include "common/ieee802_11_common.h"
-#include "common/wpa_common.h"
-#include "common/qca-vendor.h"
-#include "common/qca-vendor-attr.h"
-#include "common/brcm_vendor.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/common/wpa_common.h"
+#include "hostap/src/common/qca-vendor.h"
+#include "hostap/src/common/qca-vendor-attr.h"
+#include "hostap/src/common/brcm_vendor.h"
 #include "driver_nl80211.h"
-#include "utils/morse.h"
+#include "hostap/src/utils/morse.h"
 
 
 static int protocol_feature_handler(struct nl_msg *msg, void *arg)

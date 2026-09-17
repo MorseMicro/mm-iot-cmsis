@@ -9,7 +9,7 @@
 #ifndef EAP_SIM_DB_H
 #define EAP_SIM_DB_H
 
-#include "eap_common/eap_sim_common.h"
+#include "hostap/src/eap_common/eap_sim_common.h"
 
 /* Identity prefixes */
 #define EAP_SIM_PERMANENT_PREFIX '1'

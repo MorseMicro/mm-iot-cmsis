@@ -8,13 +8,13 @@
  * SAK derivation specified in IEEE Std 802.1X-2010, Clause 6.2
 */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "crypto/md5.h"
-#include "crypto/sha1.h"
-#include "crypto/aes_wrap.h"
-#include "crypto/crypto.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/md5.h"
+#include "hostap/src/crypto/sha1.h"
+#include "hostap/src/crypto/aes_wrap.h"
+#include "hostap/src/crypto/crypto.h"
 #include "ieee802_1x_key.h"
 
 

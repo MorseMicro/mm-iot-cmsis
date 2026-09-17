@@ -6,18 +6,18 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "common/ieee802_11_defs.h"
-#include "common/wpa_ctrl.h"
-#include "common/ocv.h"
-#include "ap/hostapd.h"
-#include "ap/sta_info.h"
-#include "ap/ap_config.h"
-#include "ap/ap_drv_ops.h"
-#include "ap/wpa_auth.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/wpa_ctrl.h"
+#include "hostap/src/common/ocv.h"
+#include "hostap/src/ap/hostapd.h"
+#include "hostap/src/ap/sta_info.h"
+#include "hostap/src/ap/ap_config.h"
+#include "hostap/src/ap/ap_drv_ops.h"
+#include "hostap/src/ap/wpa_auth.h"
 #include "mbo_ap.h"
 #include "wnm_ap.h"
 

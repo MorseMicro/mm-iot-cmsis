@@ -7,22 +7,22 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "utils/uuid.h"
-#include "utils/ip_addr.h"
-#include "common/ieee802_1x_defs.h"
-#include "common/sae.h"
-#include "crypto/sha1.h"
-#include "rsn_supp/wpa.h"
-#include "eap_peer/eap.h"
-#include "p2p/p2p.h"
-#include "fst/fst.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/uuid.h"
+#include "hostap/src/utils/ip_addr.h"
+#include "hostap/src/common/ieee802_1x_defs.h"
+#include "hostap/src/common/sae.h"
+#include "hostap/src/crypto/sha1.h"
+#include "hostap/src/rsn_supp/wpa.h"
+#include "hostap/src/eap_peer/eap.h"
+#include "hostap/src/p2p/p2p.h"
+#include "hostap/src/fst/fst.h"
 #include "config.h"
-#include "morse.h"
+#include "hostap/src/utils/morse.h"
 
-#include "utils/morse.h"
+#include "hostap/src/utils/morse.h"
 
 #if !defined(CONFIG_CTRL_IFACE) && defined(CONFIG_NO_CONFIG_WRITE)
 #define NO_CONFIG_WRITE

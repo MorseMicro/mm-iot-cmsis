@@ -9,9 +9,9 @@
 #ifndef IEEE802_1X_KAY_H
 #define IEEE802_1X_KAY_H
 
-#include "utils/list.h"
-#include "common/defs.h"
-#include "common/ieee802_1x_defs.h"
+#include "hostap/src/utils/list.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/common/ieee802_1x_defs.h"
 
 struct macsec_init_params;
 

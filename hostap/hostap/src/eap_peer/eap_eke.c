@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/random.h"
-#include "eap_peer/eap_i.h"
-#include "eap_common/eap_eke_common.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/random.h"
+#include "hostap/src/eap_peer/eap_i.h"
+#include "hostap/src/eap_common/eap_eke_common.h"
 
 struct eap_eke_data {
 	enum {

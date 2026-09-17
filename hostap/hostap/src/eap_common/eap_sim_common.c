@@ -6,17 +6,17 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "wpabuf.h"
-#include "crypto/aes_wrap.h"
-#include "crypto/crypto.h"
-#include "crypto/sha1.h"
-#include "crypto/sha256.h"
-#include "crypto/random.h"
-#include "eap_common/eap_defs.h"
-#include "eap_common/eap_sim_common.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/wpabuf.h"
+#include "hostap/src/crypto/aes_wrap.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/sha1.h"
+#include "hostap/src/crypto/sha256.h"
+#include "hostap/src/crypto/random.h"
+#include "hostap/src/eap_common/eap_defs.h"
+#include "hostap/src/eap_common/eap_sim_common.h"
 
 
 static int eap_sim_prf(const u8 *key, u8 *x, size_t xlen)

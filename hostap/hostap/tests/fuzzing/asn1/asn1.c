@@ -6,10 +6,10 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "tls/asn1.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/tls/asn1.h"
 #include "../fuzzer-common.h"
 
 

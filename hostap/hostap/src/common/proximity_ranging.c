@@ -6,13 +6,13 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "common/ieee802_11_defs.h"
-#include "common/ieee802_11_common.h"
-#include "crypto/sha256.h"
-#include "pasn/pasn_common.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/crypto/sha256.h"
+#include "hostap/src/pasn/pasn_common.h"
 #include "proximity_ranging.h"
 
 

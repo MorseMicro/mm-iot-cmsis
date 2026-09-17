@@ -7,14 +7,14 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <sys/ioctl.h>
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "driver.h"
-#include "eloop.h"
-#include "common/ieee802_11_defs.h"
-#include "common/wpa_common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/wpa_common.h"
 
 #include <ifaddrs.h>
 #include <net/if.h>
@@ -46,7 +46,7 @@
 #include <net80211/ieee80211_netbsd.h>
 #endif
 
-#include "l2_packet/l2_packet.h"
+#include "hostap/src/l2_packet/l2_packet.h"
 
 struct bsd_driver_global {
 	void		*ctx;

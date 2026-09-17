@@ -8,11 +8,11 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/list.h"
-#include "utils/eloop.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/list.h"
+#include "hostap/src/utils/eloop.h"
 #include "ieee802_11_defs.h"
 #include "gas.h"
 #include "gas_server.h"

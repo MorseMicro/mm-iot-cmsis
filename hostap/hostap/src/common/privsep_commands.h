@@ -9,8 +9,8 @@
 #ifndef PRIVSEP_COMMANDS_H
 #define PRIVSEP_COMMANDS_H
 
-#include "drivers/driver.h"
-#include "common/ieee802_11_defs.h"
+#include "hostap/src/drivers/driver.h"
+#include "hostap/src/common/ieee802_11_defs.h"
 
 enum privsep_cmd {
 	PRIVSEP_CMD_REGISTER,

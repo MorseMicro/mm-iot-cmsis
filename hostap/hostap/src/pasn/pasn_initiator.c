@@ -8,21 +8,21 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "common/wpa_common.h"
-#include "common/sae.h"
-#include "common/ieee802_11_common.h"
-#include "common/ieee802_11_defs.h"
-#include "common/dragonfly.h"
-#include "crypto/sha384.h"
-#include "crypto/crypto.h"
-#include "crypto/random.h"
-#include "eap_common/eap_defs.h"
-#include "eapol_supp/eapol_supp_sm.h"
-#include "rsn_supp/wpa.h"
-#include "rsn_supp/pmksa_cache.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/wpa_common.h"
+#include "hostap/src/common/sae.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/dragonfly.h"
+#include "hostap/src/crypto/sha384.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/random.h"
+#include "hostap/src/eap_common/eap_defs.h"
+#include "hostap/src/eapol_supp/eapol_supp_sm.h"
+#include "hostap/src/rsn_supp/wpa.h"
+#include "hostap/src/rsn_supp/pmksa_cache.h"
 #include "pasn_common.h"
 
 

@@ -6,14 +6,14 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #ifdef __linux__
 #include <fcntl.h>
 #endif /* __linux__ */
 
-#include "common.h"
-#include "crypto/crypto.h"
-#include "fst/fst.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/fst/fst.h"
 #include "wpa_supplicant_i.h"
 #include "driver_i.h"
 #include "p2p_supplicant.h"

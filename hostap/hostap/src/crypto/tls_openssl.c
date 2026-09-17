@@ -6,7 +6,7 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #ifdef CONFIG_TESTING_OPTIONS
 #include <fcntl.h>
 #endif /* CONFIG_TESTING_OPTIONS */
@@ -44,8 +44,8 @@
 #endif
 #endif /* OpenSSL version >= 3.0 */
 
-#include "common.h"
-#include "utils/list.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/list.h"
 #include "crypto.h"
 #include "sha1.h"
 #include "sha256.h"

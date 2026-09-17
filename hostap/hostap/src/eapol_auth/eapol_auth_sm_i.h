@@ -9,8 +9,8 @@
 #ifndef EAPOL_AUTH_SM_I_H
 #define EAPOL_AUTH_SM_I_H
 
-#include "common/defs.h"
-#include "radius/radius.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/radius/radius.h"
 
 /* IEEE Std 802.1X-2004, Ch. 8.2 */
 

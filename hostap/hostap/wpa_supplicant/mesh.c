@@ -7,17 +7,17 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "utils/uuid.h"
-#include "common/ieee802_11_defs.h"
-#include "common/wpa_ctrl.h"
-#include "common/hw_features_common.h"
-#include "ap/sta_info.h"
-#include "ap/hostapd.h"
-#include "ap/ieee802_11.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/uuid.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/wpa_ctrl.h"
+#include "hostap/src/common/hw_features_common.h"
+#include "hostap/src/ap/sta_info.h"
+#include "hostap/src/ap/hostapd.h"
+#include "hostap/src/ap/ieee802_11.h"
 #include "config_ssid.h"
 #include "config.h"
 #include "wpa_supplicant_i.h"

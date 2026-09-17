@@ -7,25 +7,25 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "common/ieee802_11_defs.h"
-#include "common/wpa_ctrl.h"
-#include "common/morse/morse_commands.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/wpa_ctrl.h"
+#include "hostap/src/common/morse/morse_commands.h"
 #include "config.h"
 #include "wpa_supplicant_i.h"
 #include "driver_i.h"
 #include "wps_supplicant.h"
 #include "p2p_supplicant.h"
-#include "p2p/p2p.h"
+#include "hostap/src/p2p/p2p.h"
 #include "hs20_supplicant.h"
 #include "notify.h"
 #include "bss.h"
 #include "scan.h"
 #include "mesh.h"
-#include "morse.h"
+#include "hostap/src/utils/morse.h"
 
 static struct wpabuf * wpa_supplicant_extra_ies(struct wpa_supplicant *wpa_s);
 

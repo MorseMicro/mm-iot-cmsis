@@ -13,12 +13,12 @@
  * RFC 3079.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/ms_funcs.h"
-#include "crypto/random.h"
-#include "common/wpa_ctrl.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/ms_funcs.h"
+#include "hostap/src/crypto/random.h"
+#include "hostap/src/common/wpa_ctrl.h"
 #include "mschapv2.h"
 #include "eap_i.h"
 #include "eap_config.h"

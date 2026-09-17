@@ -8,7 +8,7 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <sys/ioctl.h>
 #include <net/if.h>
 #include <netlink/genl/genl.h>
@@ -16,7 +16,7 @@
 #include <netlink/genl/ctrl.h>
 #include <fcntl.h>
 
-#include "utils/common.h"
+#include "hostap/src/utils/common.h"
 #include "driver_nl80211.h"
 #include "android_drv.h"
 

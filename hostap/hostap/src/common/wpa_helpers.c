@@ -8,10 +8,10 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <time.h>
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "wpa_ctrl.h"
 #include "wpa_helpers.h"
 

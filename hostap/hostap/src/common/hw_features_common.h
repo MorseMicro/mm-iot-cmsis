@@ -10,7 +10,7 @@
 #ifndef HW_FEATURES_COMMON_H
 #define HW_FEATURES_COMMON_H
 
-#include "drivers/driver.h"
+#include "hostap/src/drivers/driver.h"
 
 struct hostapd_channel_data * hw_get_channel_chan(struct hostapd_hw_modes *mode,
 						  int chan, int *freq);

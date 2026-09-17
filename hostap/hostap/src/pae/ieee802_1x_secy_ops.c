@@ -6,15 +6,15 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "common/defs.h"
-#include "drivers/driver.h"
-#include "pae/ieee802_1x_kay.h"
-#include "pae/ieee802_1x_kay_i.h"
-#include "pae/ieee802_1x_secy_ops.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/drivers/driver.h"
+#include "hostap/src/pae/ieee802_1x_kay.h"
+#include "hostap/src/pae/ieee802_1x_kay_i.h"
+#include "hostap/src/pae/ieee802_1x_secy_ops.h"
 
 
 int secy_cp_control_validate_frames(struct ieee802_1x_kay *kay,

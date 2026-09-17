@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/base64.h"
-#include "crypto/crypto.h"
-#include "common/sae.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/base64.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/common/sae.h"
 
 
 int main(int argc, char *argv[])

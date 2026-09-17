@@ -9,16 +9,16 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <net/if.h>
 #include <sys/ioctl.h>
 
-#include "common.h"
-#include "eloop.h"
-#include "common/ieee802_11_defs.h"
-#include "l2_packet/l2_packet.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/l2_packet/l2_packet.h"
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #ifndef _BYTE_ORDER
 #ifdef WORDS_BIGENDIAN
 #define _BYTE_ORDER _BIG_ENDIAN
@@ -51,10 +51,10 @@
 #include "linux_wext.h"
 
 #include "driver.h"
-#include "eloop.h"
+#include "hostap/src/utils/eloop.h"
 #include "priv_netlink.h"
-#include "l2_packet/l2_packet.h"
-#include "common/ieee802_11_defs.h"
+#include "hostap/src/l2_packet/l2_packet.h"
+#include "hostap/src/common/ieee802_11_defs.h"
 #include "netlink.h"
 #include "linux_ioctl.h"
 

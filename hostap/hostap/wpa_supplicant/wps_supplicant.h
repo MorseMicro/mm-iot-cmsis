@@ -13,8 +13,8 @@ struct wpa_scan_results;
 
 #ifdef CONFIG_WPS
 
-#include "wps/wps.h"
-#include "wps/wps_defs.h"
+#include "hostap/src/wps/wps.h"
+#include "hostap/src/wps/wps_defs.h"
 
 struct wpa_bss;
 

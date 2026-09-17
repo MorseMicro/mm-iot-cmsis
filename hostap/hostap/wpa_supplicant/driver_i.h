@@ -9,8 +9,8 @@
 #ifndef DRIVER_I_H
 #define DRIVER_I_H
 
-#include "common/nan_de.h"
-#include "drivers/driver.h"
+#include "hostap/src/common/nan_de.h"
+#include "hostap/src/drivers/driver.h"
 
 /* driver_ops */
 static inline void * wpa_drv_init(struct wpa_supplicant *wpa_s,

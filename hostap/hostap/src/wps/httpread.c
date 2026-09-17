@@ -32,10 +32,10 @@
  * HTTP/1.1, especially chunked data.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "eloop.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
 #include "httpread.h"
 
 

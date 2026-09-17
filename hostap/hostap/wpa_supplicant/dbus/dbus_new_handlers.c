@@ -8,17 +8,17 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "common/ieee802_11_defs.h"
-#include "common/nan_de.h"
-#include "eap_peer/eap_methods.h"
-#include "eapol_supp/eapol_supp_sm.h"
-#include "rsn_supp/wpa.h"
-#include "ap/hostapd.h"
-#include "ap/sta_info.h"
-#include "ap/ap_drv_ops.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/nan_de.h"
+#include "hostap/src/eap_peer/eap_methods.h"
+#include "hostap/src/eapol_supp/eapol_supp_sm.h"
+#include "hostap/src/rsn_supp/wpa.h"
+#include "hostap/src/ap/hostapd.h"
+#include "hostap/src/ap/sta_info.h"
+#include "hostap/src/ap/ap_drv_ops.h"
 #include "../config.h"
 #include "../wpa_supplicant_i.h"
 #include "../driver_i.h"
@@ -34,10 +34,10 @@
 #include "dbus_new_handlers.h"
 #include "dbus_dict_helpers.h"
 #include "dbus_common_i.h"
-#include "drivers/driver.h"
+#include "hostap/src/drivers/driver.h"
 #ifdef CONFIG_MESH
-#include "ap/hostapd.h"
-#include "ap/sta_info.h"
+#include "hostap/src/ap/hostapd.h"
+#include "hostap/src/ap/sta_info.h"
 #endif /* CONFIG_MESH */
 
 static const char * const debug_strings[] = {

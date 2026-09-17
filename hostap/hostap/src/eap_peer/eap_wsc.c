@@ -6,14 +6,14 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "uuid.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/uuid.h"
 #include "eap_i.h"
-#include "eap_common/eap_wsc_common.h"
-#include "wps/wps.h"
-#include "wps/wps_defs.h"
+#include "hostap/src/eap_common/eap_wsc_common.h"
+#include "hostap/src/wps/wps.h"
+#include "hostap/src/wps/wps_defs.h"
 
 
 struct eap_wsc_data {

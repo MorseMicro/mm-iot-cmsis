@@ -9,8 +9,8 @@
 #ifndef IEEE802_1X_SECY_OPS_H
 #define IEEE802_1X_SECY_OPS_H
 
-#include "common/defs.h"
-#include "common/ieee802_1x_defs.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/common/ieee802_1x_defs.h"
 
 struct ieee802_1x_kay_conf;
 

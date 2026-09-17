@@ -10,14 +10,14 @@
 #ifndef STA_INFO_H
 #define STA_INFO_H
 
-#include "common/defs.h"
-#include "utils/list.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/utils/list.h"
 #include "vlan.h"
-#include "common/wpa_common.h"
-#include "common/ieee802_11_defs.h"
-#include "common/sae.h"
-#include "crypto/sha384.h"
-#include "pasn/pasn_common.h"
+#include "hostap/src/common/wpa_common.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/sae.h"
+#include "hostap/src/crypto/sha384.h"
+#include "hostap/src/pasn/pasn_common.h"
 #include "hostapd.h"
 
 /* STA flags */

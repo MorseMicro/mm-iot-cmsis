@@ -15,8 +15,8 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#include "utils/includes.h"
-#include "utils/common.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/common.h"
 
 #include <mbedtls/version.h>
 #include <mbedtls/entropy.h>
@@ -63,14 +63,14 @@
 #endif
 #endif
 
-#include "crypto.h"
-#include "aes_wrap.h"
-#include "aes.h"
-#include "md5.h"
-#include "sha1.h"
-#include "sha256.h"
-#include "sha384.h"
-#include "sha512.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/aes_wrap.h"
+#include "hostap/src/crypto/aes.h"
+#include "hostap/src/crypto/md5.h"
+#include "hostap/src/crypto/sha1.h"
+#include "hostap/src/crypto/sha256.h"
+#include "hostap/src/crypto/sha384.h"
+#include "hostap/src/crypto/sha512.h"
 
 /*
  * selective code inclusion based on preprocessor defines
@@ -1237,7 +1237,7 @@ void aes_decrypt_deinit(void *ctx)
     os_free(ctx);
 }
 
-#include "aes_wrap.h"
+#include "hostap/src/crypto/aes_wrap.h"
 
 #ifdef MBEDTLS_NIST_KW_C
 
@@ -1936,7 +1936,7 @@ int crypto_bignum_is_odd(const struct crypto_bignum *a)
     return mbedtls_mpi_get_bit((const mbedtls_mpi *)a, 0);
 }
 
-#include "utils/const_time.h"
+#include "hostap/src/utils/const_time.h"
 
 int crypto_bignum_legendre(const struct crypto_bignum *a, const struct crypto_bignum *p)
 {
@@ -2224,7 +2224,7 @@ int crypto_dh_derive_secret(u8 generator,
 
 /* dh_group5.c */
 
-#include "dh_group5.h"
+#include "hostap/src/crypto/dh_group5.h"
 
 /* RFC3526_PRIME_1536[] and RFC3526_GENERATOR_1536[] from crypto_wolfssl.c */
 

@@ -6,15 +6,15 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #ifdef CONFIG_SQLITE
 #include <sqlite3.h>
 #endif /* CONFIG_SQLITE */
 
-#include "common.h"
-#include "eap_common/eap_wsc_common.h"
-#include "eap_server/eap_methods.h"
-#include "eap_server/eap.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/eap_common/eap_wsc_common.h"
+#include "hostap/src/eap_server/eap_methods.h"
+#include "hostap/src/eap_server/eap.h"
 #include "ap_config.h"
 #include "hostapd.h"
 

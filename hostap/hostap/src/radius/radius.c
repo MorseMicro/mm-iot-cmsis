@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/wpabuf.h"
-#include "crypto/md5.h"
-#include "crypto/crypto.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/wpabuf.h"
+#include "hostap/src/crypto/md5.h"
+#include "hostap/src/crypto/crypto.h"
 #include "radius.h"
 
 

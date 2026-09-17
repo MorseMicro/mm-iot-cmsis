@@ -9,10 +9,10 @@
 #ifdef __CYGWIN__
 /* Avoid some header file conflicts by not including standard headers for
  * cygwin builds when Packet32.h is included. */
-#include "build_config.h"
+#include "hostap/src/utils/build_config.h"
 int close(int fd);
 #else /* __CYGWIN__ */
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #endif /* __CYGWIN__ */
 #ifdef CONFIG_USE_NDISUIO
 #include <winsock2.h>
@@ -31,11 +31,11 @@ int close(int fd);
 #include <devload.h>
 #endif /* _WIN32_WCE */
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "driver.h"
-#include "eloop.h"
-#include "common/ieee802_11_defs.h"
-#include "common/ieee802_11_common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_common.h"
 #include "driver_ndis.h"
 
 int wpa_driver_register_event_cb(struct wpa_driver_ndis_data *drv);

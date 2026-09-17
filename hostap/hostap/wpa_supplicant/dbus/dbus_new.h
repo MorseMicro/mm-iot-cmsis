@@ -10,8 +10,8 @@
 #ifndef CTRL_IFACE_DBUS_NEW_H
 #define CTRL_IFACE_DBUS_NEW_H
 
-#include "common/defs.h"
-#include "p2p/p2p.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/p2p/p2p.h"
 
 struct wpa_global;
 struct wpa_supplicant;

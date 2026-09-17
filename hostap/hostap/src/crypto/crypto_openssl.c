@@ -6,7 +6,7 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <openssl/opensslv.h>
 #include <openssl/err.h>
 #include <openssl/des.h>
@@ -37,9 +37,9 @@
 #endif
 #endif /* CONFIG_DPP3 */
 
-#include "common.h"
-#include "utils/const_time.h"
-#include "wpabuf.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/const_time.h"
+#include "hostap/src/utils/wpabuf.h"
 #include "dh_group5.h"
 #include "sha1.h"
 #include "sha256.h"

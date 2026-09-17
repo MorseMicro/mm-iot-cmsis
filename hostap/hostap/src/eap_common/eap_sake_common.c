@@ -6,11 +6,11 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "wpabuf.h"
-#include "crypto/sha1.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/wpabuf.h"
+#include "hostap/src/crypto/sha1.h"
 #include "eap_defs.h"
 #include "eap_sake_common.h"
 

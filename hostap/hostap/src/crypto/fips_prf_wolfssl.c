@@ -6,11 +6,11 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <wolfssl/options.h>
 #include <wolfssl/wolfcrypt/sha.h>
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "crypto.h"
 
 

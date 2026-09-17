@@ -7,12 +7,12 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "eap_peer/eap.h"
-#include "eap_peer/eap_config.h"
-#include "wpabuf.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/eap_peer/eap.h"
+#include "hostap/src/eap_peer/eap_config.h"
+#include "hostap/src/utils/wpabuf.h"
 
 void eap_example_server_rx(const u8 *data, size_t data_len);
 

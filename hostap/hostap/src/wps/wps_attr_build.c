@@ -6,15 +6,15 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/aes_wrap.h"
-#include "crypto/crypto.h"
-#include "crypto/dh_group5.h"
-#include "crypto/sha256.h"
-#include "crypto/random.h"
-#include "common/ieee802_11_defs.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/aes_wrap.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/dh_group5.h"
+#include "hostap/src/crypto/sha256.h"
+#include "hostap/src/crypto/random.h"
+#include "hostap/src/common/ieee802_11_defs.h"
 #include "wps_i.h"
 
 

@@ -6,11 +6,11 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
-#include <netinet/ip.h>
+#include "hostap/src/utils/includes.h"
+#include <hostap/netinet/ip.h>
 #include <netinet/ip_icmp.h>
 
-#include "utils/common.h"
+#include "hostap/src/utils/common.h"
 #include "wlantest.h"
 
 

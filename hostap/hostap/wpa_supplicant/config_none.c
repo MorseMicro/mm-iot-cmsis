@@ -10,11 +10,11 @@
  * compilation test or a starting point for a new configuration backend.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "config.h"
-#include "base64.h"
+#include "hostap/src/utils/base64.h"
 
 
 struct wpa_config * wpa_config_read(const char *name, struct wpa_config *cfgp,

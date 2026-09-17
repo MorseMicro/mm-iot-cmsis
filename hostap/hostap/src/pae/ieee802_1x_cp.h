@@ -9,8 +9,8 @@
 #ifndef IEEE802_1X_CP_H
 #define IEEE802_1X_CP_H
 
-#include "common/defs.h"
-#include "common/ieee802_1x_defs.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/common/ieee802_1x_defs.h"
 
 struct ieee802_1x_cp_sm;
 struct ieee802_1x_kay;

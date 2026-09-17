@@ -6,11 +6,11 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/crc32.h"
-#include "common/ieee802_11_defs.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/crc32.h"
+#include "hostap/src/common/ieee802_11_defs.h"
 #include "wlantest.h"
 
 

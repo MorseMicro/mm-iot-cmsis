@@ -10,7 +10,7 @@
 #include "mmhal_core.h"
 #include "mmosal.h"
 #include "hostap_morse_common.h"
-#include "utils/os.h"
+#include "hostap/src/utils/os.h"
 
 #ifndef UNUSED
 #define UNUSED(x) (void)(x)

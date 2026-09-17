@@ -14,11 +14,11 @@
 #include <sqlite3.h>
 #endif /* CONFIG_SQLITE */
 
-#include "common/defs.h"
-#include "common/dpp.h"
-#include "utils/list.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/common/dpp.h"
+#include "hostap/src/utils/list.h"
 #include "ap_config.h"
-#include "drivers/driver.h"
+#include "hostap/src/drivers/driver.h"
 
 #define OCE_STA_CFON_ENABLED(hapd) \
 	((hapd->conf->oce & OCE_STA_CFON) && \

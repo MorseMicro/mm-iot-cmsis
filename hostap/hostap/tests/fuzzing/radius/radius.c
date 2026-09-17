@@ -6,10 +6,10 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "radius/radius.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/radius/radius.h"
 #include "../fuzzer-common.h"
 
 

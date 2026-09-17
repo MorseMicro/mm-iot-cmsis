@@ -6,13 +6,13 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "eapol_auth/eapol_auth_sm.h"
-#include "eapol_auth/eapol_auth_sm_i.h"
-#include "radius/radius_das.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/eapol_auth/eapol_auth_sm.h"
+#include "hostap/src/eapol_auth/eapol_auth_sm_i.h"
+#include "hostap/src/radius/radius_das.h"
 #include "sta_info.h"
 #include "ap_config.h"
 #include "pmksa_cache_auth.h"

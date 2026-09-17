@@ -86,9 +86,9 @@
 #define DEFAULT_VENDOR_KEEP_ALIVE_OFFLOAD 0
 
 #include "config_ssid.h"
-#include "wps/wps.h"
-#include "common/ieee802_11_defs.h"
-#include "common/ieee802_11_common.h"
+#include "hostap/src/wps/wps.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_common.h"
 
 
 #define MAX_ROAMING_CONS 36

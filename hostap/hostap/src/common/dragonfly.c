@@ -7,11 +7,11 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/const_time.h"
-#include "crypto/crypto.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/const_time.h"
+#include "hostap/src/crypto/crypto.h"
 #include "dragonfly.h"
 
 

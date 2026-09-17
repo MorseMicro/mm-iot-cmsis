@@ -8,10 +8,10 @@
  * See wps_upnp.c for more details on licensing and code history.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "base64.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/base64.h"
 #include "http.h"
 #include "upnp_xml.h"
 

@@ -6,11 +6,11 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "driver.h"
-#include "eloop.h"
+#include "hostap/src/utils/eloop.h"
 
 /* Keep this event processing in a separate file and without WinPcap headers to
  * avoid conflicts with some of the header files. */

@@ -6,9 +6,9 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "sha1.h"
 
 static int pbkdf2_sha1_f(const char *passphrase, const u8 *ssid,

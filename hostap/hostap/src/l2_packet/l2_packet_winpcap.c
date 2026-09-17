@@ -26,11 +26,11 @@
  * frame, so it does not really work for this kind of use.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <pcap.h>
 
-#include "common.h"
-#include "eloop.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
 #include "l2_packet.h"
 
 

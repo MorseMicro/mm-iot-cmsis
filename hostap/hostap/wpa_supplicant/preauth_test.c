@@ -9,23 +9,23 @@
  * Not used in production version.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <assert.h>
 
-#include "common.h"
-#include "crypto/crypto.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/crypto.h"
 #include "config.h"
-#include "eapol_supp/eapol_supp_sm.h"
-#include "eloop.h"
-#include "rsn_supp/wpa.h"
-#include "eap_peer/eap.h"
+#include "hostap/src/eapol_supp/eapol_supp_sm.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/rsn_supp/wpa.h"
+#include "hostap/src/eap_peer/eap.h"
 #include "wpa_supplicant_i.h"
-#include "l2_packet/l2_packet.h"
+#include "hostap/src/l2_packet/l2_packet.h"
 #include "ctrl_iface.h"
-#include "pcsc_funcs.h"
-#include "rsn_supp/preauth.h"
-#include "rsn_supp/pmksa_cache.h"
-#include "drivers/driver.h"
+#include "hostap/src/utils/pcsc_funcs.h"
+#include "hostap/src/rsn_supp/preauth.h"
+#include "hostap/src/rsn_supp/pmksa_cache.h"
+#include "hostap/src/drivers/driver.h"
 
 
 const struct wpa_driver_ops *const wpa_drivers[] = { NULL };

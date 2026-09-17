@@ -7,10 +7,10 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "p2p/p2p.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/p2p/p2p.h"
 #include "wpa_supplicant_i.h"
 #include "notify.h"
 #include "p2p_supplicant.h"

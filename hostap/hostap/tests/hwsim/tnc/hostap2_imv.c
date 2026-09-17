@@ -6,10 +6,10 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "common/tnc.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/tnc.h"
 
 static int initialized = 0;
 static TNC_IMVID my_id = -1;

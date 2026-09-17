@@ -9,10 +9,10 @@
 #ifndef EAP_I_H
 #define EAP_I_H
 
-#include "wpabuf.h"
-#include "utils/list.h"
-#include "eap_peer/eap.h"
-#include "eap_common/eap_common.h"
+#include "hostap/src/utils/wpabuf.h"
+#include "hostap/src/utils/list.h"
+#include "hostap/src/eap_peer/eap.h"
+#include "hostap/src/eap_common/eap_common.h"
 
 #define NO_EAP_METHOD_ERROR (-1)
 

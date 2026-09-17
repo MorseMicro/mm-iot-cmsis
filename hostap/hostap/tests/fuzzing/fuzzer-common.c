@@ -6,9 +6,9 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
+#include "hostap/src/utils/common.h"
 
 
 void wpa_fuzzer_set_debug_level(void)

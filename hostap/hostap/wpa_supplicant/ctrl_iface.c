@@ -7,36 +7,36 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #ifdef CONFIG_TESTING_OPTIONS
-#include <netinet/ip.h>
+#include <hostap/netinet/ip.h>
 #endif /* CONFIG_TESTING_OPTIONS */
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "utils/uuid.h"
-#include "utils/module_tests.h"
-#include "common/version.h"
-#include "common/ieee802_11_defs.h"
-#include "common/ieee802_11_common.h"
-#include "common/wpa_ctrl.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/uuid.h"
+#include "hostap/src/utils/module_tests.h"
+#include "hostap/src/common/version.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/common/wpa_ctrl.h"
 #ifdef CONFIG_DPP
-#include "common/dpp.h"
+#include "hostap/src/common/dpp.h"
 #endif /* CONFIG_DPP */
-#include "common/nan_de.h"
-#include "common/ptksa_cache.h"
-#include "common/proximity_ranging.h"
-#include "crypto/tls.h"
-#include "ap/hostapd.h"
-#include "eap_peer/eap.h"
-#include "eapol_supp/eapol_supp_sm.h"
-#include "rsn_supp/wpa.h"
-#include "rsn_supp/preauth.h"
-#include "rsn_supp/pmksa_cache.h"
-#include "l2_packet/l2_packet.h"
-#include "wps/wps.h"
-#include "fst/fst.h"
-#include "fst/fst_ctrl_iface.h"
+#include "hostap/src/common/nan_de.h"
+#include "hostap/src/common/ptksa_cache.h"
+#include "hostap/src/common/proximity_ranging.h"
+#include "hostap/src/crypto/tls.h"
+#include "hostap/src/ap/hostapd.h"
+#include "hostap/src/eap_peer/eap.h"
+#include "hostap/src/eapol_supp/eapol_supp_sm.h"
+#include "hostap/src/rsn_supp/wpa.h"
+#include "hostap/src/rsn_supp/preauth.h"
+#include "hostap/src/rsn_supp/pmksa_cache.h"
+#include "hostap/src/l2_packet/l2_packet.h"
+#include "hostap/src/wps/wps.h"
+#include "hostap/src/fst/fst.h"
+#include "hostap/src/fst/fst_ctrl_iface.h"
 #include "config.h"
 #include "wpa_supplicant_i.h"
 #include "driver_i.h"
@@ -45,7 +45,7 @@
 #include "wpas_glue.h"
 #include "ap.h"
 #include "p2p_supplicant.h"
-#include "p2p/p2p.h"
+#include "hostap/src/p2p/p2p.h"
 #include "hs20_supplicant.h"
 #include "wifi_display.h"
 #include "notify.h"
@@ -57,7 +57,7 @@
 #include "autoscan.h"
 #include "wnm_sta.h"
 #include "offchannel.h"
-#include "drivers/driver.h"
+#include "hostap/src/drivers/driver.h"
 #include "mesh.h"
 #include "dpp_supplicant.h"
 #include "sme.h"
@@ -65,7 +65,7 @@
 #include "pr_supplicant.h"
 
 #ifdef CONFIG_IEEE80211AH
-#include "morse.h"
+#include "hostap/src/utils/morse.h"
 #endif /* FIG_IEEE80211AH */
 
 #ifdef __NetBSD__

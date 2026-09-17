@@ -6,11 +6,11 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "eap_peer/eap_methods.h"
-#include "eap_server/eap_methods.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/eap_peer/eap_methods.h"
+#include "hostap/src/eap_server/eap_methods.h"
 #include "wpa_supplicant_i.h"
 
 

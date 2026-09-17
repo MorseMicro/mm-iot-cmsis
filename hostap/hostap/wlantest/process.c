@@ -6,14 +6,14 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/crc32.h"
-#include "utils/radiotap.h"
-#include "utils/radiotap_iter.h"
-#include "common/ieee802_11_defs.h"
-#include "common/qca-vendor.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/crc32.h"
+#include "hostap/src/utils/radiotap.h"
+#include "hostap/src/utils/radiotap_iter.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/qca-vendor.h"
 #include "wlantest.h"
 
 

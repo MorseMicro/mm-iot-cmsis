@@ -7,11 +7,11 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #include <netdb.h>
 #include <sys/un.h>
 
-#include "utils/common.h"
+#include "hostap/src/utils/common.h"
 #include "ctrl_iface_common.h"
 
 static int sockaddr_compare(struct sockaddr_storage *a, socklen_t a_len,

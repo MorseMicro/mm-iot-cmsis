@@ -15,10 +15,10 @@
  * 0,1,33,36,48,45,221(00904c,51),221(0050f2,2)
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "common/wpa_ctrl.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/wpa_ctrl.h"
 #include "hostapd.h"
 #include "sta_info.h"
 #include "taxonomy.h"

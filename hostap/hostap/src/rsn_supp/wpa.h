@@ -10,10 +10,10 @@
 #ifndef WPA_H
 #define WPA_H
 
-#include "common/defs.h"
-#include "common/eapol_common.h"
-#include "common/wpa_common.h"
-#include "common/ieee802_11_defs.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/common/eapol_common.h"
+#include "hostap/src/common/wpa_common.h"
+#include "hostap/src/common/ieee802_11_defs.h"
 
 struct wpa_sm;
 struct eapol_sm;

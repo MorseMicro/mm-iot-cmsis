@@ -10,11 +10,11 @@
  * security is provided.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "eap_i.h"
-#include "eloop.h"
+#include "hostap/src/utils/eloop.h"
 
 
 #define EAP_VENDOR_ID EAP_VENDOR_HOSTAP

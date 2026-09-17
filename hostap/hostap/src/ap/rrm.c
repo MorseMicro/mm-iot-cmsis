@@ -8,14 +8,14 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "common/wpa_ctrl.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/wpa_ctrl.h"
 #include "hostapd.h"
 #include "ap_drv_ops.h"
 #include "sta_info.h"
-#include "eloop.h"
+#include "hostap/src/utils/eloop.h"
 #include "neighbor_db.h"
 #include "rrm.h"
 

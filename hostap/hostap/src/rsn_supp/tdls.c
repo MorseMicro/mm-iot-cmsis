@@ -6,21 +6,21 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "utils/os.h"
-#include "common/ieee802_11_defs.h"
-#include "common/ieee802_11_common.h"
-#include "crypto/sha256.h"
-#include "crypto/crypto.h"
-#include "crypto/aes_wrap.h"
-#include "rsn_supp/wpa.h"
-#include "rsn_supp/wpa_ie.h"
-#include "rsn_supp/wpa_i.h"
-#include "drivers/driver.h"
-#include "l2_packet/l2_packet.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/os.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/crypto/sha256.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/aes_wrap.h"
+#include "hostap/src/rsn_supp/wpa.h"
+#include "hostap/src/rsn_supp/wpa_ie.h"
+#include "hostap/src/rsn_supp/wpa_i.h"
+#include "hostap/src/drivers/driver.h"
+#include "hostap/src/l2_packet/l2_packet.h"
 
 #ifdef CONFIG_TDLS_TESTING
 #define TDLS_TESTING_LONG_FRAME BIT(0)

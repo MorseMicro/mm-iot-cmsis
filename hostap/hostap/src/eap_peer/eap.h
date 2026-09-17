@@ -9,9 +9,9 @@
 #ifndef EAP_H
 #define EAP_H
 
-#include "common/defs.h"
-#include "eap_common/eap_defs.h"
-#include "eap_peer/eap_methods.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/eap_common/eap_defs.h"
+#include "hostap/src/eap_peer/eap_methods.h"
 
 struct eap_sm;
 struct wpa_config_blob;

@@ -12,13 +12,13 @@
  * backend_auth configuration variable to true.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/sha256.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/sha256.h"
 #include "eap_i.h"
-#include "state_machine.h"
-#include "common/wpa_ctrl.h"
+#include "hostap/src/utils/state_machine.h"
+#include "hostap/src/common/wpa_ctrl.h"
 
 #define STATE_MACHINE_DATA struct eap_sm
 #define STATE_MACHINE_DEBUG_PREFIX "EAP"

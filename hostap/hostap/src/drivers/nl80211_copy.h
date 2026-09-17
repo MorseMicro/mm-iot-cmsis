@@ -40,7 +40,7 @@
  * Nonetheless, semantics should also be documented carefully in this file.
  */
 
-#include <linux/types.h>
+#include <hostap/linux/types.h>
 
 #define NL80211_GENL_NAME "nl80211"
 

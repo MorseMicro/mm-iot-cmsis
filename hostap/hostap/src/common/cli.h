@@ -9,7 +9,7 @@
 #ifndef CLI_H
 #define CLI_H
 
-#include "utils/list.h"
+#include "hostap/src/utils/list.h"
 
 extern const char *const cli_license;
 extern const char *const cli_full_license;

@@ -8,11 +8,11 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/list.h"
-#include "utils/wpabuf.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/list.h"
+#include "hostap/src/utils/wpabuf.h"
 #include "dbus_common_i.h"
 #include "dbus_new_helpers.h"
 

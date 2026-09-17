@@ -6,14 +6,14 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/json.h"
-#include "crypto/crypto.h"
-#include "crypto/random.h"
-#include "crypto/aes.h"
-#include "crypto/aes_siv.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/json.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/random.h"
+#include "hostap/src/crypto/aes.h"
+#include "hostap/src/crypto/aes_siv.h"
 #include "dpp.h"
 #include "dpp_i.h"
 

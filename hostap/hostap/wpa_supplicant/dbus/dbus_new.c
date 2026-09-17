@@ -8,12 +8,12 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "common/ieee802_11_defs.h"
-#include "wps/wps.h"
-#include "ap/sta_info.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/wps/wps.h"
+#include "hostap/src/ap/sta_info.h"
 #include "../config.h"
 #include "../wpa_supplicant_i.h"
 #include "../bss.h"
@@ -24,7 +24,7 @@
 #include "dbus_new_handlers.h"
 #include "dbus_common_i.h"
 #include "dbus_new_handlers_p2p.h"
-#include "p2p/p2p.h"
+#include "hostap/src/p2p/p2p.h"
 #include "../p2p_supplicant.h"
 
 #ifdef CONFIG_AP /* until needed by something else */

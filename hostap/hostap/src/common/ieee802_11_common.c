@@ -7,12 +7,12 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "defs.h"
 #include "wpa_common.h"
-#include "drivers/driver.h"
+#include "hostap/src/drivers/driver.h"
 #include "qca-vendor.h"
 #include "ieee802_11_defs.h"
 #include "ieee802_11_common.h"

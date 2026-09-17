@@ -6,7 +6,7 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <openssl/opensslv.h>
 
 #if OPENSSL_VERSION_NUMBER >= 0x30000000L
@@ -22,7 +22,7 @@
 
 #include <openssl/sha.h>
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "crypto.h"
 
 

@@ -9,7 +9,7 @@
 #ifndef CONTROL_IFACE_COMMON_H
 #define CONTROL_IFACE_COMMON_H
 
-#include "utils/list.h"
+#include "hostap/src/utils/list.h"
 
 /* Events enable bits (wpa_ctrl_dst::events) */
 #define WPA_EVENT_RX_PROBE_REQUEST BIT(0)

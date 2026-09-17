@@ -8,7 +8,7 @@
 #ifndef MORSE_COMMANDS_H_
 #define MORSE_COMMANDS_H_
 
-#include <linux/types.h>
+#include <hostap/linux/types.h>
 
 #define sle16 le16
 #define sle32 le32

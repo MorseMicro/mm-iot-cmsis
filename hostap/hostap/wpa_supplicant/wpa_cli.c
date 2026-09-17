@@ -7,7 +7,7 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
 #ifdef CONFIG_CTRL_IFACE
 
@@ -15,14 +15,14 @@
 #include <dirent.h>
 #endif /* CONFIG_CTRL_IFACE_UNIX */
 
-#include "common/cli.h"
-#include "common/wpa_ctrl.h"
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "utils/edit.h"
-#include "utils/list.h"
-#include "common/version.h"
-#include "common/ieee802_11_defs.h"
+#include "hostap/src/common/cli.h"
+#include "hostap/src/common/wpa_ctrl.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/edit.h"
+#include "hostap/src/utils/list.h"
+#include "hostap/src/common/version.h"
+#include "hostap/src/common/ieee802_11_defs.h"
 #ifdef ANDROID
 #include <cutils/properties.h>
 #endif /* ANDROID */

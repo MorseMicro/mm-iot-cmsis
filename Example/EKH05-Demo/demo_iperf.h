@@ -15,7 +15,7 @@
 #include "mmconfig.h"
 #include "mmping.h"
 #include "mmipal.h"
-#include "tcpip.h"
+#include "lwip/tcpip.h"
 
 typedef enum
 {

@@ -9,8 +9,8 @@
 #ifndef WLANTEST_H
 #define WLANTEST_H
 
-#include "utils/list.h"
-#include "common/wpa_common.h"
+#include "hostap/src/utils/list.h"
+#include "hostap/src/common/wpa_common.h"
 #include "wlantest_ctrl.h"
 
 struct ieee802_11_elems;

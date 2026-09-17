@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "eloop.h"
-#include "radius/radius.h"
-#include "radius/radius_client.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/radius/radius.h"
+#include "hostap/src/radius/radius_client.h"
 
 struct radius_ctx {
 	struct radius_client_data *radius;

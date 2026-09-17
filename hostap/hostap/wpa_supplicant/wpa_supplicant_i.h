@@ -10,18 +10,18 @@
 #ifndef WPA_SUPPLICANT_I_H
 #define WPA_SUPPLICANT_I_H
 
-#include "utils/bitfield.h"
-#include "utils/list.h"
-#include "common/defs.h"
-#include "common/sae.h"
-#include "common/wpa_ctrl.h"
-#include "common/dpp.h"
-#include "crypto/sha384.h"
-#include "eapol_supp/eapol_supp_sm.h"
-#include "wps/wps_defs.h"
+#include "hostap/src/utils/bitfield.h"
+#include "hostap/src/utils/list.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/common/sae.h"
+#include "hostap/src/common/wpa_ctrl.h"
+#include "hostap/src/common/dpp.h"
+#include "hostap/src/crypto/sha384.h"
+#include "hostap/src/eapol_supp/eapol_supp_sm.h"
+#include "hostap/src/wps/wps_defs.h"
 #include "config_ssid.h"
 #include "wmm_ac.h"
-#include "pasn/pasn_common.h"
+#include "hostap/src/pasn/pasn_common.h"
 #ifdef CONFIG_AIDL
 #include "config.h"
 #endif /* CONFIG_AIDL */

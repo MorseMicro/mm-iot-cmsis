@@ -6,11 +6,11 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "common/nan_de.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/nan_de.h"
 #include "wpa_supplicant_i.h"
 #include "offchannel.h"
 #include "driver_i.h"

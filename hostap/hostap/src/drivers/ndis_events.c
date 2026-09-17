@@ -8,14 +8,14 @@
 
 #define _WIN32_WINNT    0x0400
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
 #ifndef COBJMACROS
 #define COBJMACROS
 #endif /* COBJMACROS */
 #include <wbemidl.h>
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 
 
 static int wmi_refcnt = 0;

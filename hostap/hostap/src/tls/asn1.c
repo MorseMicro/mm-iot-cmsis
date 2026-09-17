@@ -6,10 +6,10 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "utils/wpabuf.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/wpabuf.h"
 #include "asn1.h"
 
 const struct asn1_oid asn1_sha1_oid = {

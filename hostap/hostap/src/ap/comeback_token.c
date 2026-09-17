@@ -6,13 +6,13 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
+#include "hostap/src/utils/common.h"
 #include "hostapd.h"
-#include "crypto/sha256.h"
-#include "crypto/random.h"
-#include "common/ieee802_11_defs.h"
+#include "hostap/src/crypto/sha256.h"
+#include "hostap/src/crypto/random.h"
+#include "hostap/src/common/ieee802_11_defs.h"
 #include "comeback_token.h"
 
 

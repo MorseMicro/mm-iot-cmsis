@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #ifdef CONFIG_DYNAMIC_EAP_METHODS
 #include <dlfcn.h>
 #endif /* CONFIG_DYNAMIC_EAP_METHODS */
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "eap_i.h"
 #include "eap_methods.h"
 

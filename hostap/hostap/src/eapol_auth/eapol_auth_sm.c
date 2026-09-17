@@ -6,15 +6,15 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "eloop.h"
-#include "state_machine.h"
-#include "common/eapol_common.h"
-#include "eap_common/eap_defs.h"
-#include "eap_common/eap_common.h"
-#include "eap_server/eap.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/state_machine.h"
+#include "hostap/src/common/eapol_common.h"
+#include "hostap/src/eap_common/eap_defs.h"
+#include "hostap/src/eap_common/eap_common.h"
+#include "hostap/src/eap_server/eap.h"
 #include "eapol_auth_sm.h"
 #include "eapol_auth_sm_i.h"
 

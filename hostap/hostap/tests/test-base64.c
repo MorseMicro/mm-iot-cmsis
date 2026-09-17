@@ -6,9 +6,9 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
-#include "utils/os.h"
-#include "utils/base64.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/os.h"
+#include "hostap/src/utils/base64.h"
 
 int main(int argc, char *argv[])
 {

@@ -6,11 +6,11 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "common/dhcp.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/dhcp.h"
 #include "hostapd.h"
 #include "sta_info.h"
 #include "ieee802_11.h"

@@ -25,14 +25,14 @@
 
 extern "C"
 {
-#include "utils/common.h"
-#include "utils/includes.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/includes.h"
 #include "config.h"
-#include "wpa_supplicant_i.h"
-#include "notify.h"
-#include "eapol_supp/eapol_supp_sm.h"
-#include "eap_peer/eap.h"
-#include "rsn_supp/wpa.h"
+#include "hostap/wpa_supplicant/wpa_supplicant_i.h"
+#include "hostap/wpa_supplicant/notify.h"
+#include "hostap/src/eapol_supp/eapol_supp_sm.h"
+#include "hostap/src/eap_peer/eap.h"
+#include "hostap/src/rsn_supp/wpa.h"
 }
 
 namespace aidl {

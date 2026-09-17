@@ -6,19 +6,19 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/const_time.h"
-#include "common/ieee802_11_defs.h"
-#include "utils/bitfield.h"
-#include "utils/ext_password.h"
-#include "utils/trace.h"
-#include "utils/base64.h"
-#include "utils/ip_addr.h"
-#include "utils/eloop.h"
-#include "utils/json.h"
-#include "utils/module_tests.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/const_time.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/utils/bitfield.h"
+#include "hostap/src/utils/ext_password.h"
+#include "hostap/src/utils/trace.h"
+#include "hostap/src/utils/base64.h"
+#include "hostap/src/utils/ip_addr.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/json.h"
+#include "hostap/src/utils/module_tests.h"
 
 
 struct printf_test_data {

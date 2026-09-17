@@ -6,11 +6,11 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "common/ieee802_11_defs.h"
-#include "common/gas.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/gas.h"
 #include "p2p_i.h"
 #include "p2p.h"
 

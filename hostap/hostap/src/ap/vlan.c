@@ -6,10 +6,10 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "ap/vlan.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/ap/vlan.h"
 
 /* compare the two arguments, NULL is treated as empty
  * return zero iff they are equal

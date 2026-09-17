@@ -10,15 +10,15 @@
 #ifndef HOSTAPD_CONFIG_H
 #define HOSTAPD_CONFIG_H
 
-#include "common/defs.h"
-#include "utils/list.h"
-#include "ip_addr.h"
-#include "common/wpa_common.h"
-#include "common/ieee802_11_defs.h"
-#include "common/ieee802_11_common.h"
-#include "crypto/sha256.h"
-#include "wps/wps.h"
-#include "fst/fst.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/utils/list.h"
+#include "hostap/src/utils/ip_addr.h"
+#include "hostap/src/common/wpa_common.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/crypto/sha256.h"
+#include "hostap/src/wps/wps.h"
+#include "hostap/src/fst/fst.h"
 #include "vlan.h"
 
 enum macaddr_acl {

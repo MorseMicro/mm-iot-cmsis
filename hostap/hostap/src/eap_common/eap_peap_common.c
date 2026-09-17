@@ -6,10 +6,10 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/sha1.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/sha1.h"
 #include "eap_peap_common.h"
 
 int peap_prfplus(int version, const u8 *key, size_t key_len,

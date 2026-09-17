@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/crypto.h"
-#include "crypto/sha256.h"
-#include "crypto/random.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/sha256.h"
+#include "hostap/src/crypto/random.h"
 #include "wps_i.h"
 #include "wps_dev_attr.h"
 

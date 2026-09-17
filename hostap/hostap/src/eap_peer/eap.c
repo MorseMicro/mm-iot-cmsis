@@ -15,17 +15,17 @@
  * (session resumption).
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "pcsc_funcs.h"
-#include "state_machine.h"
-#include "ext_password.h"
-#include "crypto/crypto.h"
-#include "crypto/tls.h"
-#include "crypto/sha256.h"
-#include "common/wpa_ctrl.h"
-#include "eap_common/eap_wsc_common.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/pcsc_funcs.h"
+#include "hostap/src/utils/state_machine.h"
+#include "hostap/src/utils/ext_password.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/tls.h"
+#include "hostap/src/crypto/sha256.h"
+#include "hostap/src/common/wpa_ctrl.h"
+#include "hostap/src/eap_common/eap_wsc_common.h"
 #include "eap_i.h"
 #include "eap_config.h"
 

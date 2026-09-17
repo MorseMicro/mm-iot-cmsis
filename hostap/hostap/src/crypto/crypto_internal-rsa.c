@@ -6,13 +6,13 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "crypto.h"
-#include "tls/rsa.h"
-#include "tls/pkcs1.h"
-#include "tls/pkcs8.h"
+#include "hostap/src/tls/rsa.h"
+#include "hostap/src/tls/pkcs1.h"
+#include "hostap/src/tls/pkcs8.h"
 
 /* Stub structures; these are just typecast to struct crypto_rsa_key */
 struct crypto_public_key;

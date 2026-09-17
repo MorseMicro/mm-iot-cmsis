@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "common/ieee802_11_defs.h"
-#include "drivers/driver.h"
-#include "eapol_auth/eapol_auth_sm.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/drivers/driver.h"
+#include "hostap/src/eapol_auth/eapol_auth_sm.h"
 #include "ap_config.h"
 #include "ieee802_11.h"
 #include "wpa_auth.h"

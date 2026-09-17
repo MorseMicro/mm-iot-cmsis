@@ -8,12 +8,12 @@
  * See wps_upnp.c for more details on licensing and code history.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <assert.h>
 
-#include "common.h"
-#include "eloop.h"
-#include "uuid.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/uuid.h"
 #include "http_client.h"
 #include "wps_defs.h"
 #include "wps_upnp.h"

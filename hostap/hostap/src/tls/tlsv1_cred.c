@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "base64.h"
-#include "crypto/crypto.h"
-#include "crypto/sha1.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/base64.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/sha1.h"
 #include "pkcs5.h"
 #include "pkcs8.h"
 #include "x509v3.h"

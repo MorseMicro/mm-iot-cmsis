@@ -6,16 +6,16 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "common/defs.h"
-#include "common/ieee802_1x_defs.h"
-#include "utils/state_machine.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/common/ieee802_1x_defs.h"
+#include "hostap/src/utils/state_machine.h"
 #include "ieee802_1x_kay.h"
 #include "ieee802_1x_secy_ops.h"
-#include "pae/ieee802_1x_cp.h"
+#include "hostap/src/pae/ieee802_1x_cp.h"
 
 #define STATE_MACHINE_DATA struct ieee802_1x_cp_sm
 #define STATE_MACHINE_DEBUG_PREFIX "CP"

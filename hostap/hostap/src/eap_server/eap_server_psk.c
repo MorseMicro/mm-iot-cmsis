@@ -9,13 +9,13 @@
  * different from WPA-PSK. This file is not needed for WPA-PSK functionality.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/aes_wrap.h"
-#include "crypto/random.h"
-#include "eap_common/eap_psk_common.h"
-#include "eap_server/eap_i.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/aes_wrap.h"
+#include "hostap/src/crypto/random.h"
+#include "hostap/src/eap_common/eap_psk_common.h"
+#include "hostap/src/eap_server/eap_i.h"
 
 
 struct eap_psk_data {

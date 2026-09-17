@@ -6,13 +6,13 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #include <sys/ioctl.h>
 #include <net/if.h>
 #include <net/if_arp.h>
 
-#include "utils/common.h"
-#include "common/linux_bridge.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/linux_bridge.h"
 #include "linux_ioctl.h"
 
 

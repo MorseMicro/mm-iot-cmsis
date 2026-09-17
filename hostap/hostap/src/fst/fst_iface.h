@@ -10,9 +10,9 @@
 #ifndef FST_IFACE_H
 #define FST_IFACE_H
 
-#include "utils/includes.h"
-#include "utils/common.h"
-#include "list.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/list.h"
 #include "fst.h"
 
 struct fst_iface {

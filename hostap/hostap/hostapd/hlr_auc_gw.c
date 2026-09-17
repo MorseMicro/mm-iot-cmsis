@@ -48,15 +48,15 @@
  * can be changed with a command line options if needed.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <sys/un.h>
 #ifdef CONFIG_SQLITE
 #include <sqlite3.h>
 #endif /* CONFIG_SQLITE */
 
-#include "common.h"
-#include "crypto/milenage.h"
-#include "crypto/random.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/milenage.h"
+#include "hostap/src/crypto/random.h"
 
 static const char *default_socket_path = "/tmp/hlr_auc_gw.sock";
 static const char *socket_path;

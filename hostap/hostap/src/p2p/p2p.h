@@ -9,9 +9,9 @@
 #ifndef P2P_H
 #define P2P_H
 
-#include "common/ieee802_11_defs.h"
-#include "wps/wps.h"
-#include "common/wpa_common.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/wps/wps.h"
+#include "hostap/src/common/wpa_common.h"
 
 #define DEVICE_IDENTITY_KEY_MAX_LEN 64
 #define DEVICE_IDENTITY_KEY_LEN 16

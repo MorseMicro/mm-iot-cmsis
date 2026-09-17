@@ -13,7 +13,7 @@ void morse_beacon_irq_handle(struct driver_data *driverd, uint32_t status1_reg)
 
     if (status1_reg & 1ul << beacon_irq_num)
     {
-        driver_task_notify_event_from_isr(driverd, DRV_EVT_BEACON_REQ_PEND);
+        driver_task_notify_event(driverd, DRV_EVT_BEACON_REQ_PEND);
     }
 }
 

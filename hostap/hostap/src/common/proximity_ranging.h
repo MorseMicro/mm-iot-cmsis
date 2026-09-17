@@ -10,8 +10,8 @@
 #define PROXIMITY_RANGING_H
 
 #include "wpa_common.h"
-#include "utils/list.h"
-#include "wps/wps_defs.h"
+#include "hostap/src/utils/list.h"
+#include "hostap/src/wps/wps_defs.h"
 
 #define DEVICE_IDENTITY_KEY_LEN 16
 #define DEVICE_IDENTITY_TAG_LEN 8

@@ -6,11 +6,11 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/aes_wrap.h"
-#include "crypto/sha256.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/aes_wrap.h"
+#include "hostap/src/crypto/sha256.h"
 #include "eap_defs.h"
 #include "eap_gpsk_common.h"
 

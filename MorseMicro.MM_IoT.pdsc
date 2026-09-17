@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.7.7" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.7/schema/PACK.xsd">
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.7.7" xs:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.7/schema/PACK.xsd">
   <vendor>MorseMicro</vendor>
   <name>MM_IoT</name>
   <description>MorseMicro IoT Software Package</description>
@@ -7,6 +7,17 @@
   <supportContact/>
   <license>Docs/license.txt</license>
   <releases>
+    <!-- Included by gen_pdsc.py file from files/release_notes.xml and version if a dev build -->
+    <release version="1.10.2" date="2026-08-18">
+        - Add missing APPLICATION_VERSION define.
+    </release>
+    <release version="1.10.1" date="2026-08-05">
+        - Fix header include path detection.
+        - Add build_defines.txt file.
+    </release>
+    <release version="1.10.0" date="2026-07-15">
+        - Updating MM-IoT-SDK version to 2.12.3.
+    </release>
     <release version="1.9.0" date="2026-03-24">
         - Updating MM-IoT-SDK version to 2.11.0.
         - This change includes compiling libmorse from source instead of linking against a precompiled static library.
@@ -68,7 +79,7 @@
         -Bug fixes:
           -Fix saved image endpoint url.
           -Add mm_app_common dependency to rftest and mqtt demo examples, too.
-          -Make the Morse firmware and bcf arrays &quot;const&quot;.
+          -Make the Morse firmware and bcf arrays "const".
     </release>
     <release version="1.5.1" date="2025-02-18">
         -Update License in source codes.
@@ -411,7 +422,7 @@
     </example>
   </examples>
   <components>
-    <bundle Cbundle="MM_IoT" Cclass="MM_IoT" Cversion="2.11.2">
+    <bundle Cbundle="MM_IoT" Cclass="MM_IoT" Cversion="2.12.3">
       <description>Morse Micro Software Components</description>
       <doc>https://www.morsemicro.com</doc>
       <component Cgroup="morsefirmware">
@@ -421,193 +432,191 @@
           <file category="source" name="morsefirmware/bcf_aw_hm593_4v3.c"/>
           <file category="source" name="morsefirmware/bcf_boardtype_0801.c"/>
           <file category="source" name="morsefirmware/bcf_boardtype_0802.c"/>
+          <file category="source" name="morsefirmware/bcf_boardtype_0804.c"/>
           <file category="source" name="morsefirmware/bcf_boardtype_0805.c"/>
           <file category="source" name="morsefirmware/bcf_boardtype_0806.c"/>
+          <file category="source" name="morsefirmware/bcf_boardtype_0807.c"/>
           <file category="source" name="morsefirmware/bcf_boardtype_0a01.c"/>
+          <file category="source" name="morsefirmware/bcf_boardtype_0a02.c"/>
           <file category="source" name="morsefirmware/bcf_ekh04_v6.c"/>
           <file category="source" name="morsefirmware/bcf_fgm100mabmd.c"/>
           <file category="source" name="morsefirmware/bcf_mf08651_jp.c"/>
           <file category="source" name="morsefirmware/bcf_mf08651_us.c"/>
+          <file category="source" name="morsefirmware/bcf_mf15457.c"/>
           <file category="source" name="morsefirmware/bcf_mf16858.c"/>
           <file category="source" name="morsefirmware/bcf_mf28551.c"/>
           <file category="source" name="morsefirmware/bcf_mm_hl1.c"/>
           <file category="source" name="morsefirmware/bcf_mm_hl1_4v3.c"/>
           <file category="source" name="morsefirmware/bcf_sx_sdmah.c"/>
           <file category="source" name="morsefirmware/fw_mm6108.c"/>
-          <file category="source" name="morsefirmware/bcf_boardtype_0804.c"/>
-          <file category="source" name="morsefirmware/bcf_boardtype_0807.c"/>
-          <file category="source" name="morsefirmware/bcf_boardtype_0a02.c"/>
-          <file category="source" name="morsefirmware/bcf_mf15457.c"/>
           <file category="source" name="morsefirmware/fw_mm8108b2-rl.c"/>
+          <file category="source" name="morsefirmware/shim_freertos/gettimeofday.c"/>
           <file category="source" name="morsefirmware/shim_freertos/hooks.c"/>
           <file category="source" name="morsefirmware/shim_freertos/mm_logging.c"/>
+          <file category="source" name="morsefirmware/shim_freertos/mmhal_wlan_binaries.c"/>
+          <file category="source" name="morsefirmware/shim_freertos/mmosal_shim_alloc.c"/>
           <file category="source" name="morsefirmware/shim_freertos/mmosal_shim_freertos.c"/>
           <file category="source" name="morsefirmware/shim_freertos/realloc.c"/>
-          <file category="source" name="morsefirmware/shim_freertos/gettimeofday.c"/>
-          <file category="source" name="morsefirmware/shim_freertos/mmhal_wlan_binaries.c"/>
         </files>
       </component>
       <component Cgroup="hostap" condition="MM_IoT hostap conditions">
         <description>This component provides wpa_supplicant for station side comms in a 802.11ah connection</description>
         <files>
-          <file category="source" name="hostap/hostap/src/utils/common.c"/>
-          <file category="source" name="hostap/hostap/src/crypto/aes-ctr.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/eap_register.c"/>
-          <file category="source" name="hostap/hostap/src/common/sae.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/op_classes.c"/>
-          <file category="source" name="hostap/hostap/morse_stubs.c"/>
-          <file category="source" name="hostap/hostap/src/eapol_supp/eapol_supp_sm.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/bgscan.c"/>
-          <file category="source" name="hostap/hostap/src/crypto/tls_none.c"/>
-          <file category="source" name="hostap/hostap/src/utils/bitfield.c"/>
-          <file category="source" name="hostap/hostap/src/crypto/dh_groups.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/events.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/bgscan_simple.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/wpas_glue.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/autoscan.c"/>
-          <file category="source" name="hostap/hostap/src/common/ptksa_cache.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/bss.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/wmm_ac.c"/>
-          <file category="source" name="hostap/hostap/src/rsn_supp/preauth.c"/>
-          <file category="source" name="hostap/hostap/src/common/hw_features_common.c"/>
-          <file category="source" name="hostap/hostap/src/utils/crc32.c"/>
-          <file category="source" name="hostap/hostap/src/rsn_supp/wpa_ie.c"/>
-          <file category="source" name="hostap/hostap/src/common/ieee802_11_common.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/scan.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/wpa_supplicant.c"/>
-          <file category="source" name="hostap/hostap/src/utils/wpabuf.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/sme.c"/>
-          <file category="source" name="hostap/hostap/os_mmosal.c"/>
-          <file category="source" name="hostap/hostap/src/crypto/sha512-kdf.c"/>
-          <file category="source" name="hostap/hostap/drivers_morse.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/config.c"/>
-          <file category="source" name="hostap/hostap/src/common/wpa_common.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/autoscan_exponential.c"/>
-          <file category="source" name="hostap/hostap/src/rsn_supp/pmksa_cache.c"/>
-          <file category="source" name="hostap/hostap/src/eap_common/eap_common.c"/>
-          <file category="source" name="hostap/hostap/src/eap_peer/eap_methods.c"/>
-          <file category="source" name="hostap/hostap/src/crypto/aes-unwrap.c"/>
-          <file category="source" name="hostap/hostap/src/common/dragonfly.c"/>
-          <file category="source" name="hostap/hostap/src/rsn_supp/wpa.c"/>
           <file category="source" name="hostap/hostap/crypto_mbedtls_mm.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/notify.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/bssid_ignore.c"/>
+          <file category="source" name="hostap/hostap/drivers_morse.c"/>
+          <file category="source" name="hostap/hostap/morse_stubs.c"/>
+          <file category="source" name="hostap/hostap/os_mmosal.c"/>
+          <file category="source" name="hostap/hostap/src/common/dragonfly.c"/>
+          <file category="source" name="hostap/hostap/src/common/hw_features_common.c"/>
+          <file category="source" name="hostap/hostap/src/common/ieee802_11_common.c"/>
+          <file category="source" name="hostap/hostap/src/common/ptksa_cache.c"/>
+          <file category="source" name="hostap/hostap/src/common/sae.c"/>
+          <file category="source" name="hostap/hostap/src/common/wpa_common.c"/>
+          <file category="source" name="hostap/hostap/src/crypto/aes-ctr.c"/>
           <file category="source" name="hostap/hostap/src/crypto/aes-siv.c"/>
-          <file category="source" name="hostap/hostap/wpa_supplicant/wnm_sta.c"/>
+          <file category="source" name="hostap/hostap/src/crypto/aes-unwrap.c"/>
+          <file category="source" name="hostap/hostap/src/crypto/dh_groups.c"/>
           <file category="source" name="hostap/hostap/src/crypto/sha256-kdf.c"/>
-          <file category="source" name="hostap/hostap/src/utils/wpa_debug.c"/>
-          <file category="source" name="hostap/hostap/src/eap_peer/eap.c"/>
           <file category="source" name="hostap/hostap/src/crypto/sha384-kdf.c"/>
+          <file category="source" name="hostap/hostap/src/crypto/sha512-kdf.c"/>
+          <file category="source" name="hostap/hostap/src/crypto/tls_none.c"/>
           <file category="source" name="hostap/hostap/src/drivers/driver_common.c"/>
-          <file category="preIncludeLocal" name="hostap/hostap_config.h"/>
-          <file category="include" name="hostap/hostap/src"/>
-          <file category="include" name="hostap/hostap/src/crypto"/>
-          <file category="include" name="hostap/hostap/src/common"/>
-          <file category="include" name="hostap/hostap/wpa_supplicant"/>
-          <file category="include" name="hostap/hostap/src/utils"/>
-          <file category="include" name="hostap/hostap/."/>
+          <file category="source" name="hostap/hostap/src/eap_common/eap_common.c"/>
+          <file category="source" name="hostap/hostap/src/eap_peer/eap.c"/>
+          <file category="source" name="hostap/hostap/src/eap_peer/eap_methods.c"/>
+          <file category="source" name="hostap/hostap/src/eapol_supp/eapol_supp_sm.c"/>
+          <file category="source" name="hostap/hostap/src/rsn_supp/pmksa_cache.c"/>
+          <file category="source" name="hostap/hostap/src/rsn_supp/preauth.c"/>
+          <file category="source" name="hostap/hostap/src/rsn_supp/wpa.c"/>
+          <file category="source" name="hostap/hostap/src/rsn_supp/wpa_ie.c"/>
+          <file category="source" name="hostap/hostap/src/utils/bitfield.c"/>
+          <file category="source" name="hostap/hostap/src/utils/common.c"/>
+          <file category="source" name="hostap/hostap/src/utils/crc32.c"/>
+          <file category="source" name="hostap/hostap/src/utils/wpa_debug.c"/>
+          <file category="source" name="hostap/hostap/src/utils/wpabuf.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/autoscan.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/autoscan_exponential.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/bgscan.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/bgscan_simple.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/bss.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/bssid_ignore.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/config.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/eap_register.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/events.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/notify.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/op_classes.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/scan.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/sme.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/wmm_ac.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/wnm_sta.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/wpa_supplicant.c"/>
+          <file category="source" name="hostap/hostap/wpa_supplicant/wpas_glue.c"/>
           <file category="include" name="hostap"/>
+          <file category="include" name="hostap/hostap"/>
         </files>
       </component>
       <component Cgroup="morselib" condition="MorseLib source files condition">
         <description>This component provides Morse Micro driver for MM6108 and MM8108 with wpa_supplicant integrated, BCF files and some system interfacing source files.</description>
         <files>
-          <file category="source" name="morselib/src/driver/transport/sdio.c"/>
-          <file category="source" name="morselib/src/common/consbuf.c"/>
-          <file category="source" name="morselib/src/umac/health_check/umac_health_check.c"/>
-          <file category="source" name="morselib/src/umac/stats/umac_stats.c"/>
-          <file category="source" name="morselib/src/umac/ies/s1g_operation.c"/>
-          <file category="source" name="morselib/src/driver/beacon/beacon.c"/>
-          <file category="source" name="morselib/src/umac/core/umac_core.c"/>
-          <file category="source" name="morselib/src/driver/morse_driver/coredump.c"/>
-          <file category="source" name="morselib/src/umac/rc/umac_rc.c"/>
-          <file category="source" name="morselib/src/driver/transport/sdio_spi.c"/>
-          <file category="source" name="morselib/src/driver/morse_driver/mm6108/pager_if.c"/>
-          <file category="source" name="morselib/src/driver/morse_crc/morse_crc.c"/>
-          <file category="source" name="morselib/src/common/mac_address.c"/>
-          <file category="source" name="morselib/src/driver/morse_driver/mm6108/pageset.c"/>
-          <file category="source" name="morselib/src/umac/ies/ies_common.c"/>
-          <file category="source" name="morselib/src/umac/core/umac_timeout.c"/>
-          <file category="source" name="morselib/src/umac/supplicant_shim/bip.c"/>
-          <file category="source" name="morselib/src/driver/morse_driver/mm8108/yaps-hw.c"/>
-          <file category="source" name="morselib/src/driver/morse_driver/firmware.c"/>
-          <file category="source" name="morselib/src/umac/wnm_sleep/umac_wnm_sleep.c"/>
-          <file category="source" name="morselib/src/driver/driver.c"/>
-          <file category="source" name="morselib/src/driver/morse_driver/mm6108/pager_if_hw.c"/>
-          <file category="source" name="morselib/src/umac/ate/umac_ate.c"/>
-          <file category="source" name="morselib/src/driver/driver_task.c"/>
-          <file category="source" name="morselib/src/driver/morse_driver/event.c"/>
-          <file category="source" name="morselib/src/driver/morse_driver/mm6108/mm6108.c"/>
-          <file category="source" name="morselib/src/umac/ps/umac_ps.c"/>
-          <file category="source" name="morselib/src/umac/keys/umac_keys.c"/>
-          <file category="source" name="morselib/src/umac/frames/probe_response.c"/>
-          <file category="source" name="morselib/src/common/mmpkt_list.c"/>
-          <file category="source" name="morselib/src/common/mmpkt.c"/>
-          <file category="source" name="morselib/src/umac/rc/mmrc_osal/mmrc_osal.c"/>
           <file category="source" name="morselib/mmrc/src/core/mmrc.c"/>
-          <file category="source" name="morselib/src/umac/ies/morse_ie.c"/>
-          <file category="source" name="morselib/src/umac/supplicant_shim/random.c"/>
-          <file category="source" name="morselib/src/umac/frames/action.c"/>
-          <file category="source" name="morselib/src/umac/ies/s1g_capabilities.c"/>
+          <file category="source" name="morselib/src/common/common.c"/>
+          <file category="source" name="morselib/src/common/consbuf.c"/>
+          <file category="source" name="morselib/src/common/mac_address.c"/>
+          <file category="source" name="morselib/src/common/mmpkt.c"/>
+          <file category="source" name="morselib/src/common/mmpkt_list.c"/>
+          <file category="source" name="morselib/src/dot11/dot11_utils.c"/>
+          <file category="source" name="morselib/src/driver/beacon/beacon.c"/>
+          <file category="source" name="morselib/src/driver/driver.c"/>
+          <file category="source" name="morselib/src/driver/driver_task.c"/>
+          <file category="source" name="morselib/src/driver/morse_crc/morse_crc.c"/>
+          <file category="source" name="morselib/src/driver/morse_driver/command.c"/>
+          <file category="source" name="morselib/src/driver/morse_driver/coredump.c"/>
+          <file category="source" name="morselib/src/driver/morse_driver/event.c"/>
           <file category="source" name="morselib/src/driver/morse_driver/ext_host_table.c"/>
+          <file category="source" name="morselib/src/driver/morse_driver/firmware.c"/>
+          <file category="source" name="morselib/src/driver/morse_driver/firmware_mbin.c"/>
+          <file category="source" name="morselib/src/driver/morse_driver/hw.c"/>
+          <file category="source" name="morselib/src/driver/morse_driver/mm6108/mm6108.c"/>
+          <file category="source" name="morselib/src/driver/morse_driver/mm6108/pager_if.c"/>
+          <file category="source" name="morselib/src/driver/morse_driver/mm6108/pager_if_hw.c"/>
+          <file category="source" name="morselib/src/driver/morse_driver/mm6108/pageset.c"/>
+          <file category="source" name="morselib/src/driver/morse_driver/mm8108/mm8108.c"/>
+          <file category="source" name="morselib/src/driver/morse_driver/mm8108/yaps-hw.c"/>
+          <file category="source" name="morselib/src/driver/morse_driver/mm8108/yaps.c"/>
+          <file category="source" name="morselib/src/driver/morse_driver/ps.c"/>
+          <file category="source" name="morselib/src/driver/morse_driver/skbq.c"/>
+          <file category="source" name="morselib/src/driver/puff/puff.c"/>
+          <file category="source" name="morselib/src/driver/transport/sdio.c"/>
+          <file category="source" name="morselib/src/driver/transport/sdio_spi.c"/>
+          <file category="source" name="morselib/src/emmet/emmet_stubs.c"/>
+          <file category="source" name="morselib/src/umac/ap/umac_ap.c"/>
+          <file category="source" name="morselib/src/umac/ate/umac_ate.c"/>
+          <file category="source" name="morselib/src/umac/ba/umac_ba.c"/>
+          <file category="source" name="morselib/src/umac/config/umac_config.c"/>
+          <file category="source" name="morselib/src/umac/connection/umac_connection.c"/>
+          <file category="source" name="morselib/src/umac/core/umac_core.c"/>
           <file category="source" name="morselib/src/umac/core/umac_evtloop.c"/>
+          <file category="source" name="morselib/src/umac/core/umac_evtq.c"/>
+          <file category="source" name="morselib/src/umac/core/umac_timeout.c"/>
+          <file category="source" name="morselib/src/umac/data/umac_data.c"/>
+          <file category="source" name="morselib/src/umac/data/umac_sta_data.c"/>
+          <file category="source" name="morselib/src/umac/datapath/datapath_defrag.c"/>
+          <file category="source" name="morselib/src/umac/datapath/umac_datapath.c"/>
+          <file category="source" name="morselib/src/umac/datapath/umac_datapath_ap.c"/>
+          <file category="source" name="morselib/src/umac/datapath/umac_datapath_sta.c"/>
+          <file category="source" name="morselib/src/umac/frames/action.c"/>
+          <file category="source" name="morselib/src/umac/frames/association.c"/>
           <file category="source" name="morselib/src/umac/frames/authentication.c"/>
+          <file category="source" name="morselib/src/umac/frames/deauthentication.c"/>
+          <file category="source" name="morselib/src/umac/frames/disassociation.c"/>
+          <file category="source" name="morselib/src/umac/frames/frame_constructor.c"/>
+          <file category="source" name="morselib/src/umac/frames/probe_request.c"/>
+          <file category="source" name="morselib/src/umac/frames/probe_response.c"/>
+          <file category="source" name="morselib/src/umac/frames/s1g_action.c"/>
+          <file category="source" name="morselib/src/umac/frames/utils.c"/>
+          <file category="source" name="morselib/src/umac/health_check/umac_health_check.c"/>
+          <file category="source" name="morselib/src/umac/ies/aid_request.c"/>
+          <file category="source" name="morselib/src/umac/ies/ies_common.c"/>
+          <file category="source" name="morselib/src/umac/ies/morse_ie.c"/>
+          <file category="source" name="morselib/src/umac/ies/reachable_address.c"/>
+          <file category="source" name="morselib/src/umac/ies/s1g_capabilities.c"/>
+          <file category="source" name="morselib/src/umac/ies/s1g_operation.c"/>
+          <file category="source" name="morselib/src/umac/ies/s1g_tim.c"/>
+          <file category="source" name="morselib/src/umac/ies/twt_ie.c"/>
           <file category="source" name="morselib/src/umac/ies/wmm.c"/>
           <file category="source" name="morselib/src/umac/interface/umac_interface.c"/>
-          <file category="source" name="morselib/src/driver/morse_driver/skbq.c"/>
-          <file category="source" name="morselib/src/umac/datapath/datapath_defrag.c"/>
-          <file category="source" name="morselib/src/umac/frames/s1g_action.c"/>
-          <file category="source" name="morselib/src/driver/morse_driver/command.c"/>
-          <file category="source" name="morselib/src/umac/supplicant_shim/supplicant_core.c"/>
-          <file category="source" name="morselib/src/umac/twt/umac_twt.c"/>
-          <file category="source" name="morselib/src/umac/datapath/umac_datapath.c"/>
-          <file category="source" name="morselib/src/driver/morse_driver/mm8108/mm8108.c"/>
-          <file category="source" name="morselib/src/umac/datapath/umac_datapath_sta.c"/>
-          <file category="source" name="morselib/src/umac/supplicant_shim/supplicant_core_ap.c"/>
-          <file category="source" name="morselib/src/umac/ap/umac_ap.c"/>
-          <file category="source" name="morselib/src/umac/frames/frame_constructor.c"/>
-          <file category="source" name="morselib/src/umac/supplicant_shim/driver_ap.c"/>
-          <file category="source" name="morselib/src/driver/morse_driver/firmware_mbin.c"/>
-          <file category="source" name="morselib/src/umac/ba/umac_ba.c"/>
-          <file category="source" name="morselib/src/driver/morse_driver/mm8108/yaps.c"/>
-          <file category="source" name="morselib/src/umac/ies/reachable_address.c"/>
-          <file category="source" name="morselib/src/umac/supplicant_shim/morse_dpp_event.c"/>
-          <file category="source" name="morselib/src/umac/datapath/umac_datapath_ap.c"/>
-          <file category="source" name="morselib/src/umac/supplicant_shim/config.c"/>
-          <file category="source" name="morselib/src/umac/frames/probe_request.c"/>
-          <file category="source" name="morselib/src/umac/data/umac_sta_data.c"/>
-          <file category="source" name="morselib/src/umac/scan/umac_scan.c"/>
-          <file category="source" name="morselib/src/umac/config/umac_config.c"/>
-          <file category="source" name="morselib/src/umac/supplicant_shim/ccmp.c"/>
-          <file category="source" name="morselib/src/umac/regdb/umac_regdb.c"/>
-          <file category="source" name="morselib/src/umac/core/umac_evtq.c"/>
-          <file category="source" name="morselib/src/emmet/emmet_stubs.c"/>
-          <file category="source" name="morselib/src/umac/ies/s1g_tim.c"/>
-          <file category="source" name="morselib/src/driver/morse_driver/hw.c"/>
-          <file category="source" name="morselib/src/umac/umac.c"/>
-          <file category="source" name="morselib/src/umac/connection/umac_connection.c"/>
           <file category="source" name="morselib/src/umac/keys/connection_keys.c"/>
-          <file category="source" name="morselib/src/common/common.c"/>
-          <file category="source" name="morselib/src/umac/supplicant_shim/eloop.c"/>
-          <file category="source" name="morselib/src/umac/data/umac_data.c"/>
-          <file category="source" name="morselib/src/umac/ies/aid_request.c"/>
-          <file category="source" name="morselib/src/umac/ies/twt_ie.c"/>
-          <file category="source" name="morselib/src/umac/frames/disassociation.c"/>
-          <file category="source" name="morselib/src/driver/morse_driver/ps.c"/>
-          <file category="source" name="morselib/src/umac/umac_mmdrv_shim.c"/>
-          <file category="source" name="morselib/src/umac/supplicant_shim/driver.c"/>
-          <file category="source" name="morselib/src/umac/frames/deauthentication.c"/>
-          <file category="source" name="morselib/src/umac/frames/association.c"/>
-          <file category="source" name="morselib/src/dot11/dot11_utils.c"/>
-          <file category="source" name="morselib/src/driver/puff/puff.c"/>
+          <file category="source" name="morselib/src/umac/keys/umac_keys.c"/>
+          <file category="source" name="morselib/src/umac/ps/umac_ps.c"/>
+          <file category="source" name="morselib/src/umac/rc/mmrc_osal/mmrc_osal.c"/>
+          <file category="source" name="morselib/src/umac/rc/umac_rc.c"/>
+          <file category="source" name="morselib/src/umac/regdb/umac_regdb.c"/>
+          <file category="source" name="morselib/src/umac/relay/address_updates.c"/>
+          <file category="source" name="morselib/src/umac/relay/umac_relay.c"/>
+          <file category="source" name="morselib/src/umac/relay/umac_relay_table.c"/>
           <file category="source" name="morselib/src/umac/scan/hw_scan.c"/>
-          <file category="source" name="morselib/src/umac/frames/utils.c"/>
+          <file category="source" name="morselib/src/umac/scan/umac_scan.c"/>
+          <file category="source" name="morselib/src/umac/stats/umac_stats.c"/>
+          <file category="source" name="morselib/src/umac/supplicant_shim/bip.c"/>
+          <file category="source" name="morselib/src/umac/supplicant_shim/ccmp.c"/>
+          <file category="source" name="morselib/src/umac/supplicant_shim/config.c"/>
+          <file category="source" name="morselib/src/umac/supplicant_shim/driver.c"/>
+          <file category="source" name="morselib/src/umac/supplicant_shim/driver_ap.c"/>
+          <file category="source" name="morselib/src/umac/supplicant_shim/eloop.c"/>
+          <file category="source" name="morselib/src/umac/supplicant_shim/morse_dpp_event.c"/>
+          <file category="source" name="morselib/src/umac/supplicant_shim/random.c"/>
+          <file category="source" name="morselib/src/umac/supplicant_shim/supplicant_core.c"/>
+          <file category="source" name="morselib/src/umac/supplicant_shim/supplicant_core_ap.c"/>
+          <file category="source" name="morselib/src/umac/twt/umac_twt.c"/>
+          <file category="source" name="morselib/src/umac/umac.c"/>
+          <file category="source" name="morselib/src/umac/umac_mmdrv_shim.c"/>
+          <file category="source" name="morselib/src/umac/wnm_sleep/umac_wnm_sleep.c"/>
+          <file category="include" name="morselib/include"/>
           <file category="include" name="morselib/mmrc/src/core"/>
-          <file category="include" name="morselib/src/internal"/>
-          <file category="include" name="morselib/src/umac/rc/mmrc_osal"/>
           <file category="include" name="morselib/src"/>
           <file category="include" name="morselib/src/emmet"/>
-          <file category="include" name="morselib/include"/>
+          <file category="include" name="morselib/src/internal"/>
+          <file category="include" name="morselib/src/umac/rc/mmrc_osal"/>
         </files>
       </component>
       <component Cgroup="MMx108-template" condition="MMx108-template conditions" Cvariant="SPI">
@@ -616,6 +625,7 @@
           <file category="source" name="MMx108-template/SPI/mmhal.c" attr="template"/>
           <file category="source" name="MMx108-template/SPI/mmhal_app.c" attr="template"/>
           <file category="source" name="MMx108-template/SPI/mmhal_flash.c" attr="template"/>
+          <file category="source" name="MMx108-template/SPI/mmhal_os.c" attr="template"/>
           <file category="source" name="MMx108-template/SPI/mmhal_uart.c" attr="template"/>
           <file category="source" name="MMx108-template/SPI/wlan_hal.c" attr="template"/>
         </files>
@@ -623,155 +633,160 @@
       <component Cgroup="MMx108-template" condition="MMx108-template conditions" Cvariant="SDIO">
         <description>This component adds an empty hardware shim layer to the project to satisfy the linker and morselib dependency.</description>
         <files>
-          <file category="source" name="MMx108-template/SDIO/wlan_hal.c" attr="template"/>
           <file category="source" name="MMx108-template/SDIO/mmhal.c" attr="template"/>
           <file category="source" name="MMx108-template/SDIO/mmhal_app.c" attr="template"/>
           <file category="source" name="MMx108-template/SDIO/mmhal_flash.c" attr="template"/>
+          <file category="source" name="MMx108-template/SDIO/mmhal_os.c" attr="template"/>
           <file category="source" name="MMx108-template/SDIO/mmhal_uart.c" attr="template"/>
+          <file category="source" name="MMx108-template/SDIO/wlan_hal.c" attr="template"/>
         </files>
       </component>
       <component Cgroup="mmconfig" condition="MM_IoT mmconfig conditions">
         <description>This component defines the API and provides a volatile implementation for configuring the examples in this pack.</description>
         <files>
           <file category="source" name="mmconfig/mmconfig.c"/>
-          <file category="header" name="mmconfig/mmconfig.h"/>
+          <file category="header" name="mmconfig/mmconfig.h" path="mmconfig"/>
+          <file category="source" name="mmconfig/mmconfig_weak.c"/>
         </files>
       </component>
       <component Cgroup="mmregdb" condition="MM_IoT mmregdb conditions">
         <description>This component defines the API and provides a regulatory db.</description>
         <files>
           <file category="source" name="mmregdb/mmregdb.c"/>
-          <file category="header" name="mmregdb/mmregdb.h"/>
+          <file category="header" name="mmregdb/mmregdb.h" path="mmregdb"/>
         </files>
       </component>
       <component Cgroup="mm_app_common" condition="MM_IoT mm_app_common conditions">
         <description>This component contains application helper routines for loading configurations as well as initializing/de-initializing the Wireless LAN interface and IP configuration.</description>
         <files>
           <file category="source" name="mm_app_common/mm_app_common.c"/>
-          <file category="header" name="mm_app_common/mm_app_common.h"/>
+          <file category="header" name="mm_app_common/mm_app_common.h" path="mm_app_common"/>
           <file category="source" name="mm_app_common/mm_app_loadconfig.c"/>
-          <file category="header" name="mm_app_common/mm_app_loadconfig.h"/>
+          <file category="header" name="mm_app_common/mm_app_loadconfig.h" path="mm_app_common"/>
         </files>
       </component>
       <component Cgroup="mmipal" condition="MM_IoT mmipal conditions">
         <description>This API provides a layer of abstraction from the underlying IP stack for common operations such as configuring the link and getting link status.</description>
         <files>
-          <file category="header" name="mmipal/mmipal.h"/>
           <file category="source" name="mmipal/lwip/mmipal_lwip.c" condition="require MM_IoT mmLwIP condition"/>
           <file category="source" name="mmipal/lwip/mmnetif.c" condition="require MM_IoT mmLwIP condition"/>
-          <file category="header" name="mmipal/lwip/mmnetif.h" condition="require MM_IoT mmLwIP condition"/>
+          <file category="header" name="mmipal/lwip/mmnetif.h" path="mmipal" condition="require MM_IoT mmLwIP condition"/>
+          <file category="header" name="mmipal/mmipal.h" path="mmipal"/>
         </files>
       </component>
       <component Cgroup="mmutils" condition="MM_IoT mmutils conditions">
         <description>This component provides general purpose macros and functions.</description>
         <files>
-          <file category="header" name="mmutils/mmutils.h"/>
-          <file category="source" name="mmutils/mmutils_wlan.c"/>
-          <file category="header" name="mmutils/mmbuf.h"/>
           <file category="source" name="mmutils/mmbuf.c"/>
-          <file category="header" name="mmutils/mmcrc.h"/>
+          <file category="header" name="mmutils/mmbuf.h" path="mmutils"/>
           <file category="source" name="mmutils/mmcrc.c"/>
+          <file category="header" name="mmutils/mmcrc.h" path="mmutils"/>
+          <file category="header" name="mmutils/mmutils.h" path="mmutils"/>
+          <file category="source" name="mmutils/mmutils_wlan.c"/>
         </files>
       </component>
       <component Cgroup="littlefs" Cversion="2.6.1">
         <description>A little fail-safe filesystem designed for microcontrollers.</description>
         <files>
-          <file category="header" name="littlefs/lfs_util.h"/>
-          <file category="header" name="littlefs/lfs.h"/>
-          <file category="source" name="littlefs/lfs.c"/>
           <file category="other" name="littlefs/LICENSE.md"/>
-          <file category="source" name="littlefs/lfs_util.c"/>
           <file category="other" name="littlefs/README.md"/>
+          <file category="source" name="littlefs/lfs.c"/>
+          <file category="header" name="littlefs/lfs.h" path="littlefs"/>
+          <file category="source" name="littlefs/lfs_util.c"/>
+          <file category="header" name="littlefs/lfs_util.h" path="littlefs"/>
         </files>
       </component>
       <component Cgroup="mmagic" condition="MM_IoT mmagic conditions">
         <description>CLI and Machine-to-Machine interface infrastructure.</description>
         <files>
-          <file category="header" name="mmagic/agent/mmagic_datalink_agent.h"/>
-          <file category="header" name="mmagic/agent/mmagic.h"/>
-          <file category="source" name="mmagic/agent/core/mmagic_core_mqtt.c"/>
-          <file category="source" name="mmagic/agent/core/mmagic_core_socket.c"/>
-          <file category="source" name="mmagic/agent/core/mmagic_core_ping.c"/>
-          <file category="source" name="mmagic/agent/core/mmagic_core_ntp.c"/>
-          <file category="source" name="mmagic/agent/core/mmagic_core_wlan.c"/>
-          <file category="source" name="mmagic/agent/core/mmagic_core_iperf.c"/>
-          <file category="source" name="mmagic/agent/core/mmagic_core_sys.c"/>
-          <file category="source" name="mmagic/agent/core/mmagic_core_tls.c"/>
-          <file category="source" name="mmagic/agent/core/mmagic_core_ip.c"/>
-          <file category="source" name="mmagic/agent/core/mmagic_core_utils.c"/>
-          <file category="header" name="mmagic/agent/core/mmagic_core_utils.h"/>
-          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_ntp.h"/>
-          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_ping.c"/>
-          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_data.c"/>
-          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_tls.h"/>
-          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_ntp.c"/>
-          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_iperf.h"/>
-          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_ip.h"/>
-          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_socket.c"/>
-          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_sys.h"/>
-          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_types.c"/>
-          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_wlan.h"/>
-          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_ip.c"/>
-          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_mqtt.c"/>
-          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_socket.h"/>
-          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_mqtt.h"/>
-          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_iperf.c"/>
-          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_wlan.c"/>
-          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_tls.c"/>
-          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_sys.c"/>
-          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_ping.h"/>
-          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_data.h"/>
-          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_types.h"/>
-          <file category="source" name="mmagic/agent/m2m_llc/mmagic_llc_agent.c"/>
-          <file category="header" name="mmagic/agent/m2m_llc/mmagic_llc_agent.h"/>
-          <file category="source" name="mmagic/agent/m2m_api/mmagic_m2m_agent.c"/>
-          <file category="header" name="mmagic/agent/m2m_api/mmagic_m2m_agent.h"/>
-          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_socket.c"/>
-          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_sys.c"/>
-          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_ping.c"/>
-          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_mqtt.c"/>
-          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_ip.h"/>
-          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_ping.h"/>
-          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen.c"/>
-          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_internal.h"/>
-          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_sys.h"/>
-          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_socket.h"/>
-          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_ip.c"/>
-          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_iperf.h"/>
-          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_tls.h"/>
-          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_ntp.h"/>
-          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_iperf.c"/>
-          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_ntp.c"/>
-          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_wlan.h"/>
-          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_tls.c"/>
-          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_wlan.c"/>
-          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_mqtt.h"/>
-          <file category="header" name="mmagic/agent/cli/embedded_cli.h"/>
+          <file category="source" name="mmagic/agent/cli/autogen/mmagic_cli_autogen.c"/>
+          <file category="source" name="mmagic/agent/cli/autogen/mmagic_cli_autogen_ip.c"/>
+          <file category="source" name="mmagic/agent/cli/autogen/mmagic_cli_autogen_iperf.c"/>
+          <file category="source" name="mmagic/agent/cli/autogen/mmagic_cli_autogen_ping.c"/>
+          <file category="source" name="mmagic/agent/cli/autogen/mmagic_cli_autogen_sys.c"/>
+          <file category="source" name="mmagic/agent/cli/autogen/mmagic_cli_autogen_wlan.c"/>
+          <file category="header" name="mmagic/agent/cli/autogen/mmagic_cli_internal.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/cli/autogen/mmagic_cli_ip.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/cli/autogen/mmagic_cli_iperf.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/cli/autogen/mmagic_cli_ping.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/cli/autogen/mmagic_cli_sys.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/cli/autogen/mmagic_cli_wlan.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/cli/embedded_cli.h" path="mmagic/agent"/>
           <file category="source" name="mmagic/agent/cli/mmagic_cli.c"/>
-          <file category="source" name="mmagic/agent/cli/mmagic_cli_ping.c"/>
-          <file category="source" name="mmagic/agent/cli/mmagic_cli_sys.c"/>
+          <file category="header" name="mmagic/agent/cli/mmagic_cli.h" path="mmagic/agent"/>
+          <file category="source" name="mmagic/agent/cli/mmagic_cli_internal.c"/>
           <file category="source" name="mmagic/agent/cli/mmagic_cli_ip.c"/>
           <file category="source" name="mmagic/agent/cli/mmagic_cli_iperf.c"/>
-          <file category="header" name="mmagic/agent/cli/mmagic_cli.h"/>
+          <file category="source" name="mmagic/agent/cli/mmagic_cli_ping.c"/>
+          <file category="source" name="mmagic/agent/cli/mmagic_cli_sys.c"/>
           <file category="source" name="mmagic/agent/cli/mmagic_cli_wlan.c"/>
-          <file category="source" name="mmagic/agent/cli/mmagic_cli_internal.c"/>
-          <file category="header" name="mmagic/agent/cli/autogen/mmagic_cli_iperf.h"/>
-          <file category="source" name="mmagic/agent/cli/autogen/mmagic_cli_autogen_iperf.c"/>
-          <file category="header" name="mmagic/agent/cli/autogen/mmagic_cli_ip.h"/>
-          <file category="source" name="mmagic/agent/cli/autogen/mmagic_cli_autogen_ip.c"/>
-          <file category="source" name="mmagic/agent/cli/autogen/mmagic_cli_autogen_ping.c"/>
-          <file category="header" name="mmagic/agent/cli/autogen/mmagic_cli_internal.h"/>
-          <file category="header" name="mmagic/agent/cli/autogen/mmagic_cli_wlan.h"/>
-          <file category="source" name="mmagic/agent/cli/autogen/mmagic_cli_autogen_wlan.c"/>
-          <file category="source" name="mmagic/agent/cli/autogen/mmagic_cli_autogen_sys.c"/>
-          <file category="source" name="mmagic/agent/cli/autogen/mmagic_cli_autogen.c"/>
-          <file category="header" name="mmagic/agent/cli/autogen/mmagic_cli_ping.h"/>
-          <file category="header" name="mmagic/agent/cli/autogen/mmagic_cli_sys.h"/>
+          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_ip.c"/>
+          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_iperf.c"/>
+          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_mqtt.c"/>
+          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_ntp.c"/>
+          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_ping.c"/>
+          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_socket.c"/>
+          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_sys.c"/>
+          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_tls.c"/>
+          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_autogen_wlan.c"/>
+          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_data.c"/>
+          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_data.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_ip.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_iperf.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_mqtt.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_ntp.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_ping.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_socket.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_sys.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_tls.h" path="mmagic/agent"/>
+          <file category="source" name="mmagic/agent/core/autogen/mmagic_core_types.c"/>
+          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_types.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/core/autogen/mmagic_core_wlan.h" path="mmagic/agent"/>
+          <file category="source" name="mmagic/agent/core/mmagic_core_ip.c"/>
+          <file category="source" name="mmagic/agent/core/mmagic_core_iperf.c"/>
+          <file category="source" name="mmagic/agent/core/mmagic_core_mqtt.c"/>
+          <file category="source" name="mmagic/agent/core/mmagic_core_ntp.c"/>
+          <file category="source" name="mmagic/agent/core/mmagic_core_ping.c"/>
+          <file category="source" name="mmagic/agent/core/mmagic_core_socket.c"/>
+          <file category="source" name="mmagic/agent/core/mmagic_core_sys.c"/>
+          <file category="source" name="mmagic/agent/core/mmagic_core_tls.c"/>
+          <file category="source" name="mmagic/agent/core/mmagic_core_utils.c"/>
+          <file category="header" name="mmagic/agent/core/mmagic_core_utils.h" path="mmagic/agent"/>
+          <file category="source" name="mmagic/agent/core/mmagic_core_wlan.c"/>
+          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen.c"/>
+          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_ip.c"/>
+          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_iperf.c"/>
+          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_mqtt.c"/>
+          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_ntp.c"/>
+          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_ping.c"/>
+          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_socket.c"/>
+          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_sys.c"/>
+          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_tls.c"/>
+          <file category="source" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_autogen_wlan.c"/>
+          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_internal.h" path="mmagic/agent/m2m_api/autogen/"/>
+          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_ip.h" path="mmagic/agent/m2m_api/autogen/"/>
+          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_iperf.h" path="mmagic/agent/m2m_api/autogen/"/>
+          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_mqtt.h" path="mmagic/agent/m2m_api/autogen/"/>
+          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_ntp.h" path="mmagic/agent/m2m_api/autogen/"/>
+          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_ping.h" path="mmagic/agent/m2m_api/autogen/"/>
+          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_socket.h" path="mmagic/agent/m2m_api/autogen/"/>
+          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_sys.h" path="mmagic/agent/m2m_api/autogen/"/>
+          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_tls.h" path="mmagic/agent/m2m_api/autogen/"/>
+          <file category="header" name="mmagic/agent/m2m_api/autogen/mmagic_m2m_wlan.h" path="mmagic/agent/m2m_api/autogen/"/>
+          <file category="source" name="mmagic/agent/m2m_api/mmagic_m2m_agent.c"/>
+          <file category="header" name="mmagic/agent/m2m_api/mmagic_m2m_agent.h" path="mmagic/agent"/>
           <file category="source" name="mmagic/agent/m2m_datalink/mmagic_datalink_uart.c"/>
-          <file category="header" name="mmagic/controller/mmosal_controller.h"/>
+          <file category="source" name="mmagic/agent/m2m_llc/mmagic_llc_agent.c"/>
+          <file category="header" name="mmagic/agent/m2m_llc/mmagic_llc_agent.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/mmagic.h" path="mmagic/agent"/>
+          <file category="header" name="mmagic/agent/mmagic_datalink_agent.h" path="mmagic/agent"/>
           <file category="source" name="mmagic/controller/mmagic_controller.c"/>
-          <file category="header" name="mmagic/controller/mmagic_controller.h"/>
-          <file category="header" name="mmagic/controller/mmagic_datalink_controller.h"/>
+          <file category="header" name="mmagic/controller/mmagic_controller.h" path="mmagic/controller"/>
+          <file category="header" name="mmagic/controller/mmagic_datalink_controller.h" path="mmagic/controller"/>
+          <file category="header" name="mmagic/controller/mmosal_controller.h" path="mmagic/controller"/>
+          <file category="include" name="mmagic/agent"/>
+          <file category="include" name="mmagic/agent/m2m_api/autogen/"/>
+          <file category="include" name="mmagic/controller"/>
         </files>
       </component>
       <component Cgroup="mmLwIP" condition="MM_IoT mmLwIP conditions" Cversion="2.2.0">
@@ -782,298 +797,301 @@
           <file category="other" name="mmLwIP/FEATURES"/>
           <file category="other" name="mmLwIP/README"/>
           <file category="other" name="mmLwIP/UPGRADING"/>
-          <file category="other" name="mmLwIP/src/Filelists.cmake"/>
+          <file category="header" name="mmLwIP/port/arch/cc.h" path="mmLwIP/port/"/>
+          <file category="source" name="mmLwIP/port/arch/sys_arch.c"/>
+          <file category="header" name="mmLwIP/port/arch/sys_arch.h" path="mmLwIP/port/"/>
+          <file category="header" name="mmLwIP/port/lwipopts.h" attr="template"/>
           <file category="other" name="mmLwIP/src/FILES"/>
+          <file category="other" name="mmLwIP/src/Filelists.cmake"/>
           <file category="other" name="mmLwIP/src/Filelists.mk"/>
+          <file category="source" name="mmLwIP/src/api/api_lib.c"/>
+          <file category="source" name="mmLwIP/src/api/api_msg.c"/>
+          <file category="source" name="mmLwIP/src/api/err.c"/>
+          <file category="source" name="mmLwIP/src/api/if_api.c"/>
+          <file category="source" name="mmLwIP/src/api/netbuf.c"/>
+          <file category="source" name="mmLwIP/src/api/netdb.c"/>
+          <file category="source" name="mmLwIP/src/api/netifapi.c"/>
+          <file category="source" name="mmLwIP/src/api/sockets.c"/>
+          <file category="source" name="mmLwIP/src/api/tcpip.c"/>
+          <file category="source" name="mmLwIP/src/core/altcp.c"/>
           <file category="source" name="mmLwIP/src/core/altcp_alloc.c"/>
           <file category="source" name="mmLwIP/src/core/altcp_tcp.c"/>
-          <file category="source" name="mmLwIP/src/core/memp.c"/>
-          <file category="source" name="mmLwIP/src/core/sys.c"/>
-          <file category="source" name="mmLwIP/src/core/init.c"/>
           <file category="source" name="mmLwIP/src/core/def.c"/>
-          <file category="source" name="mmLwIP/src/core/raw.c"/>
-          <file category="source" name="mmLwIP/src/core/tcp_out.c"/>
-          <file category="source" name="mmLwIP/src/core/pbuf.c"/>
-          <file category="source" name="mmLwIP/src/core/udp.c"/>
-          <file category="source" name="mmLwIP/src/core/stats.c"/>
-          <file category="source" name="mmLwIP/src/core/inet_chksum.c"/>
-          <file category="source" name="mmLwIP/src/core/altcp.c"/>
           <file category="source" name="mmLwIP/src/core/dns.c"/>
-          <file category="source" name="mmLwIP/src/core/mem.c"/>
-          <file category="source" name="mmLwIP/src/core/tcp.c"/>
-          <file category="source" name="mmLwIP/src/core/tcp_in.c"/>
-          <file category="source" name="mmLwIP/src/core/netif.c"/>
-          <file category="source" name="mmLwIP/src/core/timeouts.c"/>
+          <file category="source" name="mmLwIP/src/core/inet_chksum.c"/>
+          <file category="source" name="mmLwIP/src/core/init.c"/>
           <file category="source" name="mmLwIP/src/core/ip.c"/>
-          <file category="source" name="mmLwIP/src/core/ipv6/ip6_addr.c"/>
-          <file category="source" name="mmLwIP/src/core/ipv6/inet6.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/acd.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/autoip.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/dhcp.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/etharp.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/icmp.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/igmp.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/ip4.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/ip4_addr.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv4/ip4_frag.c"/>
           <file category="source" name="mmLwIP/src/core/ipv6/dhcp6.c"/>
           <file category="source" name="mmLwIP/src/core/ipv6/ethip6.c"/>
           <file category="source" name="mmLwIP/src/core/ipv6/icmp6.c"/>
-          <file category="source" name="mmLwIP/src/core/ipv6/mld6.c"/>
-          <file category="source" name="mmLwIP/src/core/ipv6/ip6_frag.c"/>
-          <file category="source" name="mmLwIP/src/core/ipv6/nd6.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv6/inet6.c"/>
           <file category="source" name="mmLwIP/src/core/ipv6/ip6.c"/>
-          <file category="source" name="mmLwIP/src/core/ipv4/icmp.c"/>
-          <file category="source" name="mmLwIP/src/core/ipv4/etharp.c"/>
-          <file category="source" name="mmLwIP/src/core/ipv4/acd.c"/>
-          <file category="source" name="mmLwIP/src/core/ipv4/ip4_addr.c"/>
-          <file category="source" name="mmLwIP/src/core/ipv4/ip4_frag.c"/>
-          <file category="source" name="mmLwIP/src/core/ipv4/autoip.c"/>
-          <file category="source" name="mmLwIP/src/core/ipv4/dhcp.c"/>
-          <file category="source" name="mmLwIP/src/core/ipv4/ip4.c"/>
-          <file category="source" name="mmLwIP/src/core/ipv4/igmp.c"/>
-          <file category="source" name="mmLwIP/src/netif/zepif.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv6/ip6_addr.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv6/ip6_frag.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv6/mld6.c"/>
+          <file category="source" name="mmLwIP/src/core/ipv6/nd6.c"/>
+          <file category="source" name="mmLwIP/src/core/mem.c"/>
+          <file category="source" name="mmLwIP/src/core/memp.c"/>
+          <file category="source" name="mmLwIP/src/core/netif.c"/>
+          <file category="source" name="mmLwIP/src/core/pbuf.c"/>
+          <file category="source" name="mmLwIP/src/core/raw.c"/>
+          <file category="source" name="mmLwIP/src/core/stats.c"/>
+          <file category="source" name="mmLwIP/src/core/sys.c"/>
+          <file category="source" name="mmLwIP/src/core/tcp.c"/>
+          <file category="source" name="mmLwIP/src/core/tcp_in.c"/>
+          <file category="source" name="mmLwIP/src/core/tcp_out.c"/>
+          <file category="source" name="mmLwIP/src/core/timeouts.c"/>
+          <file category="source" name="mmLwIP/src/core/udp.c"/>
+          <file category="header" name="mmLwIP/src/include/compat/posix/arpa/inet.h" path="mmLwIP/src/include/compat/posix/"/>
+          <file category="header" name="mmLwIP/src/include/compat/posix/net/if.h" path="mmLwIP/src/include/compat/posix/"/>
+          <file category="header" name="mmLwIP/src/include/compat/posix/netdb.h" path="mmLwIP/src/include/compat/posix/"/>
+          <file category="header" name="mmLwIP/src/include/compat/posix/sys/socket.h" path="mmLwIP/src/include/compat/posix/"/>
+          <file category="header" name="mmLwIP/src/include/compat/stdc/errno.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/acd.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/altcp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/altcp_tcp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/altcp_tls.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/api.h" path="mmLwIP/src/include/"/>
+          <file category="other" name="mmLwIP/src/include/lwip/apps/FILES"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/altcp_proxyconnect.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/altcp_tls_mbedtls_opts.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/fs.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/http_client.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/httpd.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/httpd_opts.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/lwiperf.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/mdns.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/mdns_domain.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/mdns_opts.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/mdns_out.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/mdns_priv.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/mqtt.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/mqtt_opts.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/mqtt_priv.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/netbiosns.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/netbiosns_opts.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/smtp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/smtp_opts.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_core.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_mib2.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_opts.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_scalar.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_snmpv2_framework.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_snmpv2_usm.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_table.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_threadsync.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/snmpv3.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/sntp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/sntp_opts.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/tftp_client.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/tftp_common.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/tftp_opts.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/apps/tftp_server.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/arch.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/autoip.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/debug.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/def.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/dhcp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/dhcp6.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/dns.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/err.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/errno.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/etharp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ethip6.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/icmp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/icmp6.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/if_api.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/igmp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/inet.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/inet_chksum.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/init.h" path="mmLwIP/src/include/"/>
+          <file category="other" name="mmLwIP/src/include/lwip/init.h.cmake.in"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip4.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip4_addr.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip4_frag.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip6.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip6_addr.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip6_frag.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip6_zone.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/ip_addr.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/mem.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/memp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/mld6.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/nd6.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/netbuf.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/netdb.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/netif.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/netifapi.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/opt.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/pbuf.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/altcp_priv.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/api_msg.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/mem_priv.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/memp_priv.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/memp_std.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/nd6_priv.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/raw_priv.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/sockets_priv.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/tcp_priv.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/priv/tcpip_priv.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/acd.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/autoip.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/dhcp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/dhcp6.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/dns.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/etharp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/ethernet.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/iana.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/icmp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/icmp6.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/ieee.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/igmp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/ip.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/ip4.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/ip6.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/mld6.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/nd6.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/tcp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/prot/udp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/raw.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/sio.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/snmp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/sockets.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/stats.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/sys.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/tcp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/tcpbase.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/tcpip.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/timeouts.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/lwip/udp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/morse/on_demand_timers.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/bridgeif.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/bridgeif_opts.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/etharp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ethernet.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ieee802154.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/lowpan6.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/lowpan6_ble.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/lowpan6_common.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/lowpan6_opts.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/ccp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/chap-md5.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/chap-new.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/chap_ms.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/eap.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/ecp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/eui64.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/fsm.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/ipcp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/ipv6cp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/lcp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/magic.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/mppe.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/polarssl/arc4.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/polarssl/des.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/polarssl/md4.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/polarssl/md5.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/polarssl/sha1.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/ppp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/ppp_impl.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/ppp_opts.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/pppapi.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/pppcrypt.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/pppdebug.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/pppoe.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/pppol2tp.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/pppos.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/upap.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/ppp/vj.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/slipif.h" path="mmLwIP/src/include/"/>
+          <file category="header" name="mmLwIP/src/include/netif/zepif.h" path="mmLwIP/src/include/"/>
+          <file category="other" name="mmLwIP/src/netif/FILES"/>
+          <file category="source" name="mmLwIP/src/netif/bridgeif.c"/>
           <file category="source" name="mmLwIP/src/netif/bridgeif_fdb.c"/>
           <file category="source" name="mmLwIP/src/netif/ethernet.c"/>
           <file category="source" name="mmLwIP/src/netif/lowpan6.c"/>
-          <file category="source" name="mmLwIP/src/netif/lowpan6_common.c"/>
-          <file category="source" name="mmLwIP/src/netif/bridgeif.c"/>
           <file category="source" name="mmLwIP/src/netif/lowpan6_ble.c"/>
-          <file category="source" name="mmLwIP/src/netif/slipif.c"/>
-          <file category="other" name="mmLwIP/src/netif/FILES"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/magic.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/pppoe.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/pppos.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/pppcrypt.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/multilink.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/demand.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/fsm.c"/>
+          <file category="source" name="mmLwIP/src/netif/lowpan6_common.c"/>
           <file category="other" name="mmLwIP/src/netif/ppp/PPPD_FOLLOWUP"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/vj.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/utils.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/upap.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/ccp.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/pppapi.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/eap.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/chap_ms.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/ipcp.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/lcp.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/ppp.c"/>
           <file category="source" name="mmLwIP/src/netif/ppp/auth.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/ecp.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/mppe.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/chap-new.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/eui64.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/ccp.c"/>
           <file category="source" name="mmLwIP/src/netif/ppp/chap-md5.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/pppol2tp.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/chap-new.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/chap_ms.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/demand.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/eap.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/ecp.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/eui64.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/fsm.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/ipcp.c"/>
           <file category="source" name="mmLwIP/src/netif/ppp/ipv6cp.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/polarssl/des.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/lcp.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/magic.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/mppe.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/multilink.c"/>
           <file category="other" name="mmLwIP/src/netif/ppp/polarssl/README"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/polarssl/arc4.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/polarssl/des.c"/>
           <file category="source" name="mmLwIP/src/netif/ppp/polarssl/md4.c"/>
           <file category="source" name="mmLwIP/src/netif/ppp/polarssl/md5.c"/>
-          <file category="source" name="mmLwIP/src/netif/ppp/polarssl/arc4.c"/>
           <file category="source" name="mmLwIP/src/netif/ppp/polarssl/sha1.c"/>
-          <file category="source" name="mmLwIP/src/api/tcpip.c"/>
-          <file category="source" name="mmLwIP/src/api/netifapi.c"/>
-          <file category="source" name="mmLwIP/src/api/if_api.c"/>
-          <file category="source" name="mmLwIP/src/api/sockets.c"/>
-          <file category="source" name="mmLwIP/src/api/api_lib.c"/>
-          <file category="source" name="mmLwIP/src/api/netbuf.c"/>
-          <file category="source" name="mmLwIP/src/api/netdb.c"/>
-          <file category="source" name="mmLwIP/src/api/err.c"/>
-          <file category="source" name="mmLwIP/src/api/api_msg.c"/>
-          <file category="header" name="mmLwIP/src/include/netif/lowpan6.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/slipif.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/etharp.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/lowpan6_opts.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/zepif.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/lowpan6_common.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/lowpan6_ble.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ieee802154.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/bridgeif.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/bridgeif_opts.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ethernet.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/eap.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/ipv6cp.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/ipcp.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/fsm.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/pppoe.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/chap-md5.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/upap.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/magic.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/mppe.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/chap_ms.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/ppp.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/lcp.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/ppp_opts.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/pppdebug.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/pppol2tp.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/chap-new.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/ecp.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/pppapi.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/vj.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/ppp_impl.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/pppos.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/ccp.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/eui64.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/pppcrypt.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/polarssl/sha1.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/polarssl/arc4.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/polarssl/des.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/polarssl/md4.h"/>
-          <file category="header" name="mmLwIP/src/include/netif/ppp/polarssl/md5.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/ip4.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/netifapi.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/altcp_tls.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/ip_addr.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/memp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/udp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/pbuf.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/ip6.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/igmp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/ip6_zone.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/inet.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/raw.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/nd6.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/ip6_frag.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/tcpbase.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/init.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/mld6.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/etharp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/snmp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/icmp6.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/debug.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/ip.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/dhcp6.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/timeouts.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/tcp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/ip6_addr.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/acd.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/err.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/if_api.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/dns.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/sys.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/autoip.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/altcp_tcp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/sio.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/errno.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/ip4_addr.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/netbuf.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/altcp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/def.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/netif.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/mem.h"/>
-          <file category="other" name="mmLwIP/src/include/lwip/init.h.cmake.in"/>
-          <file category="header" name="mmLwIP/src/include/lwip/ethip6.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/arch.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/icmp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/netdb.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/inet_chksum.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/stats.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/ip4_frag.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/tcpip.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/sockets.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/dhcp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/opt.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/api.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/smtp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/mqtt_priv.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_table.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/tftp_server.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_threadsync.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/mdns_priv.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/tftp_client.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/mqtt_opts.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_snmpv2_framework.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_mib2.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/fs.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/altcp_tls_mbedtls_opts.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/mdns_out.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/lwiperf.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/sntp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_snmpv2_usm.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/mdns_domain.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/httpd.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/mqtt.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_opts.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/mdns_opts.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/altcp_proxyconnect.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_core.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/http_client.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/tftp_common.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/smtp_opts.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/netbiosns.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/snmpv3.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/mdns.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/snmp_scalar.h"/>
-          <file category="other" name="mmLwIP/src/include/lwip/apps/FILES"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/sntp_opts.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/tftp_opts.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/httpd_opts.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/apps/netbiosns_opts.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/priv/tcpip_priv.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/priv/memp_priv.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/priv/api_msg.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/priv/memp_std.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/priv/mem_priv.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/priv/raw_priv.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/priv/tcp_priv.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/priv/nd6_priv.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/priv/sockets_priv.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/priv/altcp_priv.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/ip4.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/udp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/ip6.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/igmp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/ieee.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/nd6.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/mld6.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/etharp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/icmp6.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/ip.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/dhcp6.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/tcp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/acd.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/dns.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/autoip.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/icmp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/dhcp.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/iana.h"/>
-          <file category="header" name="mmLwIP/src/include/lwip/prot/ethernet.h"/>
-          <file category="header" name="mmLwIP/src/include/morse/on_demand_timers.h"/>
-          <file category="header" name="mmLwIP/src/include/compat/stdc/errno.h"/>
-          <file category="header" name="mmLwIP/src/include/compat/posix/netdb.h"/>
-          <file category="header" name="mmLwIP/src/include/compat/posix/net/if.h"/>
-          <file category="header" name="mmLwIP/src/include/compat/posix/arpa/inet.h"/>
-          <file category="header" name="mmLwIP/src/include/compat/posix/sys/socket.h"/>
-          <file category="header" name="mmLwIP/port/lwipopts.h" attr="template"/>
-          <file category="source" name="mmLwIP/port/arch/sys_arch.c"/>
-          <file category="header" name="mmLwIP/port/arch/cc.h"/>
-          <file category="header" name="mmLwIP/port/arch/sys_arch.h"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/ppp.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/pppapi.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/pppcrypt.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/pppoe.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/pppol2tp.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/pppos.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/upap.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/utils.c"/>
+          <file category="source" name="mmLwIP/src/netif/ppp/vj.c"/>
+          <file category="source" name="mmLwIP/src/netif/slipif.c"/>
+          <file category="source" name="mmLwIP/src/netif/zepif.c"/>
+          <file category="include" name="mmLwIP/port/"/>
+          <file category="include" name="mmLwIP/src/include/"/>
+          <file category="include" name="mmLwIP/src/include/compat/posix/"/>
         </files>
       </component>
       <component Cgroup="mmping" condition="MM_IoT mmping conditions">
         <description>This component provides the ICMP echo (ping) request implementation.</description>
         <files>
+          <file category="header" name="mmping/mmping.h" path="mmping"/>
           <file category="source" name="mmping/mmping_lwip.c" condition="require MM_IoT mmLwIP condition"/>
-          <file category="header" name="mmping/mmping.h"/>
         </files>
       </component>
       <component Cgroup="slip">
         <description>Serial Line Internet Protocol (SLIP) implementation. SLIP was originally designed as an encapsulation for IP over serial ports, but can be used for framing of any packet-based data for transmission over a serial port.</description>
         <files>
           <file category="source" name="slip/slip.c"/>
-          <file category="header" name="slip/slip.h"/>
+          <file category="header" name="slip/slip.h" path="slip"/>
         </files>
       </component>
       <component Cgroup="mmiperf" condition="MM_IoT mmiperf conditions">
         <description>This provides an iperf implementation that supports both TCP and UDP.</description>
         <files>
-          <file category="header" name="mmiperf/mmiperf.h"/>
           <file category="source" name="mmiperf/common/mmiperf_common.c"/>
           <file category="source" name="mmiperf/common/mmiperf_data.c"/>
           <file category="source" name="mmiperf/common/mmiperf_list.c"/>
-          <file category="header" name="mmiperf/common/mmiperf_private.h"/>
+          <file category="header" name="mmiperf/common/mmiperf_private.h" path="mmiperf"/>
+          <file category="header" name="mmiperf/lwip/mmiperf_lwip.h" path="mmiperf" condition="require MM_IoT mmLwIP condition"/>
           <file category="source" name="mmiperf/lwip/mmiperf_lwip_common.c" condition="require MM_IoT mmLwIP condition"/>
-          <file category="header" name="mmiperf/lwip/mmiperf_tcp_private.h" condition="require MM_IoT mmLwIP condition"/>
-          <file category="source" name="mmiperf/lwip/mmiperf_tcp_common.c" condition="require MM_IoT mmLwIP condition"/>
           <file category="source" name="mmiperf/lwip/mmiperf_tcp_client.c" condition="require MM_IoT mmLwIP condition"/>
+          <file category="source" name="mmiperf/lwip/mmiperf_tcp_common.c" condition="require MM_IoT mmLwIP condition"/>
+          <file category="header" name="mmiperf/lwip/mmiperf_tcp_private.h" path="mmiperf" condition="require MM_IoT mmLwIP condition"/>
           <file category="source" name="mmiperf/lwip/mmiperf_tcp_server.c" condition="require MM_IoT mmLwIP condition"/>
           <file category="source" name="mmiperf/lwip/mmiperf_udp_client.c" condition="require MM_IoT mmLwIP condition"/>
           <file category="source" name="mmiperf/lwip/mmiperf_udp_server.c" condition="require MM_IoT mmLwIP condition"/>
-          <file category="header" name="mmiperf/lwip/mmiperf_lwip.h" condition="require MM_IoT mmLwIP condition"/>
+          <file category="header" name="mmiperf/mmiperf.h" path="mmiperf"/>
         </files>
       </component>
       <component Cgroup="mmpktmem" condition="MM_IoT mmpktmem conditions" Cvariant="heap">
@@ -1094,318 +1112,322 @@
           <file category="other" name="mbedtls/LICENSE"/>
           <file category="other" name="mbedtls/README.md"/>
           <file category="other" name="mbedtls/include/CMakeLists.txt"/>
-          <file category="header" name="mbedtls/include/threading_alt.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_struct.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_driver_contexts_key_derivation.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_builtin_composites.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_platform.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_extra.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto.h"/>
-          <file category="header" name="mbedtls/include/psa/build_info.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_sizes.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_values.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_legacy.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_driver_contexts_composites.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_builtin_key_derivation.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_builtin_primitives.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_adjust_config_dependencies.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_config.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_driver_contexts_primitives.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_se_driver.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_compat.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_types.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_adjust_auto_enabled.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_adjust_config_synonyms.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_adjust_config_key_pair_types.h"/>
-          <file category="header" name="mbedtls/include/psa/crypto_driver_common.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/base64.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/chachapoly.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/asn1.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/error.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/compat-2.x.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/pkcs7.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/config_adjust_x509.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/ecdh.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/threading.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/x509_crl.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/platform_time.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/gcm.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/build_info.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/ssl_cache.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/sha3.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/config_adjust_psa_superset_legacy.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/config_adjust_ssl.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/aes.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/x509.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/poly1305.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/config_psa.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/sha1.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/net_sockets.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/platform.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/constant_time.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/ecdsa.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/ssl_ciphersuites.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/sha256.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/psa_util.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/debug.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/config_adjust_legacy_crypto.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/version.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/hkdf.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/pkcs12.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/cipher.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/rsa.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/entropy.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/x509_crt.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/platform_util.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/cmac.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/lms.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/hmac_drbg.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/mbedtls_config.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/private_access.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/asn1write.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/des.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/config_adjust_psa_from_legacy.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/check_config.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/chacha20.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/ssl_cookie.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/md.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/ccm.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/pkcs5.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/ecp.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/nist_kw.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/aria.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/memory_buffer_alloc.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/ssl.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/config_adjust_legacy_from_psa.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/camellia.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/dhm.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/ssl_ticket.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/pk.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/sha512.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/pem.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/timing.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/ctr_drbg.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/oid.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/ripemd160.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/bignum.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/ecjpake.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/md5.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/x509_csr.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/block_cipher.h"/>
-          <file category="header" name="mbedtls/include/mbedtls/net.h"/>
-          <file category="header" name="mbedtls/library/base64_internal.h"/>
-          <file category="source" name="mbedtls/library/x509write_crt.c"/>
+          <file category="header" name="mbedtls/include/mbedtls/aes.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/aria.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/asn1.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/asn1write.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/base64.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/bignum.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/block_cipher.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/build_info.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/camellia.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/ccm.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/chacha20.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/chachapoly.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/check_config.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/cipher.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/cmac.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/compat-2.x.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/config_adjust_legacy_crypto.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/config_adjust_legacy_from_psa.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/config_adjust_psa_from_legacy.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/config_adjust_psa_superset_legacy.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/config_adjust_ssl.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/config_adjust_x509.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/config_psa.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/constant_time.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/ctr_drbg.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/debug.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/des.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/dhm.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/ecdh.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/ecdsa.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/ecjpake.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/ecp.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/entropy.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/error.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/gcm.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/hkdf.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/hmac_drbg.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/lms.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/mbedtls_config.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/md.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/md5.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/memory_buffer_alloc.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/net.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/net_sockets.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/nist_kw.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/oid.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/pem.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/pk.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/pkcs12.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/pkcs5.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/pkcs7.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/platform.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/platform_time.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/platform_util.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/poly1305.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/private_access.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/psa_util.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/ripemd160.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/rsa.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/sha1.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/sha256.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/sha3.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/sha512.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/ssl.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/ssl_cache.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/ssl_ciphersuites.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/ssl_cookie.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/ssl_ticket.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/threading.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/timing.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/version.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/x509.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/x509_crl.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/x509_crt.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/mbedtls/x509_csr.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/build_info.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_adjust_auto_enabled.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_adjust_config_dependencies.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_adjust_config_key_pair_types.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_adjust_config_synonyms.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_builtin_composites.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_builtin_key_derivation.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_builtin_primitives.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_compat.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_config.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_driver_common.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_driver_contexts_composites.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_driver_contexts_key_derivation.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_driver_contexts_primitives.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_extra.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_legacy.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_platform.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_se_driver.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_sizes.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_struct.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_types.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/psa/crypto_values.h" path="mbedtls/include"/>
+          <file category="header" name="mbedtls/include/threading_alt.h" path="mbedtls/include"/>
           <file category="other" name="mbedtls/library/CMakeLists.txt"/>
-          <file category="source" name="mbedtls/library/pkwrite.c"/>
-          <file category="header" name="mbedtls/library/psa_crypto_slot_management.h"/>
-          <file category="source" name="mbedtls/library/psa_crypto_cipher.c"/>
-          <file category="source" name="mbedtls/library/ripemd160.c"/>
-          <file category="source" name="mbedtls/library/asn1write.c"/>
-          <file category="header" name="mbedtls/library/alignment.h"/>
-          <file category="source" name="mbedtls/library/ssl_cache.c"/>
-          <file category="header" name="mbedtls/library/bignum_mod.h"/>
-          <file category="header" name="mbedtls/library/entropy_poll.h"/>
-          <file category="header" name="mbedtls/library/mps_error.h"/>
-          <file category="source" name="mbedtls/library/ssl_tls13_client.c"/>
-          <file category="source" name="mbedtls/library/pkparse.c"/>
-          <file category="header" name="mbedtls/library/md_psa.h"/>
-          <file category="header" name="mbedtls/library/lmots.h"/>
-          <file category="source" name="mbedtls/library/platform.c"/>
-          <file category="source" name="mbedtls/library/ssl_tls12_server.c"/>
-          <file category="source" name="mbedtls/library/x509_crt.c"/>
-          <file category="source" name="mbedtls/library/rsa.c"/>
-          <file category="header" name="mbedtls/library/mps_reader.h"/>
-          <file category="source" name="mbedtls/library/aesce.c"/>
-          <file category="source" name="mbedtls/library/psa_crypto_slot_management.c"/>
-          <file category="header" name="mbedtls/library/threading_internal.h"/>
-          <file category="header" name="mbedtls/library/psa_crypto_se.h"/>
-          <file category="source" name="mbedtls/library/md.c"/>
-          <file category="source" name="mbedtls/library/x509_csr.c"/>
-          <file category="source" name="mbedtls/library/aes.c"/>
-          <file category="source" name="mbedtls/library/poly1305.c"/>
-          <file category="source" name="mbedtls/library/x509write.c"/>
-          <file category="header" name="mbedtls/library/rsa_alt_helpers.h"/>
-          <file category="source" name="mbedtls/library/psa_crypto_pake.c"/>
-          <file category="source" name="mbedtls/library/pk_ecc.c"/>
-          <file category="source" name="mbedtls/library/psa_crypto_client.c"/>
-          <file category="header" name="mbedtls/library/ssl_tls13_keys.h"/>
-          <file category="source" name="mbedtls/library/aesni.c"/>
-          <file category="source" name="mbedtls/library/pkcs5.c"/>
-          <file category="source" name="mbedtls/library/x509_create.c"/>
-          <file category="source" name="mbedtls/library/hmac_drbg.c"/>
-          <file category="source" name="mbedtls/library/nist_kw.c"/>
-          <file category="header" name="mbedtls/library/psa_crypto_its.h"/>
-          <file category="header" name="mbedtls/library/psa_crypto_rsa.h"/>
-          <file category="source" name="mbedtls/library/bignum_mod.c"/>
-          <file category="source" name="mbedtls/library/ctr_drbg.c"/>
-          <file category="header" name="mbedtls/library/bignum_mod_raw_invasive.h"/>
-          <file category="source" name="mbedtls/library/des.c"/>
-          <file category="header" name="mbedtls/library/psa_crypto_ecp.h"/>
-          <file category="source" name="mbedtls/library/debug.c"/>
-          <file category="header" name="mbedtls/library/md_wrap.h"/>
-          <file category="source" name="mbedtls/library/ecjpake.c"/>
-          <file category="header" name="mbedtls/library/ssl_tls13_invasive.h"/>
-          <file category="source" name="mbedtls/library/gcm.c"/>
-          <file category="header" name="mbedtls/library/pkwrite.h"/>
-          <file category="source" name="mbedtls/library/rsa_alt_helpers.c"/>
-          <file category="source" name="mbedtls/library/psa_crypto_hash.c"/>
-          <file category="source" name="mbedtls/library/padlock.c"/>
-          <file category="header" name="mbedtls/library/psa_crypto_driver_wrappers_no_static.h"/>
-          <file category="source" name="mbedtls/library/psa_crypto_rsa.c"/>
-          <file category="header" name="mbedtls/library/ctr.h"/>
-          <file category="header" name="mbedtls/library/bignum_internal.h"/>
-          <file category="source" name="mbedtls/library/error.c"/>
-          <file category="source" name="mbedtls/library/ssl_debug_helpers_generated.c"/>
-          <file category="header" name="mbedtls/library/bignum_mod_raw.h"/>
-          <file category="source" name="mbedtls/library/ccm.c"/>
-          <file category="source" name="mbedtls/library/ssl_client.c"/>
-          <file category="source" name="mbedtls/library/cipher.c"/>
-          <file category="source" name="mbedtls/library/ssl_msg.c"/>
-          <file category="source" name="mbedtls/library/ecdsa.c"/>
-          <file category="source" name="mbedtls/library/ssl_ciphersuites.c"/>
-          <file category="header" name="mbedtls/library/constant_time_impl.h"/>
-          <file category="header" name="mbedtls/library/psa_crypto_random_impl.h"/>
-          <file category="header" name="mbedtls/library/psa_crypto_driver_wrappers.h"/>
-          <file category="source" name="mbedtls/library/psa_crypto_driver_wrappers_no_static.c"/>
-          <file category="source" name="mbedtls/library/psa_util.c"/>
-          <file category="source" name="mbedtls/library/ssl_cookie.c"/>
-          <file category="source" name="mbedtls/library/entropy_poll.c"/>
-          <file category="source" name="mbedtls/library/psa_crypto_ffdh.c"/>
-          <file category="source" name="mbedtls/library/threading.c"/>
-          <file category="source" name="mbedtls/library/pkcs7.c"/>
-          <file category="header" name="mbedtls/library/psa_crypto_core.h"/>
-          <file category="header" name="mbedtls/library/padlock.h"/>
-          <file category="header" name="mbedtls/library/ssl_client.h"/>
-          <file category="header" name="mbedtls/library/rsa_internal.h"/>
-          <file category="header" name="mbedtls/library/cipher_wrap.h"/>
-          <file category="header" name="mbedtls/library/psa_crypto_invasive.h"/>
-          <file category="header" name="mbedtls/library/mps_trace.h"/>
-          <file category="source" name="mbedtls/library/ssl_tls.c"/>
-          <file category="source" name="mbedtls/library/psa_crypto_se.c"/>
-          <file category="source" name="mbedtls/library/chacha20.c"/>
-          <file category="source" name="mbedtls/library/asn1parse.c"/>
-          <file category="source" name="mbedtls/library/base64.c"/>
-          <file category="header" name="mbedtls/library/ecp_invasive.h"/>
-          <file category="source" name="mbedtls/library/block_cipher.c"/>
-          <file category="source" name="mbedtls/library/pk_wrap.c"/>
-          <file category="header" name="mbedtls/library/psa_crypto_storage.h"/>
-          <file category="header" name="mbedtls/library/psa_crypto_mac.h"/>
-          <file category="source" name="mbedtls/library/ssl_tls13_keys.c"/>
-          <file category="header" name="mbedtls/library/ssl_misc.h"/>
-          <file category="source" name="mbedtls/library/bignum_core.c"/>
-          <file category="source" name="mbedtls/library/dhm.c"/>
-          <file category="header" name="mbedtls/library/psa_crypto_cipher.h"/>
-          <file category="source" name="mbedtls/library/psa_crypto_ecp.c"/>
-          <file category="header" name="mbedtls/library/debug_internal.h"/>
-          <file category="header" name="mbedtls/library/psa_crypto_aead.h"/>
-          <file category="source" name="mbedtls/library/cipher_wrap.c"/>
-          <file category="header" name="mbedtls/library/pk_internal.h"/>
-          <file category="source" name="mbedtls/library/aria.c"/>
-          <file category="source" name="mbedtls/library/version_features.c"/>
-          <file category="source" name="mbedtls/library/ssl_tls13_server.c"/>
-          <file category="source" name="mbedtls/library/md5.c"/>
-          <file category="header" name="mbedtls/library/ecp_internal_alt.h"/>
-          <file category="source" name="mbedtls/library/mps_trace.c"/>
-          <file category="source" name="mbedtls/library/x509write_csr.c"/>
-          <file category="source" name="mbedtls/library/sha512.c"/>
-          <file category="source" name="mbedtls/library/x509_crl.c"/>
-          <file category="header" name="mbedtls/library/bn_mul.h"/>
-          <file category="source" name="mbedtls/library/entropy.c"/>
-          <file category="header" name="mbedtls/library/block_cipher_internal.h"/>
-          <file category="source" name="mbedtls/library/pem.c"/>
-          <file category="source" name="mbedtls/library/psa_crypto.c"/>
-          <file category="source" name="mbedtls/library/oid.c"/>
-          <file category="header" name="mbedtls/library/psa_crypto_core_common.h"/>
-          <file category="header" name="mbedtls/library/constant_time_internal.h"/>
-          <file category="source" name="mbedtls/library/version.c"/>
-          <file category="header" name="mbedtls/library/ssl_debug_helpers.h"/>
-          <file category="source" name="mbedtls/library/ssl_tls13_generic.c"/>
-          <file category="source" name="mbedtls/library/lms.c"/>
-          <file category="source" name="mbedtls/library/psa_crypto_storage.c"/>
-          <file category="header" name="mbedtls/library/pk_wrap.h"/>
           <file category="other" name="mbedtls/library/Makefile"/>
-          <file category="source" name="mbedtls/library/sha1.c"/>
-          <file category="header" name="mbedtls/library/aesni.h"/>
-          <file category="header" name="mbedtls/library/aesce.h"/>
-          <file category="source" name="mbedtls/library/platform_util.c"/>
-          <file category="header" name="mbedtls/library/cipher_invasive.h"/>
-          <file category="source" name="mbedtls/library/constant_time.c"/>
-          <file category="source" name="mbedtls/library/cmac.c"/>
-          <file category="header" name="mbedtls/library/psa_crypto_ffdh.h"/>
-          <file category="source" name="mbedtls/library/ecp.c"/>
-          <file category="source" name="mbedtls/library/sha3.c"/>
-          <file category="source" name="mbedtls/library/sha256.c"/>
-          <file category="header" name="mbedtls/library/bignum_core.h"/>
-          <file category="source" name="mbedtls/library/ssl_tls12_client.c"/>
-          <file category="source" name="mbedtls/library/pk.c"/>
-          <file category="header" name="mbedtls/library/common.h"/>
-          <file category="source" name="mbedtls/library/memory_buffer_alloc.c"/>
-          <file category="header" name="mbedtls/library/psa_crypto_pake.h"/>
-          <file category="source" name="mbedtls/library/ecp_curves_new.c"/>
-          <file category="source" name="mbedtls/library/bignum_mod_raw.c"/>
-          <file category="source" name="mbedtls/library/ecp_curves.c"/>
-          <file category="source" name="mbedtls/library/pkcs12.c"/>
-          <file category="source" name="mbedtls/library/mps_reader.c"/>
-          <file category="source" name="mbedtls/library/camellia.c"/>
-          <file category="source" name="mbedtls/library/ssl_ticket.c"/>
-          <file category="header" name="mbedtls/library/mps_common.h"/>
-          <file category="header" name="mbedtls/library/ssl_ciphersuites_internal.h"/>
-          <file category="header" name="mbedtls/library/check_crypto_config.h"/>
-          <file category="source" name="mbedtls/library/chachapoly.c"/>
-          <file category="header" name="mbedtls/library/psa_util_internal.h"/>
-          <file category="source" name="mbedtls/library/hkdf.c"/>
-          <file category="source" name="mbedtls/library/psa_its_file.c"/>
-          <file category="source" name="mbedtls/library/psa_crypto_aead.c"/>
-          <file category="header" name="mbedtls/library/x509_internal.h"/>
-          <file category="source" name="mbedtls/library/x509.c"/>
-          <file category="source" name="mbedtls/library/psa_crypto_mac.c"/>
+          <file category="source" name="mbedtls/library/aes.c"/>
+          <file category="source" name="mbedtls/library/aesce.c"/>
+          <file category="header" name="mbedtls/library/aesce.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/aesni.c"/>
+          <file category="header" name="mbedtls/library/aesni.h" path="mbedtls"/>
+          <file category="header" name="mbedtls/library/alignment.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/aria.c"/>
+          <file category="source" name="mbedtls/library/asn1parse.c"/>
+          <file category="source" name="mbedtls/library/asn1write.c"/>
+          <file category="source" name="mbedtls/library/base64.c"/>
+          <file category="header" name="mbedtls/library/base64_internal.h" path="mbedtls"/>
           <file category="source" name="mbedtls/library/bignum.c"/>
-          <file category="source" name="mbedtls/library/lmots.c"/>
-          <file category="header" name="mbedtls/library/psa_crypto_hash.h"/>
-          <file category="header" name="mbedtls/library/bignum_core_invasive.h"/>
+          <file category="source" name="mbedtls/library/bignum_core.c"/>
+          <file category="header" name="mbedtls/library/bignum_core.h" path="mbedtls"/>
+          <file category="header" name="mbedtls/library/bignum_core_invasive.h" path="mbedtls"/>
+          <file category="header" name="mbedtls/library/bignum_internal.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/bignum_mod.c"/>
+          <file category="header" name="mbedtls/library/bignum_mod.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/bignum_mod_raw.c"/>
+          <file category="header" name="mbedtls/library/bignum_mod_raw.h" path="mbedtls"/>
+          <file category="header" name="mbedtls/library/bignum_mod_raw_invasive.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/block_cipher.c"/>
+          <file category="header" name="mbedtls/library/block_cipher_internal.h" path="mbedtls"/>
+          <file category="header" name="mbedtls/library/bn_mul.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/camellia.c"/>
+          <file category="source" name="mbedtls/library/ccm.c"/>
+          <file category="source" name="mbedtls/library/chacha20.c"/>
+          <file category="source" name="mbedtls/library/chachapoly.c"/>
+          <file category="header" name="mbedtls/library/check_crypto_config.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/cipher.c"/>
+          <file category="header" name="mbedtls/library/cipher_invasive.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/cipher_wrap.c"/>
+          <file category="header" name="mbedtls/library/cipher_wrap.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/cmac.c"/>
+          <file category="header" name="mbedtls/library/common.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/constant_time.c"/>
+          <file category="header" name="mbedtls/library/constant_time_impl.h" path="mbedtls"/>
+          <file category="header" name="mbedtls/library/constant_time_internal.h" path="mbedtls"/>
+          <file category="header" name="mbedtls/library/ctr.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/ctr_drbg.c"/>
+          <file category="source" name="mbedtls/library/debug.c"/>
+          <file category="header" name="mbedtls/library/debug_internal.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/des.c"/>
+          <file category="source" name="mbedtls/library/dhm.c"/>
           <file category="source" name="mbedtls/library/ecdh.c"/>
-          <file category="source" name="mbedtls/library/net_lwip.c" condition="require MM_IoT mmLwIP condition"/>
+          <file category="source" name="mbedtls/library/ecdsa.c"/>
+          <file category="source" name="mbedtls/library/ecjpake.c"/>
+          <file category="source" name="mbedtls/library/ecp.c"/>
+          <file category="source" name="mbedtls/library/ecp_curves.c"/>
+          <file category="source" name="mbedtls/library/ecp_curves_new.c"/>
+          <file category="header" name="mbedtls/library/ecp_internal_alt.h" path="mbedtls"/>
+          <file category="header" name="mbedtls/library/ecp_invasive.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/entropy.c"/>
+          <file category="source" name="mbedtls/library/entropy_poll.c"/>
+          <file category="header" name="mbedtls/library/entropy_poll.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/error.c"/>
+          <file category="source" name="mbedtls/library/gcm.c"/>
+          <file category="source" name="mbedtls/library/hkdf.c"/>
+          <file category="source" name="mbedtls/library/hmac_drbg.c"/>
+          <file category="source" name="mbedtls/library/lmots.c"/>
+          <file category="header" name="mbedtls/library/lmots.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/lms.c"/>
           <file category="source" name="mbedtls/library/mbedtls_platform.c"/>
+          <file category="source" name="mbedtls/library/md.c"/>
+          <file category="source" name="mbedtls/library/md5.c"/>
+          <file category="header" name="mbedtls/library/md_psa.h" path="mbedtls"/>
+          <file category="header" name="mbedtls/library/md_wrap.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/memory_buffer_alloc.c"/>
+          <file category="header" name="mbedtls/library/mps_common.h" path="mbedtls"/>
+          <file category="header" name="mbedtls/library/mps_error.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/mps_reader.c"/>
+          <file category="header" name="mbedtls/library/mps_reader.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/mps_trace.c"/>
+          <file category="header" name="mbedtls/library/mps_trace.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/net_lwip.c" condition="require MM_IoT mmLwIP condition"/>
+          <file category="source" name="mbedtls/library/nist_kw.c"/>
+          <file category="source" name="mbedtls/library/oid.c"/>
+          <file category="source" name="mbedtls/library/padlock.c"/>
+          <file category="header" name="mbedtls/library/padlock.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/pem.c"/>
+          <file category="source" name="mbedtls/library/pk.c"/>
+          <file category="source" name="mbedtls/library/pk_ecc.c"/>
+          <file category="header" name="mbedtls/library/pk_internal.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/pk_wrap.c"/>
+          <file category="header" name="mbedtls/library/pk_wrap.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/pkcs12.c"/>
+          <file category="source" name="mbedtls/library/pkcs5.c"/>
+          <file category="source" name="mbedtls/library/pkcs7.c"/>
+          <file category="source" name="mbedtls/library/pkparse.c"/>
+          <file category="source" name="mbedtls/library/pkwrite.c"/>
+          <file category="header" name="mbedtls/library/pkwrite.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/platform.c"/>
+          <file category="source" name="mbedtls/library/platform_util.c"/>
+          <file category="source" name="mbedtls/library/poly1305.c"/>
+          <file category="source" name="mbedtls/library/psa_crypto.c"/>
+          <file category="source" name="mbedtls/library/psa_crypto_aead.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_aead.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/psa_crypto_cipher.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_cipher.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/psa_crypto_client.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_core.h" path="mbedtls"/>
+          <file category="header" name="mbedtls/library/psa_crypto_core_common.h" path="mbedtls"/>
+          <file category="header" name="mbedtls/library/psa_crypto_driver_wrappers.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/psa_crypto_driver_wrappers_no_static.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_driver_wrappers_no_static.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/psa_crypto_ecp.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_ecp.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/psa_crypto_ffdh.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_ffdh.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/psa_crypto_hash.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_hash.h" path="mbedtls"/>
+          <file category="header" name="mbedtls/library/psa_crypto_invasive.h" path="mbedtls"/>
+          <file category="header" name="mbedtls/library/psa_crypto_its.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/psa_crypto_mac.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_mac.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/psa_crypto_pake.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_pake.h" path="mbedtls"/>
+          <file category="header" name="mbedtls/library/psa_crypto_random_impl.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/psa_crypto_rsa.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_rsa.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/psa_crypto_se.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_se.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/psa_crypto_slot_management.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_slot_management.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/psa_crypto_storage.c"/>
+          <file category="header" name="mbedtls/library/psa_crypto_storage.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/psa_its_file.c"/>
+          <file category="source" name="mbedtls/library/psa_util.c"/>
+          <file category="header" name="mbedtls/library/psa_util_internal.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/ripemd160.c"/>
+          <file category="source" name="mbedtls/library/rsa.c"/>
+          <file category="source" name="mbedtls/library/rsa_alt_helpers.c"/>
+          <file category="header" name="mbedtls/library/rsa_alt_helpers.h" path="mbedtls"/>
+          <file category="header" name="mbedtls/library/rsa_internal.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/sha1.c"/>
+          <file category="source" name="mbedtls/library/sha256.c"/>
+          <file category="source" name="mbedtls/library/sha3.c"/>
+          <file category="source" name="mbedtls/library/sha512.c"/>
+          <file category="source" name="mbedtls/library/ssl_cache.c"/>
+          <file category="source" name="mbedtls/library/ssl_ciphersuites.c"/>
+          <file category="header" name="mbedtls/library/ssl_ciphersuites_internal.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/ssl_client.c"/>
+          <file category="header" name="mbedtls/library/ssl_client.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/ssl_cookie.c"/>
+          <file category="header" name="mbedtls/library/ssl_debug_helpers.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/ssl_debug_helpers_generated.c"/>
+          <file category="header" name="mbedtls/library/ssl_misc.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/ssl_msg.c"/>
+          <file category="source" name="mbedtls/library/ssl_ticket.c"/>
+          <file category="source" name="mbedtls/library/ssl_tls.c"/>
+          <file category="source" name="mbedtls/library/ssl_tls12_client.c"/>
+          <file category="source" name="mbedtls/library/ssl_tls12_server.c"/>
+          <file category="source" name="mbedtls/library/ssl_tls13_client.c"/>
+          <file category="source" name="mbedtls/library/ssl_tls13_generic.c"/>
+          <file category="header" name="mbedtls/library/ssl_tls13_invasive.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/ssl_tls13_keys.c"/>
+          <file category="header" name="mbedtls/library/ssl_tls13_keys.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/ssl_tls13_server.c"/>
+          <file category="source" name="mbedtls/library/threading.c"/>
+          <file category="header" name="mbedtls/library/threading_internal.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/version.c"/>
+          <file category="source" name="mbedtls/library/version_features.c"/>
+          <file category="source" name="mbedtls/library/x509.c"/>
+          <file category="source" name="mbedtls/library/x509_create.c"/>
+          <file category="source" name="mbedtls/library/x509_crl.c"/>
+          <file category="source" name="mbedtls/library/x509_crt.c"/>
+          <file category="source" name="mbedtls/library/x509_csr.c"/>
+          <file category="header" name="mbedtls/library/x509_internal.h" path="mbedtls"/>
+          <file category="source" name="mbedtls/library/x509write.c"/>
+          <file category="source" name="mbedtls/library/x509write_crt.c"/>
+          <file category="source" name="mbedtls/library/x509write_csr.c"/>
+          <file category="include" name="mbedtls/include"/>
         </files>
       </component>
       <component Cgroup="mm-tinycbor" Cversion="0.6.0">
         <description>Concise Binary Object Representation (CBOR) Library</description>
         <files>
-          <file category="other" name="mm-tinycbor/README"/>
           <file category="other" name="mm-tinycbor/LICENSE"/>
-          <file category="header" name="mm-tinycbor/src/utf8_p.h"/>
-          <file category="header" name="mm-tinycbor/src/compilersupport_p.h"/>
-          <file category="source" name="mm-tinycbor/src/cborvalidation.c"/>
-          <file category="source" name="mm-tinycbor/src/cborencoder_close_container_checked.c"/>
-          <file category="header" name="mm-tinycbor/src/cborjson.h"/>
-          <file category="source" name="mm-tinycbor/src/cborerrorstrings.c"/>
-          <file category="header" name="mm-tinycbor/src/tinycbor-version.h"/>
-          <file category="source" name="mm-tinycbor/src/cborparser_float.c"/>
+          <file category="other" name="mm-tinycbor/README"/>
           <file category="other" name="mm-tinycbor/src/cbor.dox"/>
-          <file category="source" name="mm-tinycbor/src/cborencoder_float.c"/>
-          <file category="source" name="mm-tinycbor/src/cborpretty.c"/>
-          <file category="source" name="mm-tinycbor/src/cbortojson.c"/>
-          <file category="source" name="mm-tinycbor/src/cborparser_dup_string.c"/>
+          <file category="header" name="mm-tinycbor/src/cbor.h" path="mm-tinycbor/src"/>
           <file category="source" name="mm-tinycbor/src/cborencoder.c"/>
-          <file category="other" name="mm-tinycbor/src/parsetags.pl"/>
-          <file category="header" name="mm-tinycbor/src/cbor.h"/>
-          <file category="other" name="mm-tinycbor/src/tinycbor.pro"/>
-          <file category="other" name="mm-tinycbor/src/src.pri"/>
-          <file category="source" name="mm-tinycbor/src/cborpretty_stdio.c"/>
-          <file category="other" name="mm-tinycbor/src/tags.txt"/>
+          <file category="source" name="mm-tinycbor/src/cborencoder_close_container_checked.c"/>
+          <file category="source" name="mm-tinycbor/src/cborencoder_float.c"/>
+          <file category="source" name="mm-tinycbor/src/cborerrorstrings.c"/>
+          <file category="header" name="mm-tinycbor/src/cborinternal_p.h" path="mm-tinycbor/src"/>
+          <file category="header" name="mm-tinycbor/src/cborjson.h" path="mm-tinycbor/src"/>
           <file category="source" name="mm-tinycbor/src/cborparser.c"/>
-          <file category="header" name="mm-tinycbor/src/cborinternal_p.h"/>
+          <file category="source" name="mm-tinycbor/src/cborparser_dup_string.c"/>
+          <file category="source" name="mm-tinycbor/src/cborparser_float.c"/>
+          <file category="source" name="mm-tinycbor/src/cborpretty.c"/>
+          <file category="source" name="mm-tinycbor/src/cborpretty_stdio.c"/>
+          <file category="source" name="mm-tinycbor/src/cbortojson.c"/>
+          <file category="source" name="mm-tinycbor/src/cborvalidation.c"/>
+          <file category="header" name="mm-tinycbor/src/compilersupport_p.h" path="mm-tinycbor/src"/>
+          <file category="other" name="mm-tinycbor/src/parsetags.pl"/>
+          <file category="other" name="mm-tinycbor/src/src.pri"/>
+          <file category="other" name="mm-tinycbor/src/tags.txt"/>
+          <file category="header" name="mm-tinycbor/src/tinycbor-version.h" path="mm-tinycbor/src"/>
+          <file category="other" name="mm-tinycbor/src/tinycbor.pro"/>
+          <file category="header" name="mm-tinycbor/src/utf8_p.h" path="mm-tinycbor/src"/>
+          <file category="include" name="mm-tinycbor/src"/>
         </files>
       </component>
-      <component Cgroup="BSP-EKH05" Csub="BSP" Cversion="1.9.0">
+      <component Cgroup="BSP-EKH05" Csub="BSP" Cversion="1.10.2">
         <description>EKH05 BSP interface.</description>
         <files>
-          <file category="header" name="BSP-EKH05/bsp/common/camera.h"/>
-          <file category="header" name="BSP-EKH05/bsp/Inc/ekh05_bus.h"/>
-          <file category="header" name="BSP-EKH05/bsp/Inc/ekh05_camera.h"/>
-          <file category="header" name="BSP-EKH05/bsp/Inc/ekh05_errno.h"/>
+          <file category="header" name="BSP-EKH05/bsp/Inc/ekh05_bus.h" path="BSP-EKH05/bsp/Inc"/>
+          <file category="header" name="BSP-EKH05/bsp/Inc/ekh05_camera.h" path="BSP-EKH05/bsp/Inc"/>
+          <file category="header" name="BSP-EKH05/bsp/Inc/ekh05_errno.h" path="BSP-EKH05/bsp/Inc"/>
           <file category="source" name="BSP-EKH05/bsp/Src/ekh05_bus.c"/>
           <file category="source" name="BSP-EKH05/bsp/Src/ekh05_camera.c"/>
+          <file category="header" name="BSP-EKH05/bsp/common/camera.h" path="BSP-EKH05/bsp/common"/>
+          <file category="include" name="BSP-EKH05/bsp/Inc"/>
+          <file category="include" name="BSP-EKH05/bsp/common"/>
         </files>
       </component>
       <component Cgroup="BSP-EKH05" Csub="SHT4x" condition="MM_IoT SHT4x conditions" Cversion="1.1.0">
@@ -1414,24 +1436,24 @@
           <file category="other" name="BSP-EKH05/components/sht4x/CHANGELOG.md"/>
           <file category="other" name="BSP-EKH05/components/sht4x/LICENSE"/>
           <file category="other" name="BSP-EKH05/components/sht4x/README.md"/>
-          <file category="source" name="BSP-EKH05/components/sht4x/sensirion_common.c"/>
-          <file category="header" name="BSP-EKH05/components/sht4x/sensirion_common.h"/>
-          <file category="header" name="BSP-EKH05/components/sht4x/sensirion_config.h"/>
-          <file category="source" name="BSP-EKH05/components/sht4x/sensirion_i2c.c"/>
-          <file category="header" name="BSP-EKH05/components/sht4x/sensirion_i2c.h"/>
-          <file category="source" name="BSP-EKH05/components/sht4x/sensirion_i2c_hal.c"/>
-          <file category="header" name="BSP-EKH05/components/sht4x/sensirion_i2c_hal.h"/>
-          <file category="source" name="BSP-EKH05/components/sht4x/sht4x_i2c.c"/>
-          <file category="header" name="BSP-EKH05/components/sht4x/sht4x_i2c.h"/>
           <file category="other" name="BSP-EKH05/components/sht4x/images/SHT40_pinout.png"/>
           <file category="other" name="BSP-EKH05/components/sht4x/images/SHT4x.png"/>
+          <file category="source" name="BSP-EKH05/components/sht4x/sensirion_common.c"/>
+          <file category="header" name="BSP-EKH05/components/sht4x/sensirion_common.h" path="BSP-EKH05/components/sht4x"/>
+          <file category="header" name="BSP-EKH05/components/sht4x/sensirion_config.h" path="BSP-EKH05/components/sht4x"/>
+          <file category="source" name="BSP-EKH05/components/sht4x/sensirion_i2c.c"/>
+          <file category="header" name="BSP-EKH05/components/sht4x/sensirion_i2c.h" path="BSP-EKH05/components/sht4x"/>
+          <file category="source" name="BSP-EKH05/components/sht4x/sensirion_i2c_hal.c"/>
+          <file category="header" name="BSP-EKH05/components/sht4x/sensirion_i2c_hal.h" path="BSP-EKH05/components/sht4x"/>
+          <file category="source" name="BSP-EKH05/components/sht4x/sht4x_i2c.c"/>
+          <file category="header" name="BSP-EKH05/components/sht4x/sht4x_i2c.h" path="BSP-EKH05/components/sht4x"/>
         </files>
       </component>
       <component Cgroup="BSP-EKH05" Csub="W25Q16JV" condition="MM_IoT W25Q16JV conditions" Cversion="1.1.0">
         <description>W25Q16JV Quad SPI flash memory driver.</description>
         <files>
           <file category="source" name="BSP-EKH05/components/w25q16jv/w25q16jv.c"/>
-          <file category="header" name="BSP-EKH05/components/w25q16jv/w25q16jv.h"/>
+          <file category="header" name="BSP-EKH05/components/w25q16jv/w25q16jv.h" path="BSP-EKH05/components/w25q16jv"/>
         </files>
       </component>
       <component Cgroup="BSP-EKH05" Csub="IIS328DQ" condition="MM_IoT IIS328DQ conditions" Cversion="2.0.0">
@@ -1441,7 +1463,7 @@
           <file category="other" name="BSP-EKH05/components/iis328dq/README.md"/>
           <file category="other" name="BSP-EKH05/components/iis328dq/Release_Notes.md"/>
           <file category="source" name="BSP-EKH05/components/iis328dq/iis328dq_reg.c"/>
-          <file category="header" name="BSP-EKH05/components/iis328dq/iis328dq_reg.h"/>
+          <file category="header" name="BSP-EKH05/components/iis328dq/iis328dq_reg.h" path="BSP-EKH05/components/iis328dq"/>
         </files>
       </component>
       <component Cgroup="BSP-EKH05" Csub="OV5640" condition="MM_IoT OV5640 conditions" Cversion="4.0.2">
@@ -1450,22 +1472,22 @@
           <file category="other" name="BSP-EKH05/components/ov5640/LICENSE.md"/>
           <file category="other" name="BSP-EKH05/components/ov5640/LICENSE.txt"/>
           <file category="other" name="BSP-EKH05/components/ov5640/Release_Notes.html"/>
-          <file category="source" name="BSP-EKH05/components/ov5640/ov5640.c"/>
-          <file category="header" name="BSP-EKH05/components/ov5640/ov5640.h"/>
-          <file category="source" name="BSP-EKH05/components/ov5640/ov5640_reg.c"/>
-          <file category="header" name="BSP-EKH05/components/ov5640/ov5640_reg.h"/>
           <file category="other" name="BSP-EKH05/components/ov5640/_htmresc/Add_button.svg"/>
           <file category="other" name="BSP-EKH05/components/ov5640/_htmresc/Update.svg"/>
           <file category="other" name="BSP-EKH05/components/ov5640/_htmresc/favicon.png"/>
           <file category="other" name="BSP-EKH05/components/ov5640/_htmresc/mini-st_2020.css"/>
           <file category="other" name="BSP-EKH05/components/ov5640/_htmresc/st_logo.png"/>
           <file category="other" name="BSP-EKH05/components/ov5640/_htmresc/st_logo_2020.png"/>
+          <file category="source" name="BSP-EKH05/components/ov5640/ov5640.c"/>
+          <file category="header" name="BSP-EKH05/components/ov5640/ov5640.h" path="BSP-EKH05/components/ov5640"/>
+          <file category="source" name="BSP-EKH05/components/ov5640/ov5640_reg.c"/>
+          <file category="header" name="BSP-EKH05/components/ov5640/ov5640_reg.h" path="BSP-EKH05/components/ov5640"/>
         </files>
       </component>
       <component Cgroup="BSP-EKH05" Csub="MMx108" Cvariant="SPI" condition="MMx108-SPI Low Level Driver conditions">
         <description>MM6108 or MM8108 SPI low level driver for EKH05</description>
         <files>
-          <file category="header" name="BSP-EKH05/components/MMx108/spi/mm_hal_common.h"/>
+          <file category="header" name="BSP-EKH05/components/MMx108/spi/mm_hal_common.h" path="BSP-EKH05/components/MMx108/spi"/>
           <file category="source" name="BSP-EKH05/components/MMx108/spi/mmhal_app.c"/>
           <file category="source" name="BSP-EKH05/components/MMx108/spi/mmhal_core.c"/>
           <file category="source" name="BSP-EKH05/components/MMx108/spi/mmhal_flash.c"/>
@@ -1477,7 +1499,7 @@
       <component Cgroup="BSP-EKH05" Csub="MMx108" Cvariant="SDIO" condition="MMx108-SDIO Low Level Driver conditions">
         <description>MM6108 or MM8108 SDIO low level driver for EKH05.</description>
         <files>
-          <file category="header" name="BSP-EKH05/components/MMx108/sdio/mm_hal_common.h"/>
+          <file category="header" name="BSP-EKH05/components/MMx108/sdio/mm_hal_common.h" path="BSP-EKH05/components/MMx108/sdio"/>
           <file category="source" name="BSP-EKH05/components/MMx108/sdio/mmhal_app.c"/>
           <file category="source" name="BSP-EKH05/components/MMx108/sdio/mmhal_core.c"/>
           <file category="source" name="BSP-EKH05/components/MMx108/sdio/mmhal_flash.c"/>
@@ -1487,85 +1509,86 @@
         </files>
       </component>
     </bundle>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="iperf" condition="MM_IoT iperf example conditions" Cversion="2.11.2">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="iperf" condition="MM_IoT iperf example conditions" Cversion="2.12.3">
       <description>This example demonstrates how to run iperf using the Morse Micro WLAN API to measure throughput.</description>
       <files>
         <file category="source" name="Example/iperf/iperf.c"/>
         <file category="header" name="Example/iperf/prj_mbedtls_config.h" attr="template"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="ping" condition="MM_IoT ping example conditions" Cversion="2.11.2">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="ping" condition="MM_IoT ping example conditions" Cversion="2.12.3">
       <description>This example demonstrates how to ping a target using the Morse Micro WLAN API.</description>
       <files>
         <file category="source" name="Example/ping/ping.c"/>
         <file category="header" name="Example/ping/prj_mbedtls_config.h" attr="template"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="porting_assistant" condition="MM_IoT porting assistant example conditions" Cversion="2.11.2">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="porting_assistant" condition="MM_IoT porting assistant example conditions" Cversion="2.12.3">
       <description>Porting assistant self test tool to validate hardware and HALs.</description>
       <files>
+        <file category="source" name="Example/porting_assistant/benchmark_cpu_mem_stack_perf.c"/>
         <file category="source" name="Example/porting_assistant/chip_cfg.c"/>
-        <file category="header" name="Example/porting_assistant/chip_cfg.h"/>
-        <file category="header" name="Example/porting_assistant/config.h"/>
-        <file category="header" name="Example/porting_assistant/log.h"/>
+        <file category="header" name="Example/porting_assistant/chip_cfg.h" path="Example/porting_assistant"/>
+        <file category="header" name="Example/porting_assistant/config.h" path="Example/porting_assistant"/>
+        <file category="header" name="Example/porting_assistant/log.h" path="Example/porting_assistant"/>
         <file category="source" name="Example/porting_assistant/porting_assistant.c"/>
-        <file category="header" name="Example/porting_assistant/porting_assistant.h"/>
+        <file category="header" name="Example/porting_assistant/porting_assistant.h" path="Example/porting_assistant"/>
+        <file category="header" name="Example/porting_assistant/prj_mbedtls_config.h" attr="template"/>
         <file category="source" name="Example/porting_assistant/sdio_spi.c"/>
-        <file category="header" name="Example/porting_assistant/sdio_spi.h"/>
+        <file category="header" name="Example/porting_assistant/sdio_spi.h" path="Example/porting_assistant"/>
         <file category="source" name="Example/porting_assistant/test_os.c"/>
         <file category="source" name="Example/porting_assistant/test_wlan_fw_bcf.c"/>
         <file category="source" name="Example/porting_assistant/test_wlan_io.c"/>
-        <file category="header" name="Example/porting_assistant/prj_mbedtls_config.h" attr="template"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="scan" condition="MM_IoT scan example conditions" Cversion="2.11.2">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="scan" condition="MM_IoT scan example conditions" Cversion="2.12.3">
       <description>This example demonstrates using the MMWLAN scan API.</description>
       <files>
-        <file category="source" name="Example/scan/scan.c"/>
         <file category="header" name="Example/scan/prj_mbedtls_config.h" attr="template"/>
+        <file category="source" name="Example/scan/scan.c"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="wnm_sleep" condition="MM_IoT wnm_sleep example conditions" Cversion="2.11.2">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="wnm_sleep" condition="MM_IoT wnm_sleep example conditions" Cversion="2.12.3">
       <description>This example demonstrates utilizing WNM sleep to conserve power in between periodic transmissions.</description>
       <files>
-        <file category="source" name="Example/wnm_sleep/wnm_sleep.c"/>
         <file category="header" name="Example/wnm_sleep/prj_mbedtls_config.h" attr="template"/>
+        <file category="source" name="Example/wnm_sleep/wnm_sleep.c"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="aws_iot" condition="MM_IoT aws_iot example conditions" Cversion="2.11.2">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="aws_iot" condition="MM_IoT aws_iot example conditions" Cversion="2.12.3">
       <description>This example implements AWS Shadow service connectivity and demonstrate a simple light bulb example.</description>
       <files>
         <file category="source" name="Example/aws_iot/aws_iot.c"/>
-        <file category="header" name="Example/aws_iot/aws_iot_config.h"/>
-        <file category="header" name="Example/aws_iot/core_mqtt_agent_config.h"/>
+        <file category="header" name="Example/aws_iot/aws_iot_config.h" path="Example/aws_iot"/>
+        <file category="header" name="Example/aws_iot/core_mqtt_agent_config.h" path="Example/aws_iot"/>
         <file category="header" name="Example/aws_iot/prj_mbedtls_config.h" attr="template"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="MQTT Demo" condition="MM_IoT mqttdemo example conditions" Cversion="2.11.2">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="MQTT Demo" condition="MM_IoT mqttdemo example conditions" Cversion="2.12.3">
       <description>This example demonstrates connecting to an MQTT broker, subscribing to a topic and publishing to a topic.</description>
       <files>
         <file category="source" name="Example/mqttdemo/mqttdemo.c"/>
         <file category="header" name="Example/mqttdemo/prj_mbedtls_config.h" attr="template"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="SSL client" condition="MM_IoT sslclient example conditions" Cversion="2.11.2">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="SSL client" condition="MM_IoT sslclient example conditions" Cversion="2.12.3">
       <description>This example demonstrates demonstrates connecting to a HTTPS server, TLS handshake and retrieve data.</description>
       <files>
-        <file category="header" name="Example/sslclient/default_certs.h"/>
-        <file category="source" name="Example/sslclient/sslclient.c"/>
+        <file category="header" name="Example/sslclient/default_certs.h" path="Example/sslclient"/>
         <file category="header" name="Example/sslclient/prj_mbedtls_config.h" attr="template"/>
+        <file category="source" name="Example/sslclient/sslclient.c"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="rf-test" condition="MM_IoT rftest application conditions" Cversion="2.11.2">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="rf-test" condition="MM_IoT rftest application conditions" Cversion="2.12.3">
       <description>RF test application, alpha release. This application is not intended for general use and requires additional tools. Please contact Morse support for more information.</description>
       <RTE_Components_h>#define ENABLE_UART_HAL (1)
 #define DISABLE_UART_LOG</RTE_Components_h>
       <files>
-        <file category="source" name="Example/rf-test/rf-test.c"/>
         <file category="header" name="Example/rf-test/prj_mbedtls_config.h" attr="template"/>
+        <file category="source" name="Example/rf-test/rf-test.c"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="cli" condition="MM_IoT cli application conditions" Cversion="2.11.2">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="cli" condition="MM_IoT cli application conditions" Cversion="2.12.3">
       <description>This example demonstrates command line interface (CLI) over UART.</description>
       <RTE_Components_h>#define ENABLE_UART_HAL (1)
 #define DISABLE_UART_LOG</RTE_Components_h>
@@ -1574,49 +1597,50 @@
         <file category="header" name="Example/cli/prj_mbedtls_config.h" attr="template"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="EKH05-Demo" condition="MM_IoT EKH05 Demo example conditions" Cversion="1.9.0">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="EKH05-Demo" condition="MM_IoT EKH05 Demo example conditions" Cversion="1.10.2">
       <description>This example demonstrates utilizing all the external peripherals on the EKH05 board.</description>
       <RTE_Components_h>#define ENABLE_UART_HAL (1)
 #define DISABLE_UART_LOG</RTE_Components_h>
       <files>
+        <file category="source" name="Example/EKH05-Demo/bluenrg_app/app_bluenrg_2.c"/>
+        <file category="header" name="Example/EKH05-Demo/bluenrg_app/app_bluenrg_2.h" path="Example/EKH05-Demo/bluenrg_app"/>
+        <file category="source" name="Example/EKH05-Demo/bluenrg_app/ble_sensor.c"/>
+        <file category="header" name="Example/EKH05-Demo/bluenrg_app/ble_sensor.h" path="Example/EKH05-Demo/bluenrg_app"/>
+        <file category="source" name="Example/EKH05-Demo/bluenrg_app/gatt_db.c"/>
+        <file category="header" name="Example/EKH05-Demo/bluenrg_app/gatt_db.h" path="Example/EKH05-Demo/bluenrg_app"/>
         <file category="source" name="Example/EKH05-Demo/demo.c"/>
         <file category="source" name="Example/EKH05-Demo/demo_accelerometer.c"/>
-        <file category="header" name="Example/EKH05-Demo/demo_accelerometer.h"/>
+        <file category="header" name="Example/EKH05-Demo/demo_accelerometer.h" path="Example/EKH05-Demo"/>
         <file category="source" name="Example/EKH05-Demo/demo_cli.c"/>
-        <file category="header" name="Example/EKH05-Demo/demo_cli.h"/>
+        <file category="header" name="Example/EKH05-Demo/demo_cli.h" path="Example/EKH05-Demo"/>
         <file category="source" name="Example/EKH05-Demo/demo_http.c"/>
-        <file category="header" name="Example/EKH05-Demo/demo_http.h"/>
+        <file category="header" name="Example/EKH05-Demo/demo_http.h" path="Example/EKH05-Demo"/>
         <file category="source" name="Example/EKH05-Demo/demo_iperf.c"/>
-        <file category="header" name="Example/EKH05-Demo/demo_iperf.h"/>
+        <file category="header" name="Example/EKH05-Demo/demo_iperf.h" path="Example/EKH05-Demo"/>
         <file category="source" name="Example/EKH05-Demo/demo_mdns.c"/>
-        <file category="header" name="Example/EKH05-Demo/demo_mdns.h"/>
+        <file category="header" name="Example/EKH05-Demo/demo_mdns.h" path="Example/EKH05-Demo"/>
         <file category="source" name="Example/EKH05-Demo/demo_ping.c"/>
-        <file category="header" name="Example/EKH05-Demo/demo_ping.h"/>
+        <file category="header" name="Example/EKH05-Demo/demo_ping.h" path="Example/EKH05-Demo"/>
         <file category="source" name="Example/EKH05-Demo/demo_temperature.c"/>
-        <file category="header" name="Example/EKH05-Demo/demo_temperature.h"/>
-        <file category="source" name="Example/EKH05-Demo/peripherals.c"/>
-        <file category="header" name="Example/EKH05-Demo/peripherals.h"/>
-        <file category="source" name="Example/EKH05-Demo/restfs.c"/>
-        <file category="header" name="Example/EKH05-Demo/restfs.h"/>
-        <file category="source" name="Example/EKH05-Demo/shared_buffer.c"/>
-        <file category="header" name="Example/EKH05-Demo/shared_buffer.h"/>
-        <file category="header" name="Example/EKH05-Demo/prj_mbedtls_config.h" attr="template"/>
-        <file category="header" name="Example/EKH05-Demo/fsdata.h"/>
-        <file category="source" name="Example/EKH05-Demo/bluenrg_app/app_bluenrg_2.c"/>
-        <file category="header" name="Example/EKH05-Demo/bluenrg_app/app_bluenrg_2.h"/>
-        <file category="source" name="Example/EKH05-Demo/bluenrg_app/ble_sensor.c"/>
-        <file category="header" name="Example/EKH05-Demo/bluenrg_app/ble_sensor.h"/>
-        <file category="source" name="Example/EKH05-Demo/bluenrg_app/gatt_db.c"/>
-        <file category="header" name="Example/EKH05-Demo/bluenrg_app/gatt_db.h"/>
+        <file category="header" name="Example/EKH05-Demo/demo_temperature.h" path="Example/EKH05-Demo"/>
+        <file category="header" name="Example/EKH05-Demo/fsdata.h" path="Example/EKH05-Demo"/>
         <file category="source" name="Example/EKH05-Demo/lwip_httpd/fs.c"/>
         <file category="source" name="Example/EKH05-Demo/lwip_httpd/httpd.c"/>
-        <file category="header" name="Example/EKH05-Demo/lwip_httpd/httpd_structs.h"/>
+        <file category="header" name="Example/EKH05-Demo/lwip_httpd/httpd_structs.h" path="Example/EKH05-Demo"/>
         <file category="source" name="Example/EKH05-Demo/lwip_mdns/mdns.c"/>
         <file category="source" name="Example/EKH05-Demo/lwip_mdns/mdns_domain.c"/>
         <file category="source" name="Example/EKH05-Demo/lwip_mdns/mdns_out.c"/>
+        <file category="source" name="Example/EKH05-Demo/peripherals.c"/>
+        <file category="header" name="Example/EKH05-Demo/peripherals.h" path="Example/EKH05-Demo"/>
+        <file category="header" name="Example/EKH05-Demo/prj_mbedtls_config.h" attr="template"/>
+        <file category="source" name="Example/EKH05-Demo/restfs.c"/>
+        <file category="header" name="Example/EKH05-Demo/restfs.h" path="Example/EKH05-Demo"/>
+        <file category="source" name="Example/EKH05-Demo/shared_buffer.c"/>
+        <file category="header" name="Example/EKH05-Demo/shared_buffer.h" path="Example/EKH05-Demo"/>
+        <file category="include" name="Example/EKH05-Demo/bluenrg_app"/>
       </files>
     </component>
-    <bundle Cbundle="AWS-libraries" Cclass="AWS" Cversion="2.11.2">
+    <bundle Cbundle="AWS-libraries" Cclass="AWS" Cversion="2.12.3">
       <description>AWS IoT support libraries</description>
       <doc>https://www.morsemicro.com</doc>
       <component Cgroup="AWS-Shadow" Cversion="1.3.0">
@@ -1624,9 +1648,10 @@
         <files>
           <file category="other" name="AWS-Shadow/LICENSE"/>
           <file category="other" name="AWS-Shadow/README.md"/>
+          <file category="header" name="AWS-Shadow/source/include/shadow.h" path="AWS-Shadow/source/include"/>
+          <file category="header" name="AWS-Shadow/source/include/shadow_config_defaults.h" path="AWS-Shadow/source/include"/>
           <file category="source" name="AWS-Shadow/source/shadow.c"/>
-          <file category="header" name="AWS-Shadow/source/include/shadow_config_defaults.h"/>
-          <file category="header" name="AWS-Shadow/source/include/shadow.h"/>
+          <file category="include" name="AWS-Shadow/source/include"/>
         </files>
       </component>
       <component Cgroup="AWS-Fleet-Provisioning" Cversion="1.1.0">
@@ -1635,26 +1660,28 @@
           <file category="other" name="AWS-Fleet-Provisioning/LICENSE"/>
           <file category="other" name="AWS-Fleet-Provisioning/README.md"/>
           <file category="source" name="AWS-Fleet-Provisioning/source/fleet_provisioning.c"/>
-          <file category="header" name="AWS-Fleet-Provisioning/source/include/fleet_provisioning_config_defaults.h"/>
-          <file category="header" name="AWS-Fleet-Provisioning/source/include/fleet_provisioning.h"/>
+          <file category="header" name="AWS-Fleet-Provisioning/source/include/fleet_provisioning.h" path="AWS-Fleet-Provisioning/source/include"/>
+          <file category="header" name="AWS-Fleet-Provisioning/source/include/fleet_provisioning_config_defaults.h" path="AWS-Fleet-Provisioning/source/include"/>
+          <file category="include" name="AWS-Fleet-Provisioning/source/include"/>
         </files>
       </component>
       <component Cgroup="AWS-common">
         <description>application common files for using AWS libraries</description>
         <files>
+          <file category="source" name="AWS-common/fleet_provisioning_serializer.c"/>
+          <file category="source" name="AWS-common/fleet_provisioning_task.c"/>
+          <file category="header" name="AWS-common/include/fleet_provisioning_config.h" path="AWS-common/include"/>
+          <file category="header" name="AWS-common/include/fleet_provisioning_serializer.h" path="AWS-common/include"/>
+          <file category="header" name="AWS-common/include/fleet_provisioning_task.h" path="AWS-common/include"/>
+          <file category="header" name="AWS-common/include/shadow_config.h" path="AWS-common/include"/>
+          <file category="header" name="AWS-common/include/shadow_device_task.h" path="AWS-common/include"/>
           <file category="source" name="AWS-common/mqtt_agent_config.c"/>
           <file category="source" name="AWS-common/shadow_device_task.c"/>
-          <file category="source" name="AWS-common/fleet_provisioning_task.c"/>
-          <file category="source" name="AWS-common/fleet_provisioning_serializer.c"/>
-          <file category="header" name="AWS-common/include/shadow_device_task.h"/>
-          <file category="header" name="AWS-common/include/shadow_config.h"/>
-          <file category="header" name="AWS-common/include/fleet_provisioning_serializer.h"/>
-          <file category="header" name="AWS-common/include/fleet_provisioning_config.h"/>
-          <file category="header" name="AWS-common/include/fleet_provisioning_task.h"/>
+          <file category="include" name="AWS-common/include"/>
         </files>
       </component>
     </bundle>
-    <bundle Cbundle="FreeRTOS-libraries" Cclass="FreeRTOS-Libs" Cversion="2.11.2">
+    <bundle Cbundle="FreeRTOS-libraries" Cclass="FreeRTOS-Libs" Cversion="2.12.3">
       <description>FreeRTOS libraries</description>
       <doc>https://www.morsemicro.com</doc>
       <component Cgroup="backoffAlgorithm" Cversion="1.3.0">
@@ -1663,17 +1690,19 @@
           <file category="other" name="backoffAlgorithm/LICENSE"/>
           <file category="other" name="backoffAlgorithm/README.md"/>
           <file category="source" name="backoffAlgorithm/source/backoff_algorithm.c"/>
+          <file category="header" name="backoffAlgorithm/source/include/backoff_algorithm.h" path="backoffAlgorithm/source/include"/>
           <file category="other" name="backoffAlgorithm/source/include/stdint.readme"/>
-          <file category="header" name="backoffAlgorithm/source/include/backoff_algorithm.h"/>
+          <file category="include" name="backoffAlgorithm/source/include"/>
         </files>
       </component>
       <component Cgroup="freertos-libs-common">
         <description>Application common source files to use FreeRTOS libs.</description>
         <files>
+          <file category="header" name="freertos-libs-common/include/sntp_client.h" path="freertos-libs-common/include" condition="require FreeRTOS-Libs coreSNTP condition"/>
+          <file category="header" name="freertos-libs-common/include/transport_interface.h" path="freertos-libs-common/include"/>
           <file category="source" name="freertos-libs-common/sntp_client-lwip.c" condition="require MM_IoT mmLwIP and FreeRTOS-Libs coreSNTP condition"/>
           <file category="source" name="freertos-libs-common/transport_interface.c"/>
-          <file category="header" name="freertos-libs-common/include/transport_interface.h"/>
-          <file category="header" name="freertos-libs-common/include/sntp_client.h" condition="require FreeRTOS-Libs coreSNTP condition"/>
+          <file category="include" name="freertos-libs-common/include"/>
         </files>
       </component>
       <component Cgroup="coreJSON" Cversion="3.2.0">
@@ -1682,9 +1711,10 @@
           <file category="other" name="coreJSON/LICENSE"/>
           <file category="other" name="coreJSON/README.md"/>
           <file category="source" name="coreJSON/source/core_json.c"/>
-          <file category="header" name="coreJSON/source/include/core_json.h"/>
+          <file category="header" name="coreJSON/source/include/core_json.h" path="coreJSON/source/include"/>
           <file category="other" name="coreJSON/source/include/stdbool.readme"/>
           <file category="other" name="coreJSON/source/include/stdint.readme"/>
+          <file category="include" name="coreJSON/source/include"/>
         </files>
       </component>
       <component Cgroup="coreMQTT" Cversion="2.1.0">
@@ -1693,16 +1723,17 @@
           <file category="other" name="coreMQTT/LICENSE"/>
           <file category="other" name="coreMQTT/README.md"/>
           <file category="source" name="coreMQTT/source/core_mqtt.c"/>
-          <file category="source" name="coreMQTT/source/core_mqtt_state.c"/>
           <file category="source" name="coreMQTT/source/core_mqtt_serializer.c"/>
-          <file category="header" name="coreMQTT/source/include/core_mqtt.h"/>
-          <file category="header" name="coreMQTT/source/include/core_mqtt_serializer.h"/>
+          <file category="source" name="coreMQTT/source/core_mqtt_state.c"/>
+          <file category="header" name="coreMQTT/source/include/core_mqtt.h" path="coreMQTT/source/include"/>
+          <file category="header" name="coreMQTT/source/include/core_mqtt_config_defaults.h" path="coreMQTT/source/include"/>
+          <file category="header" name="coreMQTT/source/include/core_mqtt_default_logging.h" path="coreMQTT/source/include"/>
+          <file category="header" name="coreMQTT/source/include/core_mqtt_serializer.h" path="coreMQTT/source/include"/>
+          <file category="header" name="coreMQTT/source/include/core_mqtt_state.h" path="coreMQTT/source/include"/>
           <file category="other" name="coreMQTT/source/include/stdbool.readme"/>
-          <file category="header" name="coreMQTT/source/include/core_mqtt_state.h"/>
-          <file category="header" name="coreMQTT/source/include/core_mqtt_config_defaults.h"/>
-          <file category="header" name="coreMQTT/source/include/core_mqtt_default_logging.h"/>
           <file category="other" name="coreMQTT/source/include/stdint.readme"/>
-          <file category="header" name="coreMQTT/source/interface/coreMQTT_transport_interface.h"/>
+          <file category="header" name="coreMQTT/source/interface/coreMQTT_transport_interface.h" path="coreMQTT"/>
+          <file category="include" name="coreMQTT/source/include"/>
         </files>
       </component>
       <component Cgroup="coreMQTT-Agent" Cversion="1.2.0">
@@ -1712,11 +1743,12 @@
           <file category="other" name="coreMQTT-Agent/README.md"/>
           <file category="source" name="coreMQTT-Agent/source/core_mqtt_agent.c"/>
           <file category="source" name="coreMQTT-Agent/source/core_mqtt_agent_command_functions.c"/>
-          <file category="header" name="coreMQTT-Agent/source/include/core_mqtt_agent_default_logging.h"/>
-          <file category="header" name="coreMQTT-Agent/source/include/core_mqtt_agent_message_interface.h"/>
-          <file category="header" name="coreMQTT-Agent/source/include/core_mqtt_agent.h"/>
-          <file category="header" name="coreMQTT-Agent/source/include/core_mqtt_agent_config_defaults.h"/>
-          <file category="header" name="coreMQTT-Agent/source/include/core_mqtt_agent_command_functions.h"/>
+          <file category="header" name="coreMQTT-Agent/source/include/core_mqtt_agent.h" path="coreMQTT-Agent/source/include"/>
+          <file category="header" name="coreMQTT-Agent/source/include/core_mqtt_agent_command_functions.h" path="coreMQTT-Agent/source/include"/>
+          <file category="header" name="coreMQTT-Agent/source/include/core_mqtt_agent_config_defaults.h" path="coreMQTT-Agent/source/include"/>
+          <file category="header" name="coreMQTT-Agent/source/include/core_mqtt_agent_default_logging.h" path="coreMQTT-Agent/source/include"/>
+          <file category="header" name="coreMQTT-Agent/source/include/core_mqtt_agent_message_interface.h" path="coreMQTT-Agent/source/include"/>
+          <file category="include" name="coreMQTT-Agent/source/include"/>
         </files>
       </component>
       <component Cgroup="coreSNTP" Cversion="1.2.0">
@@ -1724,25 +1756,27 @@
         <files>
           <file category="other" name="coreSNTP/LICENSE"/>
           <file category="other" name="coreSNTP/README.md"/>
-          <file category="source" name="coreSNTP/source/core_sntp_serializer.c"/>
           <file category="source" name="coreSNTP/source/core_sntp_client.c"/>
-          <file category="header" name="coreSNTP/source/include/core_sntp_serializer.h"/>
-          <file category="header" name="coreSNTP/source/include/core_sntp_client.h"/>
-          <file category="header" name="coreSNTP/source/include/core_sntp_config_defaults.h"/>
+          <file category="source" name="coreSNTP/source/core_sntp_serializer.c"/>
+          <file category="header" name="coreSNTP/source/include/core_sntp_client.h" path="coreSNTP/source/include"/>
+          <file category="header" name="coreSNTP/source/include/core_sntp_config_defaults.h" path="coreSNTP/source/include"/>
+          <file category="header" name="coreSNTP/source/include/core_sntp_serializer.h" path="coreSNTP/source/include"/>
+          <file category="include" name="coreSNTP/source/include"/>
         </files>
       </component>
       <component Cgroup="mqtt-agent-task">
         <description>An independent task that performs MQTT operations.</description>
         <files>
-          <file category="source" name="mqtt-agent-task/mqtt_agent_task_powersave.c"/>
-          <file category="source" name="mqtt-agent-task/mqtt_agent_task.c"/>
           <file category="source" name="mqtt-agent-task/command_pool.c"/>
-          <file category="header" name="mqtt-agent-task/include/core_mqtt_config.h"/>
-          <file category="header" name="mqtt-agent-task/include/subscription_manager.h"/>
-          <file category="header" name="mqtt-agent-task/include/mqtt_agent_config.h"/>
-          <file category="header" name="mqtt-agent-task/include/mqtt_agent_task_powersave.h"/>
-          <file category="header" name="mqtt-agent-task/include/command_pool.h"/>
-          <file category="header" name="mqtt-agent-task/include/mqtt_agent_task.h"/>
+          <file category="header" name="mqtt-agent-task/include/command_pool.h" path="mqtt-agent-task/include"/>
+          <file category="header" name="mqtt-agent-task/include/core_mqtt_config.h" path="mqtt-agent-task/include"/>
+          <file category="header" name="mqtt-agent-task/include/mqtt_agent_config.h" path="mqtt-agent-task/include"/>
+          <file category="header" name="mqtt-agent-task/include/mqtt_agent_task.h" path="mqtt-agent-task/include"/>
+          <file category="header" name="mqtt-agent-task/include/mqtt_agent_task_powersave.h" path="mqtt-agent-task/include"/>
+          <file category="header" name="mqtt-agent-task/include/subscription_manager.h" path="mqtt-agent-task/include"/>
+          <file category="source" name="mqtt-agent-task/mqtt_agent_task.c"/>
+          <file category="source" name="mqtt-agent-task/mqtt_agent_task_powersave.c"/>
+          <file category="include" name="mqtt-agent-task/include"/>
         </files>
       </component>
     </bundle>

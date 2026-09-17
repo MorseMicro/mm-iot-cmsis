@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2022 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
- * Copyright 2023 Morse Micro.
+ * Copyright 2023-2026 Morse Micro.
  *
  * SPDX-License-Identifier: MIT
  *
@@ -407,6 +407,29 @@ int32_t transport_recv_with_timeout(NetworkContext_t * pNetworkContext,
                                     uint32_t timeoutMs);
 
 /**
+ * Reads data from a socket and provides source IP address and port
+ *
+ * @note TLS is not supported (source_ip/source_port are ignored).
+ *
+ * @param[in]  pNetworkContext The Network context.
+ * @param[out] pBuffer         Buffer to receive bytes into.
+ * @param[in]  bytesToRecv     Number of bytes to receive from the network.
+ * @param[in]  timeoutMs       Max blocking time in milliseconds.
+ * @param[out] source_ip       Buffer into which to receive source IP address
+ * @param[out] source_ip_len   Length of source_ip buffer
+ * @param[out] source_port     Variable into which to receive source IP port
+ *
+ * @return number of bytes received if successful or a negative value on error.
+ */
+int32_t transport_recv_from_with_timeout(NetworkContext_t *pNetworkContext,
+                                         void *pBuffer,
+                                         size_t bytesToRecv,
+                                         uint32_t timeoutMs,
+                                         char *source_ip,
+                                         size_t source_ip_len,
+                                         uint16_t *source_port);
+
+/**
  * Sends data over an established TLS connection.
  *
  * This is the TLS version of the transport interface's
@@ -423,6 +446,27 @@ int32_t transport_recv_with_timeout(NetworkContext_t * pNetworkContext,
 int32_t transport_send( NetworkContext_t * pNetworkContext,
                            const void * pBuffer,
                            size_t bytesToSend );
+
+/**
+ * Writes data to a socket using given destination IP address and port.
+ *
+ * @note TLS is not supported (destination_ip/destination_port are ignored).
+ *
+ * @param[in] pNetworkContext The network context.
+ * @param[in] pBuffer Buffer containing the bytes to send.
+ * @param[in] bytesToSend Number of bytes to send from the buffer.
+ * @param[in] source_ip Buffer from which to take the destination IP address
+ * @param[in] source_port     Variable from which to take the destination IP port
+ *
+ * @return Number of bytes (> 0) sent on success;
+ * 0 if the socket times out without sending any bytes;
+ * else a negative value to represent error.
+ */
+int32_t transport_send_to(NetworkContext_t *pNetworkContext,
+                          const void *pBuffer,
+                          size_t bytesToSend,
+                          const char *destination_ip,
+                          const uint16_t *destination_port);
 
 /**
  * Register a callback that is invoked when data is received on the socket.

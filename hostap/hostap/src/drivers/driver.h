@@ -20,15 +20,15 @@
 
 #define WPA_SUPPLICANT_DRIVER_VERSION 4
 
-#include "common/defs.h"
-#include "common/ieee802_11_defs.h"
-#include "common/wpa_common.h"
-#include "common/nan.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/wpa_common.h"
+#include "hostap/src/common/nan.h"
 #include "nl80211_copy.h"
 #ifdef CONFIG_MACSEC
-#include "pae/ieee802_1x_kay.h"
+#include "hostap/src/pae/ieee802_1x_kay.h"
 #endif /* CONFIG_MACSEC */
-#include "utils/list.h"
+#include "hostap/src/utils/list.h"
 #if defined(CONFIG_DRIVER_NL80211_MORSE) || defined(MM_IOT)
 enum morse_cmd_param_action;
 enum morse_cmd_param_id;

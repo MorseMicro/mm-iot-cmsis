@@ -11,7 +11,7 @@
 #ifndef WPS_UPNP_I_H
 #define WPS_UPNP_I_H
 
-#include "utils/list.h"
+#include "hostap/src/utils/list.h"
 #include "http.h"
 
 #define UPNP_MULTICAST_ADDRESS  "239.255.255.250" /* for UPnP multicasting */

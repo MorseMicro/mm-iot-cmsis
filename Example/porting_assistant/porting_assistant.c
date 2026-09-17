@@ -53,6 +53,8 @@ extern const struct test_step test_step_mmhal_wlan_validate_bcf; /**< Test defin
 
 extern const struct test_step test_step_verify_busy_pin; /**< Test definition */
 
+extern const struct test_step test_step_benchmark_cpu_mem_stack_perf; /**< Test definition */
+
 /** Array of test steps. */
 static const struct test_step *const test_steps[] = {
     &test_step_os_malloc,
@@ -68,6 +70,7 @@ static const struct test_step *const test_steps[] = {
     &test_step_raw_tput,
     &test_step_mmhal_wlan_validate_fw,
     &test_step_mmhal_wlan_validate_bcf,
+    &test_step_benchmark_cpu_mem_stack_perf,
 };
 
 /** Counters to track test runs. */

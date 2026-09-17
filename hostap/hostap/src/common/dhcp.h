@@ -9,12 +9,12 @@
 #ifndef DHCP_H
 #define DHCP_H
 
-#include <netinet/ip.h>
+#include <hostap/netinet/ip.h>
 #if __FAVOR_BSD
-#include <netinet/udp.h>
+#include <hostap/netinet/udp.h>
 #else
 #define __FAVOR_BSD 1
-#include <netinet/udp.h>
+#include <hostap/netinet/udp.h>
 #undef __FAVOR_BSD
 #endif
 

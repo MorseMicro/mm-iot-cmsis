@@ -9,15 +9,15 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "utils/morse.h"
-#include "common/ieee802_11_defs.h"
-#include "common/ieee802_11_common.h"
-#include "common/wpa_ctrl.h"
-#include "common/hw_features_common.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/morse.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/common/wpa_ctrl.h"
+#include "hostap/src/common/hw_features_common.h"
 #include "hostapd.h"
 #include "ap_config.h"
 #include "ap_drv_ops.h"

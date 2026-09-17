@@ -7,28 +7,28 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #ifndef CONFIG_NATIVE_WINDOWS
 #include <syslog.h>
 #include <grp.h>
 #endif /* CONFIG_NATIVE_WINDOWS */
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "utils/uuid.h"
-#include "crypto/crypto.h"
-#include "crypto/random.h"
-#include "crypto/tls.h"
-#include "common/version.h"
-#include "common/dpp.h"
-#include "drivers/driver.h"
-#include "eap_server/eap.h"
-#include "eap_server/tncs.h"
-#include "ap/hostapd.h"
-#include "ap/ap_config.h"
-#include "ap/ap_drv_ops.h"
-#include "ap/dpp_hostapd.h"
-#include "fst/fst.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/uuid.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/random.h"
+#include "hostap/src/crypto/tls.h"
+#include "hostap/src/common/version.h"
+#include "hostap/src/common/dpp.h"
+#include "hostap/src/drivers/driver.h"
+#include "hostap/src/eap_server/eap.h"
+#include "hostap/src/eap_server/tncs.h"
+#include "hostap/src/ap/hostapd.h"
+#include "hostap/src/ap/ap_config.h"
+#include "hostap/src/ap/ap_drv_ops.h"
+#include "hostap/src/ap/dpp_hostapd.h"
+#include "hostap/src/fst/fst.h"
 #include "config_file.h"
 #include "eap_register.h"
 #include "ctrl_iface.h"

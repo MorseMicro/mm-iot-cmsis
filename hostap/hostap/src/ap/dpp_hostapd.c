@@ -9,14 +9,14 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "common/dpp.h"
-#include "common/gas.h"
-#include "common/wpa_ctrl.h"
-#include "crypto/random.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/dpp.h"
+#include "hostap/src/common/gas.h"
+#include "hostap/src/common/wpa_ctrl.h"
+#include "hostap/src/crypto/random.h"
 #include "hostapd.h"
 #include "ap_drv_ops.h"
 #include "gas_query_ap.h"
@@ -26,7 +26,7 @@
 #include "dpp_hostapd.h"
 
 #if defined(CONFIG_IEEE80211AH)
-#include "morse.h"
+#include "hostap/src/utils/morse.h"
 #endif
 
 static void hostapd_dpp_reply_wait_timeout(void *eloop_ctx, void *timeout_ctx);

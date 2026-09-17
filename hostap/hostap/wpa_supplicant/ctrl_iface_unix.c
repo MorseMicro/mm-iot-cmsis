@@ -6,7 +6,7 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <sys/un.h>
 #include <sys/stat.h>
 #include <grp.h>
@@ -20,11 +20,11 @@
 #include <cutils/sockets.h>
 #endif /* ANDROID */
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "utils/list.h"
-#include "common/ctrl_iface_common.h"
-#include "eapol_supp/eapol_supp_sm.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/list.h"
+#include "hostap/src/common/ctrl_iface_common.h"
+#include "hostap/src/eapol_supp/eapol_supp_sm.h"
 #include "config.h"
 #include "wpa_supplicant_i.h"
 #include "ctrl_iface.h"

@@ -6,16 +6,16 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "common/ieee802_11_defs.h"
-#include "rsn_supp/wpa.h"
-#include "rsn_supp/wpa_i.h"
-#include "wpa_supplicant_i.h"
-#include "bss.h"
-#include "wnm_sta.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/rsn_supp/wpa.h"
+#include "hostap/src/rsn_supp/wpa_i.h"
+#include "hostap/wpa_supplicant/wpa_supplicant_i.h"
+#include "hostap/wpa_supplicant/bss.h"
+#include "hostap/wpa_supplicant/wnm_sta.h"
 #include "../../../wpa_supplicant/config.h"
 #include "../fuzzer-common.h"
 

@@ -10,8 +10,8 @@
 #ifndef WMM_AC_H
 #define WMM_AC_H
 
-#include "common/ieee802_11_defs.h"
-#include "drivers/driver.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/drivers/driver.h"
 
 struct wpa_supplicant;
 

@@ -6,16 +6,16 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #include <stdint.h>
 
-#include "utils/common.h"
-#include "utils/base64.h"
-#include "common/ieee802_11_defs.h"
-#include "common/ieee802_11_common.h"
-#include "crypto/crypto.h"
-#include "crypto/aes.h"
-#include "crypto/aes_siv.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/base64.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/aes.h"
+#include "hostap/src/crypto/aes_siv.h"
 #include "sae.h"
 
 

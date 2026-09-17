@@ -6,20 +6,20 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <time.h>
 #include <sys/stat.h>
 
-#include "common.h"
-#include "utils/browser.h"
-#include "utils/base64.h"
-#include "utils/xml-utils.h"
-#include "utils/http-utils.h"
-#include "common/wpa_ctrl.h"
-#include "common/wpa_helpers.h"
-#include "eap_common/eap_defs.h"
-#include "crypto/crypto.h"
-#include "crypto/sha256.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/browser.h"
+#include "hostap/src/utils/base64.h"
+#include "hostap/src/utils/xml-utils.h"
+#include "hostap/src/utils/http-utils.h"
+#include "hostap/src/common/wpa_ctrl.h"
+#include "hostap/src/common/wpa_helpers.h"
+#include "hostap/src/eap_common/eap_defs.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/sha256.h"
 #include "osu_client.h"
 
 static void write_summary(struct hs20_osu_client *ctx, const char *fmt, ...);

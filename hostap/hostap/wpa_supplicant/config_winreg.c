@@ -28,10 +28,10 @@ HKEY_LOCAL_MACHINE\SOFTWARE\wpa_supplicant\configs\test\networks\0000
 \endverbatim
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "uuid.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/uuid.h"
 #include "config.h"
 
 #ifndef WPA_KEY_ROOT

@@ -9,7 +9,7 @@
 #ifndef PMKSA_CACHE_H
 #define PMKSA_CACHE_H
 
-#include "radius/radius.h"
+#include "hostap/src/radius/radius.h"
 
 /**
  * struct rsn_pmksa_cache_entry - PMKSA cache entry

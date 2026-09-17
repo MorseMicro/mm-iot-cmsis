@@ -6,20 +6,20 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #ifdef __linux__
 #include <fcntl.h>
 #endif /* __linux__ */
 #include <sys/un.h>
 #include <sys/stat.h>
 
-#include "common.h"
-#include "eloop.h"
-#include "common/version.h"
-#include "drivers/driver.h"
-#include "l2_packet/l2_packet.h"
-#include "common/privsep_commands.h"
-#include "common/ieee802_11_defs.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/version.h"
+#include "hostap/src/drivers/driver.h"
+#include "hostap/src/l2_packet/l2_packet.h"
+#include "hostap/src/common/privsep_commands.h"
+#include "hostap/src/common/ieee802_11_defs.h"
 
 #define WPA_PRIV_MAX_L2 3
 

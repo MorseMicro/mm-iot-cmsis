@@ -6,11 +6,11 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "eap_i.h"
-#include "eap_common/chap.h"
+#include "hostap/src/eap_common/chap.h"
 
 
 static void * eap_md5_init(struct eap_sm *sm)

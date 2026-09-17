@@ -20,11 +20,11 @@
 
 extern "C"
 {
-#include "utils/common.h"
-#include "utils/includes.h"
-#include "utils/wpa_debug.h"
-#include "wpa_supplicant_i.h"
-#include "scan.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/wpa_debug.h"
+#include "hostap/wpa_supplicant/wpa_supplicant_i.h"
+#include "hostap/wpa_supplicant/scan.h"
 }
 
 namespace aidl {

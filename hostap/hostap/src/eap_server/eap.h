@@ -9,11 +9,11 @@
 #ifndef EAP_H
 #define EAP_H
 
-#include "common/defs.h"
-#include "utils/list.h"
-#include "eap_common/eap_defs.h"
-#include "eap_server/eap_methods.h"
-#include "wpabuf.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/utils/list.h"
+#include "hostap/src/eap_common/eap_defs.h"
+#include "hostap/src/eap_server/eap_methods.h"
+#include "hostap/src/utils/wpabuf.h"
 
 struct eap_sm;
 

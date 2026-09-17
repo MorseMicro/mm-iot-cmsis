@@ -23,12 +23,12 @@
 
 extern "C"
 {
-#include "utils/common.h"
-#include "utils/includes.h"
-#include "p2p/p2p.h"
-#include "p2p/p2p_i.h"
-#include "p2p_supplicant.h"
-#include "p2p_supplicant.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/p2p/p2p.h"
+#include "hostap/src/p2p/p2p_i.h"
+#include "hostap/wpa_supplicant/p2p_supplicant.h"
+#include "hostap/wpa_supplicant/p2p_supplicant.h"
 #include "config.h"
 }
 

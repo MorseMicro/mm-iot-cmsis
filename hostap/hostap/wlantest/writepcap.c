@@ -6,13 +6,13 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #include <pcap.h>
 #include <pcap-bpf.h>
 
-#include "utils/common.h"
+#include "hostap/src/utils/common.h"
 #include "wlantest.h"
-#include "common/qca-vendor.h"
+#include "hostap/src/common/qca-vendor.h"
 
 
 int write_pcap_init(struct wlantest *wt, const char *fname)

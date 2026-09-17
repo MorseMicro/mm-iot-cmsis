@@ -9,7 +9,7 @@
 #include "includes.h"
 #include <stdint.h>
 
-#include "utils/common.h"
+#include "hostap/src/utils/common.h"
 #include "os.h"
 #include "base64.h"
 

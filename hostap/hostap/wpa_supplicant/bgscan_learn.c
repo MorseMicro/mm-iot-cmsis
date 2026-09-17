@@ -6,13 +6,13 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "eloop.h"
-#include "list.h"
-#include "common/ieee802_11_defs.h"
-#include "drivers/driver.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/list.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/drivers/driver.h"
 #include "config_ssid.h"
 #include "wpa_supplicant_i.h"
 #include "driver_i.h"

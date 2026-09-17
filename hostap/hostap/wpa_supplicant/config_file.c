@@ -11,22 +11,22 @@
  * described in the sample configuration file, wpa_supplicant.conf.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #ifdef ANDROID
 #include <sys/stat.h>
 #endif /* ANDROID */
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "config.h"
-#include "base64.h"
-#include "uuid.h"
-#include "common/ieee802_1x_defs.h"
-#include "p2p/p2p.h"
-#include "eap_peer/eap_methods.h"
-#include "eap_peer/eap.h"
-#include "utils/config.h"
+#include "hostap/src/utils/base64.h"
+#include "hostap/src/utils/uuid.h"
+#include "hostap/src/common/ieee802_1x_defs.h"
+#include "hostap/src/p2p/p2p.h"
+#include "hostap/src/eap_peer/eap_methods.h"
+#include "hostap/src/eap_peer/eap.h"
+#include "hostap/src/utils/config.h"
 
-#include "utils/morse.h"
+#include "hostap/src/utils/morse.h"
 
 static int wpa_config_validate_network(struct wpa_ssid *ssid, int line)
 {

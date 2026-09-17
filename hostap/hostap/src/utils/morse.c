@@ -8,11 +8,11 @@
 #include "includes.h"
 
 #include <sys/stat.h>
-#include "utils/common.h"
-#include "drivers/driver.h"
-#include "drivers/nl80211_copy.h"
-#include "common/hw_features_common.h"
-#include "common/morse/morse_commands.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/drivers/driver.h"
+#include "hostap/src/drivers/nl80211_copy.h"
+#include "hostap/src/common/hw_features_common.h"
+#include "hostap/src/common/morse/morse_commands.h"
 #include "../../wpa_supplicant/wpa_supplicant_i.h"
 
 #include "morse.h"

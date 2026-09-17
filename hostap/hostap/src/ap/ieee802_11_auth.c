@@ -11,12 +11,12 @@
  * authentication frame processing.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "radius/radius.h"
-#include "radius/radius_client.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/radius/radius.h"
+#include "hostap/src/radius/radius_client.h"
 #include "hostapd.h"
 #include "ap_config.h"
 #include "ap_drv_ops.h"

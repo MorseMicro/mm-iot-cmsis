@@ -6,17 +6,17 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "utils/base64.h"
-#include "pcsc_funcs.h"
-#include "crypto/crypto.h"
-#include "crypto/milenage.h"
-#include "crypto/random.h"
-#include "eap_peer/eap_i.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/base64.h"
+#include "hostap/src/utils/pcsc_funcs.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/milenage.h"
+#include "hostap/src/crypto/random.h"
+#include "hostap/src/eap_peer/eap_i.h"
 #include "eap_config.h"
-#include "eap_common/eap_sim_common.h"
+#include "hostap/src/eap_common/eap_sim_common.h"
 
 
 struct eap_sim_data {

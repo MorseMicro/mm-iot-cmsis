@@ -7,11 +7,11 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "drivers/driver.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/drivers/driver.h"
 #include "dbus_common.h"
 #include "dbus_common_i.h"
 #include "dbus_new.h"

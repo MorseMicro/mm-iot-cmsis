@@ -8,11 +8,11 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #include <net/if.h>
 #include <sys/ioctl.h>
 
-#include "utils/common.h"
+#include "hostap/src/utils/common.h"
 #include "vlan_util.h"
 
 

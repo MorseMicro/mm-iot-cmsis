@@ -9,7 +9,7 @@
 #ifndef NOTIFY_H
 #define NOTIFY_H
 
-#include "p2p/p2p.h"
+#include "hostap/src/p2p/p2p.h"
 #ifdef CONFIG_AIDL
 #include "bss.h"
 #endif /* CONFIG_AIDL */

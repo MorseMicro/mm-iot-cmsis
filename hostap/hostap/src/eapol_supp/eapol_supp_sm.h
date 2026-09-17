@@ -9,7 +9,7 @@
 #ifndef EAPOL_SUPP_SM_H
 #define EAPOL_SUPP_SM_H
 
-#include "common/defs.h"
+#include "hostap/src/common/defs.h"
 
 struct tls_cert_data;
 

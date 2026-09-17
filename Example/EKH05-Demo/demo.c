@@ -18,7 +18,7 @@
 #include "mm_app_common.h"
 #include "main.h"
 #include "demo_cli.h"
-#include "mmagic_cli.h"
+#include "cli/mmagic_cli.h"
 
 #define AUTO_CONNECT_DELAY  5
 #define STRINGIFY(x) #x

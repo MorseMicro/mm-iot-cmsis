@@ -6,7 +6,7 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #ifndef CONFIG_NATIVE_WINDOWS
 #include <sys/ioctl.h>
 #endif /* CONFIG_NATIVE_WINDOWS */
@@ -15,8 +15,8 @@
 #include <dnet.h>
 #endif /* CONFIG_WINPCAP */
 
-#include "common.h"
-#include "eloop.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
 #include "l2_packet.h"
 
 

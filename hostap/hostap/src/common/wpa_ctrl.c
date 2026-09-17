@@ -6,7 +6,7 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
 #ifdef CONFIG_CTRL_IFACE
 
@@ -33,7 +33,7 @@
 #endif /* CONFIG_CTRL_IFACE_UDP_IPV6 */
 
 #include "wpa_ctrl.h"
-#include "common.h"
+#include "hostap/src/utils/common.h"
 
 
 #if defined(CONFIG_CTRL_IFACE_UNIX) || defined(CONFIG_CTRL_IFACE_UDP)

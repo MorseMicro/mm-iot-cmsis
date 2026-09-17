@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/random.h"
-#include "eap_server/eap_i.h"
-#include "eap_common/eap_pax_common.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/random.h"
+#include "hostap/src/eap_server/eap_i.h"
+#include "hostap/src/eap_common/eap_pax_common.h"
 
 /*
  * Note: only PAX_STD subprotocol is currently supported

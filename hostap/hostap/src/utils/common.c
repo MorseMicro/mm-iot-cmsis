@@ -10,9 +10,9 @@
 #include "includes.h"
 #include <limits.h>
 
-#include "common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_defs.h"
 #include "common.h"
-#include "drivers/nl80211_copy.h"
+#include "hostap/src/drivers/nl80211_copy.h"
 
 
 int hex2num(char c)

@@ -6,16 +6,16 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "crypto/crypto.h"
-#include "crypto/tls.h"
-#include "eap_server/eap.h"
-#include "eap_server/eap_sim_db.h"
-#include "eapol_auth/eapol_auth_sm.h"
-#include "radius/radius.h"
-#include "radius/radius_server.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/tls.h"
+#include "hostap/src/eap_server/eap.h"
+#include "hostap/src/eap_server/eap_sim_db.h"
+#include "hostap/src/eapol_auth/eapol_auth_sm.h"
+#include "hostap/src/radius/radius.h"
+#include "hostap/src/radius/radius_server.h"
 #include "hostapd.h"
 #include "ap_config.h"
 #include "sta_info.h"

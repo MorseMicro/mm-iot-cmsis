@@ -6,15 +6,15 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "ap/hostapd.h"
-#include "ap/hw_features.h"
-#include "ap/ieee802_11.h"
-#include "ap/sta_info.h"
-#include "ap/ap_list.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/ap/hostapd.h"
+#include "hostap/src/ap/hw_features.h"
+#include "hostap/src/ap/ieee802_11.h"
+#include "hostap/src/ap/sta_info.h"
+#include "hostap/src/ap/ap_list.h"
 #include "../fuzzer-common.h"
 
 

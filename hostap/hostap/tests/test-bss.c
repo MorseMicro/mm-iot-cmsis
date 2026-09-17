@@ -8,11 +8,11 @@
 
 #include <assert.h>
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "wpa_supplicant_i.h"
-#include "bss.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/wpa_supplicant/wpa_supplicant_i.h"
+#include "hostap/wpa_supplicant/bss.h"
 
 #define ASSERT_CMP_INT(a, cmp, b) { \
 	ssize_t __a = (a); ssize_t __b = (b);		\

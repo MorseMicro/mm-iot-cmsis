@@ -9,7 +9,7 @@
 #ifndef EAP_METHODS_H
 #define EAP_METHODS_H
 
-#include "eap_common/eap_defs.h"
+#include "hostap/src/eap_common/eap_defs.h"
 
 const struct eap_method * eap_peer_get_eap_method(int vendor,
 						  enum eap_type method);

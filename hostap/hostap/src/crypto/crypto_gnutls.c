@@ -6,10 +6,10 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <gcrypt.h>
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "md5.h"
 #include "sha1.h"
 #include "sha256.h"

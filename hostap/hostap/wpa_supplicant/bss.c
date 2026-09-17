@@ -7,21 +7,21 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "common/ieee802_11_defs.h"
-#include "drivers/driver.h"
-#include "eap_peer/eap.h"
-#include "rsn_supp/wpa.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/drivers/driver.h"
+#include "hostap/src/eap_peer/eap.h"
+#include "hostap/src/rsn_supp/wpa.h"
 #include "wpa_supplicant_i.h"
 #include "config.h"
 #include "notify.h"
 #include "scan.h"
 #include "bssid_ignore.h"
 #include "bss.h"
-#include "morse.h"
+#include "hostap/src/utils/morse.h"
 
 static void wpa_bss_set_hessid(struct wpa_bss *bss)
 {

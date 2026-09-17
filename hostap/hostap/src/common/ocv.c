@@ -6,10 +6,10 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
-#include "utils/common.h"
-#include "drivers/driver.h"
-#include "common/ieee802_11_common.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/drivers/driver.h"
+#include "hostap/src/common/ieee802_11_common.h"
 #include "ocv.h"
 
 /**

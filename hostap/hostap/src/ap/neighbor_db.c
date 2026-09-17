@@ -7,10 +7,10 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/crc32.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/crc32.h"
 #include "hostapd.h"
 #include "ieee802_11.h"
 #include "neighbor_db.h"

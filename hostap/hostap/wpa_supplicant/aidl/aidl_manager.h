@@ -18,7 +18,7 @@
 
 #include "p2p_iface.h"
 #include "p2p_network.h"
-#include "rsn_supp/pmksa_cache.h"
+#include "hostap/src/rsn_supp/pmksa_cache.h"
 #include "sta_iface.h"
 #include "sta_network.h"
 #include "supplicant.h"
@@ -26,10 +26,10 @@
 
 extern "C"
 {
-#include "utils/common.h"
-#include "utils/includes.h"
-#include "wpa_supplicant_i.h"
-#include "driver_i.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/wpa_supplicant/wpa_supplicant_i.h"
+#include "hostap/wpa_supplicant/driver_i.h"
 }
 
 namespace aidl {

@@ -6,15 +6,15 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "common/ieee802_11_defs.h"
-#include "p2p/p2p.h"
-#include "ap/hostapd.h"
-#include "ap/ieee802_1x.h"
-#include "ap/pmksa_cache_auth.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/p2p/p2p.h"
+#include "hostap/src/ap/hostapd.h"
+#include "hostap/src/ap/ieee802_1x.h"
+#include "hostap/src/ap/pmksa_cache_auth.h"
 #include "../fuzzer-common.h"
 
 

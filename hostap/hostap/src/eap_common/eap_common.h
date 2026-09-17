@@ -9,7 +9,7 @@
 #ifndef EAP_COMMON_H
 #define EAP_COMMON_H
 
-#include "wpabuf.h"
+#include "hostap/src/utils/wpabuf.h"
 
 struct erp_tlvs {
 	const u8 *keyname;

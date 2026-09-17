@@ -20,12 +20,12 @@
  * 'wpasvc.exe unreg'.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <windows.h>
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "wpa_supplicant_i.h"
-#include "eloop.h"
+#include "hostap/src/utils/eloop.h"
 
 #ifndef WPASVC_NAME
 #define WPASVC_NAME TEXT("wpasvc")

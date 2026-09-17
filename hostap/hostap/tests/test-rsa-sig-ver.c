@@ -6,13 +6,13 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "crypto/crypto.h"
-#include "tls/rsa.h"
-#include "tls/asn1.h"
-#include "tls/pkcs1.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/tls/rsa.h"
+#include "hostap/src/tls/asn1.h"
+#include "hostap/src/tls/pkcs1.h"
 
 
 static int cavp_rsa_sig_ver(const char *fname)

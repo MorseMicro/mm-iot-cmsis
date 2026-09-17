@@ -8,10 +8,10 @@
  * This file can be used as a starting point for layer2 packet implementation.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "eloop.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
 #include "l2_packet.h"
 
 

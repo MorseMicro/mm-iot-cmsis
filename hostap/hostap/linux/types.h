@@ -8,4 +8,4 @@
 
 #pragma once
 
-#include "hostap_morse_common.h"
+#include "hostap/hostap_morse_common.h"

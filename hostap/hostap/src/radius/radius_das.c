@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <net/if.h>
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "utils/ip_addr.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/ip_addr.h"
 #include "radius.h"
 #include "radius_das.h"
 

@@ -6,14 +6,14 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
-#include "utils/common.h"
-#include "common/defs.h"
-#include "common/ieee802_11_defs.h"
-#include "common/ieee802_11_common.h"
-#include "drivers/driver.h"
-#include "fst/fst_internal.h"
-#include "fst/fst_defs.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/drivers/driver.h"
+#include "hostap/src/fst/fst_internal.h"
+#include "hostap/src/fst/fst_defs.h"
 
 
 struct dl_list fst_global_groups_list;

@@ -9,11 +9,11 @@
 #ifndef P2P_I_H
 #define P2P_I_H
 
-#include "utils/list.h"
-#include "drivers/driver.h"
+#include "hostap/src/utils/list.h"
+#include "hostap/src/drivers/driver.h"
 #include "p2p.h"
 #ifdef CONFIG_AIDL
-#include "ap/ap_config.h"
+#include "hostap/src/ap/ap_config.h"
 #endif /*CONFIG_AIDL*/
 
 #define P2P_GO_NEG_CNF_MAX_RETRY_COUNT 1

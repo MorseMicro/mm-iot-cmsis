@@ -7,7 +7,7 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
 #ifndef CONFIG_NATIVE_WINDOWS
 
@@ -17,7 +17,7 @@
 #else
 #include <net/ethernet.h>
 #endif
-#include <netinet/ip.h>
+#include <hostap/netinet/ip.h>
 #endif /* CONFIG_TESTING_OPTIONS */
 
 #include <sys/un.h>
@@ -28,50 +28,50 @@
 #include <netdb.h>
 #endif /* CONFIG_CTRL_IFACE_UDP */
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "utils/module_tests.h"
-#include "common/version.h"
-#include "common/ieee802_11_defs.h"
-#include "common/ctrl_iface_common.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/module_tests.h"
+#include "hostap/src/common/version.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/ctrl_iface_common.h"
 #ifdef CONFIG_DPP
-#include "common/dpp.h"
+#include "hostap/src/common/dpp.h"
 #endif /* CONFIG_DPP */
-#include "common/wpa_ctrl.h"
-#include "common/ptksa_cache.h"
-#include "common/nan_de.h"
-#include "crypto/tls.h"
-#include "drivers/driver.h"
-#include "eapol_auth/eapol_auth_sm.h"
-#include "radius/radius_client.h"
-#include "radius/radius_server.h"
-#include "l2_packet/l2_packet.h"
-#include "ap/hostapd.h"
-#include "ap/ap_config.h"
-#include "ap/ieee802_1x.h"
-#include "ap/wpa_auth.h"
-#include "ap/pmksa_cache_auth.h"
-#include "ap/ieee802_11.h"
-#include "ap/sta_info.h"
-#include "ap/wps_hostapd.h"
-#include "ap/ctrl_iface_ap.h"
-#include "ap/ap_drv_ops.h"
-#include "ap/hs20.h"
-#include "ap/wnm_ap.h"
-#include "ap/wpa_auth.h"
-#include "ap/beacon.h"
-#include "ap/neighbor_db.h"
-#include "ap/rrm.h"
-#include "ap/dpp_hostapd.h"
-#include "ap/dfs.h"
-#include "ap/nan_usd_ap.h"
-#include "wps/wps_defs.h"
-#include "wps/wps.h"
-#include "fst/fst_ctrl_iface.h"
+#include "hostap/src/common/wpa_ctrl.h"
+#include "hostap/src/common/ptksa_cache.h"
+#include "hostap/src/common/nan_de.h"
+#include "hostap/src/crypto/tls.h"
+#include "hostap/src/drivers/driver.h"
+#include "hostap/src/eapol_auth/eapol_auth_sm.h"
+#include "hostap/src/radius/radius_client.h"
+#include "hostap/src/radius/radius_server.h"
+#include "hostap/src/l2_packet/l2_packet.h"
+#include "hostap/src/ap/hostapd.h"
+#include "hostap/src/ap/ap_config.h"
+#include "hostap/src/ap/ieee802_1x.h"
+#include "hostap/src/ap/wpa_auth.h"
+#include "hostap/src/ap/pmksa_cache_auth.h"
+#include "hostap/src/ap/ieee802_11.h"
+#include "hostap/src/ap/sta_info.h"
+#include "hostap/src/ap/wps_hostapd.h"
+#include "hostap/src/ap/ctrl_iface_ap.h"
+#include "hostap/src/ap/ap_drv_ops.h"
+#include "hostap/src/ap/hs20.h"
+#include "hostap/src/ap/wnm_ap.h"
+#include "hostap/src/ap/wpa_auth.h"
+#include "hostap/src/ap/beacon.h"
+#include "hostap/src/ap/neighbor_db.h"
+#include "hostap/src/ap/rrm.h"
+#include "hostap/src/ap/dpp_hostapd.h"
+#include "hostap/src/ap/dfs.h"
+#include "hostap/src/ap/nan_usd_ap.h"
+#include "hostap/src/wps/wps_defs.h"
+#include "hostap/src/wps/wps.h"
+#include "hostap/src/fst/fst_ctrl_iface.h"
 #include "config_file.h"
 #include "ctrl_iface.h"
 #include "config_file.h"
-#include "utils/morse.h"
+#include "hostap/src/utils/morse.h"
 
 
 #define HOSTAPD_CLI_DUP_VALUE_MAX_LEN 256

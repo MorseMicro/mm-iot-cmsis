@@ -9,7 +9,7 @@
 #ifndef DBUS_DICT_HELPERS_H
 #define DBUS_DICT_HELPERS_H
 
-#include "wpabuf.h"
+#include "hostap/src/utils/wpabuf.h"
 
 /*
  * Adding a dict to a DBusMessage

@@ -6,13 +6,13 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <sys/un.h>
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "driver.h"
-#include "eloop.h"
-#include "common/privsep_commands.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/privsep_commands.h"
 
 
 struct wpa_driver_privsep_data {

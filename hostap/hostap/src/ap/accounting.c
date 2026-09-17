@@ -6,14 +6,14 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "eapol_auth/eapol_auth_sm.h"
-#include "eapol_auth/eapol_auth_sm_i.h"
-#include "radius/radius.h"
-#include "radius/radius_client.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/eapol_auth/eapol_auth_sm.h"
+#include "hostap/src/eapol_auth/eapol_auth_sm_i.h"
+#include "hostap/src/radius/radius.h"
+#include "hostap/src/radius/radius_client.h"
 #include "hostapd.h"
 #include "ieee802_1x.h"
 #include "ap_config.h"

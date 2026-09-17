@@ -6,9 +6,9 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
-#include "utils/os.h"
-#include "utils/list.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/os.h"
+#include "hostap/src/utils/list.h"
 
 struct test {
 	struct dl_list list;

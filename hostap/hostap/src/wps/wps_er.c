@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "base64.h"
-#include "uuid.h"
-#include "eloop.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/base64.h"
+#include "hostap/src/utils/uuid.h"
+#include "hostap/src/utils/eloop.h"
 #include "httpread.h"
 #include "http_client.h"
 #include "http_server.h"

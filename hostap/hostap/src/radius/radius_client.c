@@ -6,13 +6,13 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <fcntl.h>
 #include <net/if.h>
 
-#include "common.h"
-#include "eloop.h"
-#include "crypto/tls.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/crypto/tls.h"
 #include "radius.h"
 #include "radius_client.h"
 

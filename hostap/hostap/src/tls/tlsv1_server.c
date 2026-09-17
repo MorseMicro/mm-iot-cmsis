@@ -6,11 +6,11 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/sha1.h"
-#include "crypto/tls.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/sha1.h"
+#include "hostap/src/crypto/tls.h"
 #include "tlsv1_common.h"
 #include "tlsv1_record.h"
 #include "tlsv1_server.h"

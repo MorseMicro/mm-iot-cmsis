@@ -6,16 +6,16 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <sys/ioctl.h>
 #include <linux/sockios.h>
 #include <linux/if_ether.h>
 #include <linux/mii.h>
 #include <net/if.h>
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "driver.h"
-#include "l2_packet/l2_packet.h"
+#include "hostap/src/l2_packet/l2_packet.h"
 
 #define ROBO_PHY_ADDR		0x1e	/* RoboSwitch PHY address */
 

@@ -6,11 +6,11 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "common/wpa_ctrl.h"
-#include "common/ieee802_11_common.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/wpa_ctrl.h"
+#include "hostap/src/common/ieee802_11_common.h"
 #include "wpa_supplicant_i.h"
 #include "driver_i.h"
 #include "bss.h"

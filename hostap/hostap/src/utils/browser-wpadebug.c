@@ -9,8 +9,8 @@
 #include "includes.h"
 
 #include "common.h"
-#include "utils/eloop.h"
-#include "wps/http_server.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/wps/http_server.h"
 #include "browser.h"
 
 

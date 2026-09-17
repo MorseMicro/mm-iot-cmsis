@@ -16,9 +16,9 @@
 extern "C"
 {
 #include "config.h"
-#include "utils/common.h"
-#include "utils/includes.h"
-#include "wpa_supplicant_i.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/wpa_supplicant/wpa_supplicant_i.h"
 }
 
 namespace aidl {

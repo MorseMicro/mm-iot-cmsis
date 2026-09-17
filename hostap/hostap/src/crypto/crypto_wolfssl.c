@@ -7,11 +7,11 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "crypto.h"
-#include "tls/asn1.h"
+#include "hostap/src/tls/asn1.h"
 
 /* wolfSSL headers */
 #include <wolfssl/options.h> /* options.h needs to be included first */

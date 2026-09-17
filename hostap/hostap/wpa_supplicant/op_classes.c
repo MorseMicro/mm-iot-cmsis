@@ -11,14 +11,14 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "common/ieee802_11_common.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/ieee802_11_common.h"
 #include "wpa_supplicant_i.h"
 #include "bss.h"
 #include "config.h"
-#include "utils/morse.h"
+#include "hostap/src/utils/morse.h"
 
 
 static enum chan_allowed allow_channel(struct hostapd_hw_modes *mode,

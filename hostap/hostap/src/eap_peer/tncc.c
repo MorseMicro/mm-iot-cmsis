@@ -6,17 +6,17 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #ifndef CONFIG_NATIVE_WINDOWS
 #include <dlfcn.h>
 #endif /* CONFIG_NATIVE_WINDOWS */
 
-#include "common.h"
-#include "base64.h"
-#include "common/tnc.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/base64.h"
+#include "hostap/src/common/tnc.h"
 #include "tncc.h"
-#include "eap_common/eap_tlv_common.h"
-#include "eap_common/eap_defs.h"
+#include "hostap/src/eap_common/eap_tlv_common.h"
+#include "hostap/src/eap_common/eap_defs.h"
 
 
 #ifdef UNICODE

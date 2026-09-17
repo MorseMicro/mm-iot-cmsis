@@ -6,16 +6,16 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "common/defs.h"
-#include "common/ieee802_11_defs.h"
-#include "common/ieee802_11_common.h"
-#include "common/wpa_common.h"
-#include "crypto/aes.h"
-#include "crypto/aes_siv.h"
-#include "crypto/aes_wrap.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/common/wpa_common.h"
+#include "hostap/src/crypto/aes.h"
+#include "hostap/src/crypto/aes_siv.h"
+#include "hostap/src/crypto/aes_wrap.h"
 #include "wlantest.h"
 
 

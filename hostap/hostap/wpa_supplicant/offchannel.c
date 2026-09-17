@@ -7,10 +7,10 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "utils/eloop.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
 #include "wpa_supplicant_i.h"
 #include "p2p_supplicant.h"
 #include "driver_i.h"

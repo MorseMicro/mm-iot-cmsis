@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "crypto/aes.h"
-#include "crypto/aes_siv.h"
-#include "tls/asn1.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/aes.h"
+#include "hostap/src/crypto/aes_siv.h"
+#include "hostap/src/tls/asn1.h"
 #include "dpp.h"
 #include "dpp_i.h"
 

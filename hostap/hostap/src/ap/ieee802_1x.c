@@ -6,24 +6,24 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #ifdef CONFIG_SQLITE
 #include <sqlite3.h>
 #endif /* CONFIG_SQLITE */
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "crypto/md5.h"
-#include "crypto/crypto.h"
-#include "crypto/random.h"
-#include "common/ieee802_11_defs.h"
-#include "radius/radius.h"
-#include "radius/radius_client.h"
-#include "eap_server/eap.h"
-#include "eap_common/eap_wsc_common.h"
-#include "eapol_auth/eapol_auth_sm.h"
-#include "eapol_auth/eapol_auth_sm_i.h"
-#include "p2p/p2p.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/crypto/md5.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/random.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/radius/radius.h"
+#include "hostap/src/radius/radius_client.h"
+#include "hostap/src/eap_server/eap.h"
+#include "hostap/src/eap_common/eap_wsc_common.h"
+#include "hostap/src/eapol_auth/eapol_auth_sm.h"
+#include "hostap/src/eapol_auth/eapol_auth_sm_i.h"
+#include "hostap/src/p2p/p2p.h"
 #include "hostapd.h"
 #include "accounting.h"
 #include "sta_info.h"

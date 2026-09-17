@@ -6,16 +6,16 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #include <netinet/ip6.h>
 #include <netinet/icmp6.h>
 
-#include "utils/common.h"
-#include "l2_packet/l2_packet.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/l2_packet/l2_packet.h"
 #include "hostapd.h"
 #include "sta_info.h"
 #include "ap_drv_ops.h"
-#include "list.h"
+#include "hostap/src/utils/list.h"
 #include "x_snoop.h"
 #include "ndisc_snoop.h"
 

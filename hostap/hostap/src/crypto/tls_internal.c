@@ -9,12 +9,12 @@
  * integrated TLSv1 implementation.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "tls.h"
-#include "tls/tlsv1_client.h"
-#include "tls/tlsv1_server.h"
+#include "hostap/src/tls/tlsv1_client.h"
+#include "hostap/src/tls/tlsv1_server.h"
 
 
 static int tls_ref_count = 0;

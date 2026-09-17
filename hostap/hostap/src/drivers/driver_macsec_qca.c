@@ -9,7 +9,7 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <sys/ioctl.h>
 #include <net/if.h>
 #include <inttypes.h>
@@ -26,12 +26,12 @@
 #include <sys/sockio.h>
 #endif /* __sun__ */
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "common/defs.h"
-#include "common/ieee802_1x_defs.h"
-#include "common/eapol_common.h"
-#include "pae/ieee802_1x_kay.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/common/ieee802_1x_defs.h"
+#include "hostap/src/common/eapol_common.h"
+#include "hostap/src/pae/ieee802_1x_kay.h"
 #include "driver.h"
 #include "driver_wired_common.h"
 

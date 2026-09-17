@@ -9,7 +9,7 @@
 #ifndef X_SNOOP_H
 #define X_SNOOP_H
 
-#include "l2_packet/l2_packet.h"
+#include "hostap/src/l2_packet/l2_packet.h"
 
 #ifdef CONFIG_PROXYARP
 

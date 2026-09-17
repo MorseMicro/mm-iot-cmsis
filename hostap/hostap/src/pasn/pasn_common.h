@@ -12,11 +12,11 @@
 #ifndef PASN_COMMON_H
 #define PASN_COMMON_H
 
-#include "common/wpa_common.h"
+#include "hostap/src/common/wpa_common.h"
 #ifdef CONFIG_SAE
-#include "common/sae.h"
+#include "hostap/src/common/sae.h"
 #endif /* CONFIG_SAE */
-#include "crypto/sha384.h"
+#include "hostap/src/crypto/sha384.h"
 
 #ifdef __cplusplus
 extern "C" {

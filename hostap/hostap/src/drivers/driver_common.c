@@ -6,8 +6,8 @@
  * See README for more details.
  */
 
-#include "includes.h"
-#include "utils/common.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/common.h"
 #include "driver.h"
 
 void wpa_scan_results_free(struct wpa_scan_results *res)

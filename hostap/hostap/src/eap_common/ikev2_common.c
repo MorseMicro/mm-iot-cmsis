@@ -6,13 +6,13 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/crypto.h"
-#include "crypto/md5.h"
-#include "crypto/sha1.h"
-#include "crypto/random.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/md5.h"
+#include "hostap/src/crypto/sha1.h"
+#include "hostap/src/crypto/random.h"
 #include "ikev2_common.h"
 
 

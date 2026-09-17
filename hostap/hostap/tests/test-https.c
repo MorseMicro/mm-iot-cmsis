@@ -6,11 +6,11 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <netdb.h>
 
-#include "common.h"
-#include "crypto/tls.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/tls.h"
 
 
 static void https_tls_event_cb(void *ctx, enum tls_event ev,

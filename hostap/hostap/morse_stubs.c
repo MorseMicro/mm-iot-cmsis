@@ -1,4 +1,4 @@
-#include "utils/morse.h"
+#include "hostap/src/utils/morse.h"
 #include "mmosal.h"
 
 int morse_sta_configure_channelization(struct wpa_supplicant *wpa_s, char *country)

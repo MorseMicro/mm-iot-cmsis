@@ -6,10 +6,10 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "common/cli.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/cli.h"
 
 
 const char *const cli_license =

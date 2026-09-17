@@ -170,16 +170,16 @@
  * This of course glosses over a lot of details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
 #include <time.h>
 #include <net/if.h>
 #include <netdb.h>
 #include <sys/ioctl.h>
 
-#include "common.h"
-#include "uuid.h"
-#include "base64.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/uuid.h"
+#include "hostap/src/utils/base64.h"
 #include "wps.h"
 #include "wps_i.h"
 #include "wps_upnp.h"

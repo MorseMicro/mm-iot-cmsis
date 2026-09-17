@@ -7,14 +7,14 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #include <fcntl.h>
 
-#include "utils/common.h"
-#include "utils/ip_addr.h"
-#include "utils/eloop.h"
-#include "common/ieee802_11_common.h"
-#include "common/wpa_ctrl.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/ip_addr.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/common/wpa_ctrl.h"
 #include "dpp.h"
 #include "dpp_i.h"
 

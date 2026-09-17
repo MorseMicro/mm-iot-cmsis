@@ -15,8 +15,8 @@
 #include "fi/w1/wpa_supplicant/ISupplicantCallbacks.h"
 
 extern "C" {
-#include "utils/common.h"
-#include "utils/includes.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/includes.h"
 #include "../wpa_supplicant_i.h"
 }
 

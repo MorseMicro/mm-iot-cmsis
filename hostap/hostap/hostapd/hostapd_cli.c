@@ -7,16 +7,16 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <dirent.h>
 
-#include "common/wpa_ctrl.h"
-#include "common/ieee802_11_defs.h"
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "utils/edit.h"
-#include "common/version.h"
-#include "common/cli.h"
+#include "hostap/src/common/wpa_ctrl.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/edit.h"
+#include "hostap/src/common/version.h"
+#include "hostap/src/common/cli.h"
 
 #ifndef CONFIG_NO_CTRL_IFACE
 

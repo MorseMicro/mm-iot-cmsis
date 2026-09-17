@@ -7,7 +7,7 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #if defined(__APPLE__) || defined(__GLIBC__)
 #include <net/bpf.h>
 #endif /* __APPLE__ */
@@ -26,8 +26,8 @@
 #include <net/route.h>
 #include <netinet/in.h>
 
-#include "common.h"
-#include "eloop.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
 #include "l2_packet.h"
 
 #ifndef ETHER_VLAN_ENCAP_LEN

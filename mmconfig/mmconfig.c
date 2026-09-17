@@ -58,13 +58,14 @@ static struct mmconfig_partition_header *mmconfig_secondary_image = NULL;
 /** Length of each partition in bytes */
 static uint32_t mmconfig_partition_size = 0;
 
-/** A default mm_litral_configs to avoid compile failure if the user
- * doesn't define mm_litral_configs in the application code.
- */
-__attribute__((weak)) const struct mmconfig_literal_config mm_litral_configs[]={
-    {NULL,NULL}
-};
+/** Pointer to factory default MMCONFIG partition, if configured */
+static struct mmconfig_partition_header *mmconfig_factory_image = NULL;
 
+/** Length of the factory default partition in bytes */
+static uint32_t mmconfig_factory_partition_size = 0;
+
+/** Current status of the factory default partition */
+static enum mmconfig_result mmconfig_factory_partition_status = MMCONFIG_ERR_NOT_SUPPORTED;
 
 /**
  * This function converts an unsigned integer to string
@@ -409,7 +410,8 @@ int mmconfig_validate_key(const char *key)
  * @param  partition The partition to validate.
  * @return           MMCONFIG_OK if partition is valid and checksum passes.
  */
-static int mmconfig_validate_partition(struct mmconfig_partition_header *partition)
+static enum mmconfig_result mmconfig_validate_partition(struct mmconfig_partition_header *partition,
+                                                        uint32_t partition_size)
 {
     uint32_t checksum = XORHASH_SEED;
 
@@ -425,7 +427,7 @@ static int mmconfig_validate_partition(struct mmconfig_partition_header *partiti
     /* Loop till we find a terminator marked by key_len of @c LIST_TERMINATOR or 0 */
     while ((keyheader_ptr->key_len != LIST_TERMINATOR) &&
            (keyheader_ptr->key_len != 0) &&
-           ((uint32_t)keyheader_ptr < (uint32_t)partition + mmconfig_partition_size))
+           ((mmhal_flash_addr_t)keyheader_ptr < (mmhal_flash_addr_t)partition + partition_size))
     {
         struct mmconfig_data_header *dataheader_ptr =
             (struct mmconfig_data_header *)(keyheader_ptr->key + keyheader_ptr->key_len);
@@ -476,8 +478,8 @@ static int mmconfig_validate_partition(struct mmconfig_partition_header *partiti
  */
 static int mmconfig_erase_partition(struct mmconfig_partition_header *partition, size_t size)
 {
-    uint32_t block_address = (uint32_t)partition;
-    uint32_t end_address = block_address + size;
+    mmhal_flash_addr_t block_address = (mmhal_flash_addr_t)partition;
+    mmhal_flash_addr_t end_address = block_address + size;
 
     while (block_address < end_address)
     {
@@ -503,7 +505,7 @@ static uint8_t mmconfig_staging_buffer[128];
 static uint32_t mmconfig_buffer_index;
 
 /** A pointer into flash showing us where to flash the staging buffer to next. */
-static uint32_t mmconfig_flashing_address;
+static mmhal_flash_addr_t mmconfig_flashing_address;
 
 /**
  * Pushes the string of bytes to staging buffer, if the staging buffer is full
@@ -522,7 +524,7 @@ static void mmconfig_buffered_write(const uint8_t *data, size_t size)
                data,
                sizeof(mmconfig_staging_buffer) - mmconfig_buffer_index);
 
-        mmhal_flash_write((uint32_t)mmconfig_flashing_address,
+        mmhal_flash_write(mmconfig_flashing_address,
                           mmconfig_staging_buffer,
                           sizeof(mmconfig_staging_buffer));
         data += sizeof(mmconfig_staging_buffer) - mmconfig_buffer_index;
@@ -572,7 +574,7 @@ static void mmconfig_start_flashing(struct mmconfig_partition_header *partition,
     /* Initialise Flashing buffer with erase values */
     memset(mmconfig_staging_buffer, MMHAL_FLASH_ERASE_VALUE, sizeof(mmconfig_staging_buffer));
     mmconfig_buffer_index = 0;
-    mmconfig_flashing_address = (uint32_t)partition;
+    mmconfig_flashing_address = (mmhal_flash_addr_t)partition;
 
     /* Write partition header */
     struct mmconfig_partition_header partition_header = {
@@ -589,9 +591,7 @@ static void mmconfig_start_flashing(struct mmconfig_partition_header *partition,
 static void mmconfig_end_flashing(void)
 {
     /* Write any unwritten data */
-    mmhal_flash_write((uint32_t)mmconfig_flashing_address,
-                      mmconfig_staging_buffer,
-                      mmconfig_buffer_index);
+    mmhal_flash_write(mmconfig_flashing_address, mmconfig_staging_buffer, mmconfig_buffer_index);
 }
 
 /**
@@ -655,7 +655,8 @@ static void mmconfig_process_existing_storage(
     /* Loop till we find a terminator marked by key_len of @c LIST_TERMINATOR or 0 */
     while ((keyheader_ptr->key_len != LIST_TERMINATOR) &&
            (keyheader_ptr->key_len != 0) &&
-           ((uint32_t)keyheader_ptr < (uint32_t)mmconfig_current_image + mmconfig_partition_size))
+           ((mmhal_flash_addr_t)keyheader_ptr <
+            (mmhal_flash_addr_t)mmconfig_current_image + mmconfig_partition_size))
     {
         /* Find data header and data */
         struct mmconfig_data_header *dataheader_ptr =
@@ -774,8 +775,9 @@ static uint32_t mmconfig_compute_new_checksum(const struct mmconfig_update_node 
     }
 
     /* Check that we won't exceed available space in partition */
-    uint32_t space_required = ((uint32_t)keyheader_ptr - (uint32_t)mmconfig_primary_image) +
-                              (required_space - skipped_key_space);
+    uint32_t space_required =
+        (uint32_t)((const uint8_t *)keyheader_ptr - (const uint8_t *)mmconfig_primary_image) +
+        (required_space - skipped_key_space);
     uint32_t space_available = mmconfig_partition_size;
 
     if (bytes_remaining != NULL)
@@ -877,7 +879,8 @@ static int mmconfig_update_secondary_image(const struct mmconfig_update_node *no
     mmconfig_end_flashing();
 
     /* Now check that everything was written correctly */
-    if (mmconfig_validate_partition(mmconfig_secondary_image) == MMCONFIG_OK)
+    if (mmconfig_validate_partition(mmconfig_secondary_image, mmconfig_partition_size) ==
+        MMCONFIG_OK)
     {
         /* Now swap partitions as the data we wrote is the latest */
         struct mmconfig_partition_header *tmp_partition = mmconfig_secondary_image;
@@ -940,10 +943,11 @@ static int mmconfig_init(void)
         (struct mmconfig_partition_header *)(mmconfig_partition->partition_start +
                                              mmconfig_partition_size);
 
-    if (mmconfig_validate_partition(mmconfig_primary_image) == MMCONFIG_OK)
+    if (mmconfig_validate_partition(mmconfig_primary_image, mmconfig_partition_size) == MMCONFIG_OK)
     {
         /* First partition is good, validate second */
-        if (mmconfig_validate_partition(mmconfig_secondary_image) == MMCONFIG_OK)
+        if (mmconfig_validate_partition(mmconfig_secondary_image, mmconfig_partition_size) ==
+            MMCONFIG_OK)
         {
             /* Both partitions good, see which is newer */
             /* Don't worry about rollover, flash will die long before we reach 2^32 writes */
@@ -957,7 +961,8 @@ static int mmconfig_init(void)
         }
         /* At this point nobody cares if secondary partition is corrupt */
     }
-    else if (mmconfig_validate_partition(mmconfig_secondary_image) == MMCONFIG_OK)
+    else if (mmconfig_validate_partition(mmconfig_secondary_image, mmconfig_partition_size) ==
+             MMCONFIG_OK)
     {
         /* Primary is corrupt, but secondary is good, so swap them */
         mmconfig_primary_image = mmconfig_secondary_image;
@@ -970,6 +975,36 @@ static int mmconfig_init(void)
         mmconfig_eraseall();
         retval = MMCONFIG_DATA_ERASED;
     }
+
+    /* Configure the optional factory default partition.
+     *
+     * The factory partition uses the same on-flash image format as one writable MMCONFIG image, but
+     * it is read only and is ignored unless it validates successfully.
+     */
+    const struct mmhal_flash_partition_config *factory_partition =
+        mmhal_get_factory_mmconfig_partition();
+
+    if (factory_partition == NULL ||
+        factory_partition->partition_size == 0 ||
+        factory_partition->not_memory_mapped)
+    {
+        mmconfig_factory_partition_status = MMCONFIG_ERR_NOT_SUPPORTED;
+    }
+    else if (mmhal_flash_getblocksize(factory_partition->partition_start) == 0 ||
+             mmhal_flash_getblocksize(
+                 factory_partition->partition_start + factory_partition->partition_size - 1) == 0)
+    {
+        mmconfig_factory_partition_status = MMCONFIG_ERR_INVALID_PARTITION;
+    }
+    else
+    {
+        mmconfig_factory_partition_size = factory_partition->partition_size;
+        mmconfig_factory_image =
+            (struct mmconfig_partition_header *)factory_partition->partition_start;
+        mmconfig_factory_partition_status =
+            mmconfig_validate_partition(mmconfig_factory_image, mmconfig_factory_partition_size);
+    }
+
     return retval;
 }
 
@@ -1001,10 +1036,10 @@ int mmconfig_eraseall(void)
     mmconfig_erase_partition(mmconfig_secondary_image, mmconfig_partition_size);
 
     /* Write to both partitions */
-    mmhal_flash_write((uint32_t)mmconfig_primary_image,
+    mmhal_flash_write((mmhal_flash_addr_t)mmconfig_primary_image,
                       (uint8_t *)&partition_header,
                       sizeof(partition_header));
-    mmhal_flash_write((uint32_t)mmconfig_secondary_image,
+    mmhal_flash_write((mmhal_flash_addr_t)mmconfig_secondary_image,
                       (uint8_t *)&partition_header,
                       sizeof(partition_header));
 
@@ -1012,6 +1047,67 @@ int mmconfig_eraseall(void)
     mmosal_mutex_release(mmconfig_mutex);
 
     return MMCONFIG_OK;
+}
+
+enum mmconfig_result mmconfig_check_factory_partition_status(void)
+{
+    int result = mmconfig_init();
+    if (result == MMCONFIG_ERR_NOT_SUPPORTED)
+    {
+        return MMCONFIG_ERR_NOT_SUPPORTED;
+    }
+
+    return mmconfig_factory_partition_status;
+}
+
+/**
+ * Reads data identified by the supplied key from a single MMCONFIG partition image.
+ *
+ * @note The caller must ensure the partition image has already been validated and that
+ *       the key is valid.
+ */
+static int mmconfig_read_data_from_partition(const char *key,
+                                             const void **data,
+                                             struct mmconfig_partition_header *partition,
+                                             uint32_t partition_size)
+{
+    struct mmconfig_key_header *keyheader_ptr = (struct mmconfig_key_header *)(partition->data);
+
+    while ((keyheader_ptr->key_len != LIST_TERMINATOR) &&
+           (keyheader_ptr->key_len != 0) &&
+           ((mmhal_flash_addr_t)keyheader_ptr < (mmhal_flash_addr_t)partition + partition_size))
+    {
+        uint8_t *data_ptr;
+        char *keyname_ptr = keyheader_ptr->key;
+
+        struct mmconfig_data_header *dataheader_ptr =
+            (struct mmconfig_data_header *)(keyname_ptr + keyheader_ptr->key_len);
+        data_ptr = dataheader_ptr->data;
+
+        if (mmconfig_key_match(key, strlen(key), keyname_ptr, keyheader_ptr->key_len))
+        {
+            if (data)
+            {
+                *data = (void *)data_ptr;
+            }
+            return dataheader_ptr->data_len;
+        }
+
+        /* Move to next record */
+        keyheader_ptr = (struct mmconfig_key_header *)(data_ptr + dataheader_ptr->data_len);
+    }
+
+    /* if not found in CONFIG partition, look in mm_litral_configs*/
+    for (int i = 0 ; mm_litral_configs[i].key && mm_litral_configs[i].value ; i++ )
+    {
+        if (strcmp(key, mm_litral_configs[i].key) == 0)
+        {
+            *data = mm_litral_configs[i].value;
+            return strlen(mm_litral_configs[i].value) + 1;
+        }
+    }
+
+    return MMCONFIG_ERR_NOT_FOUND;
 }
 
 /**
@@ -1047,49 +1143,19 @@ static int mmconfig_read_data(const char *key, const void **data)
         return MMCONFIG_ERR_INVALID_KEY;
     }
 
-    /* Provide limited protection against mmconfig_primary_image changing under us */
-    struct mmconfig_partition_header *mmconfig_current_image = mmconfig_primary_image;
-
-    /* Find the first keyheader which is at the end of mmconfig_partition_header */
-    struct mmconfig_key_header *keyheader_ptr =
-        (struct mmconfig_key_header *)(mmconfig_current_image->data);
-
-    /* Loop till we find a terminator marked by key_len of @c LIST_TERMINATOR */
-    while ((keyheader_ptr->key_len != LIST_TERMINATOR) &&
-           (keyheader_ptr->key_len != 0) &&
-           ((uint32_t)keyheader_ptr < (uint32_t)mmconfig_current_image + mmconfig_partition_size))
+    int result = mmconfig_read_data_from_partition(key,
+                                                   data,
+                                                   mmconfig_primary_image,
+                                                   mmconfig_partition_size);
+    if ((result == MMCONFIG_ERR_NOT_FOUND) && (mmconfig_factory_partition_status == MMCONFIG_OK))
     {
-        uint8_t *data_ptr;
-        char *keyname_ptr = keyheader_ptr->key;
-
-        struct mmconfig_data_header *dataheader_ptr =
-            (struct mmconfig_data_header *)(keyname_ptr + keyheader_ptr->key_len);
-        data_ptr = dataheader_ptr->data;
-
-        if (mmconfig_key_match(key, strlen(key), keyname_ptr, keyheader_ptr->key_len))
-        {
-            if (data)
-            {
-                *data = (void *)data_ptr;
-            }
-            return dataheader_ptr->data_len;
-        }
-
-        /* Move to next record */
-        keyheader_ptr = (struct mmconfig_key_header *)(data_ptr + dataheader_ptr->data_len);
+        result = mmconfig_read_data_from_partition(key,
+                                                   data,
+                                                   mmconfig_factory_image,
+                                                   mmconfig_factory_partition_size);
     }
 
-    /* if not found in CONFIG partition, look in mm_litral_configs*/
-    for (int i = 0 ; mm_litral_configs[i].key && mm_litral_configs[i].value ; i++ )
-    {
-        if (strcmp(key, mm_litral_configs[i].key) == 0)
-        {
-            *data = mm_litral_configs[i].value;
-            return strlen(mm_litral_configs[i].value) + 1;
-        }
-    }
-
-    return MMCONFIG_ERR_NOT_FOUND;
+    return result;
 }
 
 int mmconfig_alloc_and_load(const char *key, void **data)

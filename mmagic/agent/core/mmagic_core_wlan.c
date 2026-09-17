@@ -864,52 +864,60 @@ static void dpp_event_handler(const struct mmwlan_dpp_cb_args *dpp_event, void *
     struct dpp_private_data *data = (struct dpp_private_data *)arg;
     MMOSAL_ASSERT(data && data->semb);
 
-    switch (dpp_event->args.pb_result.result)
+    switch (dpp_event->event)
     {
-        case MMWLAN_DPP_PB_RESULT_SUCCESS:
-            if ((dpp_event->args.pb_result.ssid == NULL) ||
-                (dpp_event->args.pb_result.passphrase == NULL) ||
-                (dpp_event->args.pb_result.ssid_len > MMWLAN_SSID_MAXLEN - 1))
+        case MMWLAN_DPP_EVT_CONF_RECEIVED:
+        {
+            const uint8_t *ssid = dpp_event->args.conf_received.ssid;
+            uint16_t ssid_len = dpp_event->args.conf_received.ssid_len;
+            const char *passphrase = dpp_event->args.conf_received.passphrase;
+            if ((ssid == NULL) || (passphrase == NULL) || (ssid_len > MMWLAN_SSID_MAXLEN - 1))
             {
                 mmosal_printf("Invalid/incomplete credentials provided\n");
                 data->status = MMAGIC_STATUS_DPP_PB_ERROR;
             }
             else
             {
-                mmosal_printf("DPP push button successful\n");
-                data->status = MMAGIC_STATUS_OK;
                 struct mmagic_wlan_data *wlan_data = mmagic_data_get_wlan(data->core);
-                wlan_data->config.ssid.len = MM_MIN(sizeof(wlan_data->config.ssid.data) - 1,
-                                                    dpp_event->args.pb_result.ssid_len);
-                memcpy(wlan_data->config.ssid.data,
-                       dpp_event->args.pb_result.ssid,
-                       wlan_data->config.ssid.len);
+                wlan_data->config.ssid.len =
+                    MM_MIN(sizeof(wlan_data->config.ssid.data) - 1, ssid_len);
+                memcpy(wlan_data->config.ssid.data, ssid, wlan_data->config.ssid.len);
                 wlan_data->config.ssid.data[wlan_data->config.ssid.len] = '\0';
                 wlan_data->config.password.len =
-                    strnlen(dpp_event->args.pb_result.passphrase,
-                            sizeof(wlan_data->config.password.data) - 1);
-                memcpy(wlan_data->config.password.data,
-                       dpp_event->args.pb_result.passphrase,
-                       wlan_data->config.password.len);
+                    strnlen(passphrase, sizeof(wlan_data->config.password.data) - 1);
+                memcpy(wlan_data->config.password.data, passphrase, wlan_data->config.password.len);
                 mmconfig_write_string("wlan.ssid", (const char *)wlan_data->config.ssid.data);
                 mmconfig_write_string("wlan.password",
                                       (const char *)wlan_data->config.password.data);
             }
             break;
-        case MMWLAN_DPP_PB_RESULT_ERROR:
-            mmosal_printf("DPP push button error\n");
-            data->status = MMAGIC_STATUS_DPP_PB_ERROR;
-            break;
-
-        case MMWLAN_DPP_PB_RESULT_SESSION_OVERLAP:
-            mmosal_printf("DPP push button session overlapped\n");
-            data->status = MMAGIC_STATUS_DPP_PB_SESSION_OVERLAP;
+        }
+        case MMWLAN_DPP_EVT_PB_RESULT:
+            switch (dpp_event->args.pb_result.result)
+            {
+                case MMWLAN_DPP_PB_RESULT_SUCCESS:
+                    mmosal_printf("DPP push button successful\n");
+                    if (data->status != MMAGIC_STATUS_DPP_PB_ERROR)
+                    {
+                        data->status = MMAGIC_STATUS_OK;
+                    }
+                    break;
+                case MMWLAN_DPP_PB_RESULT_ERROR:
+                    mmosal_printf("DPP push button error\n");
+                    data->status = MMAGIC_STATUS_DPP_PB_ERROR;
+                    break;
+                case MMWLAN_DPP_PB_RESULT_SESSION_OVERLAP:
+                    mmosal_printf("DPP push button session overlapped\n");
+                    data->status = MMAGIC_STATUS_DPP_PB_SESSION_OVERLAP;
+                    break;
+                default:
+                    MMOSAL_ASSERT(0);
+            }
+            (void)mmosal_semb_give(data->semb);
             break;
         default:
-            MMOSAL_ASSERT(0);
+            break;
     }
-
-    (void)mmosal_semb_give(data->semb);
 }
 #endif /* #if (defined(MMAGIC_WLAN_DPP_ENABLED) && MMAGIC_WLAN_DPP_ENABLED) */
 

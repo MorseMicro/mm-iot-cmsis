@@ -6,11 +6,11 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "eap_i.h"
-#include "eap_common/eap_ikev2_common.h"
+#include "hostap/src/eap_common/eap_ikev2_common.h"
 #include "ikev2.h"
 
 

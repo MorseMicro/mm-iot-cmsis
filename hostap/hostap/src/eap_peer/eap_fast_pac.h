@@ -9,7 +9,7 @@
 #ifndef EAP_FAST_PAC_H
 #define EAP_FAST_PAC_H
 
-#include "eap_common/eap_fast_common.h"
+#include "hostap/src/eap_common/eap_fast_common.h"
 
 struct eap_fast_pac {
 	struct eap_fast_pac *next;

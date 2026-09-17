@@ -6,16 +6,16 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
 #ifdef CONFIG_RSN_PREAUTH
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "l2_packet/l2_packet.h"
-#include "common/wpa_common.h"
-#include "eapol_auth/eapol_auth_sm.h"
-#include "eapol_auth/eapol_auth_sm_i.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/l2_packet/l2_packet.h"
+#include "hostap/src/common/wpa_common.h"
+#include "hostap/src/eapol_auth/eapol_auth_sm.h"
+#include "hostap/src/eapol_auth/eapol_auth_sm_i.h"
 #include "hostapd.h"
 #include "ap_config.h"
 #include "ieee802_1x.h"

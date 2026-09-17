@@ -10,10 +10,10 @@
 #ifndef CONFIG_SSID_H
 #define CONFIG_SSID_H
 
-#include "common/defs.h"
-#include "utils/list.h"
-#include "utils/morse.h"
-#include "eap_peer/eap_config.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/utils/list.h"
+#include "hostap/src/utils/morse.h"
+#include "hostap/src/eap_peer/eap_config.h"
 
 
 #define DEFAULT_EAP_WORKAROUND ((unsigned int) -1)

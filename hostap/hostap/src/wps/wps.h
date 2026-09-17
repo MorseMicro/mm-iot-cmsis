@@ -9,7 +9,7 @@
 #ifndef WPS_H
 #define WPS_H
 
-#include "common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_defs.h"
 #include "wps_defs.h"
 
 /**

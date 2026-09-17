@@ -7,23 +7,23 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #ifdef CONFIG_SQLITE
 #include <sqlite3.h>
 #endif /* CONFIG_SQLITE */
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "utils/crc32.h"
-#include "common/ieee802_11_defs.h"
-#include "common/wpa_ctrl.h"
-#include "common/hw_features_common.h"
-#include "radius/radius_client.h"
-#include "radius/radius_das.h"
-#include "eap_server/tncs.h"
-#include "eapol_auth/eapol_auth_sm.h"
-#include "eapol_auth/eapol_auth_sm_i.h"
-#include "fst/fst.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/crc32.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/wpa_ctrl.h"
+#include "hostap/src/common/hw_features_common.h"
+#include "hostap/src/radius/radius_client.h"
+#include "hostap/src/radius/radius_das.h"
+#include "hostap/src/eap_server/tncs.h"
+#include "hostap/src/eapol_auth/eapol_auth_sm.h"
+#include "hostap/src/eapol_auth/eapol_auth_sm_i.h"
+#include "hostap/src/fst/fst.h"
 #include "hostapd.h"
 #include "authsrv.h"
 #include "sta_info.h"
@@ -59,7 +59,7 @@
 #include "wpa_auth_kay.h"
 #include "hw_features.h"
 
-#include "utils/morse.h"
+#include "hostap/src/utils/morse.h"
 
 
 static int hostapd_flush_old_stations(struct hostapd_data *hapd, u16 reason);

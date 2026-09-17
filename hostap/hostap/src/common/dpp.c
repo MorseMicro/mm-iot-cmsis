@@ -9,21 +9,21 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/base64.h"
-#include "utils/json.h"
-#include "utils/ip_addr.h"
-#include "common/ieee802_11_common.h"
-#include "common/wpa_ctrl.h"
-#include "common/gas.h"
-#include "eap_common/eap_defs.h"
-#include "crypto/crypto.h"
-#include "crypto/random.h"
-#include "crypto/aes.h"
-#include "crypto/aes_siv.h"
-#include "drivers/driver.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/base64.h"
+#include "hostap/src/utils/json.h"
+#include "hostap/src/utils/ip_addr.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/common/wpa_ctrl.h"
+#include "hostap/src/common/gas.h"
+#include "hostap/src/eap_common/eap_defs.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/random.h"
+#include "hostap/src/crypto/aes.h"
+#include "hostap/src/crypto/aes_siv.h"
+#include "hostap/src/drivers/driver.h"
 #include "dpp.h"
 #include "dpp_i.h"
 
@@ -697,14 +697,12 @@ int dpp_prepare_channel_list(struct dpp_authentication *auth,
 
 int dpp_gen_uri(struct dpp_bootstrap_info *bi)
 {
-#ifdef MM_IOT_DPP_DISABLE_URI_HOST
-	return 0;
-#endif
-
 	char macstr[ETH_ALEN * 2 + 10];
 	size_t len;
 	char supp_curves[10];
+#ifndef MM_IOT_DPP_DISABLE_URI_HOST
 	char host[100];
+#endif
 
 	len = 4; /* "DPP:" */
 	if (bi->chan)
@@ -737,6 +735,7 @@ int dpp_gen_uri(struct dpp_bootstrap_info *bi)
 		supp_curves[0] = '\0';
 	}
 
+#ifndef MM_IOT_DPP_DISABLE_URI_HOST
 	host[0] = '\0';
 	if (bi->host) {
 		char buf[100];
@@ -754,6 +753,7 @@ int dpp_gen_uri(struct dpp_bootstrap_info *bi)
 			len += os_snprintf(host, sizeof(host), "H:[%s]:%u;",
 					   addr, bi->port);
 	}
+#endif
 
 	os_free(bi->uri);
 	bi->uri = os_malloc(len + 1);
@@ -768,7 +768,11 @@ int dpp_gen_uri(struct dpp_bootstrap_info *bi)
 		    DPP_VERSION == 3 ? "V:3;" :
 		    (DPP_VERSION == 2 ? "V:2;" : ""),
 		    supp_curves,
+#ifndef MM_IOT_DPP_DISABLE_URI_HOST
 		    host,
+#else
+		    "",
+#endif
 		    bi->pk);
 	return 0;
 }

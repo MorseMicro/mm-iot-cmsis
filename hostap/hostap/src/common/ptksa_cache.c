@@ -7,10 +7,10 @@
  * See README for more details.
  */
 
-#include "includes.h"
-#include "utils/common.h"
-#include "eloop.h"
-#include "common/ptksa_cache.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/ptksa_cache.h"
 
 #define PTKSA_CACHE_MAX_ENTRIES 16
 

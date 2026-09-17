@@ -6,16 +6,16 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <sys/ioctl.h>
 #include <netpacket/packet.h>
 #include <net/if.h>
 #include <linux/filter.h>
 
-#include "common.h"
-#include "eloop.h"
-#include "crypto/sha1.h"
-#include "crypto/crypto.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/crypto/sha1.h"
+#include "hostap/src/crypto/crypto.h"
 #include "l2_packet.h"
 
 

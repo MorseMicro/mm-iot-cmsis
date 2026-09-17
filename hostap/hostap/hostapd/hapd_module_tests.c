@@ -6,10 +6,10 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/module_tests.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/module_tests.h"
 
 int hapd_module_tests(void)
 {

@@ -6,18 +6,18 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <net/if.h>
 #ifdef CONFIG_SQLITE
 #include <sqlite3.h>
 #endif /* CONFIG_SQLITE */
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "radius.h"
-#include "eloop.h"
-#include "eap_server/eap.h"
-#include "ap/ap_config.h"
-#include "crypto/tls.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/eap_server/eap.h"
+#include "hostap/src/ap/ap_config.h"
+#include "hostap/src/crypto/tls.h"
 #include "radius_server.h"
 
 /**

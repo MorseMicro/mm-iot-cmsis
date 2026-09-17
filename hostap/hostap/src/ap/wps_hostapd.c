@@ -6,21 +6,21 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "utils/uuid.h"
-#include "common/wpa_ctrl.h"
-#include "common/ieee802_11_defs.h"
-#include "common/ieee802_11_common.h"
-#include "eapol_auth/eapol_auth_sm.h"
-#include "eapol_auth/eapol_auth_sm_i.h"
-#include "wps/wps.h"
-#include "wps/wps_defs.h"
-#include "wps/wps_dev_attr.h"
-#include "wps/wps_attr_parse.h"
-#include "crypto/dh_group5.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/uuid.h"
+#include "hostap/src/common/wpa_ctrl.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/eapol_auth/eapol_auth_sm.h"
+#include "hostap/src/eapol_auth/eapol_auth_sm_i.h"
+#include "hostap/src/wps/wps.h"
+#include "hostap/src/wps/wps_defs.h"
+#include "hostap/src/wps/wps_dev_attr.h"
+#include "hostap/src/wps/wps_attr_parse.h"
+#include "hostap/src/crypto/dh_group5.h"
 #include "hostapd.h"
 #include "ap_config.h"
 #include "ap_drv_ops.h"
@@ -30,7 +30,7 @@
 
 
 #ifdef CONFIG_WPS_UPNP
-#include "wps/wps_upnp.h"
+#include "hostap/src/wps/wps_upnp.h"
 static int hostapd_wps_upnp_init(struct hostapd_data *hapd,
 				 struct wps_context *wps);
 static void hostapd_wps_upnp_deinit(struct hostapd_data *hapd);

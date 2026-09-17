@@ -6,11 +6,11 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "common/dhcp.h"
-#include "l2_packet/l2_packet.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/dhcp.h"
+#include "hostap/src/l2_packet/l2_packet.h"
 #include "hostapd.h"
 #include "sta_info.h"
 #include "ap_drv_ops.h"

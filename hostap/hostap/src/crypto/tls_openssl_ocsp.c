@@ -6,7 +6,7 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
 #include <openssl/ssl.h>
 #include <openssl/err.h>
@@ -16,7 +16,7 @@
 #include <openssl/asn1t.h>
 #endif /* OPENSSL_IS_BORINGSSL */
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "tls_openssl.h"
 
 

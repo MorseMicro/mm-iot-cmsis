@@ -7,17 +7,17 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/base64.h"
-#include "utils/json.h"
-#include "common/ieee802_11_defs.h"
-#include "crypto/crypto.h"
-#include "crypto/random.h"
-#include "crypto/sha384.h"
-#include "crypto/sha512.h"
-#include "tls/asn1.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/base64.h"
+#include "hostap/src/utils/json.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/random.h"
+#include "hostap/src/crypto/sha384.h"
+#include "hostap/src/crypto/sha512.h"
+#include "hostap/src/tls/asn1.h"
 #include "dpp.h"
 #include "dpp_i.h"
 

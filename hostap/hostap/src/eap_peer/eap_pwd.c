@@ -6,16 +6,16 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/sha1.h"
-#include "crypto/sha256.h"
-#include "crypto/sha512.h"
-#include "crypto/ms_funcs.h"
-#include "crypto/crypto.h"
-#include "eap_peer/eap_i.h"
-#include "eap_common/eap_pwd_common.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/sha1.h"
+#include "hostap/src/crypto/sha256.h"
+#include "hostap/src/crypto/sha512.h"
+#include "hostap/src/crypto/ms_funcs.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/eap_peer/eap_i.h"
+#include "hostap/src/eap_common/eap_pwd_common.h"
 
 
 struct eap_pwd_data {

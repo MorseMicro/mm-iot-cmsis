@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "includes.h"
-#include "common.h"
-#include "utils/const_time.h"
-#include "common/dragonfly.h"
-#include "crypto/sha256.h"
-#include "crypto/crypto.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/const_time.h"
+#include "hostap/src/common/dragonfly.h"
+#include "hostap/src/crypto/sha256.h"
+#include "hostap/src/crypto/crypto.h"
 #include "eap_defs.h"
 #include "eap_pwd_common.h"
 

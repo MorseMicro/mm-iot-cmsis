@@ -6,18 +6,18 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/module_tests.h"
-#include "crypto/aes_siv.h"
-#include "crypto/aes_wrap.h"
-#include "crypto/aes.h"
-#include "crypto/ms_funcs.h"
-#include "crypto/crypto.h"
-#include "crypto/sha1.h"
-#include "crypto/sha256.h"
-#include "crypto/sha384.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/module_tests.h"
+#include "hostap/src/crypto/aes_siv.h"
+#include "hostap/src/crypto/aes_wrap.h"
+#include "hostap/src/crypto/aes.h"
+#include "hostap/src/crypto/ms_funcs.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/sha1.h"
+#include "hostap/src/crypto/sha256.h"
+#include "hostap/src/crypto/sha384.h"
 
 
 static int test_siv(void)

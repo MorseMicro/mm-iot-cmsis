@@ -6,7 +6,7 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <gnutls/gnutls.h>
 #include <gnutls/x509.h>
 #ifdef PKCS12_FUNCS
@@ -16,8 +16,8 @@
 #include <gnutls/ocsp.h>
 #endif /* 3.1.3 */
 
-#include "common.h"
-#include "crypto/crypto.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/crypto.h"
 #include "tls.h"
 
 

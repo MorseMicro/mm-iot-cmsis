@@ -6,10 +6,10 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/ms_funcs.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/ms_funcs.h"
 #include "mschapv2.h"
 
 const u8 * mschapv2_remove_domain(const u8 *username, size_t *len)

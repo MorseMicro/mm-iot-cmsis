@@ -15,17 +15,17 @@
  * identities is not suitable for some cases.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <sys/un.h>
 #ifdef CONFIG_SQLITE
 #include <sqlite3.h>
 #endif /* CONFIG_SQLITE */
 
-#include "common.h"
-#include "crypto/random.h"
-#include "eap_common/eap_sim_common.h"
-#include "eap_server/eap_sim_db.h"
-#include "eloop.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/random.h"
+#include "hostap/src/eap_common/eap_sim_common.h"
+#include "hostap/src/eap_server/eap_sim_db.h"
+#include "hostap/src/utils/eloop.h"
 
 struct eap_sim_pseudonym {
 	struct eap_sim_pseudonym *next;

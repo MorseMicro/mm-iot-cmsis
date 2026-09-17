@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "wpa.h"
 #include "pmksa_cache.h"
-#include "common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_defs.h"
 #include "wpa_i.h"
 #include "wpa_ie.h"
 

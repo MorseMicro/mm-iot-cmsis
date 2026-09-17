@@ -9,10 +9,10 @@
 #define MORSE_H
 
 #include <assert.h>
-#include "utils/includes.h"
-#include "utils/common.h"
-#include "ap/ap_config.h"
-#include "ap/hostapd.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/ap/ap_config.h"
+#include "hostap/src/ap/hostapd.h"
 #include <sys/stat.h>
 struct wpa_supplicant;
 

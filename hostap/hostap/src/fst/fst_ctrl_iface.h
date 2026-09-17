@@ -9,7 +9,7 @@
 #ifndef FST_CTRL_IFACE_H
 #define FST_CTRL_IFACE_H
 
-#include "fst/fst_ctrl_aux.h"
+#include "hostap/src/fst/fst_ctrl_aux.h"
 
 #ifdef CONFIG_FST
 

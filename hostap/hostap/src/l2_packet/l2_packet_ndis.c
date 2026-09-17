@@ -15,7 +15,7 @@
  * thread that blocks on ReadFile() whenever the media status is connected.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <winsock2.h>
 #include <ntddndis.h>
 
@@ -24,8 +24,8 @@
 #include <nuiouser.h>
 #endif /* _WIN32_WCE */
 
-#include "common.h"
-#include "eloop.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
 #include "l2_packet.h"
 
 #ifndef _WIN32_WCE

@@ -6,14 +6,14 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "fst/fst.h"
-#include "fst/fst_internal.h"
-#include "fst/fst_defs.h"
-#include "fst/fst_ctrl_iface.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/fst/fst.h"
+#include "hostap/src/fst/fst_internal.h"
+#include "hostap/src/fst/fst_defs.h"
+#include "hostap/src/fst/fst_ctrl_iface.h"
 
 static int fst_global_initialized = 0;
 struct dl_list fst_global_ctrls_list;

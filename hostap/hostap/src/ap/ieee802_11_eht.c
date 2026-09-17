@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
-#include "utils/common.h"
-#include "common/ocv.h"
-#include "common/wpa_ctrl.h"
-#include "crypto/crypto.h"
-#include "crypto/dh_groups.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/ocv.h"
+#include "hostap/src/common/wpa_ctrl.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/dh_groups.h"
 #include "hostapd.h"
 #include "sta_info.h"
 #include "ap_drv_ops.h"

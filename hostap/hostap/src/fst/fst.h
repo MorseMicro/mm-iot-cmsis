@@ -11,8 +11,8 @@
 
 #ifdef CONFIG_FST
 
-#include "common/defs.h"
-#include "fst/fst_ctrl_iface.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/fst/fst_ctrl_iface.h"
 
 /* FST module hostap integration API */
 

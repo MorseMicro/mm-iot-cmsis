@@ -9,7 +9,7 @@
 #ifndef RADIUS_CLIENT_H
 #define RADIUS_CLIENT_H
 
-#include "ip_addr.h"
+#include "hostap/src/utils/ip_addr.h"
 
 struct radius_msg;
 

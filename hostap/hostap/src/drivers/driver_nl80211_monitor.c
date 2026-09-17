@@ -10,16 +10,16 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <netpacket/packet.h>
 #include <linux/filter.h>
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "common/ieee802_11_defs.h"
-#include "common/ieee802_11_common.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_common.h"
 #include "linux_ioctl.h"
-#include "radiotap_iter.h"
+#include "hostap/src/utils/radiotap_iter.h"
 #include "driver_nl80211.h"
 
 

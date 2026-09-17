@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "eap_peer/eap_methods.h"
-#include "eap_peer/eap_config.h"
-#include "eap_peer/eap_i.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/eap_peer/eap_methods.h"
+#include "hostap/src/eap_peer/eap_config.h"
+#include "hostap/src/eap_peer/eap_i.h"
 #include "../fuzzer-common.h"
 
 int eap_peer_sim_register(void);

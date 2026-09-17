@@ -11,7 +11,7 @@
 #define COMMON_H
 
 #include "os.h"
-#include "drivers/nl80211_copy.h"
+#include "hostap/src/drivers/nl80211_copy.h"
 
 #if defined(__linux__) || defined(__GLIBC__)
 #include <endian.h>

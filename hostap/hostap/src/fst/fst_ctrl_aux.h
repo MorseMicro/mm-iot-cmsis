@@ -9,7 +9,7 @@
 #ifndef FST_CTRL_AUX_H
 #define FST_CTRL_AUX_H
 
-#include "common/defs.h"
+#include "hostap/src/common/defs.h"
 
 /* FST module control interface API */
 #define FST_INVALID_SESSION_ID ((u32) -1)

@@ -8,7 +8,7 @@
 
 #include "includes.h"
 
-#include "utils/config.h"
+#include "hostap/src/utils/config.h"
 #include "common.h"
 
 

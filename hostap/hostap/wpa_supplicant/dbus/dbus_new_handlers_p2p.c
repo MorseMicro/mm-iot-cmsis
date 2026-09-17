@@ -6,10 +6,10 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/includes.h"
-#include "common.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/common.h"
 #include "../config.h"
 #include "../wpa_supplicant_i.h"
 #include "../wps_supplicant.h"
@@ -20,11 +20,11 @@
 #include "dbus_new_handlers.h"
 #include "dbus_new_handlers_p2p.h"
 #include "dbus_dict_helpers.h"
-#include "p2p/p2p.h"
-#include "common/ieee802_11_defs.h"
-#include "ap/hostapd.h"
-#include "ap/ap_config.h"
-#include "ap/wps_hostapd.h"
+#include "hostap/src/p2p/p2p.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/ap/hostapd.h"
+#include "hostap/src/ap/ap_config.h"
+#include "hostap/src/ap/wps_hostapd.h"
 
 #include "../p2p_supplicant.h"
 #include "../wifi_display.h"

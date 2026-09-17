@@ -9,7 +9,7 @@
 #ifndef WPA_AUTH_I_H
 #define WPA_AUTH_I_H
 
-#include "utils/list.h"
+#include "hostap/src/utils/list.h"
 
 /* max(dot11RSNAConfigGroupUpdateCount,dot11RSNAConfigPairwiseUpdateCount) */
 #define RSNA_MAX_EAPOL_RETRIES 4

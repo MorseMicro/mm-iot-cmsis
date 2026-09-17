@@ -7,7 +7,7 @@
  *	make -f morse_test.mk
  */
 
-#include "morse.h"
+#include "hostap/src/utils/morse.h"
 #include "unity.h"
 
 void setUp (void) {} /* Is run before every test, put unit init calls here. */

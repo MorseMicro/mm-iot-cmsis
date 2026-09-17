@@ -6,12 +6,12 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "eap_i.h"
 #include "eap_tls_common.h"
-#include "crypto/tls.h"
+#include "hostap/src/crypto/tls.h"
 
 
 static void eap_tls_reset(struct eap_sm *sm, void *priv);

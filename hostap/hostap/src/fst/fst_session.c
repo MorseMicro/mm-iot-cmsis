@@ -6,16 +6,16 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "common/defs.h"
-#include "fst/fst_internal.h"
-#include "fst/fst_defs.h"
-#include "fst/fst_ctrl_iface.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/fst/fst_internal.h"
+#include "hostap/src/fst/fst_defs.h"
+#include "hostap/src/fst/fst_ctrl_iface.h"
 #ifdef CONFIG_FST_TEST
-#include "fst/fst_ctrl_defs.h"
+#include "hostap/src/fst/fst_ctrl_defs.h"
 #endif /* CONFIG_FST_TEST */
 
 #define FST_LLT_SWITCH_IMMEDIATELY 0

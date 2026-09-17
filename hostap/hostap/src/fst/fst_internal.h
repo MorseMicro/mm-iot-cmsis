@@ -9,13 +9,13 @@
 #ifndef FST_INTERNAL_H
 #define FST_INTERNAL_H
 
-#include "utils/includes.h"
-#include "utils/common.h"
-#include "common/defs.h"
-#include "common/ieee802_11_defs.h"
-#include "fst/fst_iface.h"
-#include "fst/fst_group.h"
-#include "fst/fst_session.h"
+#include "hostap/src/utils/includes.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/fst/fst_iface.h"
+#include "hostap/src/fst/fst_group.h"
+#include "hostap/src/fst/fst_session.h"
 
 #define fst_printf(level, format, ...) \
 	wpa_printf((level), "FST: " format, ##__VA_ARGS__)

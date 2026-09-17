@@ -6,14 +6,14 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #ifndef __APPLE__
 #include <net/if.h>
 #include <netpacket/packet.h>
 #endif /* __APPLE__ */
 
-#include "utils/common.h"
-#include "utils/eloop.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
 #include "wlantest.h"
 
 

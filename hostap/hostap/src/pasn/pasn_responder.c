@@ -8,21 +8,21 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "common/wpa_common.h"
-#include "common/sae.h"
-#include "common/ieee802_11_common.h"
-#include "common/ieee802_11_defs.h"
-#include "crypto/sha384.h"
-#include "crypto/sha256.h"
-#include "crypto/random.h"
-#include "crypto/crypto.h"
-#include "ap/hostapd.h"
-#include "ap/comeback_token.h"
-#include "ap/ieee802_1x.h"
-#include "ap/pmksa_cache_auth.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/wpa_common.h"
+#include "hostap/src/common/sae.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/crypto/sha384.h"
+#include "hostap/src/crypto/sha256.h"
+#include "hostap/src/crypto/random.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/ap/hostapd.h"
+#include "hostap/src/ap/comeback_token.h"
+#include "hostap/src/ap/ieee802_1x.h"
+#include "hostap/src/ap/pmksa_cache_auth.h"
 #include "pasn_common.h"
 
 

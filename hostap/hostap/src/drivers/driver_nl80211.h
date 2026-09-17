@@ -15,7 +15,7 @@
 #define DRIVER_NL80211_H
 
 #include "nl80211_copy.h"
-#include "utils/list.h"
+#include "hostap/src/utils/list.h"
 #include "driver.h"
 
 #ifndef NL_CAPABILITY_VERSION_3_5_0

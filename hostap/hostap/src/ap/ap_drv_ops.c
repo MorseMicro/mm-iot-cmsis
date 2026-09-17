@@ -7,14 +7,14 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "common/ieee802_11_defs.h"
-#include "common/ieee802_11_common.h"
-#include "common/hw_features_common.h"
-#include "wps/wps.h"
-#include "p2p/p2p.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/common/hw_features_common.h"
+#include "hostap/src/wps/wps.h"
+#include "hostap/src/p2p/p2p.h"
 #include "hostapd.h"
 #include "ieee802_11.h"
 #include "sta_info.h"
@@ -24,7 +24,7 @@
 #include "wpa_auth.h"
 #include "hw_features.h"
 #include "ap_drv_ops.h"
-#include "utils/morse.h"
+#include "hostap/src/utils/morse.h"
 
 
 u32 hostapd_sta_flags_to_drv(u32 flags)

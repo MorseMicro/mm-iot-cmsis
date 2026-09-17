@@ -6,17 +6,17 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "common/defs.h"
-#include "common/wpa_common.h"
-#include "common/sae.h"
-#include "common/ieee802_11_defs.h"
-#include "crypto/sha384.h"
-#include "crypto/crypto.h"
-#include "pasn/pasn_common.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/defs.h"
+#include "hostap/src/common/wpa_common.h"
+#include "hostap/src/common/sae.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/crypto/sha384.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/pasn/pasn_common.h"
 #include "../fuzzer-common.h"
 
 

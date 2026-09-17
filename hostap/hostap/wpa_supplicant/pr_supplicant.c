@@ -6,13 +6,13 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "common/ieee802_11_defs.h"
-#include "common/proximity_ranging.h"
-#include "p2p/p2p.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/proximity_ranging.h"
+#include "hostap/src/p2p/p2p.h"
 #include "wpa_supplicant_i.h"
 #include "config.h"
 #include "notify.h"

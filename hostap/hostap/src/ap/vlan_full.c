@@ -8,18 +8,18 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #include <net/if.h>
 /* Avoid conflicts due to NetBSD net/if.h if_type define with driver.h */
 #undef if_type
 #include <sys/ioctl.h>
 
-#include "utils/common.h"
-#include "drivers/priv_netlink.h"
-#include "drivers/linux_ioctl.h"
-#include "common/linux_bridge.h"
-#include "common/linux_vlan.h"
-#include "utils/eloop.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/drivers/priv_netlink.h"
+#include "hostap/src/drivers/linux_ioctl.h"
+#include "hostap/src/common/linux_bridge.h"
+#include "hostap/src/common/linux_vlan.h"
+#include "hostap/src/utils/eloop.h"
 #include "hostapd.h"
 #include "ap_config.h"
 #include "ap_drv_ops.h"

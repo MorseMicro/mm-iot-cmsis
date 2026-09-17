@@ -11,7 +11,7 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <sys/types.h>
 #include <sys/utsname.h>
 #include <fcntl.h>
@@ -24,27 +24,27 @@
 #include <linux/errqueue.h>
 #include <sys/stat.h>
 
-#include "common.h"
-#include "eloop.h"
-#include "common/qca-vendor.h"
-#include "common/qca-vendor-attr.h"
-#include "common/brcm_vendor.h"
-#include "common/ieee802_11_defs.h"
-#include "common/ieee802_11_common.h"
-#include "common/wpa_common.h"
-#include "common/nan.h"
-#include "common/nan_de.h"
-#include "common/morse/morse_commands.h"
-#include "crypto/sha256.h"
-#include "crypto/sha384.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/common/qca-vendor.h"
+#include "hostap/src/common/qca-vendor-attr.h"
+#include "hostap/src/common/brcm_vendor.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/ieee802_11_common.h"
+#include "hostap/src/common/wpa_common.h"
+#include "hostap/src/common/nan.h"
+#include "hostap/src/common/nan_de.h"
+#include "hostap/src/common/morse/morse_commands.h"
+#include "hostap/src/crypto/sha256.h"
+#include "hostap/src/crypto/sha384.h"
 #include "netlink.h"
 #include "linux_defines.h"
 #include "linux_ioctl.h"
-#include "radiotap.h"
-#include "radiotap_iter.h"
+#include "hostap/src/utils/radiotap.h"
+#include "hostap/src/utils/radiotap_iter.h"
 #include "rfkill.h"
 #include "driver_nl80211.h"
-#include "morse.h"
+#include "hostap/src/utils/morse.h"
 
 #define MORSE_VENDOR_CMD_TO_MORSE 0x00
 #define RAW_CMD_MAX_3BIT_SLOTS          (0b111)

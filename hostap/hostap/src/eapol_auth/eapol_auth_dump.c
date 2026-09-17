@@ -6,10 +6,10 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "eap_server/eap.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/eap_server/eap.h"
 #include "eapol_auth_sm.h"
 #include "eapol_auth_sm_i.h"
 

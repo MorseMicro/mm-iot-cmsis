@@ -22,7 +22,7 @@
  * guaranteed to be secure for any of the security assumptions to hold.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #ifdef __linux__
 #include <fcntl.h>
 #ifdef CONFIG_GETRANDOM
@@ -30,9 +30,9 @@
 #endif /* CONFIG_GETRANDOM */
 #endif /* __linux__ */
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "crypto/crypto.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/crypto/crypto.h"
 #include "sha1.h"
 #include "random.h"
 

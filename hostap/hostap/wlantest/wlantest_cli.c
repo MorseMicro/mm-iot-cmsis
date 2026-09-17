@@ -6,13 +6,13 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 #include <sys/un.h>
 
-#include "utils/common.h"
-#include "utils/eloop.h"
-#include "utils/edit.h"
-#include "common/cli.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/edit.h"
+#include "hostap/src/common/cli.h"
 #include "wlantest_ctrl.h"
 
 static void print_help(FILE *stream, const char *cmd);

@@ -6,9 +6,9 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common/wpa_ctrl.h"
+#include "hostap/src/common/wpa_ctrl.h"
 
 int main(int argc, char *argv[])
 {

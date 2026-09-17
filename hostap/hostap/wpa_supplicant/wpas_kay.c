@@ -6,14 +6,14 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "eap_peer/eap.h"
-#include "eap_peer/eap_i.h"
-#include "eapol_supp/eapol_supp_sm.h"
-#include "pae/ieee802_1x_key.h"
-#include "pae/ieee802_1x_kay.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/eap_peer/eap.h"
+#include "hostap/src/eap_peer/eap_i.h"
+#include "hostap/src/eapol_supp/eapol_supp_sm.h"
+#include "hostap/src/pae/ieee802_1x_key.h"
+#include "hostap/src/pae/ieee802_1x_kay.h"
 #include "wpa_supplicant_i.h"
 #include "config.h"
 #include "config_ssid.h"

@@ -9,7 +9,7 @@
 #ifndef IKEV2_H
 #define IKEV2_H
 
-#include "eap_common/ikev2_common.h"
+#include "hostap/src/eap_common/ikev2_common.h"
 
 struct ikev2_proposal_data {
 	u8 proposal_num;

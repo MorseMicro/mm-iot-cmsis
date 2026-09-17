@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
- * Copyright 2023 Morse Micro.
+ * Copyright 2023-2026 Morse Micro.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -646,10 +646,27 @@ void transport_disconnect( NetworkContext_t * pNetworkContext )
 }
 /*-----------------------------------------------------------*/
 
-int32_t transport_recv_with_timeout(NetworkContext_t * pNetworkContext,
-                                    void * pBuffer,
+int32_t transport_recv_with_timeout(NetworkContext_t *pNetworkContext,
+                                    void *pBuffer,
                                     size_t bytesToRecv,
                                     uint32_t timeoutMs)
+{
+    return transport_recv_from_with_timeout(pNetworkContext,
+                                            pBuffer,
+                                            bytesToRecv,
+                                            timeoutMs,
+                                            NULL,
+                                            0,
+                                            NULL);
+}
+
+int32_t transport_recv_from_with_timeout(NetworkContext_t *pNetworkContext,
+                                         void *pBuffer,
+                                         size_t bytesToRecv,
+                                         uint32_t timeoutMs,
+                                         char *source_ip,
+                                         size_t source_ip_len,
+                                         uint16_t *source_port)
 {
     int32_t readStatus = 0;
 
@@ -658,17 +675,17 @@ int32_t transport_recv_with_timeout(NetworkContext_t * pNetworkContext,
         /* Read with TLS */
         uint32_t old_timeout = pNetworkContext->sslContext.config.MBEDTLS_PRIVATE(read_timeout);
         mbedtls_ssl_conf_read_timeout(&pNetworkContext->sslContext.config, timeoutMs);
-        do
-        {
-            readStatus = ( int32_t ) mbedtls_ssl_read(&( pNetworkContext->sslContext.context ),
-                                                      pBuffer,
-                                                      bytesToRecv );
+        do {
+            readStatus = (int32_t)mbedtls_ssl_read(&(pNetworkContext->sslContext.context),
+                                                   pBuffer,
+                                                   bytesToRecv);
         }
 #if defined(MBEDTLS_SSL_PROTO_TLS1_3) && !defined(MBEDTLS_SSL_SESSION_TICKETS)
-        /* In TLS 1.3, a new session ticket is issued by the server after the handshake is successfully completed.
-        * When session tickets are disabled on the client, mbedtls returns MBEDTLS_ERR_SSL_UNEXPECTED_MESSAGE
-        * when a new session ticket message is received from the server.
-        */
+        /* In TLS 1.3, a new session ticket is issued by the server after the handshake is
+         * successfully completed. When session tickets are disabled on the client, mbedtls returns
+         * MBEDTLS_ERR_SSL_UNEXPECTED_MESSAGE when a new session ticket message is received from the
+         * server.
+         */
         while (readStatus == MBEDTLS_ERR_SSL_UNEXPECTED_MESSAGE);
 #else
         while (0);
@@ -678,10 +695,14 @@ int32_t transport_recv_with_timeout(NetworkContext_t * pNetworkContext,
     else
     {
         /* Read in the clear */
-        readStatus = (int32_t) mbedtls_net_recv_timeout(&(pNetworkContext->socket),
-                                                        pBuffer,
-                                                        bytesToRecv,
-                                                        timeoutMs);
+        readStatus =
+            (int32_t)mbedtls_net_recvfrom_timeout(&(pNetworkContext->socket),
+                                                  pBuffer,
+                                                  bytesToRecv,
+                                                  timeoutMs,
+                                                  source_ip,
+                                                  source_ip_len,
+                                                  source_port);
     }
 
     return readStatus;
@@ -703,29 +724,39 @@ int32_t transport_recv( NetworkContext_t * pNetworkContext,
 }
 /*-----------------------------------------------------------*/
 
-int32_t transport_send( NetworkContext_t * pNetworkContext,
-                           const void * pBuffer,
-                           size_t bytesToSend )
+int32_t transport_send(NetworkContext_t *pNetworkContext, const void *pBuffer, size_t bytesToSend)
+{
+    return transport_send_to(pNetworkContext, pBuffer, bytesToSend, NULL, NULL);
+}
+
+int32_t transport_send_to(NetworkContext_t *pNetworkContext,
+                          const void *pBuffer,
+                          size_t bytesToSend,
+                          const char *destination_ip,
+                          const uint16_t *destination_port)
 {
     int32_t sendStatus = 0;
 
     if (pNetworkContext->sslContext.useTLS)
     {
         /* Send with TLS */
-        sendStatus = ( int32_t ) mbedtls_ssl_write( &( pNetworkContext->sslContext.context ),
-                                               pBuffer,
-                                               bytesToSend );
+        sendStatus = (int32_t)mbedtls_ssl_write(&(pNetworkContext->sslContext.context),
+                                                pBuffer,
+                                                bytesToSend);
     }
     else
     {
         /* Send in the clear */
-        sendStatus = ( int32_t ) mbedtls_net_send( &( pNetworkContext->socket ),
-                                               pBuffer,
-                                               bytesToSend );
+        sendStatus = (int32_t)mbedtls_net_sendto(&(pNetworkContext->socket),
+                                                 pBuffer,
+                                                 bytesToSend,
+                                                 destination_ip,
+                                                 destination_port);
     }
 
     return sendStatus;
 }
+
 /*-----------------------------------------------------------*/
 
 static void transport_recv_callback( struct mbedtls_net_context * mbedtlsCtx, void *arg )

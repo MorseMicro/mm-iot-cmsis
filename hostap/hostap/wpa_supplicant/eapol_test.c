@@ -9,27 +9,27 @@
  * Not used in production version.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <assert.h>
 
-#include "common.h"
-#include "utils/ext_password.h"
-#include "common/version.h"
-#include "crypto/crypto.h"
-#include "crypto/tls.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/ext_password.h"
+#include "hostap/src/common/version.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/tls.h"
 #include "config.h"
-#include "eapol_supp/eapol_supp_sm.h"
-#include "eap_peer/eap.h"
-#include "eap_server/eap_methods.h"
-#include "eloop.h"
-#include "utils/base64.h"
-#include "rsn_supp/wpa.h"
+#include "hostap/src/eapol_supp/eapol_supp_sm.h"
+#include "hostap/src/eap_peer/eap.h"
+#include "hostap/src/eap_server/eap_methods.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/utils/base64.h"
+#include "hostap/src/rsn_supp/wpa.h"
 #include "wpa_supplicant_i.h"
-#include "radius/radius.h"
-#include "radius/radius_client.h"
-#include "common/wpa_ctrl.h"
+#include "hostap/src/radius/radius.h"
+#include "hostap/src/radius/radius_client.h"
+#include "hostap/src/common/wpa_ctrl.h"
 #include "ctrl_iface.h"
-#include "pcsc_funcs.h"
+#include "hostap/src/utils/pcsc_funcs.h"
 #include "wpas_glue.h"
 
 

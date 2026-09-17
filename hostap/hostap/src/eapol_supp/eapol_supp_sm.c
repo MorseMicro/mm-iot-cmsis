@@ -6,18 +6,18 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "state_machine.h"
-#include "wpabuf.h"
-#include "eloop.h"
-#include "crypto/crypto.h"
-#include "crypto/md5.h"
-#include "common/eapol_common.h"
-#include "eap_peer/eap.h"
-#include "eap_peer/eap_config.h"
-#include "eap_peer/eap_proxy.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/state_machine.h"
+#include "hostap/src/utils/wpabuf.h"
+#include "hostap/src/utils/eloop.h"
+#include "hostap/src/crypto/crypto.h"
+#include "hostap/src/crypto/md5.h"
+#include "hostap/src/common/eapol_common.h"
+#include "hostap/src/eap_peer/eap.h"
+#include "hostap/src/eap_peer/eap_config.h"
+#include "hostap/src/eap_peer/eap_proxy.h"
 #include "eapol_supp_sm.h"
 
 #define STATE_MACHINE_DATA struct eapol_sm

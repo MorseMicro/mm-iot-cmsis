@@ -6,14 +6,14 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/ms_funcs.h"
-#include "crypto/sha1.h"
-#include "crypto/tls.h"
-#include "eap_common/chap.h"
-#include "eap_common/eap_ttls.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/ms_funcs.h"
+#include "hostap/src/crypto/sha1.h"
+#include "hostap/src/crypto/tls.h"
+#include "hostap/src/eap_common/chap.h"
+#include "hostap/src/eap_common/eap_ttls.h"
 #include "mschapv2.h"
 #include "eap_i.h"
 #include "eap_tls_common.h"

@@ -9,7 +9,7 @@
 #ifndef WPA_COMMON_H
 #define WPA_COMMON_H
 
-#include "common/defs.h"
+#include "hostap/src/common/defs.h"
 
 /* IEEE 802.11i */
 #define PMKID_LEN 16

@@ -8,16 +8,16 @@
  * See README for more details.
  */
 
-#include "utils/includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "utils/common.h"
-#include "common/ieee802_11_defs.h"
-#include "common/hw_features_common.h"
-#include "common/wpa_ctrl.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/common/ieee802_11_defs.h"
+#include "hostap/src/common/hw_features_common.h"
+#include "hostap/src/common/wpa_ctrl.h"
 #include "hostapd.h"
 #include "beacon.h"
 #include "ap_drv_ops.h"
-#include "drivers/driver.h"
+#include "hostap/src/drivers/driver.h"
 #include "dfs.h"
 
 

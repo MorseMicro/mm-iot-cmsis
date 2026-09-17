@@ -8,7 +8,7 @@
  * See wps_upnp.c for more details on licensing and code history.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
 #include <fcntl.h>
 #include <sys/ioctl.h>
@@ -17,9 +17,9 @@
 #include <net/if.h>
 #endif /* __linux__ */
 
-#include "common.h"
-#include "uuid.h"
-#include "eloop.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/utils/uuid.h"
+#include "hostap/src/utils/eloop.h"
 #include "wps.h"
 #include "wps_upnp.h"
 #include "wps_upnp_i.h"

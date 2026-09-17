@@ -6,7 +6,7 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 #include <nettle/nettle-meta.h>
 #include <nettle/des.h>
 #undef des_encrypt
@@ -17,7 +17,7 @@
 #include <nettle/arcfour.h>
 #include <nettle/bignum.h>
 
-#include "common.h"
+#include "hostap/src/utils/common.h"
 #include "md5.h"
 #include "sha1.h"
 #include "sha256.h"

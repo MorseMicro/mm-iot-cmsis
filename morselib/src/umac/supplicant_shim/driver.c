@@ -31,7 +31,7 @@
 #include "umac/stats/umac_stats.h"
 #include "umac/wnm_sleep/umac_wnm_sleep.h"
 #include "umac/ies/s1g_capabilities.h"
-#include "utils/morse.h"
+#include "hostap/src/utils/morse.h"
 
 
 #define HZ_TO_KHZ(x) ((x) / 1000)

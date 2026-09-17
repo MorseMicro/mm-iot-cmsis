@@ -6,10 +6,10 @@
  * See README for more details.
  */
 
-#include "includes.h"
+#include "hostap/src/utils/includes.h"
 
-#include "common.h"
-#include "crypto/ms_funcs.h"
+#include "hostap/src/utils/common.h"
+#include "hostap/src/crypto/ms_funcs.h"
 
 
 int main(int argc, char *argv[])

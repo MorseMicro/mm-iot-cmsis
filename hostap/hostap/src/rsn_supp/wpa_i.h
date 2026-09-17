@@ -10,7 +10,7 @@
 #ifndef WPA_I_H
 #define WPA_I_H
 
-#include "utils/list.h"
+#include "hostap/src/utils/list.h"
 
 struct wpa_tdls_peer;
 struct wpa_eapol_key;
