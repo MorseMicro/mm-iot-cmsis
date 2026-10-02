@@ -10,22 +10,20 @@
 #define TEMP_BUFFER_SIZE 256
 static char local_output_str[TEMP_BUFFER_SIZE];
 
-
 bool shared_buffer_lock(SharedBuffer *buf)
 {
-    return mmosal_semb_wait(buf->buffer_lock_released, BUFFER_LOCK_DELAY);
+    return mmosal_mutex_get(buf->mutex, UINT32_MAX);
 }
 
 void shared_buffer_unlock(SharedBuffer *buf)
 {
-    mmosal_semb_give(buf->buffer_lock_released);
+    mmosal_mutex_release(buf->mutex);
 }
 
 void shared_buffer_reset(SharedBuffer *buf)
 {
     if (shared_buffer_lock(buf))
     {
-
         buf->buffer[0] = '\0';
         buf->currentIndex = 0;
         shared_buffer_unlock(buf);
@@ -37,11 +35,7 @@ void shared_buffer_init(SharedBuffer *buf)
 {
     buf->currentIndex = 0;
 
-    /* Semaphore flag to indicate the access (read/write) process is allowed
-     * When the flag is given (1) = allow to access to the buffer
-     * When the flag is taken (0) = read/write in progress
-     */
-    buf->buffer_lock_released = mmosal_semb_create("string_buffer_accessible");
+    buf->mutex = mmosal_mutex_create("shared_buffer");
     shared_buffer_unlock(buf);
 
     /* Zero out the buffer initially */
@@ -54,29 +48,28 @@ void shared_buffer_init(SharedBuffer *buf)
  */
 bool shared_buffer_append(SharedBuffer *buf, const char *new_data)
 {
-    int new_data_len = strlen(new_data);
+    size_t new_data_len = strlen(new_data);
+
     if (new_data_len == 0)
     {
         return true;
     }
 
-    if (new_data_len > BUFFER_SIZE - buf->currentIndex)
+    if (!shared_buffer_lock(buf))
     {
-        /* If the buffer does not able to fit, skip pushing in */
         return false;
     }
 
-    if (shared_buffer_lock(buf))
+    if (buf->currentIndex + new_data_len + 1 > BUFFER_SIZE)
     {
-        /* The buffer must have enough space to fit the new string */
-        strcat(buf->buffer, new_data);
-        buf->currentIndex += new_data_len;
-
-        /* ensure the buffer contains '\0' */
-        buf->buffer[buf->currentIndex] = '\0';
-
         shared_buffer_unlock(buf);
+        return false;
     }
+
+    memcpy(buf->buffer + buf->currentIndex, new_data, new_data_len);
+    buf->currentIndex += new_data_len;
+    buf->buffer[buf->currentIndex] = '\0';
+    shared_buffer_unlock(buf);
 
     return true;
 }

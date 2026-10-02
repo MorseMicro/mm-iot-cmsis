@@ -8,14 +8,16 @@
 #include "shared_buffer.h"
 #include "mmiperf.h"
 
+#include <stdatomic.h>
+
 
 extern SharedBuffer http_terminal_buffer;
 static struct mmosal_task *iperf_task_p;
 
-bool is_tcp_server_up=false;
-bool is_udp_server_up=false;
-bool is_tcp_client_running=false;
-bool is_udp_client_running=false;
+static atomic_bool is_tcp_server_up = ATOMIC_VAR_INIT(false);
+static atomic_bool is_udp_server_up = ATOMIC_VAR_INIT(false);
+static atomic_bool is_tcp_client_running = ATOMIC_VAR_INIT(false);
+static atomic_bool is_udp_client_running = ATOMIC_VAR_INIT(false);
 
 const char *report_type_string(enum mmiperf_report_type type)
 {
@@ -98,17 +100,17 @@ static void iperf_report_handler(const struct mmiperf_report *report, void *arg,
     }
     else if (report->report_type == MMIPERF_UDP_DONE_CLIENT)
     {
-        is_udp_client_running = false;
+        atomic_store_explicit(&is_udp_client_running, false, memory_order_release);
     }
     else if (report->report_type == MMIPERF_TCP_DONE_CLIENT)
     {
-        is_tcp_client_running = false;
+        atomic_store_explicit(&is_tcp_client_running, false, memory_order_release);
     }
 }
 
 static void iperf_start_udp_server(uint16_t port) {
 	struct mmiperf_server_args args = MMIPERF_SERVER_ARGS_DEFAULT;
-	if (is_udp_server_up)
+	if (atomic_load_explicit(&is_udp_server_up, memory_order_acquire))
 		return;
 	args.local_port = port;
 	args.report_fn = iperf_report_handler;
@@ -119,7 +121,7 @@ static void iperf_start_udp_server(uint16_t port) {
 				"Iperf UDP Server - Failed to get local address\n");
 		return;
 	}
-	is_udp_server_up = true;
+	atomic_store_explicit(&is_udp_server_up, true, memory_order_release);
 
 
 	dual_print(&http_terminal_buffer, "Started Iperf UDP Server - Execute cmd on AP:\n");
@@ -145,7 +147,7 @@ static void iperf_start_udp_server(uint16_t port) {
 
 static void iperf_start_tcp_server(uint16_t port) {
 	struct mmiperf_server_args args = MMIPERF_SERVER_ARGS_DEFAULT;
-	if (is_tcp_server_up)
+	if (atomic_load_explicit(&is_tcp_server_up, memory_order_acquire))
 		return;
 	args.local_port = port;
 	args.report_fn = iperf_report_handler;
@@ -155,7 +157,7 @@ static void iperf_start_tcp_server(uint16_t port) {
 				"Iperf TCP Server - Failed to get local address\n");
 		return;
 	}
-	is_tcp_server_up = true;
+	atomic_store_explicit(&is_tcp_server_up, true, memory_order_release);
 
 
 	dual_print(&http_terminal_buffer, "Started Iperf TCP Server - Execute cmd on AP:\n");
@@ -181,34 +183,46 @@ static void iperf_start_tcp_server(uint16_t port) {
 static void iperf_start_udp_client(const char *target_ip, uint16_t port, int amount)
 {
     struct mmiperf_client_args args = MMIPERF_CLIENT_ARGS_DEFAULT;
-    if (is_udp_client_running)
+    if (atomic_load_explicit(&is_udp_client_running, memory_order_acquire))
         return;
     strncpy(args.server_addr,target_ip,sizeof(args.server_addr));
     args.server_port = port;
     args.amount = amount;
     args.report_fn = iperf_report_handler;
     mmiperf_start_udp_client(&args);
-    is_udp_client_running = true;
+    atomic_store_explicit(&is_udp_client_running, true, memory_order_release);
     dual_print(&http_terminal_buffer, "Started Iperf UDP client\n");
 }
 
 static void iperf_start_tcp_client(const char *target_ip, uint16_t port, uint32_t amount)
 {
     struct mmiperf_client_args args = MMIPERF_CLIENT_ARGS_DEFAULT;
-    if (is_tcp_client_running)
+    if (atomic_load_explicit(&is_tcp_client_running, memory_order_acquire))
         return;
     strncpy(args.server_addr, target_ip, sizeof(args.server_addr));
     args.server_port = port;
     args.amount      = amount;
     args.report_fn   = iperf_report_handler;
     mmiperf_start_tcp_client(&args);
-    is_tcp_client_running = true;
+    atomic_store_explicit(&is_tcp_client_running, true, memory_order_release);
     dual_print(&http_terminal_buffer, "Started Iperf TCP client\n");
 }
 
-bool iperf_is_client_in_progress(void) { return is_tcp_client_running || is_udp_client_running; }
-bool iperf_is_tcp_server_up(void) { return is_tcp_server_up; }
-bool iperf_is_udp_server_up(void) { return is_udp_server_up; }
+bool iperf_is_client_in_progress(void)
+{
+    return atomic_load_explicit(&is_tcp_client_running, memory_order_acquire) ||
+           atomic_load_explicit(&is_udp_client_running, memory_order_acquire);
+}
+
+bool iperf_is_tcp_server_up(void)
+{
+    return atomic_load_explicit(&is_tcp_server_up, memory_order_acquire);
+}
+
+bool iperf_is_udp_server_up(void)
+{
+    return atomic_load_explicit(&is_udp_server_up, memory_order_acquire);
+}
 
 static struct mmosal_queue * iperf_command_pool_queue = NULL;
 

@@ -25,7 +25,7 @@ struct mmosal_task *periphs_task_p;
 static uint8_t got_sof = 0; /*got Start Of Frame*/
 uint32_t image_data_size = 0;
 uint8_t *image_data_ptr = NULL;
-uint8_t JPEG_buffer[JPEG_BUFFER_SIZE];
+uint8_t JPEG_buffer[JPEG_BUFFER_SIZE] __attribute__((aligned(4)));
 
 extern TIM_HandleTypeDef htim4;
 extern OSPI_HandleTypeDef hospi1;

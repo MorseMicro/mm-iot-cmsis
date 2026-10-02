@@ -61,7 +61,7 @@ static void update_ble_ip_report(struct netif *netif)
         /* get CIDR notation of the netmask and add it to the IP*/
         for (int i = 0; i < 32; i++)
         {
-            if (netif->netmask.u_addr.ip4.addr & (1 << i))
+            if (netif->netmask.u_addr.ip4.addr & (UINT32_C(1) << i))
             {
                 mask_counter++;
             }

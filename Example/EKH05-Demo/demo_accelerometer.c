@@ -15,6 +15,7 @@ extern I2C_HandleTypeDef hi2c1;
 /* Private variables ---------------------------------------------------------*/
 static stmdev_ctx_t dev_ctx;
 static int16_t data_raw_acceleration[3] = {0, 0, 0};
+static struct mmosal_mutex *data_raw_acceleration_mutex = NULL;
 static uint8_t sensor_initialized = 0;
 /* Setting iis328dq_i2c_addr to IIS328DQ_I2C_ADD_L, only to have a valid value.
  * This isn't the default address. The detect function will overwrite it anyways.
@@ -92,22 +93,31 @@ void accelerometer_process(void)
 
     if (reg.status_reg.zyxda)
     {
-        /* Read acceleration data */
-        iis328dq_acceleration_raw_get(&dev_ctx, data_raw_acceleration);
-        if (data_raw_acceleration[0] > 0)
+        int16_t raw_acceleration[3];
+
+        /* Read acceleration data. */
+        iis328dq_acceleration_raw_get(&dev_ctx, raw_acceleration);
+        MMOSAL_MUTEX_GET_INF(data_raw_acceleration_mutex);
+        for (uint8_t i = 0; i < 3; ++i)
         {
-            left = data_raw_acceleration[0] / 16;
+            data_raw_acceleration[i] = raw_acceleration[i];
+        }
+        MMOSAL_MUTEX_RELEASE(data_raw_acceleration_mutex);
+
+        if (raw_acceleration[0] > 0)
+        {
+            left = raw_acceleration[0] / 16;
             right = 0;
         }
         else
         {
-            right = 0 - data_raw_acceleration[0] / 16;
+            right = 0 - raw_acceleration[0] / 16;
             left = 0;
         }
 
-        if (data_raw_acceleration[1] > 0)
+        if (raw_acceleration[1] > 0)
         {
-            down = data_raw_acceleration[1] / 16;
+            down = raw_acceleration[1] / 16;
         }
         else
         {
@@ -121,6 +131,10 @@ void accelerometer_process(void)
 
 void accelerometer_init(void)
 {
+    MMOSAL_ASSERT(data_raw_acceleration_mutex == NULL);
+    data_raw_acceleration_mutex = mmosal_mutex_create("accelerometer_values");
+    MMOSAL_ASSERT(data_raw_acceleration_mutex != NULL);
+
     dev_ctx.write_reg = IIS328DQ_platform_write;
     dev_ctx.read_reg = IIS328DQ_platform_read;
     dev_ctx.mdelay = mmosal_task_sleep;
@@ -153,5 +167,15 @@ void accelerometer_init(void)
 
 accelerometer_value_t get_accelerometer_values()
 {
-    return *(accelerometer_value_t *)&data_raw_acceleration;
+    accelerometer_value_t values;
+
+    MMOSAL_MUTEX_GET_INF(data_raw_acceleration_mutex);
+    values = (accelerometer_value_t){
+        .x = data_raw_acceleration[0],
+        .y = data_raw_acceleration[1],
+        .z = data_raw_acceleration[2],
+    };
+    MMOSAL_MUTEX_RELEASE(data_raw_acceleration_mutex);
+
+    return values;
 }

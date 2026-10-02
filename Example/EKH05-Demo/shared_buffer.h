@@ -14,14 +14,13 @@
 
 
 #define BUFFER_SIZE 512
-#define BUFFER_LOCK_DELAY 500
 
 /* SharedBuffer contains a shared buffer that can be safely used to share data between tasks.*/
 typedef struct
 {
     char buffer[BUFFER_SIZE];
-    int currentIndex;
-    struct mmosal_semb *buffer_lock_released;
+    size_t currentIndex;
+    struct mmosal_mutex *mutex;
 } SharedBuffer;
 
 bool shared_buffer_lock(SharedBuffer *buf);

@@ -7,6 +7,8 @@
 #include "mmhal_uart.h"
 #include "mmutils.h"
 
+#include <stdatomic.h>
+
 #include "mmagic.h"
 #include "mmregdb.h"
 
@@ -24,22 +26,22 @@
 #endif /* APPLICATION_VERSION */
 
 /** Flag to show if anything received on uart. used to disable autoconnect. */
-bool uart_data_received = false;
+atomic_bool uart_data_received = ATOMIC_VAR_INIT(false);
 
 /** Flag to show if connecting on power on. If true, will discard uart rx. */
-bool auto_connect_in_progress = false;
+atomic_bool auto_connect_in_progress = ATOMIC_VAR_INIT(false);
 
 /** Pointer to context for CLI receive callback. */
 struct mmagic_cli *mmagic_cli_ctx;
 
 bool cli_get_uart_data_received(void)
 {
-    return uart_data_received;
+    return atomic_load_explicit(&uart_data_received, memory_order_acquire);
 }
 
 void cli_set_auto_connect_in_progress(bool in_progress)
 {
-    auto_connect_in_progress = in_progress;
+    atomic_store_explicit(&auto_connect_in_progress, in_progress, memory_order_release);
 }
 
 /**
@@ -54,9 +56,9 @@ void cli_uart_rx_handler(const uint8_t *data, size_t length, void *arg)
     MM_UNUSED(arg);
     if (mmagic_cli_ctx != NULL)
     {
-        if(!auto_connect_in_progress)
+        if (!atomic_load_explicit(&auto_connect_in_progress, memory_order_acquire))
         {
-            uart_data_received = true;
+            atomic_store_explicit(&uart_data_received, true, memory_order_release);
             mmagic_cli_rx(mmagic_cli_ctx, (const char *)data, length);
         }
     }

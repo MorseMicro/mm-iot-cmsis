@@ -7,6 +7,8 @@
 #include "demo_ping.h"
 #include "shared_buffer.h"
 
+#include <stdatomic.h>
+
 #define PING_TARGET "192.168.1.1"
 #define PING_COUNT 10
 
@@ -21,12 +23,12 @@
 
 extern SharedBuffer http_terminal_buffer;
 
-static bool break_ping = false;
-static bool ping_in_progress = false;
+static atomic_bool ping_in_progress = ATOMIC_VAR_INIT(false);
 
 static struct mmping_args args = MMPING_ARGS_DEFAULT;
 
 static struct mmosal_semb *ping_task_start = NULL;
+static struct mmosal_semb *ping_stop_request = NULL;
 static struct mmosal_task *ping_task_p;
 
 
@@ -34,7 +36,8 @@ static struct mmosal_task *ping_task_p;
 void ping_routine(void)
 {
     /** Executes the ping. */
-    bool shared_buffer_ok=true;
+    bool shared_buffer_ok = true;
+    bool stopped_by_user = false;
 
     enum mmipal_status status = mmipal_get_local_addr(args.ping_src, args.ping_target);
     if (status != MMIPAL_SUCCESS)
@@ -65,19 +68,25 @@ void ping_routine(void)
                 stats.ping_total_count, stats.ping_recv_count, stats.ping_min_time_ms,
                 stats.ping_avg_time_ms, stats.ping_max_time_ms);
 
-            if (break_ping || !shared_buffer_ok)
-            {
-                /* stop at the mid-point */
-                break_ping = false;
-                mmping_stop();
-                break;
-            }
+        }
+
+        if (mmosal_semb_wait(ping_stop_request, 0))
+        {
+            stopped_by_user = true;
+            mmping_stop();
+            break;
+        }
+
+        if (!shared_buffer_ok)
+        {
+            mmping_stop();
+            break;
         }
         last_ping_recv_count = stats.ping_recv_count;
         last_ping_total_count = stats.ping_total_count;
     }
 
-    if (break_ping)
+    if (stopped_by_user)
     {
         dual_print(&http_terminal_buffer, "Terminated by user.");
     }
@@ -99,7 +108,6 @@ void ping_routine(void)
     dual_print(&http_terminal_buffer, "%lu.%03lu%% packet loss round-trip min/avg/max = %lu/%lu/%lu ms\n", loss / 1000,
                loss % 1000, stats.ping_min_time_ms, stats.ping_avg_time_ms, stats.ping_max_time_ms);
 
-    break_ping = false;
 }
 
 static void demo_ping_task(void *arg)
@@ -109,16 +117,18 @@ static void demo_ping_task(void *arg)
     {
         /* Should wait forever until the binary is 1 */
         mmosal_semb_wait(ping_task_start, UINT32_MAX);
-        ping_in_progress = true;
+        atomic_store_explicit(&ping_in_progress, true, memory_order_release);
         ping_routine();
-        ping_in_progress = false;
+        atomic_store_explicit(&ping_in_progress, false, memory_order_release);
     }
 }
 
 void ping_init(void)
 {
     MMOSAL_ASSERT(ping_task_start == NULL);
+    MMOSAL_ASSERT(ping_stop_request == NULL);
     ping_task_start = mmosal_semb_create("ping_task_start");
+    ping_stop_request = mmosal_semb_create("ping_stop_request");
 
     /* First Use the default values, */
     strncpy(args.ping_target, PING_TARGET, sizeof(args.ping_target));
@@ -134,7 +144,10 @@ void ping_init(void)
     }
 }
 
-bool ping_get_in_progress(void) { return ping_in_progress; }
+bool ping_get_in_progress(void)
+{
+    return atomic_load_explicit(&ping_in_progress, memory_order_acquire);
+}
 
 const char *ping_get_target(void) { return args.ping_target; }
 
@@ -144,11 +157,22 @@ void ping_set_IP(const char *ip) { strncpy(args.ping_target, ip, sizeof(args.pin
 
 void ping_set_count(uint32_t count) { args.ping_count = count; }
 
-void ping_stop(void) { break_ping = true; }
+void ping_stop(void)
+{
+    if (ping_stop_request != NULL)
+    {
+        mmosal_semb_give(ping_stop_request);
+    }
+}
 
 void ping_start(void)
 {
     shared_buffer_reset(&http_terminal_buffer);
+
+    /* Ignore stop requests made before this ping starts. */
+    while (ping_stop_request != NULL && mmosal_semb_wait(ping_stop_request, 0))
+    {
+    }
 
     if (ping_task_start != NULL)
     {

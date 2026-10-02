@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
 	<storageModule moduleId="org.eclipse.cdt.core.settings">
-		<cconfiguration id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.741917119">
-			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.741917119" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+		<cconfiguration id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.966414773">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.966414773" moduleId="org.eclipse.cdt.core.settings" name="Debug">
 				<externalSettings/>
 				<extensions>
 					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -14,33 +14,93 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactExtension="elf" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.741917119" name="Debug" parent="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug">
-					<folderInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.741917119." name="/" resourcePath="">
-						<toolChain id="com.st.stm32cube.ide.mcu.gnu.managedbuild.toolchain.exe.debug.1806729361" name="MCU ARM GCC" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.toolchain.exe.debug">
-							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_mcu.1946556543" name="MCU" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_mcu" useByScannerDiscovery="true" value="STM32U585VITxQ" valueType="string"/>
-							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_cpuid.8532966" name="CPU" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_cpuid" useByScannerDiscovery="false" value="0" valueType="string"/>
-							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_coreid.995113762" name="Core" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_coreid" useByScannerDiscovery="false" value="0" valueType="string"/>
-							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu.639789285" name="Floating-point unit" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu.value.fpv5-sp-d16" valueType="enumerated"/>
-							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi.412181632" name="Floating-point ABI" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi.value.hard" valueType="enumerated"/>
-							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board.1678863750" name="Board" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board" useByScannerDiscovery="false" value="genericBoard" valueType="string"/>
-							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults.1741455392" name="Defaults" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults" useByScannerDiscovery="false" value="com.st.stm32cube.ide.common.services.build.inputs.revA.1.0.6 || Debug || true || Executable || com.st.stm32cube.ide.mcu.gnu.managedbuild.option.toolchain.value.workspace || STM32U585VITxQ || 0 || 0 || arm-none-eabi- || ${gnu_tools_for_stm32_compiler_path} || ../Core/Inc | ../Drivers/STM32U5xx_HAL_Driver/Inc | ../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy | ../Drivers/CMSIS/Device/ST/STM32U5xx/Include | ../Drivers/CMSIS/Include | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmipal | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmipal/lwip | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmutils | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mm_app_common | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/netif | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/netif/ppp | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip/priv | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip/apps | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/lwip/prot | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/stdc | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix/arpa | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix/sys | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/src/include/compat/posix/net | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/port | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmLwIP/port/arch | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmconfig | ../Middlewares/Third_Party/FreeRTOS/Source/include/ | ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/ | ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/ | ../Middlewares/Third_Party/CMSIS/RTOS2/Include/ | ../Drivers/BSP/MorseMicro_board/EKH05/SPI | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmiperf | ../Middlewares/Third_Party/MorseMicro_MM_IoT/mmiperf/lwip | ../Middlewares/Third_Party/MorseMicro_MM_IoT ||  ||  || USE_FULL_LL_DRIVER | USE_HAL_DRIVER | STM32U585xx ||  || MM_IoT | Drivers | RTOS2 | Core/Startup | Middlewares | Core ||  || ${workspace_loc:/${ProjName}/STM32U585VITXQ_FLASH.ld} || true || NonSecure ||  || secure_nsclib.o ||  || None ||  ||  || " valueType="string"/>
-							<option id="com.st.stm32cube.ide.mcu.debug.option.cpuclock.1576813" superClass="com.st.stm32cube.ide.mcu.debug.option.cpuclock" useByScannerDiscovery="false" value="160" valueType="string"/>
-							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.targetplatform.670830622" isAbstract="false" osList="all" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.targetplatform"/>
-							<builder buildPath="${workspace_loc:/HaLow_example_sdio}/Debug" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.builder.124827527" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" parallelBuildOn="true" parallelizationNumber="optimal" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.builder"/>
-							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.294223738" name="MCU GCC Assembler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler">
-								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel.1836858460" name="Debug level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel.value.g3" valueType="enumerated"/>
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.definedsymbols.1385610205" name="Define symbols (-D)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.definedsymbols" valueType="definedSymbols">
+				<configuration artifactExtension="elf" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.966414773" name="Debug" parent="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug">
+					<folderInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.966414773." name="/" resourcePath="">
+						<toolChain id="com.st.stm32cube.ide.mcu.gnu.managedbuild.toolchain.exe.debug.1106224417" name="MCU ARM GCC" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.toolchain.exe.debug">
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_mcu.1823103904" name="MCU" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_mcu" useByScannerDiscovery="true" value="STM32U585VITxQ" valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_cpuid.215091398" name="CPU" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_cpuid" useByScannerDiscovery="false" value="0" valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_coreid.566390669" name="Core" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_coreid" useByScannerDiscovery="false" value="0" valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu.1341614719" name="Floating-point unit" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu.value.fpv5-sp-d16" valueType="enumerated"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi.1778219590" name="Floating-point ABI" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi.value.hard" valueType="enumerated"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board.455476991" name="Board" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board" useByScannerDiscovery="false" value="genericBoard" valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults.507807566" name="Defaults" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults" useByScannerDiscovery="false" value="com.st.stm32cube.ide.common.services.build.inputs.revA.1.0.6 || Debug || true || Executable || com.st.stm32cube.ide.mcu.gnu.managedbuild.option.toolchain.value.workspace || STM32U585VITxQ || 0 || 0 || arm-none-eabi- || ${gnu_tools_for_stm32_compiler_path} || ../Core/Inc | ../MM_IoT/Target | ../BlueNRG-2/Target | ../Drivers/STM32U5xx_HAL_Driver/Inc | ../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy | ../Drivers/CMSIS/Device/ST/STM32U5xx/Include | ../Drivers/CMSIS/Include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mm_app_common | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/mmrc/src/core | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/emmet | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/internal | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/umac/rc/mmrc_osal | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmping | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT//hostap | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/hostap/hostap | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmregdb | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmconfig | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT-Agent/source/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/port/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/src/include/compat/posix/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/src/include/ | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreSNTP/source/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/littlefs | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreJSON/source/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/agent | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/agent/m2m_api/autogen/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/controller | ../Middlewares/Third_Party/MorseMicro_MM_IoT/Example/EKH05-Demo/bluenrg_app | ../Middlewares/Third_Party/MorseMicro_MM_IoT/Example/EKH05-Demo | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT/source/include | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/slip | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmipal | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/MMx108/sdio | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/iis328dq | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/sht4x | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/ov5640 | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/bsp/Inc | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/bsp/common | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/w25q16jv | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmiperf | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mbedtls/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mbedtls | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/mqtt-agent-task/include | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/freertos-libs-common/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmutils | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/backoffAlgorithm/source/include | ../Middlewares/Third_Party/FreeRTOS/Source/include/ | ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/ | ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/ | ../Middlewares/Third_Party/CMSIS/RTOS2/Include/ | ../Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic | ../Middlewares/ST/BlueNRG-2/utils | ../Middlewares/ST/BlueNRG-2/includes || ../Core/Inc | ../MM_IoT/Target | ../BlueNRG-2/Target | ../Drivers/STM32U5xx_HAL_Driver/Inc | ../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy | ../Drivers/CMSIS/Device/ST/STM32U5xx/Include | ../Drivers/CMSIS/Include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mm_app_common | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/mmrc/src/core | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/emmet | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/internal | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/umac/rc/mmrc_osal | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmping | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT//hostap | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/hostap/hostap | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmregdb | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmconfig | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT-Agent/source/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/port/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/src/include/compat/posix/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/src/include/ | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreSNTP/source/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/littlefs | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreJSON/source/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/agent | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/agent/m2m_api/autogen/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/controller | ../Middlewares/Third_Party/MorseMicro_MM_IoT/Example/EKH05-Demo/bluenrg_app | ../Middlewares/Third_Party/MorseMicro_MM_IoT/Example/EKH05-Demo | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT/source/include | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/slip | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmipal | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/MMx108/sdio | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/iis328dq | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/sht4x | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/ov5640 | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/bsp/Inc | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/bsp/common | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/w25q16jv | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmiperf | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mbedtls/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mbedtls | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/mqtt-agent-task/include | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/freertos-libs-common/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmutils | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/backoffAlgorithm/source/include | ../Middlewares/Third_Party/FreeRTOS/Source/include/ | ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/ | ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/ | ../Middlewares/Third_Party/CMSIS/RTOS2/Include/ | ../Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic | ../Middlewares/ST/BlueNRG-2/utils | ../Middlewares/ST/BlueNRG-2/includes ||  || USE_FULL_LL_DRIVER | USE_HAL_DRIVER | STM32U585xx ||  || MM_IoT | Drivers | BlueNRG-2 | Core/Startup | Middlewares | Core ||  ||  || ${workspace_loc:/${ProjName}/STM32U585VITXQ_FLASH.ld} || true || NonSecure ||  || secure_nsclib.o ||  || None ||  ||  ||  || ::" valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.debug.option.cpuclock.719724507" name="Cpu clock frequence" superClass="com.st.stm32cube.ide.mcu.debug.option.cpuclock" useByScannerDiscovery="false" value="160" valueType="string"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.targetplatform.1065860177" isAbstract="false" osList="all" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.targetplatform"/>
+							<builder buildPath="${workspace_loc:/HaLow_example_sdio}/Debug" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.builder.26408791" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" parallelBuildOn="true" parallelizationNumber="optimal" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.builder"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.973766401" name="MCU/MPU GCC Assembler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler">
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel.939658415" name="Debug level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel.value.g3" valueType="enumerated"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.definedsymbols.360484090" name="Define symbols (-D)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.definedsymbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG"/>
 								</option>
-								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input.1343406955" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths.362178689" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths" valueType="includePath">
+									<listOptionValue builtIn="false" value="../Core/Inc"/>
+									<listOptionValue builtIn="false" value="../MM_IoT/Target"/>
+									<listOptionValue builtIn="false" value="../BlueNRG-2/Target"/>
+									<listOptionValue builtIn="false" value="../Drivers/STM32U5xx_HAL_Driver/Inc"/>
+									<listOptionValue builtIn="false" value="../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy"/>
+									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Device/ST/STM32U5xx/Include"/>
+									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mm_app_common"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/mmrc/src/core"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/emmet"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/internal"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/umac/rc/mmrc_osal"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmping"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT//hostap"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/hostap/hostap"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmregdb"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmconfig"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT-Agent/source/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/port/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/src/include/compat/posix/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/src/include/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreSNTP/source/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/littlefs"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreJSON/source/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/agent"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/agent/m2m_api/autogen/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/controller"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/Example/EKH05-Demo/bluenrg_app"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/Example/EKH05-Demo"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT/source/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/slip"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmipal"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/MMx108/sdio"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/iis328dq"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/sht4x"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/ov5640"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/bsp/Inc"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/bsp/common"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/w25q16jv"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmiperf"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mbedtls/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mbedtls"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/mqtt-agent-task/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/freertos-libs-common/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmutils"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/backoffAlgorithm/source/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/FreeRTOS/Source/include/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/CMSIS/RTOS2/Include/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic"/>
+									<listOptionValue builtIn="false" value="../Middlewares/ST/BlueNRG-2/utils"/>
+									<listOptionValue builtIn="false" value="../Middlewares/ST/BlueNRG-2/includes"/>
+								</option>
+								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input.1390038271" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input"/>
 							</tool>
-							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.222487370" name="MCU GCC Compiler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler">
-								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.debuglevel.1343705363" name="Debug level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.debuglevel" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.debuglevel.value.g3" valueType="enumerated"/>
-								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.optimization.level.1831609679" name="Optimization level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.optimization.level" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.optimization.level.value.og" valueType="enumerated"/>
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.definedsymbols.1633764349" name="Define symbols (-D)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.definedsymbols" useByScannerDiscovery="false" valueType="definedSymbols">
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.819700747" name="MCU/MPU GCC Compiler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler">
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.debuglevel.939945471" name="Debug level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.debuglevel" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.debuglevel.value.g3" valueType="enumerated"/>
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.optimization.level.884276213" name="Optimization level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.optimization.level" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.optimization.level.value.og" valueType="enumerated"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.definedsymbols.1226688125" name="Define symbols (-D)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.definedsymbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG"/>
-
-								<listOptionValue builtIn="false" value="APPLICATION_VERSION=&quot;1.10.2&quot;"/>
+									<listOptionValue builtIn="false" value="USE_FULL_LL_DRIVER"/>
+									<listOptionValue builtIn="false" value="USE_HAL_DRIVER"/>
+									<listOptionValue builtIn="false" value="STM32U585xx"/>
+									<listOptionValue builtIn="false" value="APPLICATION_VERSION=&quot;1.11.0&quot;"/>
 <listOptionValue builtIn="false" value="ENABLE_MMAGIC_DATALINK_UART=1"/>
 <listOptionValue builtIn="false" value="ENABLE_SHADOW_APP=1"/>
 <listOptionValue builtIn="false" value="HTTPD_FSDATA_FILE=&quot;fsdata.h&quot;"/>
@@ -98,49 +158,242 @@
 <listOptionValue builtIn="false" value="WPA_SUPPLICANT_CLEANUP_INTERVAL=120"/>
 <listOptionValue builtIn="false" value="LOOKAROUND_FAIL_MAX=50"/>
 </option>
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths.1312817364" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths" useByScannerDiscovery="false" valueType="includePath">
-
-								</option>
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.otherflags.88513559" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.otherflags" valueType="stringList">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths.669722587" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths" useByScannerDiscovery="false" valueType="includePath">
+									</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.otherflags.1799821377" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.otherflags" valueType="stringList">
 									<listOptionValue builtIn="false" value="-Wno-unused-parameter"/>
 									<listOptionValue builtIn="false" value="-Wno-format"/>
 									<listOptionValue builtIn="false" value="-Wno-unused-but-set-variable"/>
 									<listOptionValue builtIn="false" value="-Wno-unused-function"/>
 									<listOptionValue builtIn="false" value="-Wno-unused-variable"/>
 								</option>
-								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1612708882" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
+								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.863551528" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
-							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.1353110670" name="MCU G++ Compiler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler">
-								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.debuglevel.507370550" name="Debug level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.debuglevel" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.debuglevel.value.g3" valueType="enumerated"/>
-								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.optimization.level.1722393694" name="Optimization level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.optimization.level" useByScannerDiscovery="false"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.586093020" name="MCU/MPU G++ Compiler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler">
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.debuglevel.1996378204" name="Debug level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.debuglevel" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.debuglevel.value.g3" valueType="enumerated"/>
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.optimization.level.344508320" name="Optimization level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.optimization.level" useByScannerDiscovery="false"/>
 							</tool>
-							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.1636267700" name="MCU GCC Linker" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker">
-								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.script.56255540" name="Linker Script (-T)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.script" value="${workspace_loc:/${ProjName}/STM32U585VITXQ_FLASH.ld}" valueType="string"/>
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.directories.180358842" name="Library search path (-L)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.directories" valueType="libPaths">
-									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/morselib/lib/arm-cortex-m33f"/>
-								</option>
-								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.input.898841578" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.input">
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.439639260" name="MCU/MPU GCC Linker" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker">
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.script.1693732932" name="Linker Script (-T)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.script" value="${workspace_loc:/${ProjName}/STM32U585VITXQ_FLASH.ld}" valueType="string"/>
+								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.input.96175530" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
 								</inputType>
 							</tool>
-							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.linker.2060385418" name="MCU G++ Linker" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.linker"/>
-							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.archiver.839023870" name="MCU GCC Archiver" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.archiver"/>
-							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.size.173742297" name="MCU Size" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.size"/>
-							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objdump.listfile.578152337" name="MCU Output Converter list file" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objdump.listfile"/>
-							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.hex.1504657642" name="MCU Output Converter Hex" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.hex"/>
-							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.binary.280552790" name="MCU Output Converter Binary" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.binary"/>
-							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.verilog.1669218900" name="MCU Output Converter Verilog" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.verilog"/>
-							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.srec.889520670" name="MCU Output Converter Motorola S-rec" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.srec"/>
-							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec.1345997788" name="MCU Output Converter Motorola S-rec with symbols" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.linker.232793555" name="MCU/MPU G++ Linker" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.linker"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.archiver.1543898513" name="MCU/MPU GCC Archiver" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.archiver"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.size.2030888849" name="MCU Size" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.size"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objdump.listfile.766793763" name="MCU Output Converter list file" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objdump.listfile"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.hex.1053660053" name="MCU Output Converter Hex" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.hex"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.binary.2057914595" name="MCU Output Converter Binary" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.binary"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.verilog.1569827600" name="MCU Output Converter Verilog" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.verilog"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.srec.1011946051" name="MCU Output Converter Motorola S-rec" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.srec"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec.1762043324" name="MCU Output Converter Motorola S-rec with symbols" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec"/>
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="BlueNRG-2"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="MM_IoT"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="RTOS2"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.953947408">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.953947408" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="elf" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release" cleanCommand="rm -rf" description="" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.953947408" name="Release" parent="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release">
+					<folderInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.953947408." name="/" resourcePath="">
+						<toolChain id="com.st.stm32cube.ide.mcu.gnu.managedbuild.toolchain.exe.release.1712320419" name="MCU ARM GCC" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.toolchain.exe.release">
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_mcu.336800546" name="MCU" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_mcu" useByScannerDiscovery="true" value="STM32U585VITxQ" valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_cpuid.644750308" name="CPU" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_cpuid" useByScannerDiscovery="false" value="0" valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_coreid.753319921" name="Core" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_coreid" useByScannerDiscovery="false" value="0" valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu.1230908353" name="Floating-point unit" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu.value.fpv5-sp-d16" valueType="enumerated"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi.706821770" name="Floating-point ABI" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi.value.hard" valueType="enumerated"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board.1158614801" name="Board" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board" useByScannerDiscovery="false" value="genericBoard" valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults.118470713" name="Defaults" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults" useByScannerDiscovery="false" value="com.st.stm32cube.ide.common.services.build.inputs.revA.1.0.6 || Release || false || Executable || com.st.stm32cube.ide.mcu.gnu.managedbuild.option.toolchain.value.workspace || STM32U585VITxQ || 0 || 0 || arm-none-eabi- || ${gnu_tools_for_stm32_compiler_path} || ../Core/Inc | ../MM_IoT/Target | ../BlueNRG-2/Target | ../Drivers/STM32U5xx_HAL_Driver/Inc | ../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy | ../Drivers/CMSIS/Device/ST/STM32U5xx/Include | ../Drivers/CMSIS/Include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mm_app_common | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/mmrc/src/core | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/emmet | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/internal | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/umac/rc/mmrc_osal | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmping | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT//hostap | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/hostap/hostap | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmregdb | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmconfig | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT-Agent/source/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/port/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/src/include/compat/posix/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/src/include/ | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreSNTP/source/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/littlefs | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreJSON/source/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/agent | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/agent/m2m_api/autogen/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/controller | ../Middlewares/Third_Party/MorseMicro_MM_IoT/Example/EKH05-Demo/bluenrg_app | ../Middlewares/Third_Party/MorseMicro_MM_IoT/Example/EKH05-Demo | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT/source/include | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/slip | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmipal | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/MMx108/sdio | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/iis328dq | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/sht4x | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/ov5640 | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/bsp/Inc | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/bsp/common | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/w25q16jv | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmiperf | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mbedtls/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mbedtls | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/mqtt-agent-task/include | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/freertos-libs-common/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmutils | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/backoffAlgorithm/source/include | ../Middlewares/Third_Party/FreeRTOS/Source/include/ | ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/ | ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/ | ../Middlewares/Third_Party/CMSIS/RTOS2/Include/ | ../Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic | ../Middlewares/ST/BlueNRG-2/utils | ../Middlewares/ST/BlueNRG-2/includes || ../Core/Inc | ../MM_IoT/Target | ../BlueNRG-2/Target | ../Drivers/STM32U5xx_HAL_Driver/Inc | ../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy | ../Drivers/CMSIS/Device/ST/STM32U5xx/Include | ../Drivers/CMSIS/Include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mm_app_common | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/mmrc/src/core | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/emmet | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/internal | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/umac/rc/mmrc_osal | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmping | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT//hostap | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/hostap/hostap | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmregdb | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmconfig | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT-Agent/source/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/port/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/src/include/compat/posix/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/src/include/ | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreSNTP/source/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/littlefs | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreJSON/source/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/agent | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/agent/m2m_api/autogen/ | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/controller | ../Middlewares/Third_Party/MorseMicro_MM_IoT/Example/EKH05-Demo/bluenrg_app | ../Middlewares/Third_Party/MorseMicro_MM_IoT/Example/EKH05-Demo | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT/source/include | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/slip | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmipal | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/MMx108/sdio | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/iis328dq | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/sht4x | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/ov5640 | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/bsp/Inc | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/bsp/common | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/w25q16jv | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmiperf | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mbedtls/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mbedtls | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/mqtt-agent-task/include | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/freertos-libs-common/include | ../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmutils | ../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/backoffAlgorithm/source/include | ../Middlewares/Third_Party/FreeRTOS/Source/include/ | ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/ | ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/ | ../Middlewares/Third_Party/CMSIS/RTOS2/Include/ | ../Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic | ../Middlewares/ST/BlueNRG-2/utils | ../Middlewares/ST/BlueNRG-2/includes ||  || USE_FULL_LL_DRIVER | USE_HAL_DRIVER | STM32U585xx ||  || MM_IoT | Drivers | BlueNRG-2 | Core/Startup | Middlewares | Core ||  ||  || ${workspace_loc:/${ProjName}/STM32U585VITXQ_FLASH.ld} || true || NonSecure ||  || secure_nsclib.o ||  || None ||  ||  ||  || ::" valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.debug.option.cpuclock.532701903" name="Cpu clock frequence" superClass="com.st.stm32cube.ide.mcu.debug.option.cpuclock" useByScannerDiscovery="false" value="160" valueType="string"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.targetplatform.2119904531" isAbstract="false" osList="all" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.targetplatform"/>
+							<builder buildPath="${workspace_loc:/HaLow_example_sdio}/Release" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.builder.56865817" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" parallelBuildOn="true" parallelizationNumber="optimal" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.builder"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.368551623" name="MCU/MPU GCC Assembler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler">
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel.1099414598" name="Debug level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel.value.g0" valueType="enumerated"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths.2097341974" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths" valueType="includePath">
+									<listOptionValue builtIn="false" value="../Core/Inc"/>
+									<listOptionValue builtIn="false" value="../MM_IoT/Target"/>
+									<listOptionValue builtIn="false" value="../BlueNRG-2/Target"/>
+									<listOptionValue builtIn="false" value="../Drivers/STM32U5xx_HAL_Driver/Inc"/>
+									<listOptionValue builtIn="false" value="../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy"/>
+									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Device/ST/STM32U5xx/Include"/>
+									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mm_app_common"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/mmrc/src/core"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/emmet"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/internal"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/morselib/src/umac/rc/mmrc_osal"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmping"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT//hostap"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/hostap/hostap"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmregdb"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmconfig"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT-Agent/source/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/port/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/src/include/compat/posix/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmLwIP/src/include/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreSNTP/source/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/littlefs"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreJSON/source/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/agent"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/agent/m2m_api/autogen/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmagic/controller"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/Example/EKH05-Demo/bluenrg_app"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT/Example/EKH05-Demo"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT/source/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/coreMQTT"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/slip"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmipal"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/MMx108/sdio"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/iis328dq"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/sht4x"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/ov5640"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/bsp/Inc"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/bsp/common"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/BSP-EKH05/components/w25q16jv"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmiperf"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mbedtls/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mbedtls"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/mqtt-agent-task/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/freertos-libs-common/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_MM_IoT_MM_IoT/mmutils"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/MorseMicro_FreeRTOS-Libs_FreeRTOS-libraries/backoffAlgorithm/source/include"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/FreeRTOS/Source/include/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/Third_Party/CMSIS/RTOS2/Include/"/>
+									<listOptionValue builtIn="false" value="../Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic"/>
+									<listOptionValue builtIn="false" value="../Middlewares/ST/BlueNRG-2/utils"/>
+									<listOptionValue builtIn="false" value="../Middlewares/ST/BlueNRG-2/includes"/>
+								</option>
+								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input.946405115" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input"/>
+							</tool>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.37474579" name="MCU/MPU GCC Compiler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler">
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.debuglevel.1220533960" name="Debug level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.debuglevel" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.debuglevel.value.g0" valueType="enumerated"/>
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.optimization.level.491582267" name="Optimization level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.optimization.level" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.optimization.level.value.os" valueType="enumerated"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.definedsymbols.1527097658" name="Define symbols (-D)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.definedsymbols" useByScannerDiscovery="false" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="USE_FULL_LL_DRIVER"/>
+									<listOptionValue builtIn="false" value="USE_HAL_DRIVER"/>
+									<listOptionValue builtIn="false" value="STM32U585xx"/>
+									<listOptionValue builtIn="false" value="APPLICATION_VERSION=&quot;1.11.0&quot;"/>
+<listOptionValue builtIn="false" value="ENABLE_MMAGIC_DATALINK_UART=1"/>
+<listOptionValue builtIn="false" value="ENABLE_SHADOW_APP=1"/>
+<listOptionValue builtIn="false" value="HTTPD_FSDATA_FILE=&quot;fsdata.h&quot;"/>
+<listOptionValue builtIn="false" value="LWIP_AUTOIP=1"/>
+<listOptionValue builtIn="false" value="LWIP_HTTPD_CGI=1"/>
+<listOptionValue builtIn="false" value="LWIP_HTTPD_CUSTOM_FILES"/>
+<listOptionValue builtIn="false" value="LWIP_HTTPD_DYNAMIC_HEADERS=1"/>
+<listOptionValue builtIn="false" value="LWIP_HTTPD_FILE_EXTENSION=1"/>
+<listOptionValue builtIn="false" value="LWIP_MDNS_RESPONDER=1"/>
+<listOptionValue builtIn="false" value="LWIP_STATS=1"/>
+<listOptionValue builtIn="false" value="MBEDTLS_CONFIG_FILE=&quot;prj_mbedtls_config.h&quot;"/>
+<listOptionValue builtIn="false" value="MEMP_NUM_SYS_TIMEOUT=(LWIP_NUM_SYS_TIMEOUT_INTERNAL+8)"/>
+<listOptionValue builtIn="false" value="MEMP_NUM_TCP_PCB=64"/>
+<listOptionValue builtIn="false" value="MMPKTMEM_RX_POOL_N_BLOCKS=32"/>
+<listOptionValue builtIn="false" value="MMPKTMEM_TX_POOL_N_BLOCKS=32"/>
+<listOptionValue builtIn="false" value="MQTT_AGENT_DO_NOT_USE_CUSTOM_CONFIG"/>
+<listOptionValue builtIn="false" value="MQTT_AGENT_NETWORK_BUFFER_SIZE=1024"/>
+<listOptionValue builtIn="false" value="MQTT_DO_NOT_USE_CUSTOM_CONFIG"/>
+<listOptionValue builtIn="false" value="SNTP_DO_NOT_USE_CUSTOM_CONFIG"/>
+<listOptionValue builtIn="false" value="CONFIG_AUTOSCAN=1"/>
+<listOptionValue builtIn="false" value="CONFIG_AUTOSCAN_EXPONENTIAL=1"/>
+<listOptionValue builtIn="false" value="CONFIG_BGSCAN=1"/>
+<listOptionValue builtIn="false" value="CONFIG_BGSCAN_SIMPLE=1"/>
+<listOptionValue builtIn="false" value="CONFIG_DRIVER_NL80211_MORSE=1"/>
+<listOptionValue builtIn="false" value="CONFIG_ECC=1"/>
+<listOptionValue builtIn="false" value="CONFIG_FIPS=1"/>
+<listOptionValue builtIn="false" value="CONFIG_IEEE80211AH=1"/>
+<listOptionValue builtIn="false" value="CONFIG_NO_ACCOUNTING=1"/>
+<listOptionValue builtIn="false" value="CONFIG_NO_BSS_TRANS_MGMT=1"/>
+<listOptionValue builtIn="false" value="CONFIG_NO_CONFIG_BLOBS=1"/>
+<listOptionValue builtIn="false" value="CONFIG_NO_CONFIG_WRITE=1"/>
+<listOptionValue builtIn="false" value="CONFIG_NO_RADIUS=1"/>
+<listOptionValue builtIn="false" value="CONFIG_NO_RANDOM_POOL=1"/>
+<listOptionValue builtIn="false" value="CONFIG_NO_RC4=1"/>
+<listOptionValue builtIn="false" value="CONFIG_NO_ROBUST_AV=1"/>
+<listOptionValue builtIn="false" value="CONFIG_NO_RRM=1"/>
+<listOptionValue builtIn="false" value="CONFIG_NO_STDOUT_DEBUG=1"/>
+<listOptionValue builtIn="false" value="CONFIG_NO_VLAN=1"/>
+<listOptionValue builtIn="false" value="CONFIG_NO_WPA_MSG=1"/>
+<listOptionValue builtIn="false" value="CONFIG_OPENSSL_INTERNAL_AES_WRAP=1"/>
+<listOptionValue builtIn="false" value="CONFIG_OWE=1"/>
+<listOptionValue builtIn="false" value="CONFIG_S1G_TWT=1"/>
+<listOptionValue builtIn="false" value="CONFIG_SAE=1"/>
+<listOptionValue builtIn="false" value="CONFIG_SHA256=1"/>
+<listOptionValue builtIn="false" value="CONFIG_SHA384=1"/>
+<listOptionValue builtIn="false" value="CONFIG_SHA512=1"/>
+<listOptionValue builtIn="false" value="CONFIG_SME=1"/>
+<listOptionValue builtIn="false" value="CONFIG_WNM=1"/>
+<listOptionValue builtIn="false" value="IEEE8021X_EAPOL=1"/>
+<listOptionValue builtIn="false" value="MAX_NUM_MLD_LINKS=1"/>
+<listOptionValue builtIn="false" value="MAX_NUM_MLO_LINKS=1"/>
+<listOptionValue builtIn="false" value="MM_IOT"/>
+<listOptionValue builtIn="false" value="MM_IOT_DPP_HEADER=1"/>
+<listOptionValue builtIn="false" value="OS_NO_C_LIB_DEFINES=1"/>
+<listOptionValue builtIn="false" value="WPA_SUPPLICANT_CLEANUP_INTERVAL=120"/>
+<listOptionValue builtIn="false" value="LOOKAROUND_FAIL_MAX=50"/>
+</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths.655251047" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths" useByScannerDiscovery="false" valueType="includePath">
+									</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.otherflags.2012947875" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.otherflags" valueType="stringList">
+									<listOptionValue builtIn="false" value="-Wno-unused-parameter"/>
+									<listOptionValue builtIn="false" value="-Wno-format"/>
+									<listOptionValue builtIn="false" value="-Wno-unused-but-set-variable"/>
+									<listOptionValue builtIn="false" value="-Wno-unused-function"/>
+									<listOptionValue builtIn="false" value="-Wno-unused-variable"/>
+								</option>
+								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.429273911" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
+							</tool>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.549229290" name="MCU/MPU G++ Compiler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler">
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.debuglevel.1717559589" name="Debug level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.debuglevel" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.debuglevel.value.g0" valueType="enumerated"/>
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.optimization.level.1821659273" name="Optimization level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.optimization.level.value.os" valueType="enumerated"/>
+							</tool>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.2032794251" name="MCU/MPU GCC Linker" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker">
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.script.578179653" name="Linker Script (-T)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.script" value="${workspace_loc:/${ProjName}/STM32U585VITXQ_FLASH.ld}" valueType="string"/>
+								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.input.339364509" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.linker.1838470543" name="MCU/MPU G++ Linker" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.linker"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.archiver.450901093" name="MCU/MPU GCC Archiver" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.archiver"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.size.711881812" name="MCU Size" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.size"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objdump.listfile.235152618" name="MCU Output Converter list file" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objdump.listfile"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.hex.1802291068" name="MCU Output Converter Hex" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.hex"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.binary.2127151390" name="MCU Output Converter Binary" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.binary"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.verilog.155354887" name="MCU Output Converter Verilog" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.verilog"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.srec.713904699" name="MCU Output Converter Motorola S-rec" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.srec"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec.856316499" name="MCU Output Converter Motorola S-rec with symbols" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="BlueNRG-2"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="MM_IoT"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -149,18 +402,18 @@
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.pathentry"/>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-		<project id="HaLow_example_sdio.null.287301255" name="HaLow_example_sdio"/>
+		<project id="HaLow_example_sdio.null.2047439465" name="HaLow_example_sdio"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		<scannerConfigBuildInfo instanceId="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.741917119;com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.741917119.;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.222487370;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1612708882">
+		<scannerConfigBuildInfo instanceId="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.953947408;com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.953947408.;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.37474579;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.429273911">
 			<autodiscovery enabled="false" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.518899452;com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.518899452.;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.519090353;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1653556994">
+		<scannerConfigBuildInfo instanceId="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.966414773;com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.966414773.;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.819700747;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.863551528">
 			<autodiscovery enabled="false" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 	</storageModule>
 	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 </cproject>

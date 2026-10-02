@@ -8,6 +8,9 @@
   <license>Docs/license.txt</license>
   <releases>
     <!-- Included by gen_pdsc.py file from files/release_notes.xml and version if a dev build -->
+    <release version="1.11.0" date="2026-09-14">
+        - Updating MM-IoT-SDK version to 2.13.1.
+    </release>
     <release version="1.10.2" date="2026-08-18">
         - Add missing APPLICATION_VERSION define.
     </release>
@@ -422,7 +425,7 @@
     </example>
   </examples>
   <components>
-    <bundle Cbundle="MM_IoT" Cclass="MM_IoT" Cversion="2.12.3">
+    <bundle Cbundle="MM_IoT" Cclass="MM_IoT" Cversion="2.13.1">
       <description>Morse Micro Software Components</description>
       <doc>https://www.morsemicro.com</doc>
       <component Cgroup="morsefirmware">
@@ -583,6 +586,7 @@
           <file category="source" name="morselib/src/umac/ies/s1g_operation.c"/>
           <file category="source" name="morselib/src/umac/ies/s1g_tim.c"/>
           <file category="source" name="morselib/src/umac/ies/twt_ie.c"/>
+          <file category="source" name="morselib/src/umac/ies/vendor_ie.c"/>
           <file category="source" name="morselib/src/umac/ies/wmm.c"/>
           <file category="source" name="morselib/src/umac/interface/umac_interface.c"/>
           <file category="source" name="morselib/src/umac/keys/connection_keys.c"/>
@@ -1417,7 +1421,7 @@
           <file category="include" name="mm-tinycbor/src"/>
         </files>
       </component>
-      <component Cgroup="BSP-EKH05" Csub="BSP" Cversion="1.10.2">
+      <component Cgroup="BSP-EKH05" Csub="BSP" Cversion="1.11.0">
         <description>EKH05 BSP interface.</description>
         <files>
           <file category="header" name="BSP-EKH05/bsp/Inc/ekh05_bus.h" path="BSP-EKH05/bsp/Inc"/>
@@ -1509,21 +1513,21 @@
         </files>
       </component>
     </bundle>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="iperf" condition="MM_IoT iperf example conditions" Cversion="2.12.3">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="iperf" condition="MM_IoT iperf example conditions" Cversion="2.13.1">
       <description>This example demonstrates how to run iperf using the Morse Micro WLAN API to measure throughput.</description>
       <files>
         <file category="source" name="Example/iperf/iperf.c"/>
         <file category="header" name="Example/iperf/prj_mbedtls_config.h" attr="template"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="ping" condition="MM_IoT ping example conditions" Cversion="2.12.3">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="ping" condition="MM_IoT ping example conditions" Cversion="2.13.1">
       <description>This example demonstrates how to ping a target using the Morse Micro WLAN API.</description>
       <files>
         <file category="source" name="Example/ping/ping.c"/>
         <file category="header" name="Example/ping/prj_mbedtls_config.h" attr="template"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="porting_assistant" condition="MM_IoT porting assistant example conditions" Cversion="2.12.3">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="porting_assistant" condition="MM_IoT porting assistant example conditions" Cversion="2.13.1">
       <description>Porting assistant self test tool to validate hardware and HALs.</description>
       <files>
         <file category="source" name="Example/porting_assistant/benchmark_cpu_mem_stack_perf.c"/>
@@ -1541,21 +1545,21 @@
         <file category="source" name="Example/porting_assistant/test_wlan_io.c"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="scan" condition="MM_IoT scan example conditions" Cversion="2.12.3">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="scan" condition="MM_IoT scan example conditions" Cversion="2.13.1">
       <description>This example demonstrates using the MMWLAN scan API.</description>
       <files>
         <file category="header" name="Example/scan/prj_mbedtls_config.h" attr="template"/>
         <file category="source" name="Example/scan/scan.c"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="wnm_sleep" condition="MM_IoT wnm_sleep example conditions" Cversion="2.12.3">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="wnm_sleep" condition="MM_IoT wnm_sleep example conditions" Cversion="2.13.1">
       <description>This example demonstrates utilizing WNM sleep to conserve power in between periodic transmissions.</description>
       <files>
         <file category="header" name="Example/wnm_sleep/prj_mbedtls_config.h" attr="template"/>
         <file category="source" name="Example/wnm_sleep/wnm_sleep.c"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="aws_iot" condition="MM_IoT aws_iot example conditions" Cversion="2.12.3">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="aws_iot" condition="MM_IoT aws_iot example conditions" Cversion="2.13.1">
       <description>This example implements AWS Shadow service connectivity and demonstrate a simple light bulb example.</description>
       <files>
         <file category="source" name="Example/aws_iot/aws_iot.c"/>
@@ -1564,14 +1568,14 @@
         <file category="header" name="Example/aws_iot/prj_mbedtls_config.h" attr="template"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="MQTT Demo" condition="MM_IoT mqttdemo example conditions" Cversion="2.12.3">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="MQTT Demo" condition="MM_IoT mqttdemo example conditions" Cversion="2.13.1">
       <description>This example demonstrates connecting to an MQTT broker, subscribing to a topic and publishing to a topic.</description>
       <files>
         <file category="source" name="Example/mqttdemo/mqttdemo.c"/>
         <file category="header" name="Example/mqttdemo/prj_mbedtls_config.h" attr="template"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="SSL client" condition="MM_IoT sslclient example conditions" Cversion="2.12.3">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="SSL client" condition="MM_IoT sslclient example conditions" Cversion="2.13.1">
       <description>This example demonstrates demonstrates connecting to a HTTPS server, TLS handshake and retrieve data.</description>
       <files>
         <file category="header" name="Example/sslclient/default_certs.h" path="Example/sslclient"/>
@@ -1579,7 +1583,7 @@
         <file category="source" name="Example/sslclient/sslclient.c"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="rf-test" condition="MM_IoT rftest application conditions" Cversion="2.12.3">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="rf-test" condition="MM_IoT rftest application conditions" Cversion="2.13.1">
       <description>RF test application, alpha release. This application is not intended for general use and requires additional tools. Please contact Morse support for more information.</description>
       <RTE_Components_h>#define ENABLE_UART_HAL (1)
 #define DISABLE_UART_LOG</RTE_Components_h>
@@ -1588,7 +1592,7 @@
         <file category="source" name="Example/rf-test/rf-test.c"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="cli" condition="MM_IoT cli application conditions" Cversion="2.12.3">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="cli" condition="MM_IoT cli application conditions" Cversion="2.13.1">
       <description>This example demonstrates command line interface (CLI) over UART.</description>
       <RTE_Components_h>#define ENABLE_UART_HAL (1)
 #define DISABLE_UART_LOG</RTE_Components_h>
@@ -1597,7 +1601,7 @@
         <file category="header" name="Example/cli/prj_mbedtls_config.h" attr="template"/>
       </files>
     </component>
-    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="EKH05-Demo" condition="MM_IoT EKH05 Demo example conditions" Cversion="1.10.2">
+    <component Cclass="MM_IoT" Cgroup="Example" Cvariant="EKH05-Demo" condition="MM_IoT EKH05 Demo example conditions" Cversion="1.11.0">
       <description>This example demonstrates utilizing all the external peripherals on the EKH05 board.</description>
       <RTE_Components_h>#define ENABLE_UART_HAL (1)
 #define DISABLE_UART_LOG</RTE_Components_h>
@@ -1640,7 +1644,7 @@
         <file category="include" name="Example/EKH05-Demo/bluenrg_app"/>
       </files>
     </component>
-    <bundle Cbundle="AWS-libraries" Cclass="AWS" Cversion="2.12.3">
+    <bundle Cbundle="AWS-libraries" Cclass="AWS" Cversion="2.13.1">
       <description>AWS IoT support libraries</description>
       <doc>https://www.morsemicro.com</doc>
       <component Cgroup="AWS-Shadow" Cversion="1.3.0">
@@ -1681,7 +1685,7 @@
         </files>
       </component>
     </bundle>
-    <bundle Cbundle="FreeRTOS-libraries" Cclass="FreeRTOS-Libs" Cversion="2.12.3">
+    <bundle Cbundle="FreeRTOS-libraries" Cclass="FreeRTOS-Libs" Cversion="2.13.1">
       <description>FreeRTOS libraries</description>
       <doc>https://www.morsemicro.com</doc>
       <component Cgroup="backoffAlgorithm" Cversion="1.3.0">
